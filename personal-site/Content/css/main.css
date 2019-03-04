@@ -1,24 +1,35 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿@font-face
+{
+    font-family: Dienstag;
+    src: url('../../fonts/Dienstag.ttf') format('truetype');
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+@font-face
+{
+    font-family: 'Futura_bold';
+    src: url('../../fonts/Futura_bold.ttf') format('truetype');
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+@font-face
+{
+    font-family: 'Futura_book';
+    src: url('../../fonts/Futura_book.ttf') format('truetype');
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+@font-face
+{
+    font-family: 'Futura_heavy';
+    src: url('../../fonts/Futura_heavy.ttf') format('truetype');
+}
+
+@font-face
+{
+    font-family: 'Futura_light';
+    src: url('../../fonts/Futura_light.ttf') format('truetype');
+}
+
+.main-header
+{
+    font-family: 'Futura_light';
+    font-size:36pt;
 }

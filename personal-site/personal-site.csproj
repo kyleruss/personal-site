@@ -206,7 +206,6 @@
     <Folder Include="fonts\" />
     <Folder Include="Scripts\" />
     <Folder Include="Views\Account\" />
-    <Folder Include="Views\Home\" />
     <Folder Include="Views\Manage\" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +221,9 @@
     <EmbeddedResource Include="Migrations\201903040659219_Update BlogPostComment and BlogPost fields.resx">
       <DependentUpon>201903040659219_Update BlogPostComment and BlogPost fields.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
