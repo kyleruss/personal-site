@@ -169,9 +169,19 @@
     <Compile Include="Migrations\201903040618289_initial state.Designer.cs">
       <DependentUpon>201903040618289_initial state.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903040651439_Add BlogPost and BlogPostComment tables.cs" />
+    <Compile Include="Migrations\201903040651439_Add BlogPost and BlogPostComment tables.Designer.cs">
+      <DependentUpon>201903040651439_Add BlogPost and BlogPostComment tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903040659219_Update BlogPostComment and BlogPost fields.cs" />
+    <Compile Include="Migrations\201903040659219_Update BlogPostComment and BlogPost fields.Designer.cs">
+      <DependentUpon>201903040659219_Update BlogPostComment and BlogPost fields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\BlogPost.cs" />
+    <Compile Include="Models\BlogPostComment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -205,6 +215,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903040618289_initial state.resx">
       <DependentUpon>201903040618289_initial state.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903040651439_Add BlogPost and BlogPostComment tables.resx">
+      <DependentUpon>201903040651439_Add BlogPost and BlogPostComment tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903040659219_Update BlogPostComment and BlogPost fields.resx">
+      <DependentUpon>201903040659219_Update BlogPostComment and BlogPost fields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

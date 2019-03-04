@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,10 @@ namespace personal_site.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<BlogPost> BlogPosts { get; set; }
+
+        public DbSet<BlogPostComment> BlogPostComments { get; set; }
+
         public ApplicationDbContext() : base("PersonalSiteConnection", throwIfV1Schema: false) { }
 
         public static ApplicationDbContext Create()
