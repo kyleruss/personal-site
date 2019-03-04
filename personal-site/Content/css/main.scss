@@ -1,4 +1,12 @@
-﻿@font-face
+﻿.main-header
+{
+    font-family: 'Futura_light';
+    font-size:36pt;
+    margin-top:2em;
+}
+
+/* FONTS */
+@font-face
 {
     font-family: Dienstag;
     src: url('../../fonts/Dienstag.ttf') format('truetype');
@@ -26,10 +34,4 @@
 {
     font-family: 'Futura_light';
     src: url('../../fonts/Futura_light.ttf') format('truetype');
-}
-
-.main-header
-{
-    font-family: 'Futura_light';
-    font-size:36pt;
 }
