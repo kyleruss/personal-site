@@ -1,0 +1,49 @@
+﻿/* 
+   ================================
+              NAVBAR
+   ================================
+*/
+
+#main-navbar
+{
+    font-family:Dienstag;
+    font-size:30px;
+    padding: 1em;
+    background-color:transparent !important;
+    
+    .nav-link 
+    {
+        color:#ffffff;
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .nav-selector
+    {
+        padding-left:16px;
+        padding-right:16px;
+    }
+
+    span.nav-link
+    {
+        &:hover 
+        {
+            cursor:default;
+        }
+    }
+
+    #navbar-left
+    {
+        margin-left:2.5em;
+    }
+
+    #navbar-right
+    {
+        margin-right:2.5em;
+    }
+
+    .nav-active
+    {
+        border-bottom:2px solid #FFF;
+    }
+}
