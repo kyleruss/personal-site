@@ -1,9 +1,60 @@
-﻿.main-header
+﻿#main-navbar
 {
-    font-family: 'Futura_light';
-    font-size:36pt;
-    margin-top:2em;
+    font-family:Dienstag;
+    font-size:30px;
+    padding: 1em;
+    background-color:transparent !important;
+    
+    .nav-link 
+    {
+        color:#ffffff;
+    }
+
+    span.nav-link
+    {
+        &:hover 
+        {
+            cursor:default;
+        }
+    }
+
+    #navbar-left
+    {
+        margin-left:2.5em;
+    }
+
+    #navbar-right
+    {
+        margin-right:2.5em;
+    }
 }
+
+#home-container
+{
+    margin:0;
+    padding:0;
+    width:auto;
+    height:1080px;
+    z-index:2;
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('../images/home_bg.png');
+
+    #home-title 
+    {
+        color:#FFF;
+        font-family:Dienstag;
+        font-size:72px;
+        margin-top:0;
+        margin-bottom:0;
+    }
+
+    #home-description
+    {
+        color:#FFF;
+        font-family:Dienstag;
+        font-size:30px;
+    }
+}
+
 
 /* FONTS */
 @font-face
