@@ -8,6 +8,14 @@
     .nav-link 
     {
         color:#ffffff;
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .nav-selector
+    {
+        padding-left:16px;
+        padding-right:16px;
     }
 
     span.nav-link
@@ -26,6 +34,11 @@
     #navbar-right
     {
         margin-right:2.5em;
+    }
+
+    .nav-active
+    {
+        border-bottom:2px solid #FFF;
     }
 }
 
@@ -65,7 +78,9 @@
     margin:0;
     padding:0;
     width:auto;
-    height:1080px;
+    position:absolute;
+    overflow:hidden;
+    height:1000px !important;
     z-index:2;
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('../images/home_bg.png');
 
@@ -83,6 +98,37 @@
         color:#FFF;
         font-family:Dienstag;
         font-size:30px;
+    }
+}
+
+#bottom-continue-container
+{
+    position:absolute;
+    bottom:0;
+    margin-bottom:7em;
+    left:50%;
+    transform:translate(-50%);
+
+    #continue-btn
+    {
+        font-family:Dienstag;
+        font-size:24px;
+        background-color:rgba(0,0,0,0);
+        border:1px solid #FFF;
+        border-radius:0;
+        padding:1em;
+        transition:ease-in-out 0.5s;
+
+        &:hover
+        {
+            background-color:rgba(255,255,255,0.2);
+            color:#FFF;
+        }
+
+        .fas
+        {
+            margin-left:1em;
+        }
     }
 }
 
