@@ -29,6 +29,37 @@
     }
 }
 
+.social-icon-container
+{
+    $cSize: 50px;
+    $cAlign: center;
+
+    width:$cSize;
+    height:$cSize;
+    border-radius:50%;
+    text-align:$cAlign;
+    line-height:$cSize;
+    display:inline-flex;
+    justify-content:$cAlign;
+    align-items:$cAlign;
+    margin-left:0.3em;
+    background-color:rgba(124,124,124, 0.3);
+    transition:ease-in-out 0.5s;
+
+    &:hover
+    {
+        cursor:pointer;
+        background-color:rgba(124,124,124, 0.5);
+    }
+
+    .fab,.fas
+    {
+        font-size:1.8em;    
+        color:#FFF;
+    }
+    
+}
+
 #home-container
 {
     margin:0;
