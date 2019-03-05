@@ -209,8 +209,6 @@
     <Folder Include="Content\images\" />
     <Folder Include="fonts\" />
     <Folder Include="Scripts\" />
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\Manage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -239,6 +237,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Navbar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\_navbar.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\_home.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\_fonts.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Modules\_Home.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Modules\_About.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

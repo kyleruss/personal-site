@@ -3,43 +3,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="home-container" class="fixed-top h-100">
-    <div class="row h-100 flex-column justify-content-center align-items-center">
+<div id="module-container">
+    <!-- HOME MODULE -->
+    @Html.Partial("../Modules/_Home")
 
-        <!-- HEADERS -->
-        <h1 id="home-title">KYLE RUSSELL</h1>
-        <h1 id="home-description">FULL-STACK SOFTWARE DEVELOPER</h1>
+    <!-- ABOUT MODULE -->
+    @Html.Partial("../Modules/_About")
 
-        <!-- SOCIAL MEDIA -->
-        <div id="social-media-container">
-            <div class="social-icon-container">
-                <i class="fab fa-2x fa-github-alt"></i>
-            </div>
-
-            <div class="social-icon-container">
-                <i class="fab fa-2x fa-twitter"></i>
-            </div>
-
-            <div class="social-icon-container">
-                <i class="fab fa-2x fa-stack-overflow"></i>
-            </div>
-
-            <div class="social-icon-container">
-                <i class="fab fa-2x fa-twitch"></i>
-            </div>
-
-              <div class="social-icon-container">
-                <i class="fas fa-2x fa-rss"></i>
-            </div>
-        </div>
-
-
-    </div>
-
-    <!-- CONTINUE BUTTON -->
-    <div id="bottom-continue-container">
-        <button id="continue-btn" class="btn btn-primary btn-lg">
-            EXPLORE MY WORK <i class="fas fa-arrow-down"></i>
-        </button>
-    </div>
-</div> 
+</div>
