@@ -11,6 +11,7 @@
     color:#FFF;
     font-size:100px;
     font-family:'Futura_bold';
+    margin-top:2em;
 }
 
 #about-description
@@ -27,4 +28,63 @@
     font-family:'Futura_book';
     border-bottom:1px solid #FFF;
     margin-top:1.5em;
+}
+
+#about-rocket
+{
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+
+.skill-display
+{
+  position: relative;
+  width: 283px; 
+  height: 163.39px;
+  background-color: #4d9bfa;
+  margin: 120px 20px;
+  border-left: solid 21px #ffffff;
+  border-right: solid 21px #ffffff;
+
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+
+  h1
+  {
+      z-index:10;
+      color:#FFF;
+      font-size:48px;
+      font-family:'Futura_bold';
+  }
+}
+
+.skill-display:before,
+.skill-display:after 
+{
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 200.11px;
+  height: 200.11px;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background-color: inherit;
+  left: 20.4444px;
+}
+
+.skill-display:before 
+{
+  top: -100.0556px;
+  border-top: solid 29.6985px #ffffff;
+  border-right: solid 29.6985px #ffffff;
+}
+
+.skill-display:after 
+{
+  bottom: -100.0556px;
+  border-bottom: solid 29.6985px #ffffff;
+  border-left: solid 29.6985px #ffffff;
 }

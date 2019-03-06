@@ -1,0 +1,40 @@
+﻿.hexagonz {
+  width: 100px;
+  height: 55px;
+  position: relative;
+}
+
+.hexagonz, 
+.hexagonz:before, 
+.hexagonz:after {
+  background: red;
+  box-shadow: 0 0 10px rgba(0,0,0,0.8);   
+}
+
+.hexagonz:before,
+.hexagonz:after {
+  content: "";
+  position: absolute;
+  left: 22px;
+  width: 57px;
+  height: 57px;
+  transform: rotate(145deg) skew(22.5deg);
+}
+
+.hexagonz:before {
+  top: -29px;
+}
+
+.hexagonz:after {
+  top: 27px;
+}
+
+.hexagonz span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 55px;
+  background: red;
+  z-index: 1;
+}
