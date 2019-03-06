@@ -38,6 +38,16 @@
 #project-stats
 {
     margin-top:3em;
+    
+    .stat-separator
+    {
+        font-size:40px;
+    }
+
+    #project-languages
+    {
+        margin-top:-10px;
+    }
 }
 
 #project-title
@@ -53,6 +63,24 @@
     font-size:48px;
     font-family:'Futura_light';
     word-wrap:break-word;
+}
+
+#view-github-btn
+{
+    background-color:rgba(0,0,0,0);
+    border: 5px solid #FFF;
+    font-size:30px;
+    font-family:'Futura_bold';
+    padding:0.8em;
+    padding-left:1.2em;
+    padding-right:1.2em;
+    margin-top:1.5em;
+    transition:ease-in-out 0.5s;
+
+    &:hover
+    {
+        background-color:rgba(0,0,0,0.2);
+    }
 }
 
 .portf-arrow
