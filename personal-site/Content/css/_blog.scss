@@ -1,0 +1,32 @@
+﻿#blog-container
+{
+    position:relative;
+    height:1000px;
+    background-color:#1eb66d;
+    overflow:hidden;
+}
+
+#blog-display-container
+{
+    width:1100px;
+}
+
+#blog-titles
+{
+    width:600px;
+    word-wrap:break-word;
+}
+
+#blog-main-title
+{
+    color:#FFF;
+    font-size:200px;
+    font-family:'Futura_bold';
+}
+
+#blog-main-description
+{
+    color:#FFF;
+    font-size:80px;
+    font-family:'Futura_book';
+}
