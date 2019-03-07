@@ -26,7 +26,7 @@
 
 .footer-info-container
 {
-    width:300px;
+    width:280px;
     word-wrap:break-word;
 }
 
@@ -83,6 +83,13 @@
     font-size:18px;
     padding:1em;
     width:275px;
+    transition:ease-in-out 0.5s;
+
+    &:hover
+    {
+        background-color:#06aa40;
+        opacity:0.8;
+    }
 }
 
 .social-display {
@@ -90,6 +97,7 @@
   width: 100px; 
   height: 57.74px;
   margin: 28.87px 0;
+  transition:ease-in-out 0.5s;
 
   &:nth-child(1) { @include social-container-color(#5d68ff); }
   &:nth-child(2) { @include social-container-color(#11ca60); }
@@ -100,6 +108,12 @@
   &:nth-child(2), &:nth-child(3), &:nth-child(5)
   {
       margin-left:1em;
+  }
+
+  &:hover
+  {
+      cursor:pointer;
+      opacity:0.6;
   }
 }
 
@@ -123,4 +137,23 @@
 
 .social-display:after {
   bottom: -35.3553px;
+}
+
+#copyright-header
+{
+    color:#FFF;
+    font-family:Dienstag;
+    font-size:24px;
+    opacity:0.8;
+}
+
+#footer-copyright-container
+{
+    background-color:#0f0f0f;
+    height:150px;
+    position:relative;
+    overflow:hidden;
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(to right, yellow, red, purple, blue, aqua);
+    border-image-slice: 1;
 }
