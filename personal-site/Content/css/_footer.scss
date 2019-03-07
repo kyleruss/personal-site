@@ -1,0 +1,126 @@
+﻿#footer-container
+{
+    height:480px;
+    background-color:#0f0f0f;
+    overflow:hidden;
+}
+
+#inner-footer
+{
+    justify-content:space-around;
+}
+
+.footer-info-title
+{
+    font-family:'Futura_bold';
+    font-size:30px;
+    color:#5f97fd;
+}
+
+.footer-info-description
+{
+    font-family:'Futura_bold';
+    font-size:18px;
+    color:#FFF;
+}
+
+.footer-info-container
+{
+    width:300px;
+    word-wrap:break-word;
+}
+
+#footer-social-icons
+{
+    width:400px;
+    margin-top:4em;
+}
+
+.inner-social-icon
+{
+    color:#FFF;
+    z-index:10;
+    font-size:40px;
+}
+
+.social-footer-icon-container
+{
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+}
+
+@mixin social-container-color($BColor)
+{
+    background-color: $BColor;
+    border-left: solid 1px $BColor;
+    border-right: solid 1px $BColor;
+
+    &:before, &:after
+    {
+        border-top: solid 1.4142px $BColor;
+        border-right: solid 1.4142px $BColor;
+    }
+
+    &:before
+    {
+      border-top: solid 1.4142px $BColor;
+      border-right: solid 1.4142px $BColor;
+    }
+
+    &:after
+    {
+        border-bottom: solid 1.4142px $BColor;
+        border-left: solid 1.4142px $BColor;
+    }
+}
+
+.footer-btn
+{
+    background-color:#06aa40;
+    border:0;
+    font-family:'Futura_bold';
+    font-size:18px;
+    padding:1em;
+    width:275px;
+}
+
+.social-display {
+  position: relative;
+  width: 100px; 
+  height: 57.74px;
+  margin: 28.87px 0;
+
+  &:nth-child(1) { @include social-container-color(#5d68ff); }
+  &:nth-child(2) { @include social-container-color(#11ca60); }
+  &:nth-child(3) { @include social-container-color(#ff9c00); }
+  &:nth-child(4) { @include social-container-color(#a263f9); margin-left:3.5em; }
+  &:nth-child(5) { @include social-container-color(#f94747); }
+
+  &:nth-child(2), &:nth-child(3), &:nth-child(5)
+  {
+      margin-left:1em;
+  }
+}
+
+.social-display:before,
+.social-display:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 70.71px;
+  height: 70.71px;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background-color: inherit;
+  left: 13.6447px;
+}
+
+.social-display:before {
+  top: -35.3553px;
+}
+
+.social-display:after {
+  bottom: -35.3553px;
+}
