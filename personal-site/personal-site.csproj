@@ -192,6 +192,7 @@
     <Content Include="Content\css\_portfolio.scss" />
     <Content Include="Content\css\_blog.scss" />
     <Content Include="Content\css\_footer.scss" />
+    <Content Include="Content\css\_contact.scss" />
     <None Include="Content\css\_utilities.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -210,6 +211,7 @@
     <Content Include="Views\Modules\_Portfolio.cshtml" />
     <Content Include="Views\Modules\_Blog.cshtml" />
     <Content Include="Views\Modules\_Footer.cshtml" />
+    <Content Include="Views\Modules\_Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
