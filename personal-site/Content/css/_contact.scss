@@ -4,3 +4,110 @@
     position:relative;
     background-color:#2eb7c7;
 }
+
+#contact-inner-container
+{
+    margin-top:10em;
+}
+
+#contact-form-container
+{
+    margin-right:10em;
+}
+
+#contact-form-title
+{
+    color:#FFF;
+    font-family:'Futura_bold';
+    font-size:90px;
+}
+
+#contact-form-desc
+{
+    color:#FFF;
+    font-family:'Futura_light';
+    font-size:30px;
+    text-align:center;
+
+}
+
+#contact-form
+{
+    margin-top:5em;
+    width:400px;
+
+    .fas
+    {
+        color:#FFF;
+        font-size:40px;
+        padding-left:0;
+    }
+}
+
+.contact-textfield
+{
+    background-color:rgba(0,0,0,0);
+    border:0;
+    border-bottom:2px solid #FFF;
+    border-radius:0;
+    padding:0;
+    font-family:'Futura_light';
+    font-size:30px;
+    height:40px;
+    color:#FFF;
+
+    &::-moz-placeholder, &::-webkit-input-placeholder
+    {
+        color:#FFF;
+    }
+
+    &:focus
+    {
+        background-color:rgba(0,0,0,0);
+        border-bottom:2px solid #FFF;
+        outline:0px !important;
+        box-shadow:none;
+        color:#FFF;
+    }
+
+}
+
+.contact-form-field-container:nth-child(2)
+{
+    margin-top:3em;
+}
+
+#contact-message-field
+{
+    background-color:rgba(0,0,0,0);
+    border-radius:0;
+    border:2px solid #FFF;
+    resize:none;
+    color:#FFF;
+    margin-top:2em;
+    font-family:'Futura_light';
+    font-size:20px;
+   
+    &:focus
+    {
+        border:2px solid #FFF !important;
+        outline:0px !important;
+        box-shadow:none;
+    }
+}
+
+#contact-submit
+{
+    background-color:rgba(0,0,0,0);
+    border:5px solid #FFF;
+    font-family:'Futura_heavy';
+    font-size:30px;
+    width:450px;
+    transition:ease-in-out 0.5s;
+
+    &:hover
+    {
+        cursor:hover;
+        background-color:rgba(0,0,0, 0.5);
+    }
+}
