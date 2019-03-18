@@ -6,11 +6,23 @@ module.exports = function (grunt)
         {
             dist:
             {
-                files:
-                {
-                    'Content/Scripts/main.js': ['Scripts/**.js']
-                }
+                src: ['Scripts/**/*.js'],
+                dest: 'Content/Scripts/main.js'
+            }
+        },
+
+        watch:
+        {
+            scripts:
+            {
+                files: 'Scripts/**/*.js',
+                tasks: ['concat'],
+                options: { atBegin: true }
             }
         }
+
     });
+
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 };
