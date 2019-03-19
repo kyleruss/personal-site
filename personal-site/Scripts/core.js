@@ -1,0 +1,6 @@
+﻿$(function()
+{
+    About();
+    Blog();
+    Portfolio();
+});

@@ -197,6 +197,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\css\main.css" />
+    <Content Include="Scripts\about.js" />
+    <Content Include="Scripts\blog.js" />
+    <Content Include="Scripts\core.js" />
+    <Content Include="Scripts\portfolio.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -216,8 +220,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
+    <Folder Include="Content\scripts\" />
     <Folder Include="fonts\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

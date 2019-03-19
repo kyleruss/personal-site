@@ -6,7 +6,13 @@ module.exports = function (grunt)
         {
             dist:
             {
-                src: ['Scripts/**/*.js'],
+                src:
+                    [
+                        'Scripts/core.js',
+                        'Scripts/about.js',
+                        'Scripts/blog.js',
+                        'Scripts/portfolio.js'
+                    ],
                 dest: 'Content/Scripts/main.js'
             }
         },
