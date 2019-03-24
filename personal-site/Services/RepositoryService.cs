@@ -9,6 +9,8 @@ namespace personal_site.Services
     {
         private static RepositoryService _instance;
 
+        private RepositoryService() { }
+
         public void GetRepositories()
         {
 
