@@ -7,6 +7,8 @@ namespace personal_site.Services
 {
     public class RepositoryService
     {
+        private static RepositoryService _instance;
+
         public void GetRepositories()
         {
 
@@ -22,6 +24,10 @@ namespace personal_site.Services
 
         }
 
-
+        public static RepositoryService GetInstance()
+        {
+            _instance = _instance ?? new RepositoryService();
+            return _instance;
+        }
     }
 }
