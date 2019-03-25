@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -17,25 +18,37 @@ namespace personal_site.Services
 
         private ContactService() { }
 
-        public async Task SendMessage(ContactViewModel contactViewModel)
+        public void SendMessage(ContactViewModel contactViewModel)
         {
             NameValueCollection config = ConfigurationManager.AppSettings;
 
-            using(SmtpClient smtpClient = new SmtpClient(config.Get("mailHost"), int.Parse(config.Get("mailPort"))))
+            try
             {
-                smtpClient.Host         =   config.Get("mailHost");
-                smtpClient.Port         =   int.Parse(config.Get("mailPort"));
-                smtpClient.Credentials  =   new NetworkCredential(config.Get("mailAddress"), config.Get("mailPassword"));
-                smtpClient.EnableSsl    =   true;
+                SmtpClient smtpClient = new SmtpClient();
+
+                smtpClient.Host = config.Get("mailHost");
+                smtpClient.Port = int.Parse(config.Get("mailPort"));
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.EnableSsl = true;
+                smtpClient.Credentials = new NetworkCredential(config.Get("mailAddress"), config.Get("mailPassword"));
+                
 
                 MailMessage message = PrepareMessage(contactViewModel, config);
-                await smtpClient.SendMailAsync(message);
+
+                smtpClient.Send(message);
             }
+
+            catch(SmtpException e)
+            {
+                Debug.WriteLine(e.Message);
+            }
+            
         }
 
         private MailMessage PrepareMessage(ContactViewModel contactViewModel, NameValueCollection config)
         {
-            string messageBody = string.Format("Name: {0}\nEmail: {1}\nMessage: \n{3}", 
+            string messageBody = string.Format("Name: {0}\nEmail: {1}\nMessage: \n{2}", 
                                  contactViewModel.ContactName, contactViewModel.ContactEmail, contactViewModel.ContactMessage);
             string messageTitle = "CONTACT MESSAGE";
 

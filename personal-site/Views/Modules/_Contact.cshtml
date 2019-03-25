@@ -3,6 +3,7 @@
                 ABOUT MODULE
     ==================================
 -->
+@model personal_site.ViewModels.ContactViewModel
 
 <div id="contact-container">
     <div id="contact-inner-container" class="row h-100 justify-content-center">
@@ -11,31 +12,34 @@
                 <h1 id="contact-form-title">GET IN TOUCH</h1>
                 <h1 id="contact-form-desc">Looking to work together or ask a question?</h1>
             </div>
-        
-            <form id="contact-form">
 
+            @using (Html.BeginForm("SendMessage", "Contact", FormMethod.Post, new { id = "contact-form", role = "form" }))
+            {
                 <!-- Contact name -->
                 <div class="form-group contact-form-field-container row">
                     <i class="fas fa-user col-sm-2"></i>
-                    <input type="text" class="form-control col-sm-10 contact-textfield" id="contact-name-field" name="contactName"
-                           placeholder="WHAT'S YOUR NAME?" />
+                    @Html.TextBoxFor(m => m.ContactName,
+                    new { @class = "form-control col-sm-10 contact-textfield", id = "contact-name-field", placeholder = "WHAT'S YOUR NAME?"})
+
                 </div>
 
                 <!-- Contact Email -->
                 <div class="form-group contact-form-field-container row">
                     <i class="fas fa-envelope col-sm-2"></i>
-                    <input type="text" class="form-control col-sm-10 contact-textfield" id="contact-email-field" name="contactEmail"
-                           placeholder="ENTER YOUR EMAIL" />
+                    @Html.TextBoxFor(m => m.ContactEmail,
+                     new { @class = "form-control col-sm-10 contact-textfield", id = "contact-email-field", placeholder = "ENTER YOUR EMAIL" })
                 </div>
 
+                <!-- CONTACT MESSAGE -->
                 <div class="form-group row">
-                    <textarea class="form-control" id="contact-message-field" name="contactMessage" rows="6"></textarea>
+                    @Html.TextAreaFor(m => m.ContactMessage,
+                    new { @class = "form-control", id = "contact-message-field", rows = "6" })
                 </div>
 
                 <div class="form-group row">
                     <button type="submit" class="btn btn-primary" id="contact-submit">SEND MESSAGE</button>
                 </div>
-            </form>
+            }
         </div>
 
         <div id="contact-img">

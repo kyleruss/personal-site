@@ -13,10 +13,10 @@ namespace personal_site.Controllers
     {
 
         [HttpPost]
-        public async Task<ActionResult> SendMessage(ContactViewModel contactViewModel)
+        public ActionResult SendMessage(ContactViewModel contactViewModel)
         {
             ContactService contactService = ContactService.GetInstance();
-            await contactService.SendMessage(contactViewModel);
+            contactService.SendMessage(contactViewModel);
 
             return Content("Message Sent");
         }
