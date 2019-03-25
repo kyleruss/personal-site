@@ -18,7 +18,7 @@ namespace personal_site.Services
 
         private ContactService() { }
 
-        public void SendMessage(ContactViewModel contactViewModel)
+        public async Task SendMessage(ContactViewModel contactViewModel)
         {
             NameValueCollection config = ConfigurationManager.AppSettings;
 
@@ -36,7 +36,7 @@ namespace personal_site.Services
 
                 MailMessage message = PrepareMessage(contactViewModel, config);
 
-                smtpClient.Send(message);
+                await smtpClient.SendMailAsync(message);
             }
 
             catch(SmtpException e)
