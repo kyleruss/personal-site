@@ -210,7 +210,9 @@
     <Content Include="Content\css\_blog.scss" />
     <Content Include="Content\css\_footer.scss" />
     <Content Include="Content\css\_contact.scss" />
-    <Content Include="AppConfiguration.config" />
+    <Content Include="AppConfiguration.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Content\css\_utilities.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -219,7 +221,9 @@
     <Content Include="Scripts\blog.js" />
     <Content Include="Scripts\core.js" />
     <Content Include="Scripts\portfolio.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

@@ -43,7 +43,6 @@ namespace personal_site.Services
             {
                 Debug.WriteLine(e.Message);
             }
-            
         }
 
         private MailMessage PrepareMessage(ContactViewModel contactViewModel, NameValueCollection config)

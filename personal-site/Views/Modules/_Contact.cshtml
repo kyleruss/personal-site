@@ -15,6 +15,9 @@
 
             @using (Html.BeginForm("SendMessage", "Contact", FormMethod.Post, new { id = "contact-form", role = "form" }))
             {
+                @Html.AntiForgeryToken()
+                
+                @Html.ValidationSummary();
                 <!-- Contact name -->
                 <div class="form-group contact-form-field-container row">
                     <i class="fas fa-user col-sm-2"></i>
@@ -47,3 +50,6 @@
         </div>
     </div>
 </div>
+
+@Scripts.Render("https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js")
+@Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js")
