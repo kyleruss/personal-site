@@ -3,6 +3,7 @@ $(function()
     About();
     Blog();
     Portfolio();
+    Contact();
 });
 function About()
 {
@@ -58,4 +59,8 @@ function Blog()
 function Portfolio()
 {
     console.log('portfolio loaded');
+};
+function Contact()
+{
+    console.log('contact loaded');
 };

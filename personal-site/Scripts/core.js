@@ -3,4 +3,5 @@
     About();
     Blog();
     Portfolio();
+    Contact();
 });

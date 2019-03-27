@@ -28,11 +28,10 @@ namespace personal_site.Controllers
             }
 
             ContactService contactService = ContactService.GetInstance();
-            await contactService.SendMessage(contactViewModel);
+            bool msgSent        =   await contactService.SendMessage(contactViewModel);
+            string responseMsg  =   msgSent? "Your message has been sent" : "Failed to send message";
 
-            
-
-            return Content("Message Sent");
+            return ControllerHelper.JsonActionResponse(msgSent, responseMsg);
         }
     }
 }

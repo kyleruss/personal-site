@@ -11,7 +11,8 @@ module.exports = function (grunt)
                         'Scripts/core.js',
                         'Scripts/about.js',
                         'Scripts/blog.js',
-                        'Scripts/portfolio.js'
+                        'Scripts/portfolio.js',
+                        'Scripts/contact.js'
                     ],
                 dest: 'Content/Scripts/main.js'
             }

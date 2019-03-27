@@ -11,7 +11,8 @@ namespace personal_site.Helpers
     {
         private ControllerHelper() { }
 
-        public static JsonResult JsonActionResponse(bool actionIsSuccess, string responseMsg, IEnumerable actionErrors = null, ICollection actionData = null)
+        public static JsonResult JsonActionResponse(bool actionIsSuccess, string responseMsg, 
+        IEnumerable actionErrors = null, ICollection actionData = null)
         {
             var ResponseObj = new 
             { 
