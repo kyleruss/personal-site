@@ -1,4 +1,5 @@
-﻿using personal_site.Services;
+﻿using personal_site.Helpers;
+using personal_site.Services;
 using personal_site.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -23,11 +24,13 @@ namespace personal_site.Controllers
                 var errorList = ModelState.Keys.Where(i => ModelState[i].Errors.Count > 0)
                     .Select(k => new KeyValuePair<string, string>(k, ModelState[k].Errors.First().ErrorMessage));
 
-                return new JsonResult() { Data = errorList };
+                return ControllerHelper.JsonActionResponse(false, "Invalid input", errorList);
             }
 
             ContactService contactService = ContactService.GetInstance();
             await contactService.SendMessage(contactViewModel);
+
+            
 
             return Content("Message Sent");
         }
