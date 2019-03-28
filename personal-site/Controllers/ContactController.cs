@@ -29,7 +29,7 @@ namespace personal_site.Controllers
 
             ContactService contactService = ContactService.GetInstance();
             bool msgSent        =   await contactService.SendMessage(contactViewModel);
-            string responseMsg  =   msgSent? "Your message has been sent" : "Failed to send message";
+            string responseMsg  =   msgSent? "Message sent!" : "Failed to send message";
 
             return ControllerHelper.JsonActionResponse(msgSent, responseMsg);
         }

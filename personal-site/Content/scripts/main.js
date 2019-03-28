@@ -122,6 +122,7 @@ function Contact()
 
     function updateContactButton(statusCode, errMsg)
     {
+        var contactBtn = $('#contact-submit');
         var contactBtnSpinner = $('#contact-btn-progress');
         var contactBtnText = $('#contact-btn-text');
         var contactBtnStatusIcon = $('#contact-btn-status');
@@ -138,12 +139,14 @@ function Contact()
                 contactBtnSpinner.hide();
                 btnMsg = "MESSAGE HAS BEEN SENT";
                 contactBtnStatusIcon.attr('class', 'fas fa-check-circle fa-lg').show();
+                contactBtn.attr('class', 'btn btn-primary contact-btn-success');
                 break;
 
             case CONTACT_STATUS_ERROR:
                 contactBtnSpinner.hide();
                 btnMsg = errMsg;
                 contactBtnStatusIcon.attr('class', 'fas fa-times-circle fa-lg').show();
+                contactBtn.attr('class', 'btn btn-primary contact-btn-error');
                 break;
         }
 
@@ -157,6 +160,7 @@ function Contact()
             $('#contact-btn-status').hide();
             $('#contact-btn-progress').hide();
             $('#contact-btn-text').text('send message');
+            $('#contact-submit').attr('class', 'btn btn-primary contact-btn-normal');
         }, 2000);
     }
 

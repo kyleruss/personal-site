@@ -104,8 +104,7 @@
 
 #contact-submit
 {
-    background-color:rgba(0,0,0,0);
-    border:5px solid #FFF;
+    border:5px solid;
     font-family:'Futura_heavy';
     font-size:30px;
     width:450px;
@@ -124,4 +123,29 @@
         box-shadow:none !important;
 
     }
+}
+
+.contact-btn-error
+{
+    $errColor: rgb(255, 77, 77) !important;
+    background-color:$errColor;
+    border-color:$errColor;
+    box-shadow: 10px 10px 5px -3px rgba(0,0,0,0.39);
+}
+
+.contact-btn-success
+{
+    $successColor: rgb(0, 204, 102) !important;
+    background-color:$successColor;
+    border-color:$successColor;
+   // box-shadow: 0px 0px 38px -10px rgba(0,0,0,0.75);
+   box-shadow: 10px 10px 5px -3px rgba(0,0,0,0.39);
+   outline:1px;
+}
+
+.contact-btn-normal
+{
+    $normalColor: rgba(0,0,0,0) !important;
+    background-color:$normalColor;
+    border-color:#FFF !important;
 }
