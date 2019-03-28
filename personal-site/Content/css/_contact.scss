@@ -36,12 +36,18 @@
     margin-top:5em;
     width:400px;
 
-    .fas
+    .field-icons
     {
         color:#FFF;
         font-size:40px;
         padding-left:0;
     }
+}
+
+.spinner-border
+{
+    border:0.15em solid currentColor;
+    border-right-color:transparent;
 }
 
 .contact-textfield
@@ -104,10 +110,18 @@
     font-size:30px;
     width:450px;
     transition:ease-in-out 0.5s;
+    text-transform:uppercase;
 
     &:hover
     {
         cursor:hover;
         background-color:rgba(0,0,0, 0.5);
+    }
+
+    &:focus, &:active
+    {
+        outline:none !important;
+        box-shadow:none !important;
+
     }
 }
