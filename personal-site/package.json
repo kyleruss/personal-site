@@ -8,5 +8,8 @@
     "grunt": "^1.0.3",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-watch": "^1.1.0"
+  },
+  "dependencies": {
+    "request": "^2.88.0"
   }
 }
