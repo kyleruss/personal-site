@@ -3,16 +3,35 @@
     grunt.registerTask('repo-load', function()
     {
         var request = require('request');
+        var fs = require('fs');
+
         var repoData = [];
         var index = 0;
 
         var userApiUrl = "https://api.github.com/users/kyleruss/";
         var repoApiUrl = "https://api.github.com/repos/kyleruss/";
         var apiContentUrl = "https://raw.githubusercontent.com/";
+        var repoDataFile = "Tasks/repository-data.json";
 
         var done = this.async();
         getRepositories();
         
+
+        function loadRepoDataFile()
+        {
+            fs.readFile(repoDataFile, 'utf-8', (err, data) =>
+            {
+                if(err) console.log('Repo data file load error: ' + err);
+                else repoData = JSON.parse(data);
+            });
+        }
+
+        function saveRepoDataFile(callback)
+        {
+            var repoJsonStr = JSON.stringify(repoData);
+            fs.writeFile(repoDataFile, repoJsonStr, 'utf-8', callback);
+        }
+
 
         function getRepositories()
         {
@@ -29,7 +48,11 @@
                     repoData.push(repoObj);
                 });
 
-                getRepositoryStats();
+                saveRepoDataFile((err) =>
+                {
+                    console.log('save data');
+                    done();
+                });
             });
         }
 
@@ -90,8 +113,6 @@
                 var commits = data[0].contributions;
                 repoData[index]["commits"] = commits;
 
-                console.log('commit: ' + commits);
-
                 getRepositoryLanguages();
             });
         };
@@ -118,8 +139,6 @@
             callApi(getApiUrl(index, 2), (data) =>
             {
                 repoData[index]["languages"] = data;
-
-                console.log('languages: ' + data);
                 getRepositoryReadme();
             });
         };
