@@ -8,9 +8,6 @@
 
         var userApiUrl = "https://api.github.com/users/kyleruss/";
         var repoApiUrl = "https://api.github.com/repos/kyleruss/";
-        var languageApiUrl = "https://api.github.com/repos/kyleruss/graphi/languages";
-        var commitUrl = "https://api.github.com/repos/kyleruss/byte-chat/contributors";
-        var codeLineStats = "https://api.github.com/repos/kyleruss/graphi/stats/contributors";
         var apiContentUrl = "https://raw.githubusercontent.com/";
 
         var done = this.async();
