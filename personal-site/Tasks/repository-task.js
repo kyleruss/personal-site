@@ -4,8 +4,10 @@
     {
         var request = require('request');
         var repoData = [];
+        var index = 0;
 
-        var apiUrl = "https://api.github.com/users/kyleruss/repos";
+        var userApiUrl = "https://api.github.com/users/kyleruss/";
+        var repoApiUrl = "https://api.github.com/repos/kyleruss/";
         var languageApiUrl = "https://api.github.com/repos/kyleruss/graphi/languages";
         var commitUrl = "https://api.github.com/repos/kyleruss/byte-chat/contributors";
         var codeLineStats = "https://api.github.com/repos/kyleruss/graphi/stats/contributors";
@@ -17,47 +19,140 @@
 
         function getRepositories()
         {
-            request
-            ({ 
-                url: apiUrl, 
-                json: true,
-                headers: { 'User-Agent': 'request'}
-            }, (err, res, data) =>
+            var getRepositoriesApiUrl = userApiUrl + "repos";
+
+            callApi(getRepositoriesApiUrl, (data) =>
+            {
+                data.forEach((repoItem) =>
+                {
+                    var repoName = repoItem.name;
+                    var repoLink = repoItem.html_url;
+                    var repoObj = { name: repoName, link: repoLink };
+                    
+                    repoData.push(repoObj);
+                });
+
+                getRepositoryStats();
+            });
+        }
+
+        function callApi(apiNodeUrl, callback, options)
+        {
+            if (options == null) 
+                options = 
+                {
+                    url: apiNodeUrl, 
+                    json: true,
+                    headers: { 'User-Agent': 'request' }
+                };
+
+            request(options, (err, res, data) =>
             {
                 if(err)
                     console.log('Error: ' + err);
+
                 else if(res.statusCode !== 200)
                     console.log('Error status code: ' + res.statusCode);
+
                 else
+                    callback(data);
+            });
+        };
+
+        function getApiUrl(i, type)
+        {
+            var repoName = repoData[i].name;
+            var url = "";
+
+            switch(type)
+            {
+                case 0: //commits
+                    url = repoApiUrl + repoName + "/contributors";
+                    break;
+
+                case 1: //lines of code
+                    url = repoApiUrl + repoName + "/stats/contributors";
+                    break;
+
+                case 2: //languages
+                    url = repoApiUrl + repoName + "/languages";
+                    break;
+
+                case 3: //readme
+                    url = repoApiUrl + repoName + "/readme";
+                    break;
+            }
+
+            return url;
+        };
+
+        function getRepositoryCommits()
+        {
+            callApi(getApiUrl(index, 0), (data) =>
+            {
+                var commits = data[0].contributions;
+                repoData[index]["commits"] = commits;
+
+                console.log('commit: ' + commits);
+
+                getRepositoryLanguages();
+            });
+        };
+
+        function getRepositoryCodeLines()
+        {
+            callApi(getApiUrl(index, 1), (data) =>
+            {
+                var weeks = data[0].weeks;
+                var total = 0;
+
+                weeks.forEach(function(week)
                 {
+                    var additions = week.a;
+                    total += additions;
+                });
 
-                    data.forEach((repoItem) =>
-                    {
-                        var repoName = repoItem.name;
-                        var repoLink = repoItem.html_url;
-                        var repoObj = { name: repoName, link: repoLink };
-                        
-                        repoData.push(repoObj);
-                    });
+                callback();
+            });
+        };
 
-                    console.log(repoData);
-                }
+        function getRepositoryLanguages()
+        {
+            callApi(getApiUrl(index, 2), (data) =>
+            {
+                repoData[index]["languages"] = data;
 
+                console.log('languages: ' + data);
+                getRepositoryReadme();
+            });
+        };
+
+        function getRepositoryReadme()
+        {
+            var readmeApiUrl = getApiUrl(index, 3);
+            var options = 
+            { 
+                url: readmeApiUrl, 
+                headers: { 'User-Agent': 'request', 'Accept': 'application/vnd.github.VERSION.html'}
+            };
+
+            callApi(readmeApiUrl, (data) => 
+            {
+                repoData[index]["readme"] = data;
+                updateIntervalCounter();
+
+            }, options);
+        };
+
+        function updateIntervalCounter()
+        {
+            if(index == repoData.length - 1)
+            {
+                console.log(repoData);
                 done();
-            }); 
-
-            setTimeout(function(){ console.log('hello world')}, 2500);
+            }
+            else
+                index++;
         }
-
-        function getRepositoryLanguages(repoName)
-        {
-
-        }
-
-        function getRepositoryStats()
-        {
-
-        }
-
     });
 };
