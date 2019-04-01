@@ -4,7 +4,6 @@
     var fs = require('fs');
 
     var repoData = [{}];
-    var index = 0;
 
     var userApiUrl = "https://api.github.com/users/kyleruss/";
     var repoApiUrl = "https://api.github.com/repos/kyleruss/";
@@ -77,7 +76,6 @@
             });
         });
     };
-    
 
     function getApiUrl(repoName, type)
     {
@@ -85,23 +83,23 @@
 
         switch(type)
         {
-            case COMMITS_TASK: //commits
+            case COMMITS_TASK:
                 url = repoApiUrl + repoName + "/contributors";
                 break;
 
-            case CODE_TASK: //lines of code
+            case CODE_TASK:
                 url = repoApiUrl + repoName + "/stats/contributors";
                 break;
 
-            case LANGUAGES_TASK: //languages
+            case LANGUAGES_TASK:
                 url = repoApiUrl + repoName + "/languages";
                 break;
 
-            case README_TASK: //readme
+            case README_TASK:
                 url = repoApiUrl + repoName + "/readme";
                 break;
 
-            case REPO_TASK: //repos
+            case REPO_TASK:
                 url = userApiUrl + "repos";
                 break; 
         }
@@ -151,7 +149,8 @@
                 var repoLink = repoItem.html_url;
                 var repoObj = { name: repoName, link: repoLink };
                 
-                setRepoProperty(repoName, repoObj);
+                if(getRepoProperty(repoName) == null)
+                    setRepoProperty(repoName, repoObj);
             });
         });
     };
