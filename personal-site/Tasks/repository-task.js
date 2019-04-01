@@ -112,31 +112,41 @@
         var done = taskScope.async();
 
         await loadRepoDataFile();
+        console.log('[Repository Data File] Loaded');
 
         if(singleExec) await task();
         else
         {
             for(var index in repoData[0])
+            {
+                console.log("[Processing] Repository: " + index);
                 await task(index);
+            }
         }
 
         await saveRepoDataFile(() =>
         {
-            console.log('File saved');
+            console.log('[Repository Data File] Saved');
             done();
         }); 
     };
 
-    function getRepoProperty(propName)
+    function getRepoProperty(index, propName)
     {
         if(repoData == null || repoData.length == 0) return null;
-        else return repoData[0][propName];
+        else return index == null? 
+             repoData[0][propName] : repoData[0][index][propName];
     }
 
-    function setRepoProperty(propName, propValue)
+    function setRepoProperty(index, propName, propValue)
     {
         if(repoData != null)
-            repoData[0][propName] = propValue;
+        {
+            if(index == null)
+                repoData[0][propName] = propValue;
+            else
+                repoData[0][index][propName] = propValue;
+        }
     }
 
     function getRepositories()
@@ -149,8 +159,8 @@
                 var repoLink = repoItem.html_url;
                 var repoObj = { name: repoName, link: repoLink };
                 
-                if(getRepoProperty(repoName) == null)
-                    setRepoProperty(repoName, repoObj);
+                if(getRepoProperty(null, repoName) == null)
+                    setRepoProperty(null, repoName, repoObj);
             });
         });
     };
@@ -160,7 +170,7 @@
         return callApi(getApiUrl(index, COMMITS_TASK), (data) =>
         {
             var commits = data[0].contributions;
-            setRepoProperty("commits", commits);
+            setRepoProperty(index, "commits", commits);
         });
     };
 
@@ -177,7 +187,7 @@
                 total += additions;
             });
 
-            setRepoProperty("codeLines", total);
+            setRepoProperty(index, "codeLines", total);
         });
     };
 
@@ -185,7 +195,7 @@
     {
         return callApi(getApiUrl(index, LANGUAGES_TASK), (data) =>
         {
-            setRepoProperty("languages", data);
+            setRepoProperty(index, "languages", data);
         });
     };
 
@@ -200,7 +210,7 @@
 
         return callApi(readmeApiUrl, (data) => 
         {
-            setRepoProperty("readme", data);
+            setRepoProperty(index, "readme", data);
 
         }, options);
     };
