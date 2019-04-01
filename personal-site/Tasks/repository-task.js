@@ -3,13 +3,19 @@
     var request = require('request');
     var fs = require('fs');
 
-    var repoData = [];
+    var repoData = [{}];
     var index = 0;
 
     var userApiUrl = "https://api.github.com/users/kyleruss/";
     var repoApiUrl = "https://api.github.com/repos/kyleruss/";
     var apiContentUrl = "https://raw.githubusercontent.com/";
     var repoDataFile = "Tasks/repository-data.json";
+
+    var COMMITS_TASK = 0,
+        CODE_TASK = 1,
+        LANGUAGES_TASK = 2,
+        README_TASK = 3,
+        REPO_TASK = 4;
     
 
     function loadRepoDataFile()
@@ -26,18 +32,20 @@
 
                 else
                 {
-                    repoData = JSON.parse(data);
+                    if(data != null && data.length > 0)
+                        repoData = JSON.parse(data);
+
                     resolve();
                 }
             });
         });
-    }
+    };
 
     function saveRepoDataFile(callback)
     {
         var repoJsonStr = JSON.stringify(repoData);
         fs.writeFile(repoDataFile, repoJsonStr, 'utf-8', callback);
-    }
+    };
 
     function callApi(apiNodeUrl, callback, options)
     {
@@ -69,57 +77,73 @@
             });
         });
     };
+    
 
-    function getApiUrl(index, type)
+    function getApiUrl(repoName, type)
     {
-        var url, repoName;
-        if(index != -1) repoName = repoData[i].name;
+        var url;
 
         switch(type)
         {
-            case 0: //commits
+            case COMMITS_TASK: //commits
                 url = repoApiUrl + repoName + "/contributors";
                 break;
 
-            case 1: //lines of code
+            case CODE_TASK: //lines of code
                 url = repoApiUrl + repoName + "/stats/contributors";
                 break;
 
-            case 2: //languages
+            case LANGUAGES_TASK: //languages
                 url = repoApiUrl + repoName + "/languages";
                 break;
 
-            case 3: //readme
+            case README_TASK: //readme
                 url = repoApiUrl + repoName + "/readme";
                 break;
 
-            case 4: //repos
+            case REPO_TASK: //repos
                 url = userApiUrl + "repos";
-                break;
+                break; 
         }
 
         return url;
     };
     
-    async function runTask(task)
+    async function runTask(task, singleExec, taskScope)
     {
-        var done = this.async();
-        
+        var done = taskScope.async();
+
         await loadRepoDataFile();
 
-        for(var i = 0; i < 5; i++)
-            await task(i);
+        if(singleExec) await task();
+        else
+        {
+            for(var index in repoData[0])
+                await task(index);
+        }
 
         await saveRepoDataFile(() =>
         {
             console.log('File saved');
             done();
         }); 
+    };
+
+    function getRepoProperty(propName)
+    {
+        if(repoData == null || repoData.length == 0) return null;
+        else return repoData[0][propName];
+    }
+
+    function setRepoProperty(propName, propValue)
+    {
+        if(repoData != null)
+            repoData[0][propName] = propValue;
     }
 
     function getRepositories()
     {
-        return callApi(getApiUrl(-1, 4), (data) =>
+        return callApi(getApiUrl(null, REPO_TASK), (data) =>
         {
             data.forEach((repoItem) =>
             {
@@ -127,23 +151,23 @@
                 var repoLink = repoItem.html_url;
                 var repoObj = { name: repoName, link: repoLink };
                 
-                repoData.push(repoObj);
+                setRepoProperty(repoName, repoObj);
             });
         });
-    }
+    };
 
     function getRepositoryCommits(index)
     {
-        return callApi(getApiUrl(index, 0), (data) =>
+        return callApi(getApiUrl(index, COMMITS_TASK), (data) =>
         {
             var commits = data[0].contributions;
-            repoData[index]["commits"] = commits;
+            setRepoProperty("commits", commits);
         });
     };
 
     function getRepositoryCodeLines(index)
     {
-        return callApi(getApiUrl(index, 1), (data) =>
+        return callApi(getApiUrl(index, CODE_TASK), (data) =>
         {
             var weeks = data[0].weeks;
             var total = 0;
@@ -154,22 +178,21 @@
                 total += additions;
             });
 
-            repoData[index]["codeLines"] = total;
+            setRepoProperty("codeLines", total);
         });
     };
 
     function getRepositoryLanguages(index)
     {
-        return callApi(getApiUrl(index, 2), (data) =>
+        return callApi(getApiUrl(index, LANGUAGES_TASK), (data) =>
         {
-            repoData[index]["languages"] = data;
-            getRepositoryReadme();
+            setRepoProperty("languages", data);
         });
     };
 
     function getRepositoryReadme(index)
     {
-        var readmeApiUrl = getApiUrl(index, 3);
+        var readmeApiUrl = getApiUrl(index, README_TASK);
         var options = 
         { 
             url: readmeApiUrl, 
@@ -178,33 +201,33 @@
 
         return callApi(readmeApiUrl, (data) => 
         {
-            repoData[index]["readme"] = data;
-            
+            setRepoProperty("readme", data);
+
         }, options);
     };
 
     grunt.registerTask('repo-load', function()
     {
-        runTask(getRepositories);
+        runTask(getRepositories, true, this);
     });
 
     grunt.registerTask('commits-load', function()
     {
-        runTask(getRepositoryCommits);
+        runTask(getRepositoryCommits, false, this);
     });
 
     grunt.registerTask('codelines-load', function()
     {
-        runTask(getRepositoryCodeLines);
+        runTask(getRepositoryCodeLines, false, this);
     });
 
     grunt.registerTask('languages-load', function()
     {
-        runTask(getRepositoryLanguages);
+        runTask(getRepositoryLanguages, false, this);
     });
 
     grunt.registerTask('readme-load', function()
     {
-        runTask(getRepositoryReadme);
+        runTask(getRepositoryReadme, false, this);
     });
 };
