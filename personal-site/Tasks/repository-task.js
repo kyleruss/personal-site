@@ -2,6 +2,7 @@
 {
     var request = require('request');
     var fs = require('fs');
+    var config = require('./api-config.json');
 
     var repoData = [{}];
 
@@ -46,17 +47,23 @@
         fs.writeFile(repoDataFile, repoJsonStr, 'utf-8', callback);
     };
 
+    function getHeaders(apiNodeUrl)
+    {
+        var authTokenStr = "token " + config.authToken;
+        var headers = 
+        {
+            url: apiNodeUrl, 
+            json: true,
+            headers: { 'User-Agent': 'request', 'Authorization': authTokenStr }
+        };
+
+        return headers;
+    }
+
     function callApi(apiNodeUrl, callback, options)
     {
         if (options == null) 
-        {
-            options = 
-            {
-                url: apiNodeUrl, 
-                json: true,
-                headers: { 'User-Agent': 'request' }
-            };
-        };
+            options = getHeaders(apiNodeUrl);
 
         return new Promise((resolve, reject) =>
         {
@@ -202,11 +209,8 @@
     function getRepositoryReadme(index)
     {
         var readmeApiUrl = getApiUrl(index, README_TASK);
-        var options = 
-        { 
-            url: readmeApiUrl, 
-            headers: { 'User-Agent': 'request', 'Accept': 'application/vnd.github.VERSION.html'}
-        };
+        var options = getHeaders(readmeApiUrl);
+        options['headers']['Accept'] = 'application/vnd.github.VERSION.html';
 
         return callApi(readmeApiUrl, (data) => 
         {

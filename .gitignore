@@ -76,3 +76,4 @@ _[Ss]cripts
 node_modules/
 AppConfiguration.config
 repository-data.json
+api-config.json
