@@ -3,6 +3,7 @@
     var request = require('request');
     var fs = require('fs');
     var config = require('./api-config.json');
+    var filters = require('./data-filters.json');
 
     var repoData = [{}];
 
@@ -241,6 +242,19 @@
             console.log("[Abnormal Code Length] Repository: " + index + " Code length: " + repoCodeLines);
     };
 
+    function filterAbnormalData()
+    {
+        for(var filterRepoName in filters)
+        {
+            var filterObj = filters[filterRepoName];
+            for(var filterProperty in filterObj)
+            {
+                var filterValue = filterObj[filterProperty];
+                setRepoProperty(filterRepoName, filterProperty, filterValue);
+            }
+        }
+    }
+
     grunt.registerTask('repo-load', function()
     {
         runTask(getRepositories, true, this);
@@ -269,5 +283,10 @@
     grunt.registerTask('find-abnormal-data', function()
     {
         runTask(findAbnormalData, false, this);
+    });
+
+    grunt.registerTask('filter-abnormal-data', function()
+    {
+        runTask(filterAbnormalData, true, this);
     });
 };
