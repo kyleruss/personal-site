@@ -17,7 +17,7 @@
         README_TASK = 3,
         REPO_TASK = 4;
     
-
+    
     function loadRepoDataFile()
     {
         return new Promise((resolve, reject) =>
@@ -71,7 +71,7 @@
             {
                 if(err || res.statusCode != 200)
                 {
-                    console.log('Error: ' + err + ' statusCode: ' + res.statusCode);
+                    console.log('[Error] Status-code: ' + res.statusCode + ' Url: ' + apiNodeUrl);
                     
                     if(res.statusCode == 202)
                     {
@@ -127,22 +127,21 @@
 
         await loadRepoDataFile();
         console.log('[Repository Data File] Loaded');
+        console.log('[Task Processing] Begin');
 
         if(singleExec) await task();
         else
         {
             for(var index in repoData[0])
-            {
-                console.log("[Processing] Repository: " + index);
                 await task(index);
-            }
         }
 
+        console.log('[Task Processing] Done');
         await saveRepoDataFile(() =>
         {
             console.log('[Repository Data File] Saved');
             done();
-        }); 
+        });  
     };
 
     function getRepoProperty(index, propName)
@@ -229,6 +228,19 @@
         }, options);
     };
 
+    function findAbnormalData(index)
+    {
+        var repoLanguages = getRepoProperty(index, "languages");
+        var repoCodeLines = getRepoProperty(index, "codeLines");
+        var langLength = Object.keys(repoLanguages).length;
+
+        if(langLength > 3)
+            console.log("[Abnormal Languages Length] Repository: " + index + " Languages: " + JSON.stringify(repoLanguages));
+        
+        if(repoCodeLines > 100000)
+            console.log("[Abnormal Code Length] Repository: " + index + " Code length: " + repoCodeLines);
+    };
+
     grunt.registerTask('repo-load', function()
     {
         runTask(getRepositories, true, this);
@@ -252,5 +264,10 @@
     grunt.registerTask('readme-load', function()
     {
         runTask(getRepositoryReadme, false, this);
+    });
+
+    grunt.registerTask('find-abnormal-data', function()
+    {
+        runTask(findAbnormalData, false, this);
     });
 };
