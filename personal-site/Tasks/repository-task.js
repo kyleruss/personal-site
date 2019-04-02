@@ -72,13 +72,20 @@
                 if(err || res.statusCode != 200)
                 {
                     console.log('Error: ' + err + ' statusCode: ' + res.statusCode);
-                    reject(err);
+                    
+                    if(res.statusCode == 202)
+                    {
+                        resolve();
+                        callback(null, res.statusCode);
+                    }
+
+                    else reject();
                 }
 
                 else
                 {
                     resolve();
-                    callback(data);
+                    callback(data, res.statusCode);
                 }
             });
         });
@@ -158,7 +165,7 @@
 
     function getRepositories()
     {
-        return callApi(getApiUrl(null, REPO_TASK), (data) =>
+        return callApi(getApiUrl(null, REPO_TASK), (data, status) =>
         {
             data.forEach((repoItem) =>
             {
@@ -174,7 +181,7 @@
 
     function getRepositoryCommits(index)
     {
-        return callApi(getApiUrl(index, COMMITS_TASK), (data) =>
+        return callApi(getApiUrl(index, COMMITS_TASK), (data, status) =>
         {
             var commits = data[0].contributions;
             setRepoProperty(index, "commits", commits);
@@ -183,24 +190,27 @@
 
     function getRepositoryCodeLines(index)
     {
-        return callApi(getApiUrl(index, CODE_TASK), (data) =>
+        return callApi(getApiUrl(index, CODE_TASK), (data, status) =>
         {
-            var weeks = data[0].weeks;
-            var total = 0;
-
-            weeks.forEach(function(week)
+            if(status == 200)
             {
-                var additions = week.a;
-                total += additions;
-            });
+                var weeks = data[0].weeks;
+                var total = 0;
 
-            setRepoProperty(index, "codeLines", total);
+                weeks.forEach(function(week)
+                {
+                    var additions = week.a;
+                    total += additions;
+                });
+
+                setRepoProperty(index, "codeLines", total);
+            }
         });
     };
 
     function getRepositoryLanguages(index)
     {
-        return callApi(getApiUrl(index, LANGUAGES_TASK), (data) =>
+        return callApi(getApiUrl(index, LANGUAGES_TASK), (data, status) =>
         {
             setRepoProperty(index, "languages", data);
         });
@@ -212,7 +222,7 @@
         var options = getHeaders(readmeApiUrl);
         options['headers']['Accept'] = 'application/vnd.github.VERSION.html';
 
-        return callApi(readmeApiUrl, (data) => 
+        return callApi(readmeApiUrl, (data, status) => 
         {
             setRepoProperty(index, "readme", data);
 
