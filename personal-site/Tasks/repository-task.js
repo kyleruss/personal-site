@@ -212,7 +212,8 @@
     {
         return callApi(getApiUrl(index, LANGUAGES_TASK), (data, status) =>
         {
-            setRepoProperty(index, "languages", data);
+            var languageData = Object.keys(data);
+            setRepoProperty(index, "languages", languageData);
         });
     };
 
@@ -233,7 +234,7 @@
     {
         var repoLanguages = getRepoProperty(index, "languages");
         var repoCodeLines = getRepoProperty(index, "codeLines");
-        var langLength = Object.keys(repoLanguages).length;
+        var langLength = repoLanguages.length;
 
         if(langLength > 3)
             console.log("[Abnormal Languages Length] Repository: " + index + " Languages: " + JSON.stringify(repoLanguages));
@@ -244,15 +245,35 @@
 
     function filterAbnormalData()
     {
-        for(var filterRepoName in filters)
+        for(var filterRepoName in filters["repo-filters"])
         {
-            var filterObj = filters[filterRepoName];
+            var filterObj = filters["repo-filters"][filterRepoName];
             for(var filterProperty in filterObj)
             {
                 var filterValue = filterObj[filterProperty];
                 setRepoProperty(filterRepoName, filterProperty, filterValue);
             }
         }
+    };
+
+    function filterContent(index)
+    {
+        var dataFilters = filters["language-filters"];
+        var languages = getRepoProperty(index, "languages");
+        
+        Object.keys(dataFilters).forEach((filterName) =>
+        {
+            var langIndex = languages.indexOf(filterName);
+            if(langIndex != -1)
+                repoData[0][index]["languages"][langIndex] = dataFilters[filterName];
+        });
+
+        var contentUrl = apiContentUrl + index + "/master/";
+        var readme = getRepoProperty(index, "readme");
+        var imageFiltered = readme.replace(/src="preview/gi, 'src="' + contentUrl + "/preview");
+        var licenseFiltered	= imageFiltered.replace(/href="LICENSE/gi, 'href="' + contentUrl + "/LICENSE");
+        
+        setRepoProperty(index, "readme", licenseFiltered);
     }
 
     grunt.registerTask('repo-load', function()
@@ -288,5 +309,10 @@
     grunt.registerTask('filter-abnormal-data', function()
     {
         runTask(filterAbnormalData, true, this);
+    });
+
+    grunt.registerTask('filter-content', function()
+    {
+        runTask(filterContent, false, this); 
     });
 };

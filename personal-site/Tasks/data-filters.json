@@ -1,7 +1,15 @@
 {
-    "byte-chat": { "languages": { "PHP": 77891, "Laravel": 77891, "JS": 57797 }},
-    "mu-s8ep2-repack": { "languages": { "C++": 9223049, "C": 33732, "Lua": 5736 }},
-    "personal-site": { "languages": { "C#": 31038, "JS": 16137, "Node.JS": 1000 }},
-    "top-games": { "languages": { "PHP": 94865, "JS": 148919, "SQL": 1000 }},
-    "vim-config": { "languages": { "Vi Script": 5509170 }, "codeLines": 58}
+    "repo-filters":
+    {
+        "byte-chat": { "languages": [ "PHP", "Laravel", "JS" ]},
+        "mu-s8ep2-repack": { "languages": [ "C++", "C", "Lua" ]},
+        "personal-site": { "languages": [ "C#", "JS", "Node.JS" ]},
+        "top-games": { "languages": [ "PHP", "JS", "SQL" ]},
+        "vim-config": { "languages": [ "Vi Script" ], "codeLines": 58}
+    },
+
+    "language-filters":
+    {
+        "JavaScript": "JS"
+    }
 }
