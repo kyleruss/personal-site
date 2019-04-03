@@ -1,120 +1,195 @@
 ﻿#portfolio-container
 {
-    position:relative;
-    height:1000px;
-    overflow:hidden;
-    background:linear-gradient(rgba(117, 76, 220, 0.80), rgba(117, 76, 220, 0.80)), url('../images/code_bg.png');
+	position:relative;
+	height:1000px;
+	overflow:hidden;
+	background:linear-gradient(rgba(117, 76, 220, 0.80), rgba(117, 76, 220, 0.80)), url('../images/code_bg.png');
 }
 
 #project-container
 {
-    display:inline-flex;
-    margin-top:10em;
+	display:inline-flex;
+	margin-top:10em;
 }
 
 #project-preview
 {
-    background-color:#FFF;
-    width:910px;
-    height:660px;
-    border:1px solid #000;
-    box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    overflow-x:hidden;
-    overflow-y:scroll;
+	background-color:#FFF;
+	width:910px;
+	height:660px;
+	border:1px solid #000;
+	box-shadow: 0 0 20px rgba(0,0,0,0.6);
+	overflow-x:hidden;
+	overflow-y:scroll;
+
+	.anchor
+	{
+		display:none !important;
+	}
+
+	h1, h2
+	{
+		padding-bottom:0.3em;
+		border-bottom: 1px solid #eaecef;
+	}
+
+	h1
+	{
+		margin-top:1em;
+	}
+
+	h2, h3, h4, h5
+	{
+		margin-top:1.5em;
+	}
+	
+	a[href="preview/Logo.png"], a[href="preview/AppIcon.png"]
+	{
+		img
+		{
+			margin-top:1em;
+			padding-right:20px;
+		}
+	}
+
+	a[name^="user-content"]
+	{
+		color:inherit;	
+
+		&:hover
+		{
+			text-decoration:none;
+		}
+	}
+
+	a[name="user-content-tableofcontents"] + h3
+	{
+		display:none;
+
+		& + ul
+		{
+			display:none;
+		}
+	}
+
+	a[name="user-content-Projects"] + h3, a[name="user-content-Tasks"] + h3, a[name="user-content-io"] + h3, a[name="user-content-Datalogs"] + h3 
+	{
+		margin-top:4em;
+	}
+
+	ul + pre
+	{
+		margin-left:40px;
+	}
+
+	code 
+	{
+		color:inherit;
+	}
+
+	p code
+	{
+		background-color:rgba(27, 31, 35, 0.05);
+	}
+
+	pre code
+	{
+		background-color:transparent;
+	}
 }
 
 .project-stat-text
 {
-    color:#FFF;
-    font-size:30px;
-    font-family:'Futura_bold';
-    padding-bottom:0.5em;
+	color:#FFF;
+	font-size:30px;
+	font-family:'Futura_bold';
+	padding-bottom:0.5em;
 }
 
 #project-description-container
 {
-    width:500px;
-    margin-left:4em;
+	width:500px;
+	margin-left:4em;
 }
 
 #project-stats
 {
-    margin-top:3em;
-    
-    .stat-separator
-    {
-        font-size:40px;
-    }
+	margin-top:3em;
+	
+	.stat-separator
+	{
+		font-size:40px;
+	}
 
-    #project-languages
-    {
-        margin-top:-10px;
-    }
+	#project-languages
+	{
+		margin-top:-10px;
+	}
 }
 
 #project-title
 {
-    color:#FFF;
-    font-size:80px;
-    margin-top:-10px;
-    font-family:'Futura_bold';
+	color:#FFF;
+	font-size:80px;
+	margin-top:-10px;
+	font-family:'Futura_bold';
 }
 
 #project-description
 {
-    color:#FFF;
-    font-size:48px;
-    font-family:'Futura_light';
-    word-wrap:break-word;
+	color:#FFF;
+	font-size:48px;
+	font-family:'Futura_light';
+	word-wrap:break-word;
 }
 
 #view-github-btn
 {
-    background-color:rgba(0,0,0,0);
-    border: 5px solid #FFF;
-    font-size:30px;
-    font-family:'Futura_bold';
-    padding:0.8em;
-    padding-left:1.2em;
-    padding-right:1.2em;
-    margin-top:1.5em;
-    transition:ease-in-out 0.5s;
+	background-color:rgba(0,0,0,0);
+	border: 5px solid #FFF;
+	font-size:30px;
+	font-family:'Futura_bold';
+	padding:0.8em;
+	padding-left:1.2em;
+	padding-right:1.2em;
+	margin-top:1.5em;
+	transition:ease-in-out 0.5s;
 
-    &:hover
-    {
-        background-color:rgba(0,0,0,0.2);
-    }
+	&:hover
+	{
+		background-color:rgba(0,0,0,0.2);
+	}
 }
 
 .portf-arrow
 {
-    color:#FFF;
-    font-size:150px;
-    font-family:'Letter Gothic Std';
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    z-index:10;
-    padding:20px;
-    padding-top:30px;
-    border-radius:5px;
-    padding-bottom:0;
-    transition:ease-in-out 0.5s;
+	color:#FFF;
+	font-size:150px;
+	font-family:'Letter Gothic Std';
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+	z-index:10;
+	padding:20px;
+	padding-top:30px;
+	border-radius:5px;
+	padding-bottom:0;
+	transition:ease-in-out 0.5s;
 
-    &:hover
-    {
-        cursor:pointer;
-        background-color: rgba(0, 0, 0, 0.05);
-    }
+	&:hover
+	{
+		cursor:pointer;
+		background-color: rgba(0, 0, 0, 0.05);
+	}
 }
 
 #portf-left-arrow
 {
-    margin-left: 0.2em;
+	margin-left: 0.2em;
 }
 
 #portf-right-arrow
 {
-    right:0;
-    margin-right:0.2em;
+	right:0;
+	margin-right:0.2em;
 }
