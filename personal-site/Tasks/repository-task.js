@@ -5,11 +5,11 @@
     var config = require('./api-config.json');
     var filters = require('./data-filters.json');
 
-    var repoData = [{}];
+    var repoData = {};
 
     var userApiUrl = "https://api.github.com/users/kyleruss/";
     var repoApiUrl = "https://api.github.com/repos/kyleruss/";
-    var apiContentUrl = "https://raw.githubusercontent.com/";
+    var apiContentUrl = "https://raw.githubusercontent.com/kyleruss/";
     var repoDataFile = "Tasks/repository-data.json";
 
     var COMMITS_TASK = 0,
@@ -133,7 +133,7 @@
         if(singleExec) await task();
         else
         {
-            for(var index in repoData[0])
+            for(var index in repoData)
                 await task(index);
         }
 
@@ -149,7 +149,7 @@
     {
         if(repoData == null || repoData.length == 0) return null;
         else return index == null? 
-             repoData[0][propName] : repoData[0][index][propName];
+             repoData[propName] : repoData[index][propName];
     }
 
     function setRepoProperty(index, propName, propValue)
@@ -157,9 +157,9 @@
         if(repoData != null)
         {
             if(index == null)
-                repoData[0][propName] = propValue;
+                repoData[propName] = propValue;
             else
-                repoData[0][index][propName] = propValue;
+                repoData[index][propName] = propValue;
         }
     }
 
@@ -265,7 +265,7 @@
         {
             var langIndex = languages.indexOf(filterName);
             if(langIndex != -1)
-                repoData[0][index]["languages"][langIndex] = dataFilters[filterName];
+                repoData[index]["languages"][langIndex] = dataFilters[filterName];
         });
 
         var contentUrl = apiContentUrl + index + "/master/";

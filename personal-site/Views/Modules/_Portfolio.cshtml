@@ -7,6 +7,7 @@
 <div id="portfolio-container">
     <div class="row h-100 flex-column justify-content-center align-items-center">
         <div id="project-container">
+            <repo-data url="@Url.Content("~/Content/resources/repository-data.json")"></repo-data>
             <div id="project-preview">
 
             </div>
@@ -22,11 +23,11 @@
 
                 <div id="project-stats">
                     <h1 id="project-commits" class="project-stat-text">
-                        <img src="~/Content/images/giticon.png" width="35" height="35"/> 250 GIT COMMITS
+                        <img src="~/Content/images/giticon.png" width="35" height="35"/> <span id="commits-stats"></span> GIT COMMITS
                     </h1>
 
                     <h1 id="project-lines" class="project-stat-text">
-                        <i class="fas fa-chart-line"></i> 30K LINES OF CODE
+                        <i class="fas fa-chart-line"></i> <span id="codeline-stats"></span> LINES OF CODE
                     </h1>
 
                     <h1 id="project-languages" class="project-stat-text">
@@ -34,7 +35,7 @@
                     </h1>
                 </div>
 
-                <button id="view-github-btn" class="btn btn-primary">VIEW ON GITHUB</button>
+                <a href="#" id="view-github-btn" class="btn btn-primary">VIEW ON GITHUB</a>
             </div>
         </div>
     </div>

@@ -20,16 +20,6 @@ namespace personal_site.Services
 
         }
 
-        private void GetReadme()
-        {
-
-        }
-
-        private void FilterReadme()
-        {
-
-        }
-
         public static RepositoryService GetInstance()
         {
             _instance = _instance ?? new RepositoryService();
