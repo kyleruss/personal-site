@@ -15,7 +15,7 @@
         {
             repoData = data;
             repos = Object.keys(repoData);
-            setCurrentRepository(0);
+            setCurrentRepository(5);
         });
     };
 
@@ -44,10 +44,28 @@
         var commitStats = $('#commits-stats');
         var codeStats = $('#codeline-stats');
         var githubLinkBtn = $('#view-github-btn');
+        var repoTitle = $('#project-title');
+        var repoDesc = $('#project-description');
 
         projectContainer.html(currentRepo["readme"]);
         commitStats.text(currentRepo["commits"]);
         codeStats.text(currentRepo["codeLines"]);
         githubLinkBtn.attr('href', currentRepo["link"]);
+        repoTitle.text(getTransformedTitle());
     };
+
+    function getTransformedTitle()
+    {
+        return currentRepo["name"].replace(/-/g, " ");
+    }
+
+    $('#portf-left-arrow').click(() =>
+    {
+        prevRepository();
+    });
+
+    $('#portf-right-arrow').click(() =>
+    {
+        nextRepository();
+    });
 };

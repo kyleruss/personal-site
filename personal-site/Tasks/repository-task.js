@@ -230,6 +230,21 @@
         }, options);
     };
 
+    function getRepositoryDescriptions()
+    {
+        return callApi(getApiUrl(null, REPO_TASK), (data, status) =>
+        {
+            data.forEach((repoItem) =>
+            {
+                var repoName = repoItem.name;
+                var repoDesc = repoItem.description;
+
+                setRepoProperty(repoName, "description", repoDesc);
+            });
+        });
+    };
+
+
     function findAbnormalData(index)
     {
         var repoLanguages = getRepoProperty(index, "languages");
@@ -299,6 +314,11 @@
     grunt.registerTask('readme-load', function()
     {
         runTask(getRepositoryReadme, false, this);
+    });
+
+    grunt.registerTask('description-load', function()
+    {
+        runTask(getRepositoryDescriptions, true, this);
     });
 
     grunt.registerTask('find-abnormal-data', function()
