@@ -73,7 +73,7 @@ function Portfolio()
         {
             repoData = data;
             repos = Object.keys(repoData);
-            setCurrentRepository(5);
+            setCurrentRepository(7);
         });
     };
 
@@ -110,6 +110,30 @@ function Portfolio()
         codeStats.text(currentRepo["codeLines"]);
         githubLinkBtn.attr('href', currentRepo["link"]);
         repoTitle.text(getTransformedTitle());
+        updateLanguages();
+    };
+
+    function updateLanguages()
+    {
+        var languages = currentRepo["languages"];
+        var numLang = languages.length;
+        var langIcon = $('#language-stat-icon');
+        $('.language-stat').hide();
+
+        if(numLang == 0)
+            langIcon.hide();
+        else
+            langIcon.show();
+        
+        for(var i = 0; i < numLang; i++)
+        {   
+            var languageElement = $('.language-stat').eq(i);
+            var langTextElement = languageElement.find('.language-stat-text');
+            var language = languages[i];
+
+            langTextElement.text(language);
+            languageElement.show();
+        }
     };
 
     function getTransformedTitle()
