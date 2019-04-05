@@ -15,7 +15,7 @@
         {
             repoData = data;
             repos = Object.keys(repoData);
-            setCurrentRepository(7);
+            setCurrentRepository(0);
         });
     };
 
@@ -30,12 +30,24 @@
 
     function nextRepository()
     {
-        setCurrentRepository(repoIndex + 1);
+        var nextIndex = repoIndex + 1;
+        var n = repos.length;
+
+        if(nextIndex >= repos.length)
+            nextIndex = nextIndex % n;
+        
+        setCurrentRepository(nextIndex);
     };
 
     function prevRepository()
     {
-        setCurrentRepository(repoIndex - 1);
+        var prevIndex = repoIndex - 1;
+        var n = repos.length;
+        
+        if(prevIndex < 0)
+            prevIndex = ((prevIndex % n) + n) % n;
+
+        setCurrentRepository(prevIndex);
     };
 
     function updatePortfolioView()
