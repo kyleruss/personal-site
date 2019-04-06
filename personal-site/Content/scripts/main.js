@@ -54,7 +54,12 @@ function About()
 };
 function Blog()
 {
-    console.log('blog loaded');
+    $('.blog-post-display').hover((e) =>
+    {   
+        e.stopImmediatePropagation();
+        var innerContainer = $(e.target).parent().find('.blog-post-inner-container');
+        innerContainer.toggleClass('blog-hover-effect');
+    });
 };
 function Portfolio()
 {

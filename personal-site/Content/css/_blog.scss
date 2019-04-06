@@ -80,13 +80,22 @@
     transition: ease 0.5s;
     box-shadow: 0 0 20px rgba(0,0,0,0.6);
 
-    &:hover
+   /* &:hover
     {
         transform:scale(1.05);
         cursor:pointer;
         opacity:0.8;
-    }
+    } */
 }
+
+.blog-hover-effect
+{
+    transform:scale(1.05);
+    cursor:pointer;
+    opacity:0.8;
+}
+
+
     $displayGradient: rgba(64, 87, 122, 0.6);
 
     #first-blog-entry
