@@ -10,8 +10,8 @@
         var modalTitle = $('#blog-modal-title');
         var modalBody = $('#blog-modal-body');
 
-        modalTitle.text(currentBlog.title);
-        modalTitle.text(currentBlog.content);
+        modalTitle.text(currentBlog.Title);
+        modalBody.text(currentBlog.PostContent);
     };
 
     function loadBlogPosts()
@@ -20,7 +20,20 @@
         $.getJSON(url, (data) =>
         {
             blogList = JSON.parse(data);
+            initBlogList(1);
         });
+    };
+
+    function initBlogList(page)
+    {
+        var blogDisplays = $('.blog-post-display');
+
+        for(var blogIndex in blogList)
+        {
+            var blogTitle = blogList[blogIndex].Title;
+
+            $(blogDisplays[blogIndex]).find('.blog-post-title').text(blogTitle);
+        };
     };
 
     $('.blog-post-display').hover((e) =>
@@ -30,9 +43,11 @@
         innerContainer.toggleClass('blog-hover-effect');
     });
 
-    $('.blog-post-display').click(() =>
+    $('.blog-post-display').click((e) =>
     {
         var blogModal = $('#blog-modal');
+        var blogIndex = $(e.target).parent().attr('data-blog-index');
+        currentBlog = blogList[blogIndex];
 
         updateBlogModal();
         blogModal.modal();
