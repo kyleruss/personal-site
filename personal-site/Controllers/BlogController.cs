@@ -16,10 +16,9 @@ namespace personal_site.Controllers
         public async Task<JsonResult> GetBlogPosts()
         {
             BlogService blogService = BlogService.GetInstance();
-            List<BlogPost> blogList = await blogService.GetBlogList();
-            var blogListJson = JsonConvert.SerializeObject(blogList);
+            string blogsJson = await blogService.GetBlogs();
 
-            return Json(blogListJson, JsonRequestBehavior.AllowGet);
+            return Json(blogsJson, JsonRequestBehavior.AllowGet);
         }
     }
 }

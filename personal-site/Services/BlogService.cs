@@ -6,6 +6,8 @@ using System.Linq;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web;
+using Newtonsoft.Json;
+using System.Web.Mvc;
 
 namespace personal_site.Services
 {
@@ -15,12 +17,13 @@ namespace personal_site.Services
 
         private BlogService() { }
 
-        public async Task<List<BlogPost>> GetBlogList()
+        public async Task<string> GetBlogs()
         {
             using(ApplicationDbContext context = new ApplicationDbContext())
             {
-                return await context.BlogPosts.ToListAsync();
-            }
+                List<BlogPost> blogList = await context.BlogPosts.ToListAsync();
+                return JsonConvert.SerializeObject(blogList);
+            };
         }
 
         public void GetBlogPost()
