@@ -16,18 +16,13 @@
             <blog-data url="@Url.Action("GetBlogPosts", "Blog")"></blog-data>
 
             <div id="blog-displays" class="row">
-                <div data-blog-index="0" class="blog-post-display justify-content-center align-items-center">
-                    <div id="first-blog-entry" class="blog-post-inner-container"></div>
-                    <h1 class="blog-post-title"></h1>
-                </div>
-                <div data-blog-index="1" class="blog-post-display justify-content-center align-items-center">
-                    <div id="scnd-blog-entry" class="blog-post-inner-container"></div>
-                    <h1 class="blog-post-title"></h1>
-                </div>
-                <div data-blog-index="2" class="blog-post-display justify-content-center align-items-center">
-                    <div id="third-blog-entry" class="blog-post-inner-container"></div>
-                    <h1 class="blog-post-title"></h1>
-                </div>
+                @for (var i = 0; i < 3; i++)
+                {
+                    <div data-blog-index="@i" class="blog-post-display justify-content-center align-items-center">
+                        <div id="first-blog-entry" class="blog-post-inner-container"></div>
+                        <h1 class="blog-post-title"></h1>
+                    </div>
+                }
             </div>
 
             <div id="blog-controls" class="row justify-content-center align-items-center">
