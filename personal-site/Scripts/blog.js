@@ -14,6 +14,7 @@
     {
         var blogModal = $('#blog-modal');
 
+        updateBlogModal();
         blogModal.modal();
     });
 
@@ -22,5 +23,12 @@
         $('#blog-modal').modal('hide');
     });
 
+    function updateBlogModal()
+    {
+        var modalTitle = $('#blog-modal-title');
+        var modalBody = $('#blog-modal-body');
 
+        modalTitle.text(currentBlog.title);
+        modalTitle.text(currentBlog.content);
+    };
 };
