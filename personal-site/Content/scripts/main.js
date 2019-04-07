@@ -76,6 +76,7 @@ function Blog()
         $('#blog-modal').modal('hide');
     });
 
+
 };
 function Portfolio()
 {

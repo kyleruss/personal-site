@@ -22,4 +22,5 @@
         $('#blog-modal').modal('hide');
     });
 
+
 };

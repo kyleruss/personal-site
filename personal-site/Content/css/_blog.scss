@@ -37,6 +37,7 @@
 {
     width:600px;
     word-wrap:break-word;
+
 }
 
 #blog-main-title
@@ -115,6 +116,11 @@
     word-wrap:break-word;
     z-index:2;
     background-color:transparent;
+
+    &:hover
+    {
+        cursor:pointer;
+    }
 }
 
 #blog-controls

@@ -1,6 +1,10 @@
-﻿using System;
+﻿using personal_site.Models;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace personal_site.Services
@@ -11,9 +15,12 @@ namespace personal_site.Services
 
         private BlogService() { }
 
-        public void GetBlogList()
+        public async Task<List<BlogPost>> GetBlogList()
         {
-
+            using(ApplicationDbContext context = new ApplicationDbContext())
+            {
+                return await context.BlogPosts.ToListAsync();
+            }
         }
 
         public void GetBlogPost()
