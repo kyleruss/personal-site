@@ -71,6 +71,7 @@
 
 .blog-post-inner-container
 {
+    //$displayGradient: rgba(64, 87, 122, 0.6);
 
     z-index:1;
     position: absolute;
@@ -80,6 +81,8 @@
     height:660px;
     transition: ease 0.5s;
     box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    //background-color:linear-gradient($displayGradient, $displayGradient);
+    //background-image:url("../images/blog-images/blog_preview1.png");
 }
 
 .blog-hover-effect
@@ -88,24 +91,6 @@
     cursor:pointer;
     opacity:0.8;
 }
-
-
-    $displayGradient: rgba(64, 87, 122, 0.6);
-
-    #first-blog-entry
-    {
-        background:linear-gradient($displayGradient, $displayGradient), url("../images/blog-images/blog_preview1.png");
-    }
-
-    #scnd-blog-entry
-    {
-        background:linear-gradient($displayGradient, $displayGradient), url("../images/blog-images/blog_preview2.png");
-    }
-
-    #third-blog-entry
-    {
-        background:linear-gradient($displayGradient, $displayGradient), url("../images/blog-images/blog_preview3.png");
-    } 
 
 .blog-post-title
 {
