@@ -2,6 +2,7 @@
 {
     var currentBlog;
     var blogList;
+    var currentPage;
 
     loadBlogPosts();
 
@@ -20,20 +21,64 @@
         $.getJSON(url, (data) =>
         {
             blogList = JSON.parse(data);
-            initBlogList(1);
+            initPages();
         });
     };
 
     function initBlogList(page)
     {
         var blogDisplays = $('.blog-post-display');
+        blogDisplays.hide();
 
-        for(var blogIndex in blogList)
+        var totalPerPage = 3;
+        var actualLength = blogList.length;
+        var total = currentPage * totalPerPage;
+        total = total > actualLength? actualLength : total;
+        var startIndex = (currentPage - 1) * totalPerPage;
+
+        for(var elementIndex = 0; startIndex < total; elementIndex++, startIndex++)
         {
-            var blogTitle = blogList[blogIndex].Title;
-
-            $(blogDisplays[blogIndex]).find('.blog-post-title').text(blogTitle);
+            var blogTitle = blogList[startIndex].Title;
+            var blogElement = $(blogDisplays[elementIndex]);
+            
+            blogElement.find('.blog-post-title').text(blogTitle);
+            blogElement.show();
         };
+    };
+
+    function initPages()
+    {
+        var totalPages = getTotalPages();
+
+        $('#post-pagination-total').text(totalPages);
+        setCurrentPage(1);
+    };
+
+    function setCurrentPage(page)
+    {
+        currentPage = page;
+        $('#post-pagination-current').text(currentPage);
+        initBlogList(currentPage);
+    }
+
+    function nextPage()
+    {
+        var totalPages = getTotalPages();
+
+        if(currentPage < totalPages)
+            setCurrentPage(currentPage + 1);
+    };
+
+    function prevPage()
+    {
+        if(currentPage > 1)
+            setCurrentPage(currentPage - 1);
+    };
+
+    function getTotalPages()
+    {
+        var n = blogList.length;
+        return Math.ceil(n / 3);
     };
 
     $('.blog-post-display').hover((e) =>
@@ -56,5 +101,15 @@
     $('#blog-modal-close').click(() =>
     {
         $('#blog-modal').modal('hide');
+    });
+
+    $('#left-post-btn').click(() =>
+    {
+        prevPage();
+    });
+
+    $('#right-post-btn').click(() =>
+    {
+        nextPage();
     });
 };
