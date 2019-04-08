@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201903040659219_Update BlogPostComment and BlogPost fields.Designer.cs">
       <DependentUpon>201903040659219_Update BlogPostComment and BlogPost fields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904080321387_Add_PostImage_Field.cs" />
+    <Compile Include="Migrations\201904080321387_Add_PostImage_Field.Designer.cs">
+      <DependentUpon>201904080321387_Add_PostImage_Field.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -262,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903040659219_Update BlogPostComment and BlogPost fields.resx">
       <DependentUpon>201903040659219_Update BlogPostComment and BlogPost fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904080321387_Add_PostImage_Field.resx">
+      <DependentUpon>201904080321387_Add_PostImage_Field.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

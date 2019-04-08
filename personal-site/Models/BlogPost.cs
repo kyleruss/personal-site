@@ -16,6 +16,8 @@ namespace personal_site.Models
 
         public string PostContent { get; set; }
 
+        public string PostImage { get; set; }
+
         public virtual List<BlogPostComment> Comments { get; set; }
 
         [DefaultValue("getdate()")]
