@@ -87,8 +87,8 @@ function Blog()
         var totalPerPage = 3;
         var actualLength = blogList.length;
         var total = currentPage * totalPerPage;
-        total = total > actualLength? actualLength : total;
         var startIndex = (currentPage - 1) * totalPerPage;
+        total = total > actualLength? actualLength : total;
 
         for(var elementIndex = 0; startIndex < total; elementIndex++, startIndex++)
         {
@@ -96,6 +96,7 @@ function Blog()
             var blogElement = $(blogDisplays[elementIndex]);
             
             blogElement.find('.blog-post-title').text(blogTitle);
+            blogElement.attr('data-blog-index', startIndex);
             blogElement.show();
         };
     };
