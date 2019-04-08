@@ -153,3 +153,31 @@
 {
     margin-left:1.5em;
 }
+
+#blog-modal-footer
+{
+    justify-content:flex-start;
+}
+
+#blog-comment-controls
+{
+    flex:1;
+}
+
+#profile-img-container
+{
+    background-color:#949596;
+    width:3em;
+    height:3em;
+    text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    border-radius:3em;
+
+    i
+    {
+        font-size:20px;
+    }
+}

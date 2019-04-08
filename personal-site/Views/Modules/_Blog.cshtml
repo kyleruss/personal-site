@@ -50,6 +50,28 @@
                 <div id="blog-modal-body" class="modal-body">
                     This is my blog post
                 </div>
+
+                <div id="blog-modal-footer" class="modal-footer">
+
+                    <div id="profile-img-container">
+                        <i class="fas fa-user"></i>
+                    </div>
+
+                    <div id="blog-comment-controls">
+                        @using (Html.BeginForm("CreateComment", "Blog", FormMethod.Post, new { id = "post-comment-form", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                           
+                          <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Enter your comment" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary">Reply</button>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </div>
