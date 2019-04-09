@@ -116,13 +116,6 @@
         cursor:hover;
         background-color:rgba(0,0,0, 0.5);
     }
-
-    &:focus, &:active
-    {
-        outline:none !important;
-        box-shadow:none !important;
-
-    }
 }
 
 .contact-btn-error
