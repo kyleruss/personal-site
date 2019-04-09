@@ -35,10 +35,10 @@ namespace personal_site.Controllers
             else
             {
                 BlogService blogService = BlogService.GetInstance();
-                int savedComment = await blogService.CreateComment(model);
+                BlogPostComment savedComment = await blogService.CreateComment(model);
 
-                if (savedComment > 0)
-                    return ControllerHelper.JsonActionResponse(true, "Saved comment");
+                if (savedComment != null)
+                    return ControllerHelper.JsonActionResponse(true, "Saved comment", null, savedComment);
                 else
                     return ControllerHelper.JsonActionResponse(false, "Failed to save comment");
             }

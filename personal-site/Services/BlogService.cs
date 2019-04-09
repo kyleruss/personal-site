@@ -39,18 +39,21 @@ namespace personal_site.Services
             }
         }
 
-        public async Task<int> CreateComment(CommentViewModel commentModel)
+        public async Task<BlogPostComment> CreateComment(CommentViewModel commentModel)
         {
+            BlogPostComment comment;
             using(ApplicationDbContext context = new ApplicationDbContext())
             {
-                BlogPostComment comment = new BlogPostComment()
+                comment = new BlogPostComment()
                 {
                     CommentContent = commentModel.Content,
                     PostId = commentModel.PostId
                 };
 
                 context.BlogPostComments.Add(comment);
-                return await context.SaveChangesAsync();
+                await context.SaveChangesAsync();
+
+                return comment;
             };
         }
 

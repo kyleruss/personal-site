@@ -194,9 +194,9 @@ function Blog()
         }
     };
 
-    function commentAddSuccess(data)
+    function commentAddSuccess(responseData)
     {
-        //add comment to DOM
+        currentBlog.comments.push(responseData.Data);
     }
 
     function handleCommentInvalidInput(data)
@@ -261,7 +261,7 @@ function Blog()
 
         $.getJSON(commentsUrl, { PostId: postId }, (data) =>
         {
-            console.log(data);
+            currentBlog.comments = JSON.parse(data);
         });
     };
 
