@@ -17,8 +17,13 @@ namespace personal_site.Models
 
         public string CommenterId { get; set; }
 
-        [DefaultValue("getdate()")]
-        public DateTime PostedDate { get; set; }
+        private DateTime? postedDate = null;
+
+        public DateTime PostedDate
+        {
+            get { return this.postedDate ?? DateTime.Now; }
+            set { this.postedDate = value; }
+        }
 
         [ForeignKey("BlogPost")]
         public int PostId { get; set; }
