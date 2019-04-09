@@ -5,6 +5,7 @@
     var currentPage;
 
     loadBlogPosts();
+    toggleCommentSpinner(false);
 
     function updateBlogModal()
     {
@@ -99,6 +100,25 @@
         return Math.ceil(n / 3);
     };
 
+    function toggleCommentSpinner(show)
+    {
+        var commentBtn = $('#blog-comment-btn');
+        var commentBtnText = $('#blog-save-btn-text');
+        var commentBtnSpin = $('#blog-save-btn-spinner');
+
+        if(show)
+        {
+            commentBtnText.hide();
+            commentBtnSpin.show();
+        }
+
+        else
+        {
+            commentBtnText.show();
+            commentBtnSpin.hide();
+        }
+    }
+
     function postComment()
     {
         var commentForm = $('#post-comment-form');
@@ -110,6 +130,8 @@
         var commentData = { Content: commentContent, PostId: postId };
         commentData = JSON.stringify(commentData);
 
+        toggleCommentSpinner(true);  
+
         $.ajax
         ({
             url: commentUrl,
@@ -119,7 +141,11 @@
             dataType: 'json',
             success: (data) =>
             {
-                console.log(data);
+                setTimeout(() =>
+                {
+                    toggleCommentSpinner(false);
+
+                }, 2000);
             },
             error: (xhr, textStatus, err) =>
             {

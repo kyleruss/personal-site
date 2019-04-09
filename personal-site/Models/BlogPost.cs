@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -18,15 +19,9 @@ namespace personal_site.Models
 
         public string PostImage { get; set; }
 
+        [JsonIgnore]
         public virtual List<BlogPostComment> Comments { get; set; }
 
-
-        private DateTime? postedDate = null;
-
-        public DateTime TimePosted
-        {
-            get { return this.postedDate ?? DateTime.Now; }
-            set { this.postedDate = value; }
-        }
+        public DateTime TimePosted { get; set; }
     }
 }
