@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
 using System.Web.Mvc;
+using personal_site.ViewModels;
 
 namespace personal_site.Services
 {
@@ -26,17 +27,22 @@ namespace personal_site.Services
             };
         }
 
-        public void GetBlogPost()
+        public async Task<int> CreateComment(CommentViewModel commentModel)
         {
+            using(ApplicationDbContext context = new ApplicationDbContext())
+            {
+                BlogPostComment comment = new BlogPostComment()
+                {
+                    CommentContent = commentModel.Content,
+                    PostId = commentModel.PostId
+                };
 
+                context.BlogPostComments.Add(comment);
+                return await context.SaveChangesAsync();
+            };
         }
 
         public void GetBlogPostComments()
-        {
-
-        }
-
-        public void CreateComment()
         {
 
         }

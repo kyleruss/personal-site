@@ -12,5 +12,8 @@ namespace personal_site.ViewModels
         public string Content { get; set; }
 
         public string User { get; set; }
+
+        [Required]
+        public int PostId { get; set; }
     }
 }

@@ -99,6 +99,35 @@
         return Math.ceil(n / 3);
     };
 
+    function postComment()
+    {
+        var commentForm = $('#post-comment-form');
+        var contentElement = $('#comment-form-content');
+        
+        var commentUrl = commentForm.attr('action');
+        var commentContent = contentElement.val();
+        var postId = currentBlog.PostId;
+        var commentData = { Content: commentContent, PostId: postId };
+        commentData = JSON.stringify(commentData);
+
+        $.ajax
+        ({
+            url: commentUrl,
+            type: 'POST',
+            data: commentData,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: (data) =>
+            {
+                console.log(data);
+            },
+            error: (xhr, textStatus, err) =>
+            {
+                console.log('[Error]: ' + xhr.responseText);
+            }
+        }); 
+    }
+
     $('.blog-post-display').hover((e) =>
     {   
         e.stopImmediatePropagation();
@@ -129,5 +158,12 @@
     $('#right-post-btn').click(() =>
     {
         nextPage();
+    });
+
+    $('#blog-comment-btn').click((e) =>
+    {
+        e.preventDefault();
+
+        postComment();
     });
 };

@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
+using personal_site.Helpers;
 using personal_site.Models;
 using personal_site.Services;
+using personal_site.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,18 @@ namespace personal_site.Controllers
             string blogsJson = await blogService.GetBlogs();
 
             return Json(blogsJson, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> PostComment(CommentViewModel model)
+        {
+            BlogService blogService = BlogService.GetInstance();
+            int savedComment = await blogService.CreateComment(model);
+
+            if (savedComment > 0)
+                return ControllerHelper.JsonActionResponse(true, "Saved comment");
+            else
+                return ControllerHelper.JsonActionResponse(false, "Failed to save comment");
         }
     }
 }
