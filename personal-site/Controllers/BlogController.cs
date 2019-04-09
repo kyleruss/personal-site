@@ -20,20 +20,28 @@ namespace personal_site.Controllers
         {
             BlogService blogService = BlogService.GetInstance();
             string blogsJson = await blogService.GetBlogs();
-
             return Json(blogsJson, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
         public async Task<JsonResult> PostComment(CommentViewModel model)
         {
-            BlogService blogService = BlogService.GetInstance();
-            int savedComment = await blogService.CreateComment(model);
+            if (!ModelState.IsValid)
+            {
+                var errorList = ControllerHelper.GetModelStateErrors(ModelState);
+                return ControllerHelper.JsonActionResponse(false, "Please check your comment", errorList);
+            }
 
-            if (savedComment > 0)
-                return ControllerHelper.JsonActionResponse(true, "Saved comment");
             else
-                return ControllerHelper.JsonActionResponse(false, "Failed to save comment");
+            {
+                BlogService blogService = BlogService.GetInstance();
+                int savedComment = await blogService.CreateComment(model);
+
+                if (savedComment > 0)
+                    return ControllerHelper.JsonActionResponse(true, "Saved comment");
+                else
+                    return ControllerHelper.JsonActionResponse(false, "Failed to save comment");
+            }
         }
     }
 }

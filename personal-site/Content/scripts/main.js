@@ -59,7 +59,8 @@ function Blog()
     var currentPage;
 
     loadBlogPosts();
-    toggleCommentSpinner(false);
+    toggleCommentSpinner(false, false);
+    $('#comment-alert').hide();
 
     function updateBlogModal()
     {
@@ -154,23 +155,60 @@ function Blog()
         return Math.ceil(n / 3);
     };
 
-    function toggleCommentSpinner(show)
+    function toggleCommentSpinner(show, showSuccess)
     {
         var commentBtn = $('#blog-comment-btn');
         var commentBtnText = $('#blog-save-btn-text');
         var commentBtnSpin = $('#blog-save-btn-spinner');
+        var successIcon = $('#blog-save-success');
 
         if(show)
         {
             commentBtnText.hide();
             commentBtnSpin.show();
+            commentBtn.attr('disabled', true);
         }
 
         else
         {
-            commentBtnText.show();
             commentBtnSpin.hide();
+            commentBtn.attr('disabled', false);
+
+            if(!showSuccess)
+                commentBtnText.show();
+            else
+            {
+                successIcon.show();
+                commentBtn.addClass('btn-success');
+                commentBtn.removeClass('btn-primary');
+
+                setTimeout(() => 
+                {
+                    commentBtn.addClass('btn-primary');
+                    commentBtn.removeClass('btn-success');
+                    successIcon.hide();
+                    commentBtnText.show();
+
+                }, 1500);
+            }
         }
+    };
+
+    function commentAddSuccess(data)
+    {
+        //add comment to DOM
+    }
+
+    function handleCommentInvalidInput(data)
+    {
+        var commentAlert = $('#comment-alert');
+        $('#comment-alert-msg').text(data.ResponseMsg);
+        commentAlert.fadeIn();
+        
+        setTimeout(() =>
+        {
+            commentAlert.fadeOut();
+        }, 2000);
     }
 
     function postComment()
@@ -197,7 +235,16 @@ function Blog()
             {
                 setTimeout(() =>
                 {
-                    toggleCommentSpinner(false);
+
+                    toggleCommentSpinner(false, data.ActionSuccess);
+
+                    if(!data.ActionSuccess)
+                        handleCommentInvalidInput(data);
+
+                    else
+                        commentAddSuccess(data);
+
+                    console.log(data);
 
                 }, 2000);
             },

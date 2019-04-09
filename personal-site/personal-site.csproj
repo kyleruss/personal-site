@@ -221,7 +221,7 @@
     <Content Include="AppConfiguration.config">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Content\css\_utilities.scss" />
+    <Content Include="Content\css\_commons.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\css\main.css" />

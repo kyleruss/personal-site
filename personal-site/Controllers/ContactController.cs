@@ -21,9 +21,7 @@ namespace personal_site.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var errorList = ModelState.Keys.Where(i => ModelState[i].Errors.Count > 0)
-                    .Select(k => new KeyValuePair<string, string>(k, ModelState[k].Errors.First().ErrorMessage));
-
+                var errorList = ControllerHelper.GetModelStateErrors(ModelState);
                 return ControllerHelper.JsonActionResponse(false, "Invalid input", errorList);
             }
 

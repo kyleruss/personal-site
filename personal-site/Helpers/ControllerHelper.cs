@@ -24,5 +24,11 @@ namespace personal_site.Helpers
 
             return new JsonResult() { Data = ResponseObj };
         }
+
+        public static IEnumerable GetModelStateErrors(ModelStateDictionary state)
+        {
+            return state.Keys.Where(i => state[i].Errors.Count > 0)
+                    .Select(k => new KeyValuePair<string, string>(k, state[k].Errors.First().ErrorMessage));
+        }
     }
 }
