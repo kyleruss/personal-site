@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -27,6 +28,8 @@ namespace personal_site.Models
 
         [ForeignKey("BlogPost")]
         public int PostId { get; set; }
+
+        [JsonIgnore]
         public virtual BlogPost BlogPost { get; set; }
     }
 }

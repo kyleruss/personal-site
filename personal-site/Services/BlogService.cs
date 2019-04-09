@@ -28,6 +28,17 @@ namespace personal_site.Services
             };
         }
 
+        public async Task<string> GetBlogComments(int PostId)
+        {
+            using(ApplicationDbContext context = new ApplicationDbContext())
+            {
+                List<BlogPostComment> commentList = await context.BlogPostComments.
+                    Where(x => x.PostId == PostId).ToListAsync();
+
+                return JsonConvert.SerializeObject(commentList);
+            }
+        }
+
         public async Task<int> CreateComment(CommentViewModel commentModel)
         {
             using(ApplicationDbContext context = new ApplicationDbContext())
@@ -41,11 +52,6 @@ namespace personal_site.Services
                 context.BlogPostComments.Add(comment);
                 return await context.SaveChangesAsync();
             };
-        }
-
-        public void GetBlogPostComments()
-        {
-
         }
 
         public static BlogService GetInstance()

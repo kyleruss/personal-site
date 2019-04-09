@@ -43,5 +43,12 @@ namespace personal_site.Controllers
                     return ControllerHelper.JsonActionResponse(false, "Failed to save comment");
             }
         }
+
+        public async Task<JsonResult> GetBlogComments(int PostId)
+        {
+            BlogService blogService = BlogService.GetInstance();
+            string commentsJson = await blogService.GetBlogComments(PostId);
+            return Json(commentsJson, JsonRequestBehavior.AllowGet);
+        }
     }
 }
