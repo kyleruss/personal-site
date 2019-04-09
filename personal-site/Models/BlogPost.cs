@@ -20,7 +20,13 @@ namespace personal_site.Models
 
         public virtual List<BlogPostComment> Comments { get; set; }
 
-        [DefaultValue("getdate()")]
-        public DateTime TimePosted { get; set; }
+
+        private DateTime? postedDate = null;
+
+        public DateTime TimePosted
+        {
+            get { return this.postedDate ?? DateTime.Now; }
+            set { this.postedDate = value; }
+        }
     }
 }
