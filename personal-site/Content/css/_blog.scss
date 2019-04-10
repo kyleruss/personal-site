@@ -167,7 +167,7 @@
     
 }
 
-#profile-img-container
+.profile-img-container
 {
     background-color:#949596;
     width:3em;
@@ -195,4 +195,25 @@
 {
     flex:1;
     margin-left:1em;
+}
+
+.blog-comment
+{
+    border:0;
+
+    .card-title
+    {
+        display:flex;
+        align-items:center;
+    }
+
+    .blog-comment-title
+    {
+        margin-left:0.8em;
+    }
+
+    .blog-comment-text
+    {
+        margin-left:3.7em;
+    }
 }

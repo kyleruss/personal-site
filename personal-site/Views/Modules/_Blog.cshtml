@@ -64,7 +64,7 @@
                     </div>
                     
                     <div id="blog-comment-controls">
-                        <div id="profile-img-container">
+                        <div id="current-user-img" class="profile-img-container">
                             <i class="fas fa-user"></i>
                         </div>
                         @using (Html.BeginForm("PostComment", "Blog", FormMethod.Post, new { id = "post-comment-form", role = "form" }))
@@ -86,6 +86,26 @@
 
                     <div id="blog-comment-container">
                         <blog-comment-data url="@Url.Action("GetBlogComments", "Blog")"></blog-comment-data>
+                        <div id="blog-comment-template" class="blog-comment card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <div class="profile-img-container blog-comment-img">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+
+                                    <div class="blog-comment-title">
+                                        <h5 class="blog-comment-user">John Russell</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">2 days ago</h6>
+                                    </div>
+                                </div>
+
+                                <p class="card-text blog-comment-text">This is an example comment. Hello World!</p>
+                            </div>
+                        </div>
+
+                        <div id="blog-comments">
+
+                        </div>
                     </div>
                 </div>
             </div>
