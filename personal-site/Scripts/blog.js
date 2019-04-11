@@ -143,7 +143,14 @@
 
     function commentAddSuccess(responseData)
     {
-        currentBlog.comments.push(responseData.Data);
+        var comment = responseData.Data;
+        currentBlog.comments.push(comment);
+        
+        var commentElement = createCommentElement(comment);
+        var commentContainer = $('#blog-comments');
+
+        commentContainer.prepend(commentElement);
+        commentElement.fadeIn();
     }
 
     function handleCommentInvalidInput(data)
@@ -188,7 +195,10 @@
                         handleCommentInvalidInput(data);
 
                     else
+                    {
+                        contentElement.val('');
                         commentAddSuccess(data);
+                    }
 
                     console.log(data);
 
@@ -206,6 +216,8 @@
         var commentsUrl = $('blog-comment-data').attr('url');
         var commentContainer = $('#blog-comments');
         var postId = currentBlog.PostId;
+
+        commentContainer.empty();
 
         $.getJSON(commentsUrl, { PostId: postId }, (data) =>
         {
