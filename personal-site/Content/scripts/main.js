@@ -337,6 +337,11 @@ function Blog()
         e.preventDefault();
         postComment();
     });
+
+    $('#comment-toggle-btn').click(() =>
+    {
+        $('#blog-comments').slideToggle(300);
+    });
 };
 function Portfolio()
 {
