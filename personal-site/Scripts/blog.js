@@ -7,6 +7,7 @@
     loadBlogPosts();
     toggleCommentSpinner(false, false);
     $('#comment-alert').hide();
+    $('#blog-comment-template').hide();
 
     function updateBlogModal()
     {
@@ -203,13 +204,34 @@
     function getBlogComments()
     {
         var commentsUrl = $('blog-comment-data').attr('url');
+        var commentContainer = $('#blog-comments');
         var postId = currentBlog.PostId;
 
         $.getJSON(commentsUrl, { PostId: postId }, (data) =>
         {
             currentBlog.comments = JSON.parse(data);
+
+            currentBlog.comments.forEach((comment) =>
+            {
+                var commentElement = createCommentElement(comment);
+                commentElement.show();
+                commentContainer.prepend(commentElement);
+            });
         });
     };
+
+    function createCommentElement(comment)
+    {
+        var templateElement = $('#blog-comment-template');
+        var commentElement = templateElement.clone();
+
+        commentElement.removeAttr('id');
+        commentElement.attr('data-commentId', comment.CommentId);
+        //commentElement.find('.blog-comment-user').text(comment.CommenterId);
+        commentElement.find('.blog-comment-text').text(comment.CommentContent);
+        
+        return commentElement;
+    }
 
     $('.blog-post-display').hover((e) =>
     {   
