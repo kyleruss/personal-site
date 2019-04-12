@@ -7,7 +7,7 @@ $(function()
 
     $('body').niceScroll
     ({
-        horizrailenabled: false
+        defaultScrollConfig
     });
 });
 function About()
@@ -74,7 +74,7 @@ function Blog()
         var modalBody = $('#blog-modal-body');
 
         modalTitle.text(currentBlog.Title);
-        modalBody.text(currentBlog.PostContent);
+        modalBody.html(currentBlog.PostContent);
     };
 
     function loadBlogPosts()
@@ -350,11 +350,21 @@ function Blog()
 
     $('#blog-modal').on('shown.bs.modal', () =>
     {
+        $('body').getNiceScroll().remove();
+
         $('#blog-comments').getNiceScroll().remove();
         $('#blog-comments').niceScroll
         ({
             horizrailenabled: false
         }); 
+
+        $('#blog-modal').getNiceScroll().remove();
+        $('#blog-modal').niceScroll
+        ({
+            horizrailenabled: false
+        }); 
+
+
     });
 };
 function Portfolio()

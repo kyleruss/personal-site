@@ -164,7 +164,27 @@
     display:flex;
     align-items:center;
     flex-direction:row;
+}
+
+#blog-modal-body
+{
+    margin-left:1.5em;
+    margin-right:1.5em;
+    text-align:justify;
+}
+
+#blog-modal-title
+{
+    font-family:'Futura_bold';
+    text-transform:capitalize;
+    margin-left:0.5em;
+    font-size:40px;
     
+}
+
+#blog-modal
+{
+    overflow:hidden;
 }
 
 .profile-img-container

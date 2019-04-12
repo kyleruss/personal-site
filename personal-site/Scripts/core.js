@@ -7,6 +7,6 @@
 
     $('body').niceScroll
     ({
-        horizrailenabled: false
+        defaultScrollConfig
     });
 });
