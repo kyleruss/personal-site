@@ -191,6 +191,16 @@
     height:20px;
 }
 
+#blog-save-btn-text
+{
+    font-family:'Futura_bold';
+}
+
+#comment-form-content
+{
+    height:50px;
+}
+
 #post-comment-form
 {
     flex:1;
@@ -246,5 +256,11 @@
         border-radius:30px;
         text-transform:uppercase;
         padding:1em;
+        font-family:'Futura_bold';
     }
+}
+
+.blog-comment-user
+{
+    
 }

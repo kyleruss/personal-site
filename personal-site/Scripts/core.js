@@ -4,4 +4,9 @@
     Blog();
     Portfolio();
     Contact();
+
+    $('body').niceScroll
+    ({
+        horizrailenabled: false
+    });
 });

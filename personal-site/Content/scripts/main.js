@@ -4,6 +4,11 @@ $(function()
     Blog();
     Portfolio();
     Contact();
+
+    $('body').niceScroll
+    ({
+        horizrailenabled: false
+    });
 });
 function About()
 {
