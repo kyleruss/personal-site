@@ -5,8 +5,5 @@
     Portfolio();
     Contact();
 
-    $('body').niceScroll
-    ({
-        defaultScrollConfig
-    });
+    $('body').niceScroll(scrollConfig);
 });

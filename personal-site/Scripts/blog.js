@@ -294,17 +294,15 @@
         $('body').getNiceScroll().remove();
 
         $('#blog-comments').getNiceScroll().remove();
-        $('#blog-comments').niceScroll
-        ({
-            horizrailenabled: false
-        }); 
+        $('#blog-comments').niceScroll(scrollConfig);
 
         $('#blog-modal').getNiceScroll().remove();
-        $('#blog-modal').niceScroll
-        ({
-            horizrailenabled: false
-        }); 
+        $('#blog-modal').niceScroll(scrollConfig);
 
+    });
 
+    $('#blog-modal').on('hidden.bs.modal', () =>
+    {
+        $('body').niceScroll(scrollConfig);
     });
 };

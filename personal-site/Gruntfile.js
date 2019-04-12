@@ -8,6 +8,7 @@ module.exports = function (grunt)
             {
                 src:
                     [
+                        'Scripts/conf.js',
                         'Scripts/core.js',
                         'Scripts/about.js',
                         'Scripts/blog.js',

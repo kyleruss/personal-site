@@ -1,0 +1,4 @@
+﻿var scrollConfig =
+{
+    horizrailenabled: false
+};
