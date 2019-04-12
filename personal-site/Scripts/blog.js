@@ -288,4 +288,13 @@
     {
         $('#blog-comments').slideToggle(300);
     });
+
+    $('#blog-modal').on('shown.bs.modal', () =>
+    {
+        $('#blog-comments').getNiceScroll().remove();
+        $('#blog-comments').niceScroll
+        ({
+            horizrailenabled: false
+        }); 
+    });
 };

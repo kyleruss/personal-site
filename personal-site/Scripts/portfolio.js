@@ -105,4 +105,9 @@
     {
         nextRepository();
     });
+
+    $('#project-preview').niceScroll
+    ({
+        horizrailenabled: false
+    });
 };
