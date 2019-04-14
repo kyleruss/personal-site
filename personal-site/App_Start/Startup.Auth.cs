@@ -48,9 +48,11 @@ namespace personal_site
             //  SOCIAL MEDIA AUTHENTICATION
             //===================================================
 
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication
+            (
+                clientId: config.Get("microsoftID"),
+                clientSecret: config.Get("microsoftSecret")
+            );
 
             app.UseTwitterAuthentication
             (
