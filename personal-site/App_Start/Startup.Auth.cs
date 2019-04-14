@@ -52,9 +52,11 @@ namespace personal_site
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication
+            (
+               consumerKey: config.Get("twitterID"),
+               consumerSecret: config.Get("twitterSecret")
+            );
 
             app.UseFacebookAuthentication
             (
@@ -62,11 +64,11 @@ namespace personal_site
                appSecret: config.Get("facebookSecret")
             );
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = config.Get("googleID"),
+                ClientSecret = config.Get("googleSecret")
+            });
         }
     }
 }
