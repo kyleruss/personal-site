@@ -67,7 +67,8 @@ function Blog()
     loadBlogPosts();
     toggleCommentSpinner(false, false);
     $('#comment-alert').hide();
-    $('#blog-comment-template').hide();
+    $('#blog-comment-template').hide(); 
+    var modalHideReady = false;
 
     function updateBlogModal()
     {
@@ -325,8 +326,30 @@ function Blog()
 
     $('#blog-modal-close').click(() =>
     {
-        $('#blog-modal').modal('hide');
+        $('#blog-modal').removeClass('show');
     });
+
+    $('#blog-modal').on('transitionend', () =>
+    {
+        var modal = $('#blog-modal');
+
+        if(!modal.hasClass('show'))
+        {
+            modalHideReady = true;
+            modal.modal('hide');
+            modalHideReady = false;
+        }
+        else
+        {
+            $('body').getNiceScroll().remove();
+
+            $('#blog-comments').getNiceScroll().remove();
+            $('#blog-comments').niceScroll(scrollConfig);
+
+            $('#blog-modal').getNiceScroll().remove();
+            $('#blog-modal').niceScroll(scrollConfig);
+        }
+    }); 
 
     $('#left-post-btn').click(() =>
     {
@@ -349,21 +372,18 @@ function Blog()
         $('#blog-comments').slideToggle(300);
     });
 
-    $('#blog-modal').on('shown.bs.modal', () =>
-    {
-        $('body').getNiceScroll().remove();
-
-        $('#blog-comments').getNiceScroll().remove();
-        $('#blog-comments').niceScroll(scrollConfig);
-
-        $('#blog-modal').getNiceScroll().remove();
-        $('#blog-modal').niceScroll(scrollConfig);
-
-    });
-
     $('#blog-modal').on('hidden.bs.modal', () =>
     {
         $('body').niceScroll(scrollConfig);
+    });
+
+    $('#blog-modal').on('hide.bs.modal', (e) =>
+    {
+        if(!modalHideReady)
+        {
+            e.preventDefault();
+            $('#blog-modal').removeClass('show');
+        } 
     });
 };
 function Portfolio()

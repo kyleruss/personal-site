@@ -201,6 +201,20 @@
     }
 }
 
+
+.modal 
+{
+  left: -100%;
+  transition:0.7s ease-in-out !important;
+  top:20px;
+}
+
+.modal.show 
+{
+  left: 0;
+}
+
+
 #blog-modal
 {
     overflow:hidden;
