@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using personal_site.Models;
+using System.Collections.Specialized;
+using System.Configuration;
 
 namespace personal_site
 {
@@ -40,6 +42,8 @@ namespace personal_site
             // Enables the application to remember the second login verification factor such as phone or email.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
+            NameValueCollection config = ConfigurationManager.AppSettings;
+
             //===================================================
             //  SOCIAL MEDIA AUTHENTICATION
             //===================================================
@@ -52,9 +56,11 @@ namespace personal_site
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication
+            (
+               appId: config.Get("facebookID"),
+               appSecret: config.Get("facebookSecret")
+            );
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
