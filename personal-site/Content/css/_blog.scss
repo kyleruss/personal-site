@@ -202,6 +202,30 @@
 }
 
 
+#blog-share-container
+{
+    margin-top:1em;
+    margin-left:2em;
+
+    #social-sharing-title
+    {
+        font-family:'Proxima_bold';
+        color:#757575;
+        padding-right:1em;
+    }
+
+    .social-badge
+    {
+        padding:0.5em;
+
+        &:hover
+        {
+            cursor:pointer;
+            opacity:0.9;
+        }
+    }
+}
+
 .modal 
 {
   left: -100%;

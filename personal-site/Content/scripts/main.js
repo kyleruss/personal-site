@@ -304,7 +304,12 @@ function Blog()
         commentElement.find('.blog-comment-text').text(comment.CommentContent);
         
         return commentElement;
-    }
+    };
+
+    function socialAuthenticate(provider)
+    {
+
+    };
 
     $('.blog-post-display').hover((e) =>
     {   

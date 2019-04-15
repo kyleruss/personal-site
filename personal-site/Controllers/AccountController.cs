@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using personal_site.Models;
 using personal_site.Helpers;
+using personal_site.ViewModels;
+using System.Diagnostics;
 
 namespace personal_site.Controllers
 {
@@ -57,16 +59,16 @@ namespace personal_site.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult ExternalLogin(string provider, string returnUrl)
+        public ActionResult ExternalLogin(string provider)
         {
             // Request a redirect to the external login provider
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account"));
         }
 
 
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
-        public async Task<JsonResult> ExternalLoginCallback(string returnUrl)
+        public async Task<JsonResult> ExternalLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
@@ -82,11 +84,11 @@ namespace personal_site.Controllers
                 case SignInStatus.LockedOut:
                     return ControllerHelper.JsonActionResponse(false, "Locked out");
                 case SignInStatus.RequiresVerification:
-                    return await SendCode(returnUrl, false);
+                    return await SendCode(false);
                 case SignInStatus.Failure:
                 default:
                     // If the user does not have an account, then prompt the user to create an account
-                    ViewBag.ReturnUrl = returnUrl;
+                   // ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return ControllerHelper.JsonActionResponse(false, "Need to create an account");//View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
@@ -94,7 +96,7 @@ namespace personal_site.Controllers
 
         // GET: /Account/SendCode
         [AllowAnonymous]
-        public async Task<JsonResult> SendCode(string returnUrl, bool rememberMe)
+        public async Task<JsonResult> SendCode(bool rememberMe)
         {
             var userId = await SignInManager.GetVerifiedUserIdAsync();
             if (userId == null)
@@ -111,12 +113,11 @@ namespace personal_site.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<JsonResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
+        public async Task<JsonResult> ExternalLoginConfirmation(ExternalLoginViewModel model, string returnUrl)
         {
             if (User.Identity.IsAuthenticated)
-            {
                 return ControllerHelper.JsonActionResponse(true, "[external login] User is already authenticated");
-            }
+            
 
             if (ModelState.IsValid)
             {
@@ -128,6 +129,7 @@ namespace personal_site.Controllers
                 }
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
+
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
@@ -136,12 +138,21 @@ namespace personal_site.Controllers
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return ControllerHelper.JsonActionResponse(true, "[External login] User successfully logged in");
                     }
+
+                    else return ControllerHelper.JsonActionResponse(false, "Failed to save login user with email");
                 }
-                AddErrors(result);
+
+                else
+                {
+                    AddErrors(result);
+                    return ControllerHelper.JsonActionResponse(false, "Failed to save login user with email");
+                }
             }
 
-            ViewBag.ReturnUrl = returnUrl;
-            return View(model);
+            else return ControllerHelper.JsonActionResponse(false, "Invalid input");
+
+//            ViewBag.ReturnUrl = returnUrl;
+  //          return View(model);
         }
 
         // GET: /Account/ExternalLoginFailure

@@ -22,7 +22,11 @@ namespace personal_site.Helpers
                 Data = actionData
             };
 
-            return new JsonResult() { Data = ResponseObj };
+            return new JsonResult() 
+            { 
+                Data = ResponseObj,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
         }
 
         public static IEnumerable GetModelStateErrors(ModelStateDictionary state)
