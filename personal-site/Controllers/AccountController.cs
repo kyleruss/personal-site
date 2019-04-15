@@ -71,6 +71,9 @@ namespace personal_site.Controllers
         public async Task<JsonResult> ExternalLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+            var email = loginInfo.Email;
+            Debug.WriteLine("EMAIL: " + email);
+
             if (loginInfo == null)
                 return ControllerHelper.JsonActionResponse(true, "You need to login");
             

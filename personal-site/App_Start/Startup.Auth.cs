@@ -8,6 +8,7 @@ using Owin;
 using personal_site.Models;
 using System.Collections.Specialized;
 using System.Configuration;
+using Microsoft.Owin.Security.MicrosoftAccount;
 
 namespace personal_site
 {
@@ -48,11 +49,16 @@ namespace personal_site
             //  SOCIAL MEDIA AUTHENTICATION
             //===================================================
 
-            app.UseMicrosoftAccountAuthentication
-            (
-                clientId: config.Get("microsoftID"),
-                clientSecret: config.Get("microsoftSecret")
-            );
+            var microsoftOptions = new MicrosoftAccountAuthenticationOptions
+            {
+                ClientId = config.Get("microsoftID"),
+                ClientSecret = config.Get("microsoftSecret")
+            };
+
+            microsoftOptions.Scope.Add("wl.basic");
+            microsoftOptions.Scope.Add("wl.emails");
+
+            app.UseMicrosoftAccountAuthentication(microsoftOptions);
 
             app.UseTwitterAuthentication
             (
