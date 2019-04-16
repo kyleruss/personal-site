@@ -147,6 +147,21 @@ namespace personal_site.Controllers
             ulong userID = credentials.UserID;
             string data = string.Format("oauth token: {0} Secret: {1} Screen name: {2} User ID: {3}", oauthToken, oauthTokenSecret, screenName, userID);
 
+            var twitterContext = new TwitterContext(auth);
+            var verifyResponse = await
+                (from acc in twitterContext.Account
+                 where (acc.Type == AccountType.VerifyCredentials) && (acc.IncludeEmail == true)
+                 select acc)
+                 .SingleOrDefaultAsync();
+
+            if (verifyResponse != null && verifyResponse.User != null)
+            {
+                User twitterUser = verifyResponse.User;
+                Debug.WriteLine("EMAIL: " + twitterUser.Email);
+            }
+
+            else Debug.WriteLine("verify response or user are NULL");
+
             return ControllerHelper.JsonActionResponse(true, data);
         }
 
