@@ -60,6 +60,17 @@ namespace personal_site.Services
             };
         }
 
+        public async Task<bool> UserExists(string email)
+        {
+            using(ApplicationDbContext context = new ApplicationDbContext())
+                return await context.Users.AnyAsync(x => x.UserName == email);
+        }
+
+        public async Task RegisterBlogUser()
+        {
+
+        }
+
         public static BlogService GetInstance()
         {
             _instance = _instance ?? new BlogService();
