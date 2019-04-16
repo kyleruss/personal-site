@@ -64,6 +64,7 @@ namespace personal_site.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLogin(string provider)
         {
+            ControllerContext.HttpContext.Session.RemoveAll();
             //Handle external twitter logins separately
             if (provider == "Twitter")
                 return await TwitterExternalLogin();
@@ -84,8 +85,10 @@ namespace personal_site.Controllers
         public async Task<JsonResult> ExternalLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
-     
-            Debug.WriteLine("Default user name: " + loginInfo.DefaultUserName + " userid" + ulong.Parse(loginInfo.Login.ProviderKey));
+
+            var email = loginInfo.Email;
+            Debug.WriteLine("Default user name: " + loginInfo.DefaultUserName + " EMAIL: " + email);
+
 
             if (loginInfo == null)
                 return ControllerHelper.JsonActionResponse(true, "You need to login");

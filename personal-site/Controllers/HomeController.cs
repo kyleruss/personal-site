@@ -13,5 +13,15 @@ namespace personal_site.Controllers
         {
             return View();
         }
+
+        public ActionResult Policy()
+        {
+            return View();
+        }
+
+        public ActionResult Terms()
+        {
+            return View();
+        }
     }
 }

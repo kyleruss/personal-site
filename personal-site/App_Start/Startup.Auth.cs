@@ -11,6 +11,8 @@ using System.Configuration;
 using Microsoft.Owin.Security.MicrosoftAccount;
 using Microsoft.Owin.Security.Twitter;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Facebook;
+using System.Security.Claims;
 
 namespace personal_site
 {
@@ -78,11 +80,19 @@ namespace personal_site
                 })
             });
 
-            app.UseFacebookAuthentication
-            (
-               appId: config.Get("facebookID"),
-               appSecret: config.Get("facebookSecret")
-            );
+            var facebookOptions = new FacebookAuthenticationOptions
+            {
+                AppId = config.Get("facebookID"),
+                AppSecret = config.Get("facebookSecret"),
+
+            };
+
+            facebookOptions.Scope.Add("email");
+            facebookOptions.Fields.Add("email");
+
+            facebookOptions.Scope.Add("public_profile");
+            facebookOptions.Fields.Add("name");
+            app.UseFacebookAuthentication(facebookOptions);
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
