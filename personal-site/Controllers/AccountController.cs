@@ -12,6 +12,9 @@ using personal_site.Models;
 using personal_site.Helpers;
 using personal_site.ViewModels;
 using System.Diagnostics;
+using System.Configuration;
+using System.Collections.Specialized;
+using LinqToTwitter;
 
 namespace personal_site.Controllers
 {
@@ -59,10 +62,20 @@ namespace personal_site.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult ExternalLogin(string provider)
+        public async Task<ActionResult> ExternalLogin(string provider)
         {
+            //Handle external twitter logins separately
+            if (provider == "Twitter")
+                return await TwitterExternalLogin();
+
             // Request a redirect to the external login provider
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account"));
+            else return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account"));
+        }
+
+        [AllowAnonymous]
+        public JsonResult ExternalLoginMyCallback()
+        {
+            return ControllerHelper.JsonActionResponse(true, "testing!");
         }
 
 
@@ -71,8 +84,8 @@ namespace personal_site.Controllers
         public async Task<JsonResult> ExternalLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
-            var email = loginInfo.Email;
-            Debug.WriteLine("EMAIL: " + email);
+     
+            Debug.WriteLine("Default user name: " + loginInfo.DefaultUserName + " userid" + ulong.Parse(loginInfo.Login.ProviderKey));
 
             if (loginInfo == null)
                 return ControllerHelper.JsonActionResponse(true, "You need to login");
@@ -95,6 +108,46 @@ namespace personal_site.Controllers
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return ControllerHelper.JsonActionResponse(false, "Need to create an account");//View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> TwitterExternalLogin()
+        {
+            NameValueCollection config = ConfigurationManager.AppSettings;
+
+            var auth = new MvcAuthorizer
+            {
+                CredentialStore = new SessionStateCredentialStore
+                {
+                    ConsumerKey = config.Get("twitterID"),
+                    ConsumerSecret = config.Get("twitterSecret")
+                }
+            };
+
+            string callbackUrl = Request.Url.ToString().Replace("ExternalLogin", "TwitterExternalLoginCallback");
+            return await auth.BeginAuthorizationAsync(new Uri(callbackUrl));
+        }
+
+        [AllowAnonymous]
+        public async Task<JsonResult> TwitterExternalLoginCallback()
+        {
+            var auth = new MvcAuthorizer
+            {
+                CredentialStore = new SessionStateCredentialStore()
+            };
+
+            await auth.CompleteAuthorizeAsync(Request.Url);
+
+            var credentials = auth.CredentialStore;
+            string oauthToken = credentials.OAuthToken;
+            string oauthTokenSecret = credentials.OAuthTokenSecret;
+            string screenName = credentials.ScreenName;
+            ulong userID = credentials.UserID;
+            string data = string.Format("oauth token: {0} Secret: {1} Screen name: {2} User ID: {3}", oauthToken, oauthTokenSecret, screenName, userID);
+
+            return ControllerHelper.JsonActionResponse(true, data);
         }
 
         // GET: /Account/SendCode

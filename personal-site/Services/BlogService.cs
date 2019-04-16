@@ -10,6 +10,9 @@ using Newtonsoft.Json;
 using System.Web.Mvc;
 using personal_site.ViewModels;
 using System.Diagnostics;
+using Microsoft.AspNet.Identity.Owin;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace personal_site.Services
 {
