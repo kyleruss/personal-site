@@ -13,6 +13,8 @@ namespace personal_site.Models
 
         public DbSet<BlogPostComment> BlogPostComments { get; set; }
 
+        public DbSet<UserAccessTokens> UserAccessTokens { get; set; }
+
         public ApplicationDbContext() : base("PersonalSiteConnection", throwIfV1Schema: false) { }
 
         public static ApplicationDbContext Create()

@@ -231,11 +231,16 @@
     <Compile Include="Migrations\201904170352157_Add_User_fields.Designer.cs">
       <DependentUpon>201904170352157_Add_User_fields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904170510429_Create_UserAccessToken_Table.cs" />
+    <Compile Include="Migrations\201904170510429_Create_UserAccessToken_Table.Designer.cs">
+      <DependentUpon>201904170510429_Create_UserAccessToken_Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\BlogPost.cs" />
     <Compile Include="Models\BlogPostComment.cs" />
+    <Compile Include="Models\UserAccessTokens.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BlogService.cs" />
     <Compile Include="Services\ContactService.cs" />
@@ -309,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904170352157_Add_User_fields.resx">
       <DependentUpon>201904170352157_Add_User_fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904170510429_Create_UserAccessToken_Table.resx">
+      <DependentUpon>201904170510429_Create_UserAccessToken_Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
