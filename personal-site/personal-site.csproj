@@ -227,6 +227,10 @@
     <Compile Include="Migrations\201904080321387_Add_PostImage_Field.Designer.cs">
       <DependentUpon>201904080321387_Add_PostImage_Field.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904170352157_Add_User_fields.cs" />
+    <Compile Include="Migrations\201904170352157_Add_User_fields.Designer.cs">
+      <DependentUpon>201904170352157_Add_User_fields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -302,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904080321387_Add_PostImage_Field.resx">
       <DependentUpon>201904080321387_Add_PostImage_Field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904170352157_Add_User_fields.resx">
+      <DependentUpon>201904170352157_Add_User_fields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,12 @@ namespace personal_site.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public string DisplayName { get; set; }
+
+        public string ProfilePicture { get; set; }
+
+        public string Provider { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
