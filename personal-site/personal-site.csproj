@@ -242,6 +242,7 @@
     <Compile Include="Models\BlogPostComment.cs" />
     <Compile Include="Models\UserAccessTokens.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\BlogService.cs" />
     <Compile Include="Services\ContactService.cs" />
     <Compile Include="Services\RepositoryService.cs" />

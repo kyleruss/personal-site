@@ -19,5 +19,6 @@ namespace personal_site.ViewModels
 
         public string AccessTokenSecret { get; set; }
 
+        public string Provider { get; set; }
     }
 }

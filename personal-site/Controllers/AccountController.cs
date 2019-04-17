@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.Configuration;
 using System.Collections.Specialized;
 using LinqToTwitter;
+using personal_site.Services;
 
 namespace personal_site.Controllers
 {
@@ -106,10 +107,13 @@ namespace personal_site.Controllers
                     return await SendCode(false);
                 case SignInStatus.Failure:
                 default:
-                    // If the user does not have an account, then prompt the user to create an account
-                   // ViewBag.ReturnUrl = returnUrl;
-                    ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return ControllerHelper.JsonActionResponse(false, "Need to create an account");//View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                    AccountService accountService = AccountService.GetInstance();
+                    ApplicationUser user = await accountService.CreateExternalAccount(loginInfo, UserManager);
+
+                    if (user != null)
+                        return await ExternalSignIn(loginInfo);
+                    else
+                        return ControllerHelper.JsonActionResponse(false, "Failed to create account");
             }
         }
 
@@ -266,6 +270,17 @@ namespace personal_site.Controllers
             {
                 return HttpContext.GetOwinContext().Authentication;
             }
+        }
+
+        private async Task<JsonResult> ExternalSignIn(ExternalLoginInfo loginInfo)
+        {
+            var signinStatus = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+
+            if(signinStatus == SignInStatus.Success)
+                return ControllerHelper.JsonActionResponse(true, "[External sign in] Successfully signed in");
+
+            else
+                return ControllerHelper.JsonActionResponse(false, "[External sign in] Failed to sign in"); 
         }
 
         private void AddErrors(IdentityResult result)
