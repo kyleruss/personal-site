@@ -63,21 +63,12 @@ namespace personal_site.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ExternalLogin(string provider)
+        public ActionResult ExternalLogin(string provider)
         {
             ControllerContext.HttpContext.Session.RemoveAll();
-            //Handle external twitter logins separately
-            if (provider == "Twitter")
-                return await TwitterExternalLogin();
 
             // Request a redirect to the external login provider
-            else return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account"));
-        }
-
-        [AllowAnonymous]
-        public JsonResult ExternalLoginMyCallback()
-        {
-            return ControllerHelper.JsonActionResponse(true, "testing!");
+             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account"));
         }
 
 
@@ -86,10 +77,11 @@ namespace personal_site.Controllers
         public async Task<JsonResult> ExternalLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+            
+            AccountService accService = AccountService.GetInstance();
+            await accService.StoreTwitterUser(loginInfo, UserManager, AuthenticationManager);
 
-            var email = loginInfo.Email;
-            Debug.WriteLine("Default user name: " + loginInfo.DefaultUserName + " EMAIL: " + email);
-
+            return ControllerHelper.JsonActionResponse(false, "Testing");
 
             if (loginInfo == null)
                 return ControllerHelper.JsonActionResponse(true, "You need to login");
@@ -103,8 +95,6 @@ namespace personal_site.Controllers
                     return ControllerHelper.JsonActionResponse(true, "Successfully signed in");
                 case SignInStatus.LockedOut:
                     return ControllerHelper.JsonActionResponse(false, "Locked out");
-                case SignInStatus.RequiresVerification:
-                    return await SendCode(false);
                 case SignInStatus.Failure:
                 default:
                     AccountService accountService = AccountService.GetInstance();
@@ -116,122 +106,7 @@ namespace personal_site.Controllers
                         return ControllerHelper.JsonActionResponse(false, "Failed to create account");
             }
         }
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> TwitterExternalLogin()
-        {
-            NameValueCollection config = ConfigurationManager.AppSettings;
-
-            var auth = new MvcAuthorizer
-            {
-                CredentialStore = new SessionStateCredentialStore
-                {
-                    ConsumerKey = config.Get("twitterID"),
-                    ConsumerSecret = config.Get("twitterSecret")
-                }
-            };
-
-            string callbackUrl = Request.Url.ToString().Replace("ExternalLogin", "TwitterExternalLoginCallback");
-            return await auth.BeginAuthorizationAsync(new Uri(callbackUrl));
-        }
-
-        [AllowAnonymous]
-        public async Task<JsonResult> TwitterExternalLoginCallback()
-        {
-            var auth = new MvcAuthorizer
-            {
-                CredentialStore = new SessionStateCredentialStore()
-            };
-
-            await auth.CompleteAuthorizeAsync(Request.Url);
-
-            var credentials = auth.CredentialStore;
-            string oauthToken = credentials.OAuthToken;
-            string oauthTokenSecret = credentials.OAuthTokenSecret;
-            string screenName = credentials.ScreenName;
-            ulong userID = credentials.UserID;
-            string data = string.Format("oauth token: {0} Secret: {1} Screen name: {2} User ID: {3}", oauthToken, oauthTokenSecret, screenName, userID);
-
-            var twitterContext = new TwitterContext(auth);
-            var verifyResponse = await
-                (from acc in twitterContext.Account
-                 where (acc.Type == AccountType.VerifyCredentials) && (acc.IncludeEmail == true)
-                 select acc)
-                 .SingleOrDefaultAsync();
-
-            if (verifyResponse != null && verifyResponse.User != null)
-            {
-                User twitterUser = verifyResponse.User;
-                Debug.WriteLine("EMAIL: " + twitterUser.Email);
-            }
-
-            else Debug.WriteLine("verify response or user are NULL");
-
-            return ControllerHelper.JsonActionResponse(true, data);
-        }
-
-        // GET: /Account/SendCode
-        [AllowAnonymous]
-        public async Task<JsonResult> SendCode(bool rememberMe)
-        {
-            var userId = await SignInManager.GetVerifiedUserIdAsync();
-            if (userId == null)
-            {
-                return ControllerHelper.JsonActionResponse(false, "[Send code] error");
-            }
-            var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
-            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
-            return ControllerHelper.JsonActionResponse(true, "[Send code success]"); //View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
-        }
-
-        //
-        // POST: /Account/ExternalLoginConfirmation
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<JsonResult> ExternalLoginConfirmation(ExternalLoginViewModel model, string returnUrl)
-        {
-            if (User.Identity.IsAuthenticated)
-                return ControllerHelper.JsonActionResponse(true, "[external login] User is already authenticated");
-            
-
-            if (ModelState.IsValid)
-            {
-                // Get the information about the user from the external login provider
-                var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-                if (info == null)
-                {
-                    return ControllerHelper.JsonActionResponse(false, "[ExternalLoginConfirm] Login failed");
-                }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user);
-
-                if (result.Succeeded)
-                {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
-                    if (result.Succeeded)
-                    {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return ControllerHelper.JsonActionResponse(true, "[External login] User successfully logged in");
-                    }
-
-                    else return ControllerHelper.JsonActionResponse(false, "Failed to save login user with email");
-                }
-
-                else
-                {
-                    AddErrors(result);
-                    return ControllerHelper.JsonActionResponse(false, "Failed to save login user with email");
-                }
-            }
-
-            else return ControllerHelper.JsonActionResponse(false, "Invalid input");
-
-//            ViewBag.ReturnUrl = returnUrl;
-  //          return View(model);
-        }
+  
 
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
