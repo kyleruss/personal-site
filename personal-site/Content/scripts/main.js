@@ -390,6 +390,17 @@ function Blog()
             $('#blog-modal').removeClass('show');
         } 
     });
+
+    $('#social-auth-form').submit((e) =>
+    {
+       // e.preventDefault();
+        var target = 'authFormTarget';
+        var form = $(e.target);
+        
+        var socialAuthWindow = window.open('', target, 'width=800,height=600');
+        form.attr('target', target);
+        //return true;
+    });
 };
 function Portfolio()
 {

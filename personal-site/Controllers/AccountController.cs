@@ -77,11 +77,6 @@ namespace personal_site.Controllers
         public async Task<JsonResult> ExternalLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
-            
-            AccountService accService = AccountService.GetInstance();
-            await accService.StoreTwitterUser(loginInfo, UserManager, AuthenticationManager);
-
-            return ControllerHelper.JsonActionResponse(false, "Testing");
 
             if (loginInfo == null)
                 return ControllerHelper.JsonActionResponse(true, "You need to login");
@@ -98,7 +93,12 @@ namespace personal_site.Controllers
                 case SignInStatus.Failure:
                 default:
                     AccountService accountService = AccountService.GetInstance();
-                    ApplicationUser user = await accountService.CreateExternalAccount(loginInfo, UserManager);
+                    ApplicationUser user;
+                    
+                    if(loginInfo.Login.LoginProvider == "Twitter")
+                        user = await accountService.CreateTwitterAccount(loginInfo, UserManager, AuthenticationManager);
+                    else
+                        user = await accountService.CreateExternalAccount(loginInfo, UserManager);
 
                     if (user != null)
                         return await ExternalSignIn(loginInfo);

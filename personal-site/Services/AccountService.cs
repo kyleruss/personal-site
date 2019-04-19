@@ -48,7 +48,7 @@ namespace personal_site.Services
             else return null;
         }
 
-        public async Task<ApplicationUser> StoreTwitterUser(ExternalLoginInfo loginInfo, ApplicationUserManager userManager, IAuthenticationManager authManager)
+        public async Task<ApplicationUser> CreateTwitterAccount(ExternalLoginInfo loginInfo, ApplicationUserManager userManager, IAuthenticationManager authManager)
         {
             SessionStateCredentialStore credentials = await GetCredentialStore(authManager);
             if (credentials == null) return null;
@@ -126,7 +126,7 @@ namespace personal_site.Services
                     ConsumerSecret = config.Get("twitterSecret"),
                     OAuthToken = accessToken.Value,
                     OAuthTokenSecret = accessTokenSecret.Value
-                };
+                }; 
             }
         }
 
