@@ -8,6 +8,8 @@
     toggleCommentSpinner(false, false);
     $('#comment-alert').hide();
     $('#blog-comment-template').hide(); 
+
+    var authWindow;
     var modalHideReady = false;
 
     function updateBlogModal()
@@ -336,7 +338,18 @@
         var target = 'authFormTarget';
         var form = $(e.target);
         
-        var socialAuthWindow = window.open('', target, 'width=800,height=600');
+        authWindow = window.open('', target, 'width=800,height=600');
         form.attr('target', target);
     });
+
+    $(window).bind('storage', function(e)
+    {
+        var storageKey = 'authCallbackStatus';
+        var callbackStatus = localStorage.getItem(storageKey);
+        
+        if(callbackStatus != null)
+            console.log('status: ' + callbackStatus);
+        
+    });
+    
 };
