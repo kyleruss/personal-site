@@ -74,12 +74,12 @@ namespace personal_site.Controllers
 
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
-        public async Task<JsonResult> ExternalLoginCallback()
+        public async Task<ActionResult> ExternalLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
 
             if (loginInfo == null)
-                return ControllerHelper.JsonActionResponse(true, "You need to login");
+                return RedirectToAction("SocialAuthCallback", "Blog", new { message = "You need to login" });
             
 
             // Sign in the user with this external login provider if the user already has a login
@@ -87,9 +87,9 @@ namespace personal_site.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return ControllerHelper.JsonActionResponse(true, "Successfully signed in");
+                    return RedirectToAction("SocialAuthCallback", "Blog", new { message = "Successfully signed in" });
                 case SignInStatus.LockedOut:
-                    return ControllerHelper.JsonActionResponse(false, "Locked out");
+                    return RedirectToAction("SocialAuthCallback", "Blog", new { message = "Locked out" });
                 case SignInStatus.Failure:
                 default:
                     AccountService accountService = AccountService.GetInstance();
@@ -103,7 +103,7 @@ namespace personal_site.Controllers
                     if (user != null)
                         return await ExternalSignIn(loginInfo);
                     else
-                        return ControllerHelper.JsonActionResponse(false, "Failed to create account");
+                        return RedirectToAction("SocialAuthCallback", "Blog", new { message = "Failed to create account" });
             }
         }
   
@@ -147,15 +147,15 @@ namespace personal_site.Controllers
             }
         }
 
-        private async Task<JsonResult> ExternalSignIn(ExternalLoginInfo loginInfo)
+        private async Task<ActionResult> ExternalSignIn(ExternalLoginInfo loginInfo)
         {
             var signinStatus = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
 
             if(signinStatus == SignInStatus.Success)
-                return ControllerHelper.JsonActionResponse(true, "[External sign in] Successfully signed in");
+                return RedirectToAction("SocialAuthCallback", "Blog", new { message = "[External signin] Successfully signed in" });
 
             else
-                return ControllerHelper.JsonActionResponse(false, "[External sign in] Failed to sign in"); 
+                return RedirectToAction("SocialAuthCallback", "Blog", new { message = "[External signin] Failed to sign in" });
         }
 
         private void AddErrors(IdentityResult result)

@@ -1,0 +1,25 @@
+﻿@model personal_site.ViewModels.AuthCallbackViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div id="callback-container" class="d-flex justify-content-center align-items-center" style="height:100px;">
+    <div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h1>You have been logged in</h1>
+        <h2><strong>Error: </strong> @Model.ResponseMessage</h2>
+        <button class="btn btn-lg btn-primary">Return</button>
+    }
+
+    else
+    {
+        <h1><strong>Something went Wrong!</strong> You are not logged in</h1>
+        <h2><strong>Error: </strong> @Model.ResponseMessage</h2>
+        <button class="btn btn-lg btn-primary">Try again</button>
+    }
+</div>
+
+</div>

@@ -247,6 +247,7 @@
     <Compile Include="Services\ContactService.cs" />
     <Compile Include="Services\RepositoryService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AuthCallbackViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\ExternalLoginViewModel.cs" />
@@ -357,6 +358,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Terms.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Blog\SocialAuthCallback.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

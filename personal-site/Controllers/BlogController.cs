@@ -44,6 +44,12 @@ namespace personal_site.Controllers
             }
         }
 
+        public ActionResult SocialAuthCallback(string message)
+        {
+            var model = new AuthCallbackViewModel() { ResponseMessage = message };
+            return View(model);
+        }
+
         public async Task<JsonResult> GetBlogComments(int PostId)
         {
             BlogService blogService = BlogService.GetInstance();
