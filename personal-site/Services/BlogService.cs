@@ -66,10 +66,6 @@ namespace personal_site.Services
                 return await context.Users.AnyAsync(x => x.UserName == email);
         }
 
-        public async Task RegisterBlogUser(ExternalLoginViewModel loginModel)
-        {
-
-        }
 
         public static BlogService GetInstance()
         {
