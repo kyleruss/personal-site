@@ -348,7 +348,14 @@
         var callbackStatus = localStorage.getItem(storageKey);
         
         if(callbackStatus != null)
-            console.log('status: ' + callbackStatus);
+        {
+            setTimeout(() =>
+            {
+                console.log('status: ' + callbackStatus);
+                if(authWindow != null)
+                    authWindow.close();
+            }, 2000);
+        }
         
     });
     
