@@ -1,7 +1,13 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Error: @Response.StatusCode</h2>
+@section Css
+{
 
+    @Styles.Render("~/Content/css/error.min.css")
+}
+
+<div id="error-container" class="fixed-top">
+    <img src="Content/images/error_background.png" id="error-bg"/>
+</div>

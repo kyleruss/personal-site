@@ -365,6 +365,9 @@
   <ItemGroup>
     <Content Include="Views\Error\Error.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\_error.scss" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
