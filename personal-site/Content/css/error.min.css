@@ -1,1 +1,1 @@
-﻿#error-container{height:100%;background-color:#a28af4;z-index:0;justify-content:center;display:flex}#main-navbar{display:none}
+﻿#error-container{height:100%;background-color:#a28af4;z-index:0;justify-content:center;display:flex}#error-text-container{position:absolute;top:50%;transform:translateY(-50%)}#main-navbar{display:none}

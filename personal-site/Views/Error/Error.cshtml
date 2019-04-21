@@ -1,5 +1,26 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string ErrorMsg;
+    
+    switch(Response.StatusCode)
+    {
+        case 404:
+            ErrorMsg = "Page not found";
+            break;
+
+
+        case 403:
+            ErrorMsg = "You are not authoirzed";
+            break;
+            
+        case 400:
+            ErrorMsg = "Bad Request";
+            break;
+            
+        default:
+            ErrorMsg = "Internal Server Error";
+            break;
+    }
 }
 
 @section Css
@@ -10,4 +31,10 @@
 
 <div id="error-container" class="fixed-top">
     <img src="Content/images/error_background.png" id="error-bg"/>
+    
+    <div id="error-text-container">
+        <h1 id="error-statuscode">@Response.StatusCode</h1>
+        <h3 id="error-msg-title">@ErrorMsg</h3>
+        <h5 id="error-advice">Try refreshing the page or click below to return</h5>
+    </div>
 </div>

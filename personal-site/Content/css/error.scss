@@ -7,6 +7,13 @@
     display:flex;
 }
 
+#error-text-container
+{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+}
+
 #main-navbar
 {
     display:none;
