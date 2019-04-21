@@ -11,4 +11,5 @@
         localStorage.setItem(callbackKey, authStatus);
     };  
 
+    $('#main-navbar').hide();
 });
