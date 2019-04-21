@@ -12,9 +12,44 @@
     position:absolute;
     top:50%;
     transform:translateY(-50%);
+    text-align:center;
+}
+
+.error-page-text
+{
+    color:#9a99ae;
+}
+
+#error-statuscode
+{
+    font-family: AllerDisplay;
+    font-size:140px;
+}
+
+#error-msg-title
+{
+    font-family:Antipastopro;
+    font-size:40px;
+}
+
+#error-advice
+{
+    font-family:Antipastopro;
 }
 
 #main-navbar
 {
     display:none;
+}
+
+@font-face
+{
+    font-family: 'AllerDisplay';
+    src: url('../../fonts/AllerDisplay.ttf') format('truetype');
+}
+
+@font-face
+{
+    font-family: 'Antipastopro';
+    src: url('../../fonts/Antipastopro.otf') format('opentype');
 }

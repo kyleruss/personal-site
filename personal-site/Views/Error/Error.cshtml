@@ -33,8 +33,10 @@
     <img src="Content/images/error_background.png" id="error-bg"/>
     
     <div id="error-text-container">
-        <h1 id="error-statuscode">@Response.StatusCode</h1>
-        <h3 id="error-msg-title">@ErrorMsg</h3>
-        <h5 id="error-advice">Try refreshing the page or click below to return</h5>
+        <h1 id="error-statuscode" class="error-page-text">@Response.StatusCode</h1>
+        <h3 id="error-msg-title" class="error-page-text">@ErrorMsg</h3>
+       
+
+        <button class="btn btn-primary" id="error-return-btn">Home page</button>
     </div>
 </div>
