@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace personal_site.Controllers
 {
+    [AllowAnonymous]
     public class ErrorController : Controller
     {
         public ActionResult Index()
