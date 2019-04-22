@@ -308,10 +308,11 @@ function Blog()
         return commentElement;
     };
 
-    function socialAuthenticate(provider)
+    function closeAuthWindow()
     {
-
-    };
+        if(authWindow != null)
+            authWindow.close();
+    }
 
     $('.blog-post-display').hover((e) =>
     {   
@@ -398,7 +399,7 @@ function Blog()
         var target = 'authFormTarget';
         var form = $(e.target);
         
-        authWindow = window.open('', target, 'width=800,height=600');
+        authWindow = window.open('', target, 'width=900,height=600');
         form.attr('target', target);
     });
 
@@ -409,14 +410,9 @@ function Blog()
         
         if(callbackStatus != null)
         {
-            setTimeout(() =>
-            {
-                console.log('status: ' + callbackStatus);
-                if(authWindow != null)
-                    authWindow.close();
-            }, 2000);
+            console.log('status: ' + callbackStatus);
+            closeAuthWindow();
         }
-        
     });
     
 };

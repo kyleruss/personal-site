@@ -358,16 +358,50 @@
     text-align:center;
     padding:0;
     margin:0;
+    background-color:#a497ff;
+    color:#FFF;
 
-    button
+    #callback-text-container
     {
-        padding:1em;
-        width:10em;
-        margin-top:2em;
+        text-align:left;
+        margin-left:2.5em;
+    }
+
+    #callback-image
+    {
+        margin-right:2em;
     }
 
     .social-callback-title
     {
+        font-family:'AllerDisplay';
+        font-size:72px;
+        text-transform:uppercase;
+    }
+
+    .social-callback-description
+    {
+        font-family:'Antipastopro';
+        font-size:24px;
+    }
+
+    #social-callback-returnbtn
+    {
+        $btnColor: rgba(0,0,0, 0.3);
+        background-color:$btnColor;
+        border:0;
+        box-shadow: 2px 2px 11px 1px rgba(0,0,0,0.5);
+        text-transform:uppercase;
         font-family:'Futura_bold';
+        font-size:24px;
+        width:200px;
+        height:60px;
+        margin-top:2em;
+        transition:0.5s ease-in-out;
+
+        &:hover
+        {
+            opacity:0.7;
+        }
     }
 }

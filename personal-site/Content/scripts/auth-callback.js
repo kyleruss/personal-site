@@ -1,8 +1,16 @@
 ﻿$(function()
 {
-    AuthCallbackReply();
+    autoAuthCallbackReply();
 
-    function AuthCallbackReply()
+    function autoAuthCallbackReply()
+    {
+        setTimeout(() =>
+        {
+            authCallbackReply();
+        }, 3000);
+    };
+
+    function authCallbackReply()
     {
         var callbackKey = 'authCallbackStatus';
         var authStatus = $('#callback-container').attr('data-status');
@@ -12,4 +20,9 @@
     };  
 
     $('#main-navbar').hide();
+    
+    $('#social-callback-returnbtn').click(() =>
+    {
+        authCallbackReply();
+    });
 });

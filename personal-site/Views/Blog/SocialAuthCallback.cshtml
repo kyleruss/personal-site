@@ -7,21 +7,16 @@
 
 <br />
 <div id="callback-container" class="jumbotron fixed-top" data-status="@AuthStatus">
-    <div class="container">
-    @if (AuthStatus)
-    {
-        <h1 class="social-callback-title">You have been logged in</h1>
-        <h5 class="social-callback-description">@Model.ResponseMessage</h5>
-        <button class="btn btn-lg btn-primary">Return</button>
-    }
+    <div id="callback-text-container" class="container flex-column">
+        @if (AuthStatus) { <h1 class="social-callback-title">Login</h1> }
 
-    else
-    {
-        <h1 class="social-callback-title">Something went Wrong!</h1>
-        <h5 class="social-callback-description">@Model.ResponseMessage</h5>
-        <button class="btn btn-lg btn-primary">Try again</button>
-    }
+        else { <h1 class="social-callback-title">Login Failed</h1> }
+
+        <h5 class="social-callback-description">You will be redirected shortly</h5>
+        <button id="social-callback-returnbtn" class="btn btn-primary">Home</button>
     </div>
+
+    <img id="callback-image" src="~/Content/images/login-callback-image.png" width="500" height="285"/>
 </div>
 
 @section Javascript
