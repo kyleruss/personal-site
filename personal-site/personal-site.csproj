@@ -253,6 +253,9 @@
     <Compile Include="ViewModels\ContactViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\error.min.css">
+      <DependentUpon>error.scss</DependentUpon>
+    </Content>
     <Content Include="Content\css\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
@@ -366,7 +369,7 @@
     <Content Include="Views\Error\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\_error.scss" />
+    <Content Include="Content\css\error.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

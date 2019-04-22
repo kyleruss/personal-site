@@ -35,8 +35,6 @@
     <div id="error-text-container">
         <h1 id="error-statuscode" class="error-page-text">@Response.StatusCode</h1>
         <h3 id="error-msg-title" class="error-page-text">@ErrorMsg</h3>
-       
-
-        <button class="btn btn-primary" id="error-return-btn">Home page</button>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Home")" id="error-return-btn">Home page</a>
     </div>
 </div>
