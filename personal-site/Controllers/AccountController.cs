@@ -16,6 +16,9 @@ using System.Configuration;
 using System.Collections.Specialized;
 using LinqToTwitter;
 using personal_site.Services;
+using System.Net;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace personal_site.Controllers
 {
@@ -77,6 +80,23 @@ namespace personal_site.Controllers
         public async Task<ActionResult> ExternalLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+            var accessToken = loginInfo.ExternalIdentity.Claims.Where(c => c.Type.Equals("urn:google:accesstoken")).Select(c => c.Value).FirstOrDefault();
+
+            if (accessToken == null)
+                Debug.WriteLine("access claim is null");
+            else
+            {
+                Debug.WriteLine("ACCESS TOKEN: " + accessToken);
+
+                Uri apiRequestUri = new Uri("https://www.googleapis.com/oauth2/v2/userinfo?access_token=" + accessToken);
+                using(var webClient = new WebClient())
+                {
+                    var json = await webClient.DownloadStringTaskAsync(apiRequestUri);
+                    JObject jsonObj = JObject.Parse(json);
+                    Debug.WriteLine("picture: " + jsonObj.GetValue("picture"));
+                    //Debug.WriteLine("PICTURE: " + jsonResult.picture);
+                }
+            }
 
             if (loginInfo == null)
                 return RedirectToAction("SocialAuthCallback", "Blog", new { message = "You need to login" });

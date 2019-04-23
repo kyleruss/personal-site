@@ -14,6 +14,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Facebook;
 using System.Security.Claims;
 using LinqToTwitter;
+using System.Threading.Tasks;
 
 namespace personal_site
 {
@@ -85,7 +86,6 @@ namespace personal_site
             {
                 AppId = config.Get("facebookID"),
                 AppSecret = config.Get("facebookSecret"),
-
             };
 
             facebookOptions.Scope.Add("email");
@@ -98,7 +98,15 @@ namespace personal_site
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
                 ClientId = config.Get("googleID"),
-                ClientSecret = config.Get("googleSecret")
+                ClientSecret = config.Get("googleSecret"),
+                Provider = new GoogleOAuth2AuthenticationProvider()
+                {
+                    OnAuthenticated = (context) =>
+                    {
+                        context.Identity.AddClaim(new Claim("urn:google:accesstoken", context.AccessToken, ClaimValueTypes.String, "Google"));
+                        return Task.FromResult(0);
+                    }
+                }
             });
         }
     }

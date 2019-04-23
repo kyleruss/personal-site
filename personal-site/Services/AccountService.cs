@@ -25,7 +25,6 @@ namespace personal_site.Services
         {
             string provider = loginInfo.Login.LoginProvider;
 
-
             if (user == null)
             {
                 user = new ApplicationUser()
@@ -71,6 +70,7 @@ namespace personal_site.Services
                 if (accResponse != null && accResponse.User != null)
                 {
                     User responseUser = accResponse.User;
+            
                     string userEmail = responseUser.Email;
                     string provider = loginInfo.Login.LoginProvider;
 
@@ -79,7 +79,8 @@ namespace personal_site.Services
                         UserName = GenerateUsername(userEmail, provider),
                         Email = userEmail,
                         DisplayName = responseUser.Name,
-                        Provider = provider
+                        Provider = provider,
+                        ProfilePicture = responseUser.ProfileImageUrl
                     };
 
                     ApplicationUser savedUser = await CreateExternalAccount(loginInfo, userManager, twitterUser);
