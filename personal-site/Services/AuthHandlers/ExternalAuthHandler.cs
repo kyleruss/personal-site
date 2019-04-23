@@ -33,6 +33,22 @@ namespace personal_site.Services.AuthHandlers
             else return null;
         }
 
+        protected async Task SaveAccessTokens(ApplicationUser user, string accessToken, string accessTokenSecret = null)
+        {
+            using (ApplicationDbContext dbContext = new ApplicationDbContext())
+            {
+                UserAccessTokens userToken = new UserAccessTokens()
+                {
+                    UserId = user.Id,
+                    AccessToken = accessToken,
+                    AccessTokenSecret = accessTokenSecret
+                };
+
+                dbContext.UserAccessTokens.Add(userToken);
+                await dbContext.SaveChangesAsync();
+            }
+        }
+
         protected ApplicationUser GetDefaultUser(ExternalLoginInfo loginInfo)
         {
             string provider = loginInfo.Login.LoginProvider;

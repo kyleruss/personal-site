@@ -56,7 +56,7 @@ namespace personal_site.Services.AuthHandlers
 
                     ApplicationUser savedUser = await SaveUser(loginInfo, userManager, twitterUser);
                     if (savedUser != null)
-                        await SaveAccessTokens(twitterUser, credentials);
+                        await SaveAccessTokens(twitterUser, credentials.OAuthToken, credentials.OAuthTokenSecret);
 
                     return savedUser;
                 }
@@ -65,21 +65,6 @@ namespace personal_site.Services.AuthHandlers
             }
         }
 
-        private async Task SaveAccessTokens(ApplicationUser user, SessionStateCredentialStore credentials)
-        {
-            using (ApplicationDbContext dbContext = new ApplicationDbContext())
-            {
-                UserAccessTokens userToken = new UserAccessTokens()
-                {
-                    UserId = user.Id,
-                    AccessToken = credentials.OAuthToken,
-                    AccessTokenSecret = credentials.OAuthTokenSecret
-                };
-
-                dbContext.UserAccessTokens.Add(userToken);
-                await dbContext.SaveChangesAsync();
-            }
-        }
 
         private async Task<SessionStateCredentialStore> GetTwitterCredentialStore(IAuthenticationManager authManager)
         {
