@@ -19,6 +19,7 @@ using personal_site.Services;
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using personal_site.Services.AuthHandlers;
 
 namespace personal_site.Controllers
 {
@@ -80,23 +81,6 @@ namespace personal_site.Controllers
         public async Task<ActionResult> ExternalLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
-            var accessToken = loginInfo.ExternalIdentity.Claims.Where(c => c.Type.Equals("urn:google:accesstoken")).Select(c => c.Value).FirstOrDefault();
-
-            if (accessToken == null)
-                Debug.WriteLine("access claim is null");
-            else
-            {
-                Debug.WriteLine("ACCESS TOKEN: " + accessToken);
-
-                Uri apiRequestUri = new Uri("https://www.googleapis.com/oauth2/v2/userinfo?access_token=" + accessToken);
-                using(var webClient = new WebClient())
-                {
-                    var json = await webClient.DownloadStringTaskAsync(apiRequestUri);
-                    JObject jsonObj = JObject.Parse(json);
-                    Debug.WriteLine("picture: " + jsonObj.GetValue("picture"));
-                    //Debug.WriteLine("PICTURE: " + jsonResult.picture);
-                }
-            }
 
             if (loginInfo == null)
                 return RedirectToAction("SocialAuthCallback", "Blog", new { message = "You need to login" });
@@ -113,14 +97,11 @@ namespace personal_site.Controllers
                 case SignInStatus.Failure:
                 default:
                     AccountService accountService = AccountService.GetInstance();
-                    ApplicationUser user;
-                    
-                    if(loginInfo.Login.LoginProvider == "Twitter")
-                        user = await accountService.CreateTwitterAccount(loginInfo, UserManager, AuthenticationManager);
-                    else
-                        user = await accountService.CreateExternalAccount(loginInfo, UserManager);
+                    ExternalAuthHandler authHandler = accountService.GetExternalAuthHandler(loginInfo);
 
-                    if (user != null)
+                    ApplicationUser savedUser = await authHandler.CreateExternalAccount(loginInfo, UserManager, AuthenticationManager);
+
+                    if (savedUser != null)
                         return await ExternalSignIn(loginInfo);
                     else
                         return RedirectToAction("SocialAuthCallback", "Blog", new { message = "Failed to create account" });
