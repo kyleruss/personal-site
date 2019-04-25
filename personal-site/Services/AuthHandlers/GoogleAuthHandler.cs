@@ -17,7 +17,7 @@ namespace personal_site.Services.AuthHandlers
         public override async Task<ApplicationUser> CreateExternalAccount(ExternalLoginInfo loginInfo, 
         ApplicationUserManager userManager,IAuthenticationManager authManager = null)
         {
-            string accessToken = GetAccessToken(loginInfo);
+            string accessToken = GetAccessTokenClaim("urn:google:accesstoken", loginInfo);
             JObject UserDetails = await GetUserDetails(accessToken);
 
             if (UserDetails == null) return null;
@@ -47,13 +47,6 @@ namespace personal_site.Services.AuthHandlers
                 var json = await webClient.DownloadStringTaskAsync(apiRequestUri);
                 return JObject.Parse(json);
             }
-        }
-
-        private string GetAccessToken(ExternalLoginInfo loginInfo)
-        {
-            return loginInfo.ExternalIdentity.Claims
-                .Where(c => c.Type.Equals("urn:google:accesstoken"))
-                .Select(c => c.Value).FirstOrDefault();
         }
     }
 }

@@ -67,5 +67,11 @@ namespace personal_site.Services.AuthHandlers
             return string.Format("{0}-{1}", provider, email);
         }
 
+        public string GetAccessTokenClaim(string tokenName, ExternalLoginInfo loginInfo)
+        {
+            return loginInfo.ExternalIdentity.Claims
+                .Where(c => c.Type.Equals(tokenName))
+                .Select(c => c.Value).FirstOrDefault();
+        }
     }
 }

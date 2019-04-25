@@ -86,6 +86,14 @@ namespace personal_site
             {
                 AppId = config.Get("facebookID"),
                 AppSecret = config.Get("facebookSecret"),
+                Provider = new FacebookAuthenticationProvider()
+                {
+                    OnAuthenticated = (context) =>
+                    {
+                        context.Identity.AddClaim(new Claim("FacebookAccessToken", context.AccessToken));
+                        return Task.FromResult(0);
+                    }
+                }
             };
 
             facebookOptions.Scope.Add("email");

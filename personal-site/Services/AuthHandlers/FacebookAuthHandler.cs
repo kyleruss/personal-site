@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.Owin;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using personal_site.Models;
 using System;
@@ -11,10 +12,11 @@ namespace personal_site.Services.AuthHandlers
 {
     public class FacebookAuthHandler : ExternalAuthHandler
     {
-        public override Task<ApplicationUser> CreateExternalAccount(ExternalLoginInfo loginInfo, 
+        public override async Task<ApplicationUser> CreateExternalAccount(ExternalLoginInfo loginInfo, 
         ApplicationUserManager userManager, IAuthenticationManager authManager = null)
         {
-            throw new NotImplementedException();
+           // string accessToken = await GetAccessToken(authManager);
+            return null;
         }
     }
 }

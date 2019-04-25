@@ -247,6 +247,7 @@
     <Compile Include="Services\AuthHandlers\ExternalAuthHandler.cs" />
     <Compile Include="Services\AuthHandlers\FacebookAuthHandler.cs" />
     <Compile Include="Services\AuthHandlers\GoogleAuthHandler.cs" />
+    <Compile Include="Services\AuthHandlers\MicrosoftAuthHandler.cs" />
     <Compile Include="Services\AuthHandlers\TwitterAuthHandler.cs" />
     <Compile Include="Services\BlogService.cs" />
     <Compile Include="Services\ContactService.cs" />
