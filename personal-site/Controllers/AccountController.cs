@@ -82,14 +82,6 @@ namespace personal_site.Controllers
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
 
-            MicrosoftAuthHandler microsoftAuth = new MicrosoftAuthHandler();
-            string imgStr = await microsoftAuth.GetUserProfileImage(loginInfo);
-
-            Debug.WriteLine("IMG: " + imgStr);
-
-
-            return RedirectToAction("SocialAuthCallback", "Blog", new { message = "You need to login" });
-
             if (loginInfo == null)
                 return RedirectToAction("SocialAuthCallback", "Blog", new { message = "You need to login" });
             
