@@ -23,19 +23,11 @@ namespace personal_site.Services.AuthHandlers
             if (UserDetails == null) return null;
             else
             {
-                ApplicationUser User = GetDefaultUser(loginInfo);
-                var UserImage = UserDetails.GetValue("picture");
-                if (UserImage != null) User.ProfilePicture = UserImage.ToString();
+                ApplicationUser user = GetDefaultUser(loginInfo);
+                var userImage = UserDetails.GetValue("picture");
+                if (userImage != null) user.ProfilePicture = userImage.ToString();
 
-                ApplicationUser SavedUser = await SaveUser(loginInfo, userManager, User);
-
-                if(SavedUser != null)
-                {
-                    await SaveAccessTokens(SavedUser, accessToken);
-                    return SavedUser;
-                }
-
-                else return null;
+                return await SaveUserAndTokens(user, accessToken, loginInfo, userManager);
             }
         }
 

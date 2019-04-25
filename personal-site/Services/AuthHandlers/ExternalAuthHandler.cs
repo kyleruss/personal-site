@@ -62,6 +62,20 @@ namespace personal_site.Services.AuthHandlers
             };
         }
 
+        protected async Task<ApplicationUser> SaveUserAndTokens(ApplicationUser user, string accessToken, 
+        ExternalLoginInfo loginInfo, ApplicationUserManager userManager)
+        {
+            ApplicationUser savedUser = await SaveUser(loginInfo, userManager, user);
+
+            if (savedUser != null)
+            {
+                await SaveAccessTokens(savedUser, accessToken);
+                return savedUser;
+            }
+
+            else return null;
+        }
+
         protected string GenerateUsername(string email, string provider)
         {
             return string.Format("{0}-{1}", provider, email);

@@ -82,6 +82,11 @@ namespace personal_site.Controllers
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
 
+            FacebookAuthHandler fbAuth = new FacebookAuthHandler();
+            await fbAuth.CreateExternalAccount(loginInfo, UserManager, AuthenticationManager);
+
+            return RedirectToAction("SocialAuthCallback", "Blog", new { message = "You need to login" });
+
             if (loginInfo == null)
                 return RedirectToAction("SocialAuthCallback", "Blog", new { message = "You need to login" });
             
