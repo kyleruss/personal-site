@@ -17,5 +17,10 @@ namespace personal_site.Services.AuthHandlers
         {
             throw new NotImplementedException();
         }
+
+        public string GetAccessToken(ExternalLoginInfo loginInfo)
+        {
+            return GetAccessTokenClaim("access_token", loginInfo);
+        }
     }
 }
