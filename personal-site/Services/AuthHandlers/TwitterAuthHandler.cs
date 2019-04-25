@@ -49,16 +49,12 @@ namespace personal_site.Services.AuthHandlers
                     {
                         UserName = GenerateUsername(userEmail, provider),
                         Email = userEmail,
-                        DisplayName = responseUser.Name,
+                        DisplayName = GenerateDisplayName(responseUser.Name),
                         Provider = provider,
                         ProfilePicture = responseUser.ProfileImageUrl
                     };
 
-                    ApplicationUser savedUser = await SaveUser(loginInfo, userManager, twitterUser);
-                    if (savedUser != null)
-                        await SaveAccessTokens(twitterUser, credentials.OAuthToken, credentials.OAuthTokenSecret);
-
-                    return savedUser;
+                    return await SaveUserAndTokens(twitterUser, credentials.OAuthToken, loginInfo, userManager, credentials.OAuthTokenSecret);
                 }
 
                 else return null;

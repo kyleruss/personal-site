@@ -57,19 +57,19 @@ namespace personal_site.Services.AuthHandlers
             {
                 UserName = GenerateUsername(loginInfo.Email, provider),
                 Email = loginInfo.Email,
-                DisplayName = loginInfo.DefaultUserName,
+                DisplayName = GenerateDisplayName(loginInfo.DefaultUserName),
                 Provider = provider
             };
         }
 
         protected async Task<ApplicationUser> SaveUserAndTokens(ApplicationUser user, string accessToken, 
-        ExternalLoginInfo loginInfo, ApplicationUserManager userManager)
+        ExternalLoginInfo loginInfo, ApplicationUserManager userManager, string accessTokenSecret = null)
         {
             ApplicationUser savedUser = await SaveUser(loginInfo, userManager, user);
 
             if (savedUser != null)
             {
-                await SaveAccessTokens(savedUser, accessToken);
+                await SaveAccessTokens(savedUser, accessToken, accessTokenSecret);
                 return savedUser;
             }
 
@@ -79,6 +79,16 @@ namespace personal_site.Services.AuthHandlers
         protected string GenerateUsername(string email, string provider)
         {
             return string.Format("{0}-{1}", provider, email);
+        }
+
+        protected string GenerateDisplayName(string displayName)
+        {
+            string filteredName = string.Concat(displayName
+                .Where(x => Char.IsLetter(x))
+                .Select(x => Char.IsUpper(x) ? (" " + x) : x.ToString()))
+                .TrimStart(' ');
+
+            return filteredName;
         }
 
         public string GetAccessTokenClaim(string tokenName, ExternalLoginInfo loginInfo)
