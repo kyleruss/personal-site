@@ -3,6 +3,7 @@ using Microsoft.Owin.Security;
 using personal_site.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -23,7 +24,8 @@ namespace personal_site.Services.AuthHandlers
                 user = GetDefaultUser(loginInfo);
 
             var createResult = await userManager.CreateAsync(user);
-
+            var error = createResult.Errors.FirstOrDefault();
+          
             if (createResult.Succeeded)
             {
                 var loginCreateResult = await userManager.AddLoginAsync(user.Id, loginInfo.Login);
