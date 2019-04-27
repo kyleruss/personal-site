@@ -42,7 +42,7 @@ namespace personal_site.Services
             }
         }
 
-        public async Task<BlogPostComment> CreateComment(CommentViewModel commentModel)
+        public async Task<BlogPostComment> CreateComment(CommentViewModel commentModel, string userId)
         {
             BlogPostComment comment;
             using(ApplicationDbContext context = new ApplicationDbContext())
@@ -50,7 +50,8 @@ namespace personal_site.Services
                 comment = new BlogPostComment()
                 {
                     CommentContent = commentModel.Content,
-                    PostId = commentModel.PostId
+                    PostId = commentModel.PostId,
+                    CommenterId = userId
                 };
 
                 context.BlogPostComments.Add(comment);

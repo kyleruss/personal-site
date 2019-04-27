@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace personal_site.Controllers
 {
@@ -34,13 +35,19 @@ namespace personal_site.Controllers
 
             else
             {
-                BlogService blogService = BlogService.GetInstance();
-                BlogPostComment savedComment = await blogService.CreateComment(model);
-
-                if (savedComment != null)
-                    return ControllerHelper.JsonActionResponse(true, "Saved comment", null, savedComment);
+                if (!User.Identity.IsAuthenticated)
+                    return ControllerHelper.JsonActionResponse(false, "You must be logged in to comment");
                 else
-                    return ControllerHelper.JsonActionResponse(false, "Failed to save comment");
+                {
+                    BlogService blogService = BlogService.GetInstance();
+                    string userId = User.Identity.GetUserId();
+                    BlogPostComment savedComment = await blogService.CreateComment(model, userId);
+
+                    if (savedComment != null)
+                        return ControllerHelper.JsonActionResponse(true, "Saved comment", null, savedComment);
+                    else
+                        return ControllerHelper.JsonActionResponse(false, "Failed to save comment");
+                }
             }
         }
 
