@@ -82,6 +82,9 @@ namespace personal_site.Controllers
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
 
+            object myObj = null;
+            string myObjstr = myObj.ToString();
+
             if (loginInfo == null)
                 return RedirectToAction("SocialAuthCallback", "Blog", new { message = "You need to login" });
             

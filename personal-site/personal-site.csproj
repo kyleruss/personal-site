@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201904170510429_Create_UserAccessToken_Table.Designer.cs">
       <DependentUpon>201904170510429_Create_UserAccessToken_Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904270046502_Add_UserId_ForeignKey.cs" />
+    <Compile Include="Migrations\201904270046502_Add_UserId_ForeignKey.Designer.cs">
+      <DependentUpon>201904270046502_Add_UserId_ForeignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -331,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904170510429_Create_UserAccessToken_Table.resx">
       <DependentUpon>201904170510429_Create_UserAccessToken_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904270046502_Add_UserId_ForeignKey.resx">
+      <DependentUpon>201904270046502_Add_UserId_ForeignKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
