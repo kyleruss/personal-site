@@ -19,7 +19,7 @@ namespace personal_site.Models
         [ForeignKey("User")]
         public string CommenterId { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         private DateTime? postedDate = null;
 

@@ -299,11 +299,19 @@ function Blog()
     {
         var templateElement = $('#blog-comment-template');
         var commentElement = templateElement.clone();
+        var commentUser = comment.User;
 
         commentElement.removeAttr('id');
         commentElement.attr('data-commentId', comment.CommentId);
-        //commentElement.find('.blog-comment-user').text(comment.CommenterId);
+        commentElement.find('.blog-comment-user').text(commentUser.DisplayName);
         commentElement.find('.blog-comment-text').text(comment.CommentContent);
+
+        var profilePicture = commentUser.ProfilePicture;
+        if(profilePicture != null)
+        {
+            $('.user-picture-placeholder').hide();
+            $('.blog-comment-img').css('background-image', `url("${profilePicture}"`);
+        }
         
         return commentElement;
     };
