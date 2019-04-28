@@ -86,7 +86,7 @@ namespace personal_site.Services.AuthHandlers
         protected string GenerateDisplayName(string displayName)
         {
             string filteredName = string.Concat(displayName
-                .Where(x => Char.IsLetter(x))
+                .Where(x => Char.IsLetter(x) || Char.IsWhiteSpace(x))
                 .Select(x => Char.IsUpper(x) ? (" " + x) : x.ToString()))
                 .TrimStart(' ');
 
