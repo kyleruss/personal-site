@@ -58,21 +58,14 @@ namespace personal_site
             var microsoftOptions = new MicrosoftAccountAuthenticationOptions
             {
                 ClientId = config.Get("microsoftID"),
-                ClientSecret = config.Get("microsoftSecret"),
-                Provider = new MicrosoftAccountAuthenticationProvider()
-                {
-                    OnAuthenticated = (context) =>
-                    {
-                        context.Identity.AddClaim(new Claim("access_token", context.AccessToken));
-                        return Task.FromResult(0);
-                    }
-                }
+                ClientSecret = config.Get("microsoftSecret")
             };
-
+            
             microsoftOptions.Scope.Add("wl.basic");
             microsoftOptions.Scope.Add("wl.emails");
+            
 
-            app.UseMicrosoftAccountAuthentication(microsoftOptions);
+            app.UseMicrosoftAccountAuthentication(microsoftOptions); 
 
             app.UseTwitterAuthentication(new TwitterAuthenticationOptions
             {

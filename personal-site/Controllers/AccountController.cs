@@ -20,6 +20,11 @@ using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using personal_site.Services.AuthHandlers;
+using Microsoft.Identity.Client;
+using Microsoft.Graph;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Collections.Generic;
 
 namespace personal_site.Controllers
 {
@@ -72,7 +77,8 @@ namespace personal_site.Controllers
             ControllerContext.HttpContext.Session.RemoveAll();
 
             // Request a redirect to the external login provider
-             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account"));
+
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account"));
         }
 
 
@@ -88,6 +94,7 @@ namespace personal_site.Controllers
 
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+            
             switch (result)
             {
                 case SignInStatus.Success:
@@ -198,9 +205,8 @@ namespace personal_site.Controllers
             {
                 var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
                 if (UserId != null)
-                {
                     properties.Dictionary[XsrfKey] = UserId;
-                }
+
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
