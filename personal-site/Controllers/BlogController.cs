@@ -12,6 +12,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using System.Text;
 
 namespace personal_site.Controllers
 {
@@ -49,6 +50,12 @@ namespace personal_site.Controllers
                         return ControllerHelper.JsonActionResponse(false, "Failed to save comment");
                 }
             }
+        }
+
+        public ActionResult Rss()
+        {
+            string rssXmlPath = Server.MapPath(Url.Content("~/Content/resources/blog-rss.xml"));
+            return base.File(rssXmlPath, "text/xml");
         }
 
         public ActionResult SocialAuthCallback(string message)
