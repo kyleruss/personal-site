@@ -14,6 +14,14 @@ namespace personal_site.Controllers
             return View();
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         [Authorize]
         public ActionResult ControlPanel()
         {

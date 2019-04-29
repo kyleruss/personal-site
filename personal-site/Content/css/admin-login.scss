@@ -1,0 +1,104 @@
+﻿$panelBoxShadow: 4px 4px 43px 0px rgba(0,0,0,0.48);
+$titleColor:#363636;
+$componentColor: #5a3ac9;
+
+body
+{
+    background-color:#523aa3;
+}
+
+#admin-login-panel
+{
+    min-height:100%;
+    min-height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+#login-panel-img
+{
+    border-top-left-radius:10px;
+    border-bottom-left-radius:10px;
+    box-shadow: $panelBoxShadow
+}
+
+#admin-login-entry-panel
+{
+    background-color:#dfdfdf;
+    border-top-right-radius:10px;
+    border-bottom-right-radius:10px;
+    width:500px;
+    height:609px;
+    box-shadow: $panelBoxShadow
+
+}
+
+#admin-login-title-icon
+{
+    font-size:70px;
+    color:#FFF;//$titleColor;
+    
+}
+
+#login-title-icon-container
+{
+    width:140px;
+    height:140px;
+    padding:2em;
+    border:3px solid $componentColor;
+    background-color:$componentColor;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:140px;
+    margin-top:5em;
+}
+
+#admin-login-title-text
+{
+    margin-top:0.5em;
+    font-family:'Aller Display';
+    text-transform:uppercase;
+    color:$titleColor;
+}
+
+#admin-login-form
+{
+    .row:not(:first-of-type)
+    {
+        margin-top:1em;
+    }
+
+    .form-control
+    {
+        box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.41);
+
+        &:focus
+        {
+            outline:none;
+            border:1px solid #ced4da
+        }
+    }
+}
+
+#admin-login-btn
+{
+    background-color:$componentColor;
+    border-color:$componentColor;
+    width:235px;
+    transition:0.5s ease-in-out;
+    margin-top:1em;
+
+    &:hover
+    {
+        opacity:0.9;
+    }
+}
+
+.input-group-text
+{
+    background-color:$componentColor;
+    color:#FFF;
+    border-color:$componentColor;
+}
