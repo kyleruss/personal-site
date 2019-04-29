@@ -13,5 +13,11 @@ namespace personal_site.Controllers
         {
             return View();
         }
+
+        [Authorize]
+        public ActionResult ControlPanel()
+        {
+            return View();
+        }
     }
 }
