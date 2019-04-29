@@ -1,4 +1,5 @@
-﻿using System;
+﻿using personal_site.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,7 +18,7 @@ namespace personal_site.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login()
+        public ActionResult Login(AdminLoginViewModel viewModel)
         {
             return View();
         }

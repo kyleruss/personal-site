@@ -1,4 +1,6 @@
-﻿@{
+﻿@model personal_site.ViewModels.AdminLoginViewModel
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -21,7 +23,7 @@
         @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { id = "admin-login-form", role = "form", @class = "row flex-column align-items-center" }))
         {
             @Html.AntiForgeryToken()
-            
+
             <div class="input-group row">
                 <div class="input-group-prepend">
                     <span class="input-group-text">
@@ -29,9 +31,10 @@
                     </span>
                 </div>
 
-                <input class="form-control" placeholder="Username" />
+                @Html.TextBoxFor(m => m.Username,
+                new { @class = "form-control", placeholder = "Username" })
             </div>
-            
+
             <div class="input-group row">
                 <div class="input-group-prepend">
                     <span class="input-group-text">
@@ -39,9 +42,10 @@
                     </span>
                 </div>
 
-                <input class="form-control" placeholder="Password" type="password" />
+                @Html.TextBoxFor(m => m.Password,
+                 new {  @class = "form-control", placeholder = "Passwoord"})
             </div>
-            
+
             <div class="form-group row">
                 <button class="btn btn-primary" type="submit" id="admin-login-btn">Login</button>
             </div>
