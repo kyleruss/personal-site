@@ -77,7 +77,6 @@ namespace personal_site.Controllers
             ControllerContext.HttpContext.Session.RemoveAll();
 
             // Request a redirect to the external login provider
-
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account"));
         }
 
@@ -185,10 +184,7 @@ namespace personal_site.Controllers
 
         internal class ChallengeResult : HttpUnauthorizedResult
         {
-            public ChallengeResult(string provider, string redirectUri)
-                : this(provider, redirectUri, null)
-            {
-            }
+            public ChallengeResult(string provider, string redirectUri): this(provider, redirectUri, null) { }
 
             public ChallengeResult(string provider, string redirectUri, string userId)
             {
