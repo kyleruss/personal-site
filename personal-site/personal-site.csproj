@@ -281,6 +281,9 @@
     <Compile Include="ViewModels\ContactViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\admin.min.css">
+      <DependentUpon>admin.scss</DependentUpon>
+    </Content>
     <Content Include="Content\css\error.min.css">
       <DependentUpon>error.scss</DependentUpon>
     </Content>
@@ -295,6 +298,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\css\_commons.scss" />
+    <Content Include="Content\scripts\admin.js" />
     <Content Include="Content\scripts\auth-callback.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -407,6 +411,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\ControlPanel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\admin.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
