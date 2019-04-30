@@ -18,3 +18,12 @@
     background-color:#f44242;
     color:white;
 }
+
+.container-center
+{
+    min-height:100%;
+    min-height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}

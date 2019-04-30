@@ -9,7 +9,7 @@
     @Styles.Render("~/Content/css/admin-login.min.css")
 }
 
-<div id="admin-login-panel">
+<div id="admin-login-panel" class="container-center">
     <img src="~/Content/images/admin_login_panel.png" id="login-panel-img" />
     <div id="admin-login-entry-panel" class="row flex-column align-items-center">
         <div id="login-title-icon-container" class="row">
@@ -43,7 +43,7 @@
                 </div>
 
                 @Html.TextBoxFor(m => m.Password,
-                 new {  @class = "form-control", placeholder = "Passwoord"})
+                 new { @class = "form-control", placeholder = "Passwoord" })
             </div>
 
             <div class="form-group row">

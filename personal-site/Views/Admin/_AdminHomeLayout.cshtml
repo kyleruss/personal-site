@@ -3,9 +3,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Layout</h1>
-<div id="component-container">
-    @RenderSection("AdminHomeComponent", required: true)
+@section Css
+{
+    @Styles.Render("~/Content/css/admin.min.css")
+}
+
+<div id="component-container" class="container-center">
+    <div id="component-nav-container">
+        <ul class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active">Home</a>
+            <a href="#" class="list-group-item list-group-item-action">Repositories</a>
+            <a href="#" class="list-group-item list-group-item-action">My Blog</a>
+            <a href="#" class="list-group-item list-group-item-action">Rss Feed</a>
+            <a href="#" class="list-group-item list-group-item-action">Statistics</a>
+            <a href="#" class="list-group-item list-group-item-action">Social Media</a>
+        </ul>
+    </div>
+
+    <div id="component-content-container">
+        @RenderSection("AdminHomeComponent", required: true)
+    </div>
 </div>
 
 
