@@ -11,7 +11,7 @@
 <div id="component-container" class="container-center">
     <div id="component-nav-container">
         <ul class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active">Home</a>
+            <a href="#" class="list-group-item list-group-item-action component-nav-active">Home</a>
             <a href="#" class="list-group-item list-group-item-action">Repositories</a>
             <a href="#" class="list-group-item list-group-item-action">My Blog</a>
             <a href="#" class="list-group-item list-group-item-action">Rss Feed</a>
@@ -25,4 +25,7 @@
     </div>
 </div>
 
-
+@section Javascript
+{
+    @Scripts.Render("~/Content/scripts/admin.js")
+}

@@ -8,3 +8,12 @@
     width:1000px;
     height:700px;
 }
+
+#component-nav-container
+{
+    .component-nav-active
+    {
+        background-color:#FFF;
+        border-right:5px solid #35ff52;
+    }
+}
