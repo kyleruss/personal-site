@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace personal_site.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : AbstractAuthController
     {
         [AllowAnonymous]
         public ActionResult Login()

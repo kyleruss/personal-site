@@ -1,73 +1,20 @@
-﻿using System;
-using System.Globalization;
+﻿using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using personal_site.Models;
+using personal_site.Services;
+using personal_site.Services.AuthHandlers;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using personal_site.Models;
-using personal_site.Helpers;
-using personal_site.ViewModels;
-using System.Diagnostics;
-using System.Configuration;
-using System.Collections.Specialized;
-using LinqToTwitter;
-using personal_site.Services;
-using System.Net;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using personal_site.Services.AuthHandlers;
-using Microsoft.Identity.Client;
-using Microsoft.Graph;
-using System.Net.Http.Headers;
-using System.Net.Http;
-using System.Collections.Generic;
 
 namespace personal_site.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : AbstractAuthController
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
-
-        public AccountController() { }
-
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-        }
-
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-
-            private set 
-            { 
-                _signInManager = value; 
-            }
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-
-            private set
-            {
-                _userManager = value;
-            }
-        }
-
         // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
@@ -79,7 +26,6 @@ namespace personal_site.Controllers
             // Request a redirect to the external login provider
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account"));
         }
-
 
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
@@ -114,7 +60,6 @@ namespace personal_site.Controllers
             }
         }
   
-
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
@@ -122,37 +67,9 @@ namespace personal_site.Controllers
             return View();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (_userManager != null)
-                {
-                    _userManager.Dispose();
-                    _userManager = null;
-                }
-
-                if (_signInManager != null)
-                {
-                    _signInManager.Dispose();
-                    _signInManager = null;
-                }
-            }
-
-            base.Dispose(disposing);
-        }
-
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
-
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
 
         private async Task<ActionResult> ExternalSignIn(ExternalLoginInfo loginInfo)
         {
@@ -164,24 +81,7 @@ namespace personal_site.Controllers
             else
                 return RedirectToAction("SocialAuthCallback", "Blog", new { message = "[External signin] Failed to sign in" });
         }
-
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
-        }
-
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            return RedirectToAction("Index", "Home");
-        }
-
+   
         internal class ChallengeResult : HttpUnauthorizedResult
         {
             public ChallengeResult(string provider, string redirectUri): this(provider, redirectUri, null) { }
