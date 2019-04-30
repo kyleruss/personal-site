@@ -24,7 +24,7 @@ namespace personal_site.Controllers
         }
 
         [Authorize]
-        public ActionResult ControlPanel()
+        public ActionResult Home()
         {
             return View();
         }
