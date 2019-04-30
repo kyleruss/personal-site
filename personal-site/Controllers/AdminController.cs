@@ -23,7 +23,7 @@ namespace personal_site.Controllers
             return View();
         }
 
-        [Authorize]
+        [AllowAnonymous]
         public ActionResult Home()
         {
             return View();
