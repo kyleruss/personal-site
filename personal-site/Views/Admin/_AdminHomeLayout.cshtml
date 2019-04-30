@@ -11,13 +11,53 @@
 <div id="component-container" class="container-center">
     <div id="component-nav-container">
         <ul class="list-group">
-            <a href="#" class="list-group-item list-group-item-action component-nav-active">Home</a>
-            <a href="#" class="list-group-item list-group-item-action">Repositories</a>
-            <a href="#" class="list-group-item list-group-item-action">My Blog</a>
-            <a href="#" class="list-group-item list-group-item-action">Rss Feed</a>
-            <a href="#" class="list-group-item list-group-item-action">Statistics</a>
-            <a href="#" class="list-group-item list-group-item-action">Social Media</a>
+            @{ string[] navItems = { "Dashboard", "Repositories", "My Blog", "Rss Feed", "Statistics", "Social Media" }; }
+            @foreach (string navItem in navItems)
+            {
+                string iconClass = "";
+
+                switch (navItem)
+                {
+                    case "Dashboard":
+                        iconClass = "fas fa-home";
+                        break;
+
+                    case "Repositories":
+                        iconClass = "fab fa-github-alt";
+                        break;
+
+                    case "My Blog":
+                        iconClass = "fas fa-pencil-alt";
+                        break;
+
+                    case "Rss Feed":
+                        iconClass = "fas fa-rss";
+                        break;
+
+                    case "Statistics":
+                        iconClass = "fas fa-chart-line";
+                        break;
+
+                    case "Social Media":
+                        iconClass = "fab fa-twitter";
+                        break;
+                }
+
+                <a href="#" class="list-group-item list-group-item-action admin-nav-item">
+                    <div class="admin-nav-icon-container">
+                        <i class="@iconClass"></i>
+                    </div>
+
+                    <span class="admin-nav-item-text">
+                        @navItem
+                    </span>
+                </a>
+            }
+
         </ul>
+
+
+
     </div>
 
     <div id="component-content-container">
