@@ -12,12 +12,19 @@
 {
     height:600px;
     width:210px;
-    background:black;
+    background:#211f27;
+    position:relative;
 
     .component-nav-active
     {
         background-color:#FFF;
         border-right:5px solid #35ff52;
+    }
+
+    .list-group-item-action:hover
+    {
+        z-index:0;
+        background-color:#211f27;
     }
 }
 
@@ -29,19 +36,19 @@
     font-family:'Futura_bold';
     border-left:0;
     border-right:0;
-    border-bottom:0;
+    border-bottom:1px solid rgba(0,0,0,.125);
+    background-color:#211f27;
+    color:#bcbcbc;
 
     &:first-of-type
     {
         border-top:0;
     }
-
 }
 
 .admin-nav-icon-container
 {
     display:inline-flex;
-    border-right:1px solid black;
     color:#FFF;
     background-color: #2c2a35;
     position:absolute;
@@ -62,4 +69,59 @@
 .admin-nav-item-text
 {
     margin-left:50px;
+}
+
+#component-content-container
+{
+    width:800px;
+    height:600px;
+    background-color:#353340;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+}
+
+#admin-nav-logout-container
+{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    margin-bottom:2em;
+}
+
+#nav-user-container
+{
+    padding:1em;
+}
+
+#nav-user-img-container
+{
+    $imgSize: 48px;
+
+    display:inline-block;
+    width:$imgSize;
+    height:$imgSize;
+    border-radius:$imgSize;
+    background-size:$imgSize;
+    border:2px solid #5dff9e;
+}
+
+#nav-user-details-container
+{
+    display:inline-block;
+    margin-left:0.5em;
+    
+}
+
+#nav-user-name
+{
+    color:#FFF;
+    font-size:20px;
+}
+
+#nav-user-title
+{
+    color:#b0b0b0;
+    font-size:16px;
+    margin-top:-5px;
 }

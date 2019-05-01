@@ -10,6 +10,15 @@
 
 <div id="component-container" class="container-center">
     <div id="component-nav-container">
+        <div id="nav-user-container">
+            <div id="nav-user-img-container" style="background-image:url('https://i.imgur.com/628jXQE.jpg')">    
+            </div>
+
+            <div id="nav-user-details-container">
+                <h3 id="nav-user-name">Kyle Russell</h3>
+                <h5 id="nav-user-title">Administrator</h5>
+            </div>
+        </div>
         <ul class="list-group">
             @{ string[] navItems = { "Dashboard", "Repositories", "My Blog", "Rss Feed", "Statistics", "Social Media" }; }
             @foreach (string navItem in navItems)
@@ -57,7 +66,12 @@
         </ul>
 
 
-
+        <div id="admin-nav-logout-container">
+            <button class="btn btn-success">
+                <i class="fas fa-sign-out-alt"></i>
+                 Logout
+            </button>
+        </div>
     </div>
 
     <div id="component-content-container">
