@@ -1,12 +1,14 @@
-﻿body
+﻿$themeColor: #5f39de;
+$themeFont: 'Futura_bold';
+$iconContainerColor: #17151c;
+$itemBgColor: #211f27;
+$contentBgColor: #353340;
+
+body
 {
     background-color:#523aa3;
 }
 
-#component-container
-{
-
-}
 
 #component-nav-container
 {
@@ -17,8 +19,7 @@
 
     .component-nav-active
     {
-        background-color:#FFF;
-        border-right:5px solid #35ff52;
+        border-right:5px solid $themeColor;
     }
 
     .list-group-item-action:hover
@@ -33,12 +34,13 @@
     border-radius:0 !important;
     height:50px;
     text-transform:uppercase;
-    font-family:'Futura_bold';
+    font-family:$themeFont;
     border-left:0;
     border-right:0;
     border-bottom:1px solid rgba(0,0,0,.125);
-    background-color:#211f27;
+    background-color:$itemBgColor;
     color:#bcbcbc;
+    font-size:14px;
 
     &:first-of-type
     {
@@ -50,7 +52,7 @@
 {
     display:inline-flex;
     color:#FFF;
-    background-color: #2c2a35;
+    background-color: $iconContainerColor;
     position:absolute;
     top:0;
     left:0;
@@ -61,7 +63,7 @@
     
     i
     {
-        font-size:28px;
+        font-size:20px;
     }
 
 }
@@ -75,7 +77,7 @@
 {
     width:800px;
     height:600px;
-    background-color:#353340;
+    background-color:$contentBgColor;
     border-top-right-radius:5px;
     border-bottom-right-radius:5px;
 }
@@ -92,6 +94,14 @@
 #nav-user-container
 {
     padding:1em;
+    box-shadow: -1px 10px 5px 0px rgba(0,0,0,0.75);
+    overflow:hidden;
+    z-index:5;
+}
+
+#admin-nav-list
+{
+    margin-top:0.2em;
 }
 
 #nav-user-img-container
@@ -103,7 +113,7 @@
     height:$imgSize;
     border-radius:$imgSize;
     background-size:$imgSize;
-    border:2px solid #5dff9e;
+    border:2px solid $themeColor;
 }
 
 #nav-user-details-container
@@ -116,7 +126,8 @@
 #nav-user-name
 {
     color:#FFF;
-    font-size:20px;
+    font-size:18px;
+    font-family:$themeFont;
 }
 
 #nav-user-title
@@ -124,4 +135,19 @@
     color:#b0b0b0;
     font-size:16px;
     margin-top:-5px;
+}
+
+#admin-logout-btn
+{
+    background-color:$themeColor;
+    border-color:$themeColor;
+    font-family:$themeFont;
+    width:150px;
+    font-size:16px;
+    transition:0.5s ease-in-out;
+
+    &:hover
+    {
+        opacity:0.8;
+    }
 }

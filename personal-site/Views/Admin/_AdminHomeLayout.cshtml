@@ -19,7 +19,7 @@
                 <h5 id="nav-user-title">Administrator</h5>
             </div>
         </div>
-        <ul class="list-group">
+        <ul class="list-group" id="admin-nav-list">
             @{ string[] navItems = { "Dashboard", "Repositories", "My Blog", "Rss Feed", "Statistics", "Social Media" }; }
             @foreach (string navItem in navItems)
             {
@@ -67,7 +67,7 @@
 
 
         <div id="admin-nav-logout-container">
-            <button class="btn btn-success">
+            <button id="admin-logout-btn" class="btn btn-success">
                 <i class="fas fa-sign-out-alt"></i>
                  Logout
             </button>
