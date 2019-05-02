@@ -28,5 +28,35 @@ namespace personal_site.Controllers
         {
             return View();
         }
+
+        [AllowAnonymous]
+        public ActionResult Repositories()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Blog()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Rss()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Statistics()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult SocialMedia()
+        {
+            return View();
+        }
     }
 }
