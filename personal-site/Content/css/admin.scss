@@ -80,6 +80,8 @@ body
     background-color:$contentBgColor;
     border-top-right-radius:5px;
     border-bottom-right-radius:5px;
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.41);
+    padding:4em;
 }
 
 #admin-nav-logout-container
@@ -150,4 +152,12 @@ body
     {
         opacity:0.8;
     }
+}
+
+.admin-component-title
+{
+    color:#e8e8e8;
+    border-bottom:2px solid $themeColor;
+    display:inline;
+    padding-bottom:10px;
 }
