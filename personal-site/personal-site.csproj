@@ -308,6 +308,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\css\main.css" />
     <Content Include="Scripts\about.js" />
+    <Content Include="Scripts\admin\admin-core.js" />
     <Content Include="Scripts\admin\manage-repos.js" />
     <Content Include="Scripts\blog.js" />
     <Content Include="Scripts\conf.js" />
@@ -337,7 +338,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
     <Folder Include="fonts\" />
-    <Folder Include="Views\AbstractAuth\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -425,7 +425,7 @@
     <Content Include="Content\css\admin-login.scss" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\_AdminHomeLayout.cshtml" />
+    <Content Include="Views\Admin\_AdminPanelLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Repositories.cshtml" />

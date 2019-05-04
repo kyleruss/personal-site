@@ -1,3 +1,7 @@
+$(function()
+{
+    ManageRepos();
+});
 function ManageRepos()
 {
 };

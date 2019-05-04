@@ -1,4 +1,3 @@
 ﻿function ManageRepos()
 {
-    alert('test');
 };
