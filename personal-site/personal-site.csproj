@@ -303,12 +303,12 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\css\_commons.scss" />
-    <Content Include="Content\scripts\admin.js" />
     <Content Include="Content\scripts\auth-callback.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\css\main.css" />
     <Content Include="Scripts\about.js" />
+    <Content Include="Scripts\admin\manage-repos.js" />
     <Content Include="Scripts\blog.js" />
     <Content Include="Scripts\conf.js" />
     <Content Include="Scripts\contact.js" />
