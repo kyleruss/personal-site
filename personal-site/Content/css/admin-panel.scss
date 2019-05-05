@@ -157,7 +157,18 @@ body
 .admin-component-title
 {
     color:#e8e8e8;
-    border-bottom:2px solid $themeColor;
+    border-bottom:3px solid $themeColor;
     display:inline;
     padding-bottom:10px;
+}
+
+.inner-component-title
+{
+    font-family:$themeFont;
+
+}
+
+.components-container
+{
+    margin-top:3em;
 }

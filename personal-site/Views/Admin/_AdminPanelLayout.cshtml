@@ -89,11 +89,14 @@
     </div>
 
     <div id="component-content-container">
-        @RenderSection("AdminHomeComponent", required: true)
-    </div>
-</div>
+    <h2 class="admin-component-title">@RenderSection("AdminComponentTitle", required: true)</h2>
+        <div class="container components-container">
+            <div class="row">
+                @RenderSection("AdminHomeComponent", required: true)
+            </div>
+        </div>
 
-@section Javascript
+        @section Javascript
 {
-    @Scripts.Render("~/Content/scripts/admin-panel.js")
-}
+            @Scripts.Render("~/Content/scripts/admin-panel.js")
+        }
