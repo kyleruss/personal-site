@@ -165,7 +165,7 @@ body
 .inner-component-title
 {
     font-family:$themeFont;
-
+    display:inline;
 }
 
 .components-container
@@ -177,10 +177,20 @@ body
 {
     background-color:#33313d;
     color:#d8d8d8;
+    padding:0;
 
     .card-header
     {
         background-color:#28262f;
+      
+        i
+        {
+            font-size:7px;
+            display:inline-block;
+            vertical-align:4px;
+            padding-right:0.5em;
+            color:$themeColor;
+        }
     }
 }
 
