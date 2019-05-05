@@ -286,8 +286,8 @@
     <Content Include="Content\css\admin-login.min.css">
       <DependentUpon>admin-login.scss</DependentUpon>
     </Content>
-    <Content Include="Content\css\admin.min.css">
-      <DependentUpon>admin.scss</DependentUpon>
+    <Content Include="Content\css\admin-panel.min.css">
+      <DependentUpon>admin-panel.scss</DependentUpon>
     </Content>
     <Content Include="Content\css\error.min.css">
       <DependentUpon>error.scss</DependentUpon>
@@ -419,7 +419,7 @@
     <Content Include="Views\Admin\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\admin.scss" />
+    <Content Include="Content\css\admin-panel.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\admin-login.scss" />
@@ -432,6 +432,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Blog.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Rss.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Statistics.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\SocialMedia.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
