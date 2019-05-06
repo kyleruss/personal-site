@@ -254,3 +254,54 @@ body
     }
 }
 
+
+//===================================
+// SOCIAL MEDIA STYLES
+//===================================
+
+.social-media-display
+{
+    $socialDisplayDim: 100px;
+    width:$socialDisplayDim;
+    height:$socialDisplayDim;
+    border-radius:$socialDisplayDim;
+    background-color:transparent;
+    border:2px solid #4f38ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#e1e1e1;
+
+    i
+    {
+        font-size:48px;
+    }
+}
+
+.social-media-group
+{
+    align-items:center;
+
+    &:not(:first-child)
+    {
+        margin-top:2em;
+    }
+
+    input
+    {
+        margin-left:2em;
+        background-color:transparent;
+        border:0;
+        border-bottom:1px solid #FFF;
+        border-radius:0;
+        padding:0;
+
+        &:focus, &:active
+        {
+            background-color:transparent;
+            outline:none !important;
+            box-shadow:none !important;
+        }
+    }
+}
+

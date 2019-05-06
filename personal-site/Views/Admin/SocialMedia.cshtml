@@ -1,11 +1,24 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Admin/_AdminPanelLayout.cshtml";
+    string[] socialMedia = { "Twitter", "Github", "StackOverflow", "Rss", "Dribble" };
 }
 
 @section AdminComponentTitle { Social Media }
 
 @section AdminHomeComponent
 {
+    <div id="social-media-container">
+
+        @foreach (string socialItem in socialMedia)
+        {
+            <div class="input-group social-media-group">
+                <div class="social-media-display">
+                    <i class="fab fa-twitter"></i>
+                </div>
+
+                <input class="form-control social-media-input" type="text" id="@socialItem-item" name="social-input-@socialItem"/>
+            </div>
+        }
+    </div>
 }
 
