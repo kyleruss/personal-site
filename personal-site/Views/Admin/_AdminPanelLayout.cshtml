@@ -96,7 +96,12 @@
             </div>
         </div>
 
+        @section JavascriptDependencies
+        {
+            @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js")
+        }
+
         @section Javascript
-{
+        {
             @Scripts.Render("~/Content/scripts/admin-panel.js")
         }
