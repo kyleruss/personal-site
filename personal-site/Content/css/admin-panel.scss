@@ -178,6 +178,11 @@ body
     text-align:center;
 }
 
+.component-margin
+{
+    margin-left:1em;
+}
+
 .inner-component-card
 {
     background-color:#33313d;
@@ -198,6 +203,19 @@ body
             padding-right:0.5em;
             color:$themeColor;
         }
+    }
+}
+
+#repo-count-text
+{
+    font-family:'Proxima_regular';
+    margin-right:1em;
+    text-transform:uppercase;
+
+    .badge
+    {
+        display:inline-block;
+        vertical-align:2px;
     }
 }
 
