@@ -178,9 +178,14 @@ body
     text-align:center;
 }
 
-.component-margin
+.component-side-margin
 {
     margin-left:1em;
+}
+
+.component-upper-margin
+{
+    margin-top:2em;
 }
 
 .inner-component-card
@@ -208,7 +213,7 @@ body
 
 #repo-count-text
 {
-    font-family:'Proxima_regular';
+    font-family:'Futura_light';
     margin-right:1em;
     text-transform:uppercase;
 
@@ -216,6 +221,36 @@ body
     {
         display:inline-block;
         vertical-align:2px;
+    }
+}
+
+#repo-table
+{
+    color:#bcbcbc;
+
+    th
+    {
+        border-top:0;
+
+        &:first-child
+        {
+            border-bottom:3px solid #3988f5;
+        }
+
+        &:nth-child(2)
+        {
+            border-bottom:3px solid #38ff7e;
+        }
+
+        &:nth-child(3)
+        {
+            border-bottom:3px solid #fff838;
+        }
+
+        &:nth-child(4)
+        {
+            border-bottom:3px solid #ff3838;
+        }
     }
 }
 
