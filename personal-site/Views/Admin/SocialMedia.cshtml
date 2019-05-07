@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Views/Admin/_AdminPanelLayout.cshtml";
-    string[] socialMedia = { "Twitter", "Github", "StackOverflow", "Rss", "Dribble" };
+    string[] socialMedia = { "Twitter", "Github", "Dribble", "Rss", "StackOverflow" };
 }
 
 @section AdminComponentTitle { Social Media }
@@ -11,14 +11,44 @@
 
         @foreach (string socialItem in socialMedia)
         {
+            string iconClass = "";
+
+            switch (socialItem)
+            {
+                case "Twitter":
+                    iconClass = "fab fa-twitter";
+                    break;
+                    
+                case "Github":
+                    iconClass = "fab fa-github-alt";
+                    break;
+                    
+                case "StackOverflow":
+                    iconClass = "fab fa-stack-overflow";
+                    break;
+                    
+                case "Rss":
+                    iconClass = "fas fa-rss";
+                    break;
+                    
+                case "Dribble":
+                    iconClass = "fab fa-dribbble";
+                    break;
+            }
+            
+            
             <div class="input-group social-media-group">
-                <div class="social-media-display">
-                    <i class="fab fa-twitter"></i>
+                <div class="social-media-display" id="@socialItem-display">
+                    <i class="@iconClass"></i>
                 </div>
 
-                <input class="form-control social-media-input" type="text" id="@socialItem-item" name="social-input-@socialItem"/>
+                <input class="form-control social-media-input" type="text" id="@socialItem-item" name="social-input-@socialItem" />
             </div>
         }
+
+        <div id="social-btn-container">
+            <button class="btn btn-lg btn-success" id="social-update-btn"><i class="far fa-arrow-alt-circle-up"></i> Update</button>
+        </div>
     </div>
 }
 

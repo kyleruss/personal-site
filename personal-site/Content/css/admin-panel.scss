@@ -82,6 +82,7 @@ body
     border-bottom-right-radius:5px;
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.41);
     padding:4em;
+    overflow:hidden;
 }
 
 #admin-nav-logout-container
@@ -281,6 +282,7 @@ body
 .social-media-group
 {
     align-items:center;
+    width:500px;
 
     &:not(:first-child)
     {
@@ -295,13 +297,56 @@ body
         border-bottom:1px solid #FFF;
         border-radius:0;
         padding:0;
+        color:#FFF;
+        font-size:20x;
 
         &:focus, &:active
         {
             background-color:transparent;
             outline:none !important;
             box-shadow:none !important;
+            color:#FFF;
+            font-size:20px;
         }
+    }
+
+    $displayBorder: 3px;
+
+    #Twitter-display
+    {
+        border:$displayBorder solid #1493ff;
+    }
+
+    #Rss-display
+    {
+        border:$displayBorder solid #ffa914;
+    }
+
+    #Github-display
+    {
+        border:$displayBorder solid #a32ffc;
+    }
+
+   #StackOverflow-display
+   {
+       border:$displayBorder solid #fc4137;
+   }
+
+    #Dribble-display
+    {
+        border:$displayBorder solid #37fc6a;
+    }
+}
+
+#social-btn-container
+{
+    margin-top:2em;
+    padding-bottom:2em;
+    text-align:center;
+
+    .btn
+    {
+        margin-left:5em;
     }
 }
 
