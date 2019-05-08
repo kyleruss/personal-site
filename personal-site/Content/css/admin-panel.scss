@@ -350,3 +350,18 @@ body
     }
 }
 
+#rss-items-list
+{
+    margin-top:0.5em;
+
+    .rss-item
+    {
+        background-color:inherit;
+
+        .close
+        {
+            color:#FFF;
+        }
+    }
+}
+
