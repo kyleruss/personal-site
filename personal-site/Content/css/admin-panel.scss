@@ -365,3 +365,29 @@ body
     }
 }
 
+//======================================
+// BLOG STYLES
+//======================================
+
+#blog-list
+{
+    margin-top:1.5em;
+    li
+    {
+        background-color:inherit;
+    }
+}
+
+#blog-stats
+{
+    font-size:18px;
+    font-family:'Proxima_bold';
+    color:#ffe033;
+    line-height:2;
+}
+
+#blog-new-btn
+{
+    float:right;
+    line-height:1;
+}
