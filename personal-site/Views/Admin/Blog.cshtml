@@ -19,11 +19,15 @@
             </div>
 
             <ul class="list-group" id="blog-list">
-                <li class="list-group-item blog-post-item">Blog Post #1</li>
-                <li class="list-group-item blog-post-item">Blog Post #2</li>
-                <li class="list-group-item blog-post-item">Blog Post #3</li>
-                <li class="list-group-item blog-post-item">Blog Post #4</li>
-                <li class="list-group-item blog-post-item">Blog Post #5</li>
+                @for (var i = 0; i < 5; i++)
+                {
+                    <li class="list-group-item blog-post-item">
+                        Blog Post #@i
+                        <span class="close"><i class="far fa-edit"></i></span>
+                        <span class="close">&times;</span>
+                    </li>
+                }
+
             </ul>
         </div>
     </div>
