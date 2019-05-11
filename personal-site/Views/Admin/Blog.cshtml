@@ -15,14 +15,14 @@
         <div class="card-body">
             <div id="admin-blog-controls">
                 <span id="blog-stats"><i class="fas fa-chart-bar"></i> <span id="blog-stat-text">5 Blog Posts</span></span>
-                <button class="btn btn-lg btn-success" id="blog-new-btn"><i class="fas fa-plus"></i> New Blog</button>
+                <button data-toggle="modal" data-target="#blog-edit-modal" class="btn btn-lg btn-success" id="blog-new-btn"><i class="fas fa-plus"></i> New Blog</button>
             </div>
 
             <ul class="list-group" id="blog-list">
                 @for (var i = 0; i < 5; i++)
                 {
                     <li class="list-group-item blog-post-item">
-                        Blog Post #@i
+                        <span class="blog-post-item-title">Blog Post #@i</span>
                         <span class="close"><i class="far fa-edit"></i></span>
                         <span class="close">&times;</span>
                     </li>
@@ -31,5 +31,7 @@
             </ul>
         </div>
     </div>
+
+
 }
 

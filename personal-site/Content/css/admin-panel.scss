@@ -382,7 +382,7 @@ body
 {
     font-size:18px;
     font-family:'Proxima_bold';
-    color:#ffe033;
+    //color:#ffe033;
     line-height:2;
 }
 
@@ -410,5 +410,10 @@ body
     {
         padding-left:0.5em;
         font-size:1.2rem;
+    }
+
+    .blog-post-item-title
+    {
+        text-transform:uppercase;
     }
 }
