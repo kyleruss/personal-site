@@ -32,6 +32,42 @@
         </div>
     </div>
 
+    <div class="modal fade" id="blog-edit-modal" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>
+                        Create Blog Post
+                        <br />
+                        <small>Enter the blog details below to save a blog post</small>
+                    </h2>
+                    <button data-dismiss="modal" class="close">&times;</button>
+                </div>
 
+                <div class="modal-body" id="blog-edit-modal-body">
+                    <form id="blog-edit-form">
+                        <div class="form-group row">
+                            <h5 class="blog-edit-form-headers col-md-3">Title</h5>
+                            <input class="form-control col-md-8" id="blog-edit-title" placeholder="Enter blog post title" />
+                        </div>
+
+                        <div class="form-group row">
+                            <h5 class="blog-edit-form-headers col-md-3">Description</h5>
+                            <input class="form-control col-md-8" id="blog-edit-desc" placeholder="Enter blog post description" />
+                        </div>
+
+                        <div class="form-group row" id="blog-edit-area-container">
+                            <textarea class="form-control col-md-11" id="blog-edit-area" rows="10" placeholder="Enter your blog post content"></textarea>
+                        </div>
+
+                        <div class="btn-group" id="blog-edit-form-controls" role="group">
+                            <button class="btn btn-lg btn-primary">Go Back</button>
+                            <button class="btn btn-lg btn-success">Save Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 
