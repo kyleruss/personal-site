@@ -212,6 +212,10 @@ body
     }
 }
 
+//================================
+// REPO STYLES
+//================================
+
 #repo-count-text
 {
     font-family:'Futura_light';
@@ -350,6 +354,10 @@ body
     }
 }
 
+//================================
+// RSS STYLES
+//================================
+
 #rss-items-list
 {
     margin-top:0.5em;
@@ -362,6 +370,31 @@ body
         {
             color:#FFF;
         }
+    }
+}
+
+#rss-channel-component, #rss-items-component
+{
+    .form-control
+    {
+        background-color:inherit;
+        border:1px solid #6493ff;
+        color:#FFF;
+        border-radius:5px;
+    }
+
+    .rss-form-label
+    {
+        font-weight:bold;
+    }
+}
+
+#rss-items-component
+{
+    .form-control
+    {
+        border-top-right-radius:0;
+        border-bottom-right-radius :0;
     }
 }
 
@@ -447,5 +480,7 @@ body
     #blog-edit-form-controls
     {
         text-align:center;
+        display:block;
+        margin-top:2em;
     }
 }

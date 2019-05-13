@@ -8,7 +8,7 @@
 @section AdminHomeComponent
 {
     <div class="col-md-6">
-        <div class="card inner-component-card col-md-12">
+        <div class="card inner-component-card col-md-12" id="rss-channel-component">
             <div class="card-header">
                 <span class="inner-component-title"><i class="fas fa-circle"></i> Channel Settings</span>
             </div>
@@ -16,17 +16,17 @@
             <div class="card-body">
                 <div class="form-group">
                     <label class="rss-form-label">Name</label>
-                    <input class="form-control" />
+                    <input class="form-control" placeholder="Enter the channel name" />
                 </div>
 
                 <div class="form-group">
                     <label class="rss-form-label">Description</label>
-                    <input class="form-control" />
+                    <input class="form-control" placeholder="Enter the channel description"/>
                 </div>
 
                 <div class="form-group">
                     <label class="rss-form-label">Image</label>
-                    <input class="form-control" />
+                    <input class="form-control" placeholder="Enter the URL Image"/>
                 </div>
 
                 <div class="center-body">
@@ -37,7 +37,7 @@
     </div>
 
     <div class="col-md-6">
-        <div class="card inner-component-card col-md-12">
+        <div class="card inner-component-card col-md-12" id="rss-items-component">
             <div class="card-header">
                 <span class="inner-component-title"><i class="fas fa-circle"></i> Manage Items</span>
             </div>
