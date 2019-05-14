@@ -24,7 +24,7 @@ namespace personal_site.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Home()
+        public ActionResult Dashboard()
         {
             return View();
         }
