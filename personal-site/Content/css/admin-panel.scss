@@ -216,7 +216,34 @@ body
 // DASHBOARD STYLES
 //================================
 
+.dashboard-mini-stat-container
+{
+    display:inline-block;
+    margin-left:0.5em;
 
+    h1
+    {
+        font-family:'AllerDisplay'
+    }
+
+    h5
+    {
+        line-height:0;
+        margin-left:0.4em;
+        font-family:'Antipastopro';
+    }
+}
+
+.dashboard-stat-card
+{
+    max-width:32.5%;
+    flex:0 0 32.5%;
+}
+
+.dashboard-mini-stat-icon
+{
+    vertical-align:10px;
+}
 
 
 //================================
