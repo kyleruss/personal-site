@@ -277,7 +277,7 @@
     <Compile Include="Services\ContactService.cs" />
     <Compile Include="Services\RepositoryService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\AdminLoginViewModel.cs" />
+    <Compile Include="ViewModels\AdminViewModels.cs" />
     <Compile Include="ViewModels\AuthCallbackViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
