@@ -14,4 +14,24 @@ namespace personal_site.ViewModels
         [Required]
         public string Password { get; set; }
     }
+
+    public class AdminBlogEditModel
+    {
+        [Required]
+        public string Title { get; set; }
+
+        [Required]
+        public string Description { get; set; }
+
+        [Required]
+        public string Content { get; set; }
+
+        public int PostId { get; set; }
+    }
+
+    public class AdminEntityRemovalModel
+    {
+        [Required]
+        public int EntityId { get; set; }
+    }
 }
