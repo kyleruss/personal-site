@@ -245,10 +245,36 @@ body
     vertical-align:10px;
 }
 
-#dashboard-graph-container
+#dashboard-graph-container, #dashboard-controls-container
 {
     margin-top:1em;
-    height:250px;
+}
+
+#dashboard-graph-container
+{
+    height:245px;
+    max-width:66%;
+    flex:0 0 66%;
+}
+
+#dashboard-controls-container
+{
+    max-width:32.5%;
+    flex:0 0 32.5%;
+    position:relative;
+    display:flex;
+    min-width:0;
+
+}
+
+#server-stats-card
+{
+    max-width:100%;
+}
+
+#server-maintenance-btn, #server-shutdown-btn
+{
+    margin-top:1em;
 }
 
 
