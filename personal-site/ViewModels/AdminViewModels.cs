@@ -28,7 +28,7 @@ namespace personal_site.ViewModels
 
         public string PostImage { get; set; }
 
-        public int PostId { get; set; }
+        public int? PostId { get; set; }
     }
 
     public class AdminEntityRemovalViewModel

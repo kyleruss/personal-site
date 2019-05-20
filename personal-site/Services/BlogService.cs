@@ -43,7 +43,55 @@ namespace personal_site.Services
             }
         }
 
-      
+        public async Task<BlogPost> SaveBlogPost(AdminBlogEditViewModel blogModel)
+        {
+            BlogPost blogPost;
+            bool isUpdate = blogModel.PostId > 0;
+
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                if (isUpdate)
+                    blogPost = await context.BlogPosts.SingleOrDefaultAsync(x => x.PostId == blogModel.PostId);
+                    
+                else
+                    blogPost = new BlogPost();
+
+                blogPost.PostContent = blogModel.Content;
+                blogPost.Title = blogModel.Title;
+                blogPost.PostImage = blogModel.PostImage;
+                blogPost.Description = blogModel.Description;
+
+                if (!isUpdate)
+                    context.BlogPosts.Add(blogPost);
+
+                int blogSaved = await context.SaveChangesAsync();
+
+                return (blogSaved > 0)? blogPost : null;
+            };
+        }
+
+        public async Task<bool> RemoveBlogPost(int id)
+        {
+            using(ApplicationDbContext context = new ApplicationDbContext())
+            {
+                BlogPost blogPost = new BlogPost() { PostId = id };
+                context.BlogPosts.Attach(blogPost);
+                context.BlogPosts.Remove(blogPost);
+                return await context.SaveChangesAsync() > 0;
+            };
+        }
+
+        public async Task<bool> RemoveBlogPostComment(int id)
+        {
+            using(ApplicationDbContext context = new ApplicationDbContext())
+            {
+                BlogPostComment comment = new BlogPostComment() { CommentId = id };
+                context.BlogPostComments.Attach(comment);
+                context.BlogPostComments.Remove(comment);
+                return await context.SaveChangesAsync() > 0;
+            }
+        }
+
         public async Task<BlogPostComment> CreateComment(CommentViewModel commentModel, string userId)
         {
             BlogPostComment comment;
