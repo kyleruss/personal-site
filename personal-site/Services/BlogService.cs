@@ -43,6 +43,8 @@ namespace personal_site.Services
             }
         }
 
+
+
         public async Task<BlogPostComment> CreateComment(CommentViewModel commentModel, string userId)
         {
             BlogPostComment comment;

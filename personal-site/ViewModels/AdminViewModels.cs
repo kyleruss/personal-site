@@ -26,6 +26,8 @@ namespace personal_site.ViewModels
         [Required]
         public string Content { get; set; }
 
+        public string PostImage { get; set; }
+
         public int PostId { get; set; }
     }
 
