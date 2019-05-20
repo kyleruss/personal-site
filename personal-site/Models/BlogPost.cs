@@ -15,6 +15,8 @@ namespace personal_site.Models
 
         public string Title { get; set; }
 
+        public string Description { get; set; }
+
         public string PostContent { get; set; }
 
         public string PostImage { get; set; }

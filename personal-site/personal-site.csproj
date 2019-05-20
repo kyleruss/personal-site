@@ -260,6 +260,10 @@
     <Compile Include="Migrations\201904270046502_Add_UserId_ForeignKey.Designer.cs">
       <DependentUpon>201904270046502_Add_UserId_ForeignKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905201200350_Add_Blog_Description_Field.cs" />
+    <Compile Include="Migrations\201905201200350_Add_Blog_Description_Field.Designer.cs">
+      <DependentUpon>201905201200350_Add_Blog_Description_Field.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -363,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904270046502_Add_UserId_ForeignKey.resx">
       <DependentUpon>201904270046502_Add_UserId_ForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905201200350_Add_Blog_Description_Field.resx">
+      <DependentUpon>201905201200350_Add_Blog_Description_Field.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
