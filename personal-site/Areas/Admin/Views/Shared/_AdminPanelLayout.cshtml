@@ -24,44 +24,44 @@
             @foreach (string navItem in navItems)
             {
                 string iconClass = "";
-                string actionName = "";
+                string controllerName = "";
                 string navUrl = "";
 
                 switch (navItem)
                 {
                     case "Dashboard":
                         iconClass = "fas fa-home";
-                        actionName = "Home";
+                        controllerName = "Dashboard";
                         break;
 
                     case "Repositories":
                         iconClass = "fab fa-github-alt";
-                        actionName = "Repositories";
+                        controllerName = "Repository";
                         break;
 
                     case "My Blog":
                         iconClass = "fas fa-pencil-alt";
-                        actionName = "Blog";
+                        controllerName = "Blog";
                         break;
 
                     case "Rss Feed":
                         iconClass = "fas fa-rss";
-                        actionName = "Rss";
+                        controllerName = "Rss";
                         break;
 
                     case "Statistics":
                         iconClass = "fas fa-chart-line";
-                        actionName = "Statistics";
+                        controllerName = "Statistics";
                         break;
 
                     case "Social Media":
                         iconClass = "fab fa-twitter";
-                        actionName = "SocialMedia";
+                        controllerName = "Social";
                         break;
                         
                 }
-                
-                navUrl = @Url.Action(actionName, "Admin", null, Request.Url.Scheme);
+
+                navUrl = Url.Action("Index", controllerName, new { Area = "Admin" });
                 
                 
 

@@ -348,7 +348,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Dashboard\" />
     <Folder Include="Areas\Portfolio\Models\" />
     <Folder Include="Content\images\" />
     <Folder Include="fonts\" />
