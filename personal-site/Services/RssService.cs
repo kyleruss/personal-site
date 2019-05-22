@@ -1,6 +1,7 @@
 ﻿using personal_site.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Xml;
@@ -14,34 +15,64 @@ namespace personal_site.Services
 
         private RssService() { }
 
-        public void UpdateChannel(AdminRssChannelViewModel model)
+        public bool UpdateChannel(AdminRssChannelViewModel model)
         {
-            XmlDocument rssDoc = GetRssXmlDoc();
-            XmlNode channelNode = rssDoc.SelectSingleNode("/rss/channel");
-            channelNode.SelectSingleNode("/title").InnerText = model.Name;
-            channelNode.SelectSingleNode("/description").InnerText = model.Description;
-            channelNode.SelectSingleNode("/image").InnerText = model.ImageUrl;
+            try
+            {
+                XmlDocument rssDoc = GetRssXmlDoc();
+                XmlNode channelNode = rssDoc.SelectSingleNode("/rss/channel");
+                channelNode.SelectSingleNode("/title").InnerText = model.Name;
+                channelNode.SelectSingleNode("/description").InnerText = model.Description;
+                channelNode.SelectSingleNode("/image").InnerText = model.ImageUrl;
 
-            SaveRssXmlDoc(rssDoc);
+                SaveRssXmlDoc(rssDoc);
+                return true;
+            }
+
+            catch(Exception e)
+            {
+                Debug.WriteLine("[Rss-UpdateChannel Exception] " + e.Message);
+                return false;
+            }
         }
 
-        public void PushUpdate(AdminRssItemViewModel model)
+        public bool PushUpdate(AdminRssItemViewModel model)
         {
-            XmlDocument rssDoc = GetRssXmlDoc();
-            XmlNode itemsNode = rssDoc.SelectSingleNode("/rss/items");
-            XmlNode currentItemNode = rssDoc.CreateElement("item");
+            try
+            {
+                XmlDocument rssDoc = GetRssXmlDoc();
+                XmlNode itemsNode = rssDoc.SelectSingleNode("/rss/items");
+                XmlNode currentItemNode = rssDoc.CreateElement("item");
 
-            itemsNode.PrependChild(currentItemNode);
-            SaveRssXmlDoc(rssDoc);
+                itemsNode.PrependChild(currentItemNode);
+                SaveRssXmlDoc(rssDoc);
+                return true;
+            }
+
+            catch (Exception e)
+            {
+                Debug.WriteLine("[Rss-PushUpdate Exception] " + e.Message);
+                return false;
+            }
         }
 
-        public void RemoveItem(int id)
+        public bool RemoveItem(int id)
         {
-            XmlDocument rssDoc = GetRssXmlDoc();
-            XmlNode itemsNode = rssDoc.SelectSingleNode("/rss/items/item[@id='" + id + "'");
-            itemsNode.ParentNode.RemoveChild(itemsNode);
+            try
+            {
+                XmlDocument rssDoc = GetRssXmlDoc();
+                XmlNode itemsNode = rssDoc.SelectSingleNode("/rss/items/item[@id='" + id + "'");
+                itemsNode.ParentNode.RemoveChild(itemsNode);
 
-            SaveRssXmlDoc(rssDoc);
+                SaveRssXmlDoc(rssDoc);
+                return true;
+            }
+
+            catch (Exception e)
+            {
+                Debug.WriteLine("[Rss-RemoveItem Exception] " + e.Message);
+                return false;
+            }
         }
 
         private XmlDocument GetRssXmlDoc()
