@@ -8,10 +8,9 @@ namespace personal_site.Areas.Admin.Controllers
 {
     public class BlogController : Controller
     {
-        // GET: Admin/Blog
         public ActionResult Index()
         {
-            return View();
+            return View("../Blog");
         }
     }
 }

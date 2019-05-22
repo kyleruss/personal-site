@@ -8,10 +8,9 @@ namespace personal_site.Areas.Admin.Controllers
 {
     public class SocialController : Controller
     {
-        // GET: Admin/Social
         public ActionResult Index()
         {
-            return View();
+            return View("../SocialMedia");
         }
     }
 }

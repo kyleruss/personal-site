@@ -8,10 +8,9 @@ namespace personal_site.Areas.Admin.Controllers
 {
     public class RssController : Controller
     {
-        // GET: Admin/Rss
         public ActionResult Index()
         {
-            return View();
+            return View("../Rss");
         }
     }
 }

@@ -229,7 +229,7 @@
     <Compile Include="Areas\Portfolio\PortfolioAreaRegistration.cs" />
     <Compile Include="Controllers\AbstractAuthController.cs" />
     <Compile Include="Areas\Portfolio\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Portfolio\Controllers\BlogController.cs" />
     <Compile Include="Areas\Portfolio\Controllers\ContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -347,9 +347,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Blog\" />
-    <Folder Include="Areas\Admin\Views\Rss\" />
-    <Folder Include="Areas\Admin\Views\Social\" />
     <Folder Include="Areas\Portfolio\Models\" />
     <Folder Include="Content\images\" />
     <Folder Include="fonts\" />
