@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using personal_site.Controllers;
 using personal_site.Models;
 using personal_site.Services;
 using personal_site.Services.AuthHandlers;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace personal_site.Controllers
+namespace personal_site.Areas.Portfolio.Controllers
 {
     [Authorize]
     public class AccountController : AbstractAuthController

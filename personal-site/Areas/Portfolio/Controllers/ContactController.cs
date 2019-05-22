@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
-namespace personal_site.Controllers
+namespace personal_site.Areas.Portfolio.Controllers
 {
     public class ContactController : Controller
     {

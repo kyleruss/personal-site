@@ -4,9 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace personal_site.Controllers
+namespace personal_site.Areas.Portfolio.Controllers
 {
     [RequireHttps]
+    [RouteArea("Portfolio")]
     public class HomeController : Controller
     {
         public ActionResult Index()

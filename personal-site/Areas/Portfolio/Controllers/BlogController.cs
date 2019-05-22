@@ -14,7 +14,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System.Text;
 
-namespace personal_site.Controllers
+namespace personal_site.Areas.Portfolio.Controllers
 {
     public class BlogController : Controller
     {

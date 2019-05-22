@@ -15,11 +15,14 @@ namespace personal_site
 
             routes.MapMvcAttributeRoutes();
 
-            routes.MapRoute(
+            var route = routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "personal_site.Areas.Portfolio.Controllers" }
             );
+
+            route.DataTokens["area"] = "Portfolio";
         }
     }
 }

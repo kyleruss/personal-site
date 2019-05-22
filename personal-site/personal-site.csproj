@@ -221,13 +221,19 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RepositoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RssController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SocialController.cs" />
+    <Compile Include="Areas\Portfolio\PortfolioAreaRegistration.cs" />
     <Compile Include="Controllers\AbstractAuthController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
-    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Areas\Portfolio\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Portfolio\Controllers\BlogController.cs" />
+    <Compile Include="Areas\Portfolio\Controllers\ContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Areas\Portfolio\Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -332,17 +338,22 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Modules\_Portfolio.cshtml" />
-    <Content Include="Views\Modules\_Blog.cshtml" />
-    <Content Include="Views\Modules\_Footer.cshtml" />
-    <Content Include="Views\Modules\_Contact.cshtml" />
+    <Content Include="Areas\Portfolio\Views\Modules\_Portfolio.cshtml" />
+    <Content Include="Areas\Portfolio\Views\Modules\_Blog.cshtml" />
+    <Content Include="Areas\Portfolio\Views\Modules\_Footer.cshtml" />
+    <Content Include="Areas\Portfolio\Views\Modules\_Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Blog\" />
+    <Folder Include="Areas\Admin\Views\Rss\" />
+    <Folder Include="Areas\Admin\Views\Social\" />
+    <Folder Include="Areas\Portfolio\Models\" />
     <Folder Include="Content\images\" />
     <Folder Include="fonts\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -374,7 +385,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Areas\Portfolio\Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\main.css.map">
@@ -397,22 +408,22 @@
     <Content Include="Content\css\_fonts.scss" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Modules\_Home.cshtml" />
+    <Content Include="Areas\Portfolio\Views\Modules\_Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Modules\_About.cshtml" />
+    <Content Include="Areas\Portfolio\Views\Modules\_About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\_about.scss" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Policy.cshtml" />
+    <Content Include="Areas\Portfolio\Views\Home\Policy.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Terms.cshtml" />
+    <Content Include="Areas\Portfolio\Views\Home\Terms.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Blog\SocialAuthCallback.cshtml" />
+    <Content Include="Areas\Portfolio\Views\Blog\SocialAuthCallback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Error\Error.cshtml" />
@@ -421,10 +432,10 @@
     <Content Include="Content\css\error.scss" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\admin-panel.scss" />
@@ -433,22 +444,31 @@
     <Content Include="Content\css\admin-login.scss" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\_AdminPanelLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminPanelLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\Repositories.cshtml" />
+    <Content Include="Areas\Admin\Views\Repository.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\Blog.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\Rss.cshtml" />
+    <Content Include="Areas\Admin\Views\Rss.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\Statistics.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\SocialMedia.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialMedia.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Portfolio\Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Portfolio\Views\_ViewStart.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
