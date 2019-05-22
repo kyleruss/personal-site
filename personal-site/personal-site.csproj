@@ -223,6 +223,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\RepositoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\RssController.cs" />
     <Compile Include="Areas\Admin\Controllers\SocialController.cs" />
@@ -347,6 +348,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Dashboard\" />
     <Folder Include="Areas\Portfolio\Models\" />
     <Folder Include="Content\images\" />
     <Folder Include="fonts\" />
