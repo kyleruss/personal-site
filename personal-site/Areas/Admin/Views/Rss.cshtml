@@ -14,24 +14,27 @@
             </div>
 
             <div class="card-body">
-                <div class="form-group">
-                    <label class="rss-form-label">Name</label>
-                    <input class="form-control" placeholder="Enter the channel name" />
-                </div>
+                @using(Html.BeginForm("UpdateRssChannel", "Rss", new { Area = "Admin" }, FormMethod.Post, new { id = "admin-rss-chanel-form", role = "form" }))
+                {
+                    <div class="form-group">
+                        <label class="rss-form-label">Name</label>
+                        <input class="form-control" placeholder="Enter the channel name" />
+                    </div>
 
-                <div class="form-group">
-                    <label class="rss-form-label">Description</label>
-                    <input class="form-control" placeholder="Enter the channel description"/>
-                </div>
+                    <div class="form-group">
+                        <label class="rss-form-label">Description</label>
+                        <input class="form-control" placeholder="Enter the channel description"/>
+                    </div>
 
-                <div class="form-group">
-                    <label class="rss-form-label">Image</label>
-                    <input class="form-control" placeholder="Enter the URL Image"/>
-                </div>
+                    <div class="form-group">
+                        <label class="rss-form-label">Image</label>
+                        <input class="form-control" placeholder="Enter the URL Image"/>
+                    </div>
 
-                <div class="center-body">
-                    <button class="btn btn-success"><i class="far fa-arrow-alt-circle-up"></i> Update</button>
-                </div>
+                    <div class="center-body">
+                        <button type="submit" id="channel-update-btn" class="btn btn-success"><i class="far fa-arrow-alt-circle-up"></i> Update</button>
+                    </div>
+                }
             </div>
         </div>
     </div>
@@ -43,12 +46,15 @@
             </div>
 
             <div class="card-body">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Item Description" />
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">Add</button>
+                @using(Html.BeginForm("PushRssUpdate", "Rss", new { Area = "Admin" }, FormMethod.Post, new { id = "admin-rss-item-form", role = "form" }))
+                {
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Item Description" />
+                        <div class="input-group-append">
+                            <button id="rss-item-add-btn" class="btn btn-primary" type="button">Add</button>
+                        </div>
                     </div>
-                </div>
+                }
 
                 <ul class="list-group" id="rss-items-list">
                     <li class="list-group-item rss-item"><span class="badge badge-success">blog</span> <span class="rss-item-text">Post #1</span> <button class="close">&times;</button></li>

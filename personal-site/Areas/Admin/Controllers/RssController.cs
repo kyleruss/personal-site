@@ -16,6 +16,7 @@ namespace personal_site.Areas.Admin.Controllers
             return View("../Rss");
         }
 
+        [HttpPost]
         public JsonResult UpdateRssChannel(AdminRssChannelViewModel model)
         {
             RssService service = RssService.GetInstance();
@@ -27,6 +28,8 @@ namespace personal_site.Areas.Admin.Controllers
                 return ControllerHelper.JsonActionResponse(false, "Failed to save Channel Settings");
         }
 
+
+        [HttpPost]
         public ActionResult PushRssUpdate(AdminRssItemViewModel model)
         {
             RssService service = RssService.GetInstance();
@@ -38,6 +41,7 @@ namespace personal_site.Areas.Admin.Controllers
                 return ControllerHelper.JsonActionResponse(false, "Failed to push update");
         }
 
+        [HttpPost]
         public JsonResult RemoveRssItem(int id)
         {
             RssService service = RssService.GetInstance();

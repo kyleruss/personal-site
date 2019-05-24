@@ -351,7 +351,6 @@
     <Folder Include="Areas\Portfolio\Models\" />
     <Folder Include="Content\images\" />
     <Folder Include="fonts\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -36,7 +36,9 @@ module.exports = function (grunt)
                 src:
                     [
                         'Scripts/admin/admin-core.js',
-                        'Scripts/admin/manage-repos.js'
+                        'Scripts/admin/manage-repos.js',
+                        'Scripts/admin/manage-blog.js',
+                        'Scripts/admin/manage-rss.js',
                     ],
                 dest: 'Content/Scripts/admin-panel.js'
             }
