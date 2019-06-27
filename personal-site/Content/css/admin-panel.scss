@@ -464,16 +464,26 @@ body
     }
 }
 
+.rss-item
+{
+    color:#FFF;
+
+    &:hover
+    {
+        text-decoration:none;
+        color:#FFF;
+    }
+}
+
+
 //======================================
 // BLOG STYLES
 //======================================
+#blog-list {
+    margin-top: 1.5em;
 
-#blog-list
-{
-    margin-top:1.5em;
-    li
-    {
-        background-color:inherit;
+    li {
+        background-color: inherit;
     }
 }
 
