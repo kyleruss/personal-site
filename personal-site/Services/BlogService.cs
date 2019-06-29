@@ -23,7 +23,7 @@ namespace personal_site.Services
 
         private BlogService() { }
 
-        public async Task<string> GetBlogs()
+        public async Task<string> GetBlogsPosts()
         {
             using(ApplicationDbContext context = new ApplicationDbContext())
             {

@@ -29,6 +29,15 @@ namespace personal_site.Helpers
             };
         }
 
+        public static JsonResult JsonObjectResponse(dynamic jsonData)
+        {
+            return new JsonResult()
+            {
+                Data = jsonData,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
         public static IEnumerable GetModelStateErrors(ModelStateDictionary state)
         {
             return state.Keys.Where(i => state[i].Errors.Count > 0)
