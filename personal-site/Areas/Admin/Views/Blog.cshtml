@@ -45,7 +45,8 @@
                 </div>
 
                 <div class="modal-body" id="blog-edit-modal-body">
-                    <form id="blog-edit-form">
+                    @using (Html.BeginForm("SaveBlogPost", "Blog", new { Area = "Admin" }, FormMethod.Post, new { id = "blog-edit-form", role = "form" }))
+                    {
                         <div class="form-group row">
                             <h5 class="blog-edit-form-headers col-md-3">Title</h5>
                             <input class="form-control col-md-8" id="blog-edit-title" placeholder="Enter blog post title" />
@@ -66,7 +67,7 @@
                                 <button class="btn btn-lg btn-success"><i class="far fa-check-circle"></i> Save Post</button>
                             </div>
                         </div>
-                    </form>
+                    }
                 </div>
             </div>
         </div>
