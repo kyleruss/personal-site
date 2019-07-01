@@ -79,3 +79,4 @@ repository-data.json
 api-config.json
 *.otf
 *.ttf
+.vs/*
