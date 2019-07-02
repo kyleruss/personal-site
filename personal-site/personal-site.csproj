@@ -290,6 +290,7 @@
     <Compile Include="Services\ContactService.cs" />
     <Compile Include="Services\RepositoryService.cs" />
     <Compile Include="Services\RssService.cs" />
+    <Compile Include="Services\SocialMediaService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AdminViewModels.cs" />
     <Compile Include="ViewModels\AuthCallbackViewModel.cs" />
