@@ -24,6 +24,12 @@ namespace personal_site.Models
         [JsonIgnore]
         public virtual List<BlogPostComment> Comments { get; set; }
 
-        public DateTime TimePosted { get; set; }
+        private DateTime? timePosted = null;
+
+        public DateTime TimePosted
+        {
+            get { return this.timePosted ?? DateTime.Now; }
+            set { this.timePosted = value; }
+        }
     }
 }

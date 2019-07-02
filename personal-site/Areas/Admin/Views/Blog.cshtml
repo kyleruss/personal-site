@@ -1,4 +1,5 @@
-﻿
+﻿@model personal_site.ViewModels.AdminBlogEditViewModel
+
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminPanelLayout.cshtml";
 }
@@ -49,22 +50,25 @@
                     {
                         <div class="form-group row">
                             <h5 class="blog-edit-form-headers col-md-3">Title</h5>
-                            <input class="form-control col-md-8" id="blog-edit-title" placeholder="Enter blog post title" />
+                            @Html.TextBoxFor(m => m.Title,
+                            new { @class = "form-control col-md-8", id="blog-edit-title", placeholder="Enter Blog post title" })
                         </div>
 
                         <div class="form-group row">
                             <h5 class="blog-edit-form-headers col-md-3">Description</h5>
-                            <input class="form-control col-md-8" id="blog-edit-desc" placeholder="Enter blog post description" />
+                            @Html.TextBoxFor(m => m.Description,
+                            new { @class = "form-control col-md-8", id="blog-edit-desc", placeholder="Enter Blog post description" })
                         </div>
 
                         <div class="form-group row" id="blog-edit-area-container">
-                            <textarea class="form-control col-md-11" id="blog-edit-area" rows="10" placeholder="Enter your blog post content"></textarea>
+                            @Html.TextAreaFor(m => m.Content,
+                            new { @class = "form-control col-md-11", id = "blog-edit-area", rows="10", placeholder = "Enter your blog post content" })
                         </div>
 
                         <div class="row" id="blog-edit-form-controls">
                             <div class="btn-group" role="group">
-                                <button class="btn btn-lg btn-primary"><i class="far fa-arrow-alt-circle-left"></i> Go Back</button>
-                                <button class="btn btn-lg btn-success"><i class="far fa-check-circle"></i> Save Post</button>
+                                <button data-dismiss="modal" class="btn btn-lg btn-primary"><i class="far fa-arrow-alt-circle-left"></i> Go Back</button>
+                                <button type="submit" class="btn btn-lg btn-success"><i class="far fa-check-circle"></i> Save Post</button>
                             </div>
                         </div>
                     }
