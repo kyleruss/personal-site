@@ -11,7 +11,6 @@ namespace personal_site.Services
     public class RssService
     {
         private static RssService _instance;
-        
 
         private RssService() { }
 
