@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Xml;
@@ -16,21 +17,31 @@ namespace personal_site.Services
 
         private SocialMediaService() { }
 
-        public void UpdateSocialConfig(AdminSocialMediaViewModel model)
+        public bool UpdateSocialConfig(AdminSocialMediaViewModel model) 
         {
-            var confDoc = new XmlDocument();
-            confDoc.Load(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
-            XmlNode socialNode = confDoc.SelectSingleNode("//socialSettings");
+            try
+            {
+                var confDoc = new XmlDocument();
+                confDoc.Load(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
+                XmlNode socialNode = confDoc.SelectSingleNode("//socialSettings");
 
-            SetSocialNodeValue("Github", model.GithubLink, socialNode);
-            SetSocialNodeValue("Twitter", model.GithubLink, socialNode);
-            SetSocialNodeValue("Dribble", model.GithubLink, socialNode);
-            SetSocialNodeValue("Rss", model.GithubLink, socialNode);
-            SetSocialNodeValue("StackOverflow", model.GithubLink, socialNode);
+                SetSocialNodeValue("Github", model.GithubLink, socialNode);
+                SetSocialNodeValue("Twitter", model.GithubLink, socialNode);
+                SetSocialNodeValue("Dribble", model.GithubLink, socialNode);
+                SetSocialNodeValue("Rss", model.GithubLink, socialNode);
+                SetSocialNodeValue("StackOverflow", model.GithubLink, socialNode);
 
-            confDoc.Save(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
-            ConfigurationManager.RefreshSection("socialSettings");
-            socialModel = model;
+                confDoc.Save(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
+                ConfigurationManager.RefreshSection("socialSettings");
+                socialModel = model;
+                return true;
+            }
+
+            catch(Exception e)
+            {
+                Debug.WriteLine("[Update social config error] " + e.Message);
+                return false;
+            }
         }
 
         public void initSocialModel()

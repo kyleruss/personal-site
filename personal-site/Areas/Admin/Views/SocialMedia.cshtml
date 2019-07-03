@@ -1,4 +1,6 @@
-﻿@{
+﻿@model personal_site.ViewModels.AdminSocialMediaViewModel
+
+@{
     Layout = "~/Areas/Admin/Views/Shared/_AdminPanelLayout.cshtml";
     string[] socialMedia = { "Twitter", "Github", "Dribble", "Rss", "StackOverflow" };
 }
@@ -8,47 +10,49 @@
 @section AdminHomeComponent
 {
     <div id="social-media-container">
-
-        @foreach (string socialItem in socialMedia)
+        @using (Html.BeginForm("SaveSocialMediaInfo", "Social", FormMethod.Post, new { id = "socialUpdateForm" }))
         {
-            string iconClass = "";
-
-            switch (socialItem)
+            foreach (string socialItem in socialMedia)
             {
-                case "Twitter":
-                    iconClass = "fab fa-twitter";
-                    break;
-                    
-                case "Github":
-                    iconClass = "fab fa-github-alt";
-                    break;
-                    
-                case "StackOverflow":
-                    iconClass = "fab fa-stack-overflow";
-                    break;
-                    
-                case "Rss":
-                    iconClass = "fas fa-rss";
-                    break;
-                    
-                case "Dribble":
-                    iconClass = "fab fa-dribbble";
-                    break;
-            }
-            
-            
-            <div class="input-group social-media-group">
-                <div class="social-media-display" id="@socialItem-display">
-                    <i class="@iconClass"></i>
-                </div>
+                string iconClass = "";
 
-                <input class="form-control social-media-input" type="text" id="@socialItem-item" name="social-input-@socialItem" />
-            </div>
-        }
+                switch (socialItem)
+                {
+                    case "Twitter":
+                        iconClass = "fab fa-twitter";
+                        break;
+
+                    case "Github":
+                        iconClass = "fab fa-github-alt";
+                        break;
+
+                    case "StackOverflow":
+                        iconClass = "fab fa-stack-overflow";
+                        break;
+
+                    case "Rss":
+                        iconClass = "fas fa-rss";
+                        break;
+
+                    case "Dribble":
+                        iconClass = "fab fa-dribbble";
+                        break;
+                }
+
+
+                <div class="input-group social-media-group">
+                    <div class="social-media-display" id="@socialItem-display">
+                        <i class="@iconClass"></i>
+                    </div>
+
+                    <input class="form-control social-media-input" type="text" id="@socialItem-item" name="social-input-@socialItem" />
+                </div>
+            }
 
         <div id="social-btn-container">
-            <button class="btn btn-lg btn-success" id="social-update-btn"><i class="far fa-arrow-alt-circle-up"></i> Update</button>
+            <button type="submit" class="btn btn-lg btn-success" id="social-update-btn"><i class="far fa-arrow-alt-circle-up"></i> Update</button>
         </div>
+        }
     </div>
 }
 
