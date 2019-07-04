@@ -1,5 +1,8 @@
 ﻿@model personal_site.ViewModels.AdminSocialMediaViewModel
 
+@using personal_site.ViewModels
+@using personal_site.Services
+
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminPanelLayout.cshtml";
     string[] socialMedia = { "Twitter", "Github", "Dribble", "Rss", "StackOverflow" };
@@ -12,30 +15,37 @@
     <div id="social-media-container">
         @using (Html.BeginForm("SaveSocialMediaInfo", "Social", FormMethod.Post, new { id = "socialUpdateForm" }))
         {
+            AdminSocialMediaViewModel currentSocialModel = SocialMediaService.GetInstance().SocialModel;
             foreach (string socialItem in socialMedia)
             {
                 string iconClass = "";
+                string currentSocialValue = "";
 
                 switch (socialItem)
                 {
                     case "Twitter":
                         iconClass = "fab fa-twitter";
+                        currentSocialValue = currentSocialModel.TwitterLink;
                         break;
 
                     case "Github":
                         iconClass = "fab fa-github-alt";
+                        currentSocialValue = currentSocialModel.GithubLink;
                         break;
 
                     case "StackOverflow":
                         iconClass = "fab fa-stack-overflow";
+                        currentSocialValue = currentSocialModel.StackOverflowLink;
                         break;
 
                     case "Rss":
                         iconClass = "fas fa-rss";
+                        currentSocialValue = currentSocialModel.RssLink;
                         break;
 
                     case "Dribble":
                         iconClass = "fab fa-dribbble";
+                        currentSocialValue = currentSocialModel.DribbleLink;
                         break;
                 }
 
@@ -45,7 +55,7 @@
                         <i class="@iconClass"></i>
                     </div>
 
-                    <input class="form-control social-media-input" type="text" id="@socialItem-item" name="social-input-@socialItem" />
+                    <input class="form-control social-media-input" value="@currentSocialValue" id="@socialItem-item" name="social-input-@socialItem" />
                 </div>
             }
 

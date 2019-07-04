@@ -13,7 +13,7 @@ namespace personal_site.Services
     public class SocialMediaService
     {
         private static SocialMediaService _instance;
-        public AdminSocialMediaViewModel socialModel { get; set; }
+        public AdminSocialMediaViewModel SocialModel { get; set; }
 
         private SocialMediaService() { }
 
@@ -33,7 +33,7 @@ namespace personal_site.Services
 
                 confDoc.Save(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
                 ConfigurationManager.RefreshSection("socialSettings");
-                socialModel = model;
+                SocialModel = model;
                 return true;
             }
 
@@ -48,7 +48,7 @@ namespace personal_site.Services
         {
             var socialConfig = ConfigurationManager.GetSection("socialSettings") as NameValueCollection;
 
-            socialModel = new AdminSocialMediaViewModel()
+            SocialModel = new AdminSocialMediaViewModel()
             {
                 GithubLink = socialConfig.Get("Github"),
                 TwitterLink = socialConfig.Get("Twitter"),

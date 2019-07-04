@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using personal_site.Services;
 
 [assembly: OwinStartupAttribute(typeof(personal_site.Startup))]
 namespace personal_site
@@ -9,6 +10,7 @@ namespace personal_site
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            SocialMediaService.GetInstance().initSocialModel();
         }
     }
 }
