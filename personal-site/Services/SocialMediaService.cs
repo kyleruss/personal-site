@@ -23,13 +23,12 @@ namespace personal_site.Services
             {
                 var confDoc = new XmlDocument();
                 confDoc.Load(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
-                XmlNode socialNode = confDoc.SelectSingleNode("//socialSettings");
 
-                SetSocialNodeValue("Github", model.Github, socialNode);
-                SetSocialNodeValue("Twitter", model.Twitter, socialNode);
-                SetSocialNodeValue("Dribble", model.Dribble, socialNode);
-                SetSocialNodeValue("Rss", model.Rss, socialNode);
-                SetSocialNodeValue("StackOverflow", model.StackOverflow, socialNode);
+                SetSocialNodeValue("Github", model.Github, confDoc);
+                SetSocialNodeValue("Twitter", model.Twitter, confDoc);
+                SetSocialNodeValue("Dribble", model.Dribble, confDoc);
+                SetSocialNodeValue("Rss", model.Rss, confDoc);
+                SetSocialNodeValue("StackOverflow", model.StackOverflow, confDoc);
 
                 confDoc.Save(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
                 ConfigurationManager.RefreshSection("socialSettings");
@@ -58,9 +57,9 @@ namespace personal_site.Services
             };
         }
 
-        private void SetSocialNodeValue(string id, string value, XmlNode socialNode)
+        private void SetSocialNodeValue(string id, string value, XmlDocument doc)
         {
-            socialNode.SelectSingleNode("/add[@key='" + id + "']")
+            doc.SelectSingleNode("/configuration/socialSettings/add[@key='" + id + "']")
                 .Attributes["value"].Value = value;
         }
 
