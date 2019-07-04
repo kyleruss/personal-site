@@ -57,19 +57,19 @@ namespace personal_site.ViewModels
     public class AdminSocialMediaViewModel
     {
         [Required]
-        public string TwitterLink { get; set; }
+        public string Twitter { get; set; }
 
         [Required]
-        public string GithubLink { get; set; }
+        public string Github { get; set; }
 
         [Required]
-        public string DribbleLink { get; set; }
+        public string Dribble { get; set; }
 
         [Required]
-        public string RssLink { get; set; }
+        public string Rss { get; set; }
 
         [Required]
-        public string StackOverflowLink { get; set; }
+        public string StackOverflow { get; set; }
     }
 
     public class AdminRepoTaskViewModel

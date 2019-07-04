@@ -25,11 +25,11 @@ namespace personal_site.Services
                 confDoc.Load(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
                 XmlNode socialNode = confDoc.SelectSingleNode("//socialSettings");
 
-                SetSocialNodeValue("Github", model.GithubLink, socialNode);
-                SetSocialNodeValue("Twitter", model.GithubLink, socialNode);
-                SetSocialNodeValue("Dribble", model.GithubLink, socialNode);
-                SetSocialNodeValue("Rss", model.GithubLink, socialNode);
-                SetSocialNodeValue("StackOverflow", model.GithubLink, socialNode);
+                SetSocialNodeValue("Github", model.Github, socialNode);
+                SetSocialNodeValue("Twitter", model.Twitter, socialNode);
+                SetSocialNodeValue("Dribble", model.Dribble, socialNode);
+                SetSocialNodeValue("Rss", model.Rss, socialNode);
+                SetSocialNodeValue("StackOverflow", model.StackOverflow, socialNode);
 
                 confDoc.Save(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
                 ConfigurationManager.RefreshSection("socialSettings");
@@ -50,11 +50,11 @@ namespace personal_site.Services
 
             SocialModel = new AdminSocialMediaViewModel()
             {
-                GithubLink = socialConfig.Get("Github"),
-                TwitterLink = socialConfig.Get("Twitter"),
-                DribbleLink = socialConfig.Get("Dribble"),
-                RssLink = socialConfig.Get("Rss"),
-                StackOverflowLink = socialConfig.Get("StackOverflow")
+                Github = socialConfig.Get("Github"),
+                Twitter = socialConfig.Get("Twitter"),
+                Dribble = socialConfig.Get("Dribble"),
+                Rss = socialConfig.Get("Rss"),
+                StackOverflow = socialConfig.Get("StackOverflow")
             };
         }
 

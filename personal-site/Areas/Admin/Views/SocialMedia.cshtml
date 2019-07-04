@@ -25,27 +25,27 @@
                 {
                     case "Twitter":
                         iconClass = "fab fa-twitter";
-                        currentSocialValue = currentSocialModel.TwitterLink;
+                        currentSocialValue = currentSocialModel.Twitter;
                         break;
 
                     case "Github":
                         iconClass = "fab fa-github-alt";
-                        currentSocialValue = currentSocialModel.GithubLink;
+                        currentSocialValue = currentSocialModel.Github;
                         break;
 
                     case "StackOverflow":
                         iconClass = "fab fa-stack-overflow";
-                        currentSocialValue = currentSocialModel.StackOverflowLink;
+                        currentSocialValue = currentSocialModel.StackOverflow;
                         break;
 
                     case "Rss":
                         iconClass = "fas fa-rss";
-                        currentSocialValue = currentSocialModel.RssLink;
+                        currentSocialValue = currentSocialModel.Rss;
                         break;
 
                     case "Dribble":
                         iconClass = "fab fa-dribbble";
-                        currentSocialValue = currentSocialModel.DribbleLink;
+                        currentSocialValue = currentSocialModel.Dribble;
                         break;
                 }
 
@@ -55,7 +55,8 @@
                         <i class="@iconClass"></i>
                     </div>
 
-                    <input class="form-control social-media-input" value="@currentSocialValue" id="@socialItem-item" name="social-input-@socialItem" />
+                    
+                    <input class="form-control social-media-input" value="@currentSocialValue" id="@socialItem-item" name="@socialItem" />
                 </div>
             }
 
