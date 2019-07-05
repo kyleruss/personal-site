@@ -40,7 +40,7 @@ namespace personal_site.Services
             try
             {
                 XmlDocument rssDoc = GetRssXmlDoc();
-                XmlNode itemsNode = rssDoc.SelectSingleNode("/rss/items");
+                XmlNode itemsNode = rssDoc.SelectSingleNode("/rss/channel");
                 XmlNode currentItemNode = rssDoc.CreateElement("item");
 
                 itemsNode.PrependChild(currentItemNode);
@@ -60,7 +60,7 @@ namespace personal_site.Services
             try
             {
                 XmlDocument rssDoc = GetRssXmlDoc();
-                XmlNode itemsNode = rssDoc.SelectSingleNode("/rss/items/item[@id='" + id + "'");
+                XmlNode itemsNode = rssDoc.SelectSingleNode("/rss/channel/item[@id='" + id + "'");
                 itemsNode.ParentNode.RemoveChild(itemsNode);
 
                 SaveRssXmlDoc(rssDoc);
