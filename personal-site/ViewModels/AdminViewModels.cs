@@ -48,6 +48,13 @@ namespace personal_site.ViewModels
         public string ImageUrl { get; set; }
     }
 
+    public class AdminRssViewModels
+    {
+        public AdminRssChannelViewModel ChannelUpdateModel { get; set; }
+
+        public AdminRssItemViewModel ItemPushModel { get; set; }
+    }
+
     public class AdminRssItemViewModel
     {
         [Required]

@@ -1,4 +1,5 @@
-﻿
+﻿@model personal_site.ViewModels.AdminRssViewModels
+
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminPanelLayout.cshtml";
 }
@@ -49,9 +50,9 @@
                 @using(Html.BeginForm("PushRssUpdate", "Rss", new { Area = "Admin" }, FormMethod.Post, new { id = "admin-rss-item-form", role = "form" }))
                 {
                     <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Item Description" />
+                        @Html.TextBoxFor(m => m.ItemPushModel.ItemContent, new { @class = "form-control", placeholder="Item Description" })
                         <div class="input-group-append">
-                            <button id="rss-item-add-btn" class="btn btn-primary" type="button">Add</button>
+                            <button id="rss-item-add-btn" class="btn btn-primary" type="submit" name="ItemContent">Add</button>
                         </div>
                     </div>
                 }

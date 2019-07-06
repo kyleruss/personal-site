@@ -3,6 +3,7 @@ using personal_site.Services;
 using personal_site.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,10 +31,10 @@ namespace personal_site.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public ActionResult PushRssUpdate(AdminRssItemViewModel model)
+        public ActionResult PushRssUpdate(AdminRssViewModels model)
         {
             RssService service = RssService.GetInstance();
-            bool serviceReq = service.PushUpdate(model);
+            bool serviceReq = service.PushUpdate(model.ItemPushModel);
 
             if(serviceReq)
                 return ControllerHelper.JsonActionResponse(true, "Pushed Update");

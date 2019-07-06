@@ -30,14 +30,4 @@ function ManageRss()
     {
         
     }
-
-    $('#channel-update-btn').click((e) =>
-    {
-        e.preventDefault();
-    });
-
-    $('#rss-item-add-btn').click((e) => 
-    {
-        e.preventDefault();
-    });
 };
