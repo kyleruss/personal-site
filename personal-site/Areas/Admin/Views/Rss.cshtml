@@ -19,21 +19,23 @@
                 {
                     <div class="form-group">
                         <label class="rss-form-label">Name</label>
-                        <input class="form-control" placeholder="Enter the channel name" />
+                        @Html.TextBoxFor(m => m.ChannelUpdateModel.Name, new { @class = "form-control", placeholder = "Enter the channel name" })
                     </div>
 
                     <div class="form-group">
                         <label class="rss-form-label">Description</label>
-                        <input class="form-control" placeholder="Enter the channel description"/>
+                        @Html.TextBoxFor(m => m.ChannelUpdateModel.Description, new { @class = "form-control", placeholder = "Enter the channel description" })
                     </div>
 
                     <div class="form-group">
                         <label class="rss-form-label">Image</label>
-                        <input class="form-control" placeholder="Enter the URL Image"/>
+                        @Html.TextBoxFor(m => m.ChannelUpdateModel.ImageUrl, new { @class= "form-control", placeholder = "Enter the image URL" })
                     </div>
 
                     <div class="center-body">
-                        <button type="submit" id="channel-update-btn" class="btn btn-success"><i class="far fa-arrow-alt-circle-up"></i> Update</button>
+                        <button type="submit" id="channel-update-btn" class="btn btn-success">
+                            <i class="far fa-arrow-alt-circle-up"></i> Update
+                        </button>
                     </div>
                 }
             </div>
