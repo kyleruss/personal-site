@@ -1,4 +1,7 @@
-﻿@model personal_site.ViewModels.AdminRssViewModels
+﻿@using personal_site.ViewModels;
+@using personal_site.Services;
+
+@model AdminRssViewModels
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminPanelLayout.cshtml";
@@ -60,10 +63,10 @@
                 }
 
                 <div class="list-group" id="rss-items-list">
-                    @for (var i = 0; i < 5; i++)
+                    @foreach(AdminRssItemViewModel itemModel in RssService.GetInstance().GetRssItems())
                     {
-                        <a href="@Url.Action("RemoveRssItem", "Rss", @i)" class="list-group-item rss-item"><span class="badge badge-success">blog</span> 
-                            <span class="rss-item-text">Post @i</span> <button class="close">&times;</button>
+                        <a href="@Url.Action("RemoveRssItem", "Rss")" class="list-group-item rss-item"><span class="badge badge-success">blog</span> 
+                            <span class="rss-item-text">@itemModel.ItemTitle</span> <button class="close">&times;</button>
                         </a>
                     }
                 </div>

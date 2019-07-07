@@ -34,6 +34,18 @@ namespace personal_site.Services
             }
         }
 
+        public AdminRssChannelViewModel GetChannelSettings()
+        {
+            XmlDocument rssDoc = GetRssXmlDoc();
+            AdminRssChannelViewModel model = new AdminRssChannelViewModel()
+            {
+                Name = GetChannelItem("title", rssDoc).InnerText,
+                Description = GetChannelItem("description", rssDoc).InnerText,
+                ImageUrl = GetChannelItem("image", rssDoc).InnerText
+            };
+
+            return model;
+        }
         
 
         public bool PushUpdate(AdminRssItemViewModel model)
@@ -68,6 +80,27 @@ namespace personal_site.Services
             }
         }
 
+        public List<AdminRssItemViewModel> GetRssItems()
+        {
+            XmlDocument rssDoc = GetRssXmlDoc();
+            XmlNodeList rssItemNodeList = rssDoc.SelectNodes("/rss/channel/item");
+            List<AdminRssItemViewModel> itemList = new List<AdminRssItemViewModel>();
+             
+            foreach(XmlNode itemNode in rssItemNodeList)
+            {
+                AdminRssItemViewModel currentItemModel = new AdminRssItemViewModel()
+                {
+                    ItemTitle = itemNode.SelectSingleNode("./title").InnerText,
+                    ItemContent = itemNode.SelectSingleNode("./description").InnerText,
+                    ItemLink = itemNode.SelectSingleNode("./link").InnerText
+                };
+
+                itemList.Add(currentItemModel);
+            }
+
+            return itemList;
+        }
+
         public bool RemoveItem(int id)
         {
             try
@@ -89,8 +122,12 @@ namespace personal_site.Services
 
         private void UpdateChannelItem(string name, string value, XmlDocument doc)
         {
-            doc.SelectSingleNode("/rss/channel/" + name)
-                .InnerText = value;
+            GetChannelItem(name, doc).InnerText = value;
+        }
+
+        private XmlNode GetChannelItem(string name, XmlDocument doc)
+        {
+            return doc.SelectSingleNode("/rss/channel/" + name);
         }
 
         private XmlDocument GetRssXmlDoc()
