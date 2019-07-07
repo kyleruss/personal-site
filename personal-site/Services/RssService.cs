@@ -101,13 +101,14 @@ namespace personal_site.Services
             return itemList;
         }
 
-        public bool RemoveItem(int id)
+        public bool RemoveItem(int index)
         {
             try
             {
                 XmlDocument rssDoc = GetRssXmlDoc();
-                XmlNode itemsNode = rssDoc.SelectSingleNode("/rss/channel/item[@id='" + id + "'");
-                itemsNode.ParentNode.RemoveChild(itemsNode);
+                XmlNodeList itemsList = rssDoc.SelectNodes("/rss/channel/item");
+                XmlNode itemNode = itemsList[index];
+                itemNode.ParentNode.RemoveChild(itemNode);
 
                 SaveRssXmlDoc(rssDoc);
                 return true;

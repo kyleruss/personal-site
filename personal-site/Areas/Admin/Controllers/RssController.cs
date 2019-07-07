@@ -43,10 +43,10 @@ namespace personal_site.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult RemoveRssItem(int id)
+        public JsonResult RemoveRssItem(int index)
         {
             RssService service = RssService.GetInstance();
-            bool serviceReq = service.RemoveItem(id);
+            bool serviceReq = service.RemoveItem(index);
 
             if(serviceReq)
                 return ControllerHelper.JsonActionResponse(true, "Removed RSS Item");

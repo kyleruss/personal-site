@@ -62,14 +62,22 @@
                     </div>
                 }
 
-                <div class="list-group" id="rss-items-list">
-                    @foreach(AdminRssItemViewModel itemModel in RssService.GetInstance().GetRssItems())
+                <ul class="list-group" id="rss-items-list">
+                    @using (Html.BeginForm("RemoveRssItem", "Rss", new { Area = "Admin" }, FormMethod.Post, new { id = "admin-rss-item-remove-form", role = "form" }))
                     {
-                        <a href="@Url.Action("RemoveRssItem", "Rss")" class="list-group-item rss-item"><span class="badge badge-success">blog</span> 
-                            <span class="rss-item-text">@itemModel.ItemTitle</span> <button class="close">&times;</button>
-                        </a>
+                        List<AdminRssItemViewModel> itemList = RssService.GetInstance().GetRssItems();
+
+                        for(var i = 0; i < itemList.Count; i++)
+                        {
+                            AdminRssItemViewModel currentItem = itemList[i];
+
+                            <li class="list-group-item rss-item"><span class="badge badge-success">blog</span> 
+                                <span class="rss-item-text">@currentItem.ItemTitle</span>
+                                <button type="submit" name="index" value="@i" class="close">&times;</button>
+                            </li>                        
+                        }
                     }
-                </div>
+                </ul>
             </div>
         </div>
     </div>
