@@ -19,10 +19,9 @@ namespace personal_site.Services
             try
             {
                 XmlDocument rssDoc = GetRssXmlDoc();
-                XmlNode channelNode = rssDoc.SelectSingleNode("/rss/channel");
-                channelNode.SelectSingleNode("/title").InnerText = model.Name;
-                channelNode.SelectSingleNode("/description").InnerText = model.Description;
-                channelNode.SelectSingleNode("/image").InnerText = model.ImageUrl;
+                UpdateChannelItem("title", model.Name, rssDoc);
+                UpdateChannelItem("description", model.Description, rssDoc);
+                UpdateChannelItem("image", model.ImageUrl, rssDoc);
 
                 SaveRssXmlDoc(rssDoc);
                 return true;
@@ -34,6 +33,8 @@ namespace personal_site.Services
                 return false;
             }
         }
+
+        
 
         public bool PushUpdate(AdminRssItemViewModel model)
         {
@@ -84,6 +85,12 @@ namespace personal_site.Services
                 Debug.WriteLine("[Rss-RemoveItem Exception] " + e.Message);
                 return false;
             }
+        }
+
+        private void UpdateChannelItem(string name, string value, XmlDocument doc)
+        {
+            doc.SelectSingleNode("/rss/channel/" + name)
+                .InnerText = value;
         }
 
         private XmlDocument GetRssXmlDoc()

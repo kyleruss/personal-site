@@ -18,10 +18,10 @@ namespace personal_site.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateRssChannel(AdminRssChannelViewModel model)
+        public JsonResult UpdateRssChannel(AdminRssViewModels model)
         {
             RssService service = RssService.GetInstance();
-            bool serviceReq = service.UpdateChannel(model);
+            bool serviceReq = service.UpdateChannel(model.ChannelUpdateModel);
 
             if (serviceReq)
                 return ControllerHelper.JsonActionResponse(true, "Saved Channel Settings");
