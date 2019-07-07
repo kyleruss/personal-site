@@ -42,7 +42,19 @@ namespace personal_site.Services
                 XmlDocument rssDoc = GetRssXmlDoc();
                 XmlNode itemsNode = rssDoc.SelectSingleNode("/rss/channel");
                 XmlNode currentItemNode = rssDoc.CreateElement("item");
+                XmlNode itemTitleNode = rssDoc.CreateElement("title");
+                XmlNode itemLinkNode = rssDoc.CreateElement("link");
+                XmlNode itemDescNode = rssDoc.CreateElement("description");
 
+                string itemTitle = model.ItemTitle ?? "New update";
+                string itemLink = model.ItemLink ?? "www.kylerussell.co.nz";
+                itemTitleNode.InnerText = itemTitle;
+                itemLinkNode.InnerText = itemLink;
+                itemDescNode.InnerText = model.ItemContent;
+
+                currentItemNode.AppendChild(itemTitleNode);
+                currentItemNode.AppendChild(itemLinkNode);
+                currentItemNode.AppendChild(itemDescNode);
                 itemsNode.PrependChild(currentItemNode);
                 SaveRssXmlDoc(rssDoc);
                 return true;

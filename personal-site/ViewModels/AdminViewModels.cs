@@ -59,6 +59,10 @@ namespace personal_site.ViewModels
     {
         [Required]
         public string ItemContent { get; set; }
+
+        public string ItemLink { get; set; }
+
+        public string ItemTitle { get; set; }
     }
 
     public class AdminSocialMediaViewModel
