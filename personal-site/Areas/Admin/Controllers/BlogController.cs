@@ -39,10 +39,10 @@ namespace personal_site.Areas.Admin.Controllers
                 return ControllerHelper.JsonActionResponse(false, "Failed to save blog post");
         }
 
-        public async Task<ActionResult> RemoveBlogPost(AdminEntityRemovalViewModel model)
+        public async Task<ActionResult> RemoveBlogPost(int blogId)
         {
             BlogService blogService = BlogService.GetInstance();
-            bool blogRemoved = await blogService.RemoveBlogPost(model.EntityId);
+            bool blogRemoved = await blogService.RemoveBlogPost(blogId);
 
             if (blogRemoved)
                 return ControllerHelper.JsonActionResponse(true, "Blog post has been removed");
