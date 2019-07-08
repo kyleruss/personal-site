@@ -38,6 +38,15 @@ namespace personal_site.Services
             };
         }
 
+        public async Task<BlogPost> GetBlogPost(int id)
+        {
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                BlogPost blogPost = await context.BlogPosts.FirstOrDefaultAsync(x => x.PostId == id);
+                return blogPost;
+            }
+        }
+
         public async Task<string> GetBlogComments(int PostId)
         {
             using(ApplicationDbContext context = new ApplicationDbContext())

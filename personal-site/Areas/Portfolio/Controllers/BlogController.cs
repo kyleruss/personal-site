@@ -25,6 +25,18 @@ namespace personal_site.Areas.Portfolio.Controllers
             return Json(blogsJson, JsonRequestBehavior.AllowGet);
         }
 
+        public async Task<ActionResult> GetBlogPost(int id)
+        {
+            BlogService blogService = BlogService.GetInstance();
+            BlogPost blogPost = await blogService.GetBlogPost(id);
+            string blogPostJson = "";
+
+            if (blogPost != null)
+                blogPostJson = JsonConvert.SerializeObject(blogPost);
+
+            return ControllerHelper.JsonObjectResponse(blogPostJson);
+        }
+
         [HttpPost]
         public async Task<JsonResult> PostComment(CommentViewModel model)
         {
