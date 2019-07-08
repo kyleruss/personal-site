@@ -21,7 +21,7 @@ namespace personal_site.Areas.Portfolio.Controllers
         public async Task<JsonResult> GetBlogPosts()
         {
             BlogService blogService = BlogService.GetInstance();
-            string blogsJson = await blogService.GetBlogsPosts();
+            string blogsJson = await blogService.GetBlogsPostsJson();
             return Json(blogsJson, JsonRequestBehavior.AllowGet);
         }
 

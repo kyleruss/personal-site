@@ -13,15 +13,18 @@ namespace personal_site.Areas.Admin.Controllers
 {
     public class BlogController : Controller
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            List<BlogPost> blogList = await BlogService.GetInstance().GetBlogPosts();
+            ViewBag.BlogList = blogList;
+
             return View("../Blog");
         }
 
         public async Task<ActionResult> GetBlogList()
         {
             BlogService blogService = BlogService.GetInstance();
-            string blogListJson = await blogService.GetBlogsPosts();
+            string blogListJson = await blogService.GetBlogsPostsJson();
             return ControllerHelper.JsonObjectResponse(blogListJson);
         }
 

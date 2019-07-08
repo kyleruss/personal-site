@@ -1,5 +1,7 @@
 ﻿@model personal_site.ViewModels.AdminBlogEditViewModel
 
+@using personal_site.Models;
+
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminPanelLayout.cshtml";
 }
@@ -20,15 +22,17 @@
             </div>
 
             <ul class="list-group" id="blog-list">
-                @for (var i = 0; i < 5; i++)
-                {
-                    <li class="list-group-item blog-post-item">
-                        <span class="blog-post-item-title">Blog Post #@i</span>
-                        <span class="close"><i class="far fa-edit"></i></span>
-                        <span class="close">&times;</span>
-                    </li>
-                }
-
+              @using (Html.BeginForm("RemoveBlogPost", "Blog", new { Area = "Admin" }, FormMethod.Post, new { id = "remove-blog-form" }))
+              {
+                    foreach (BlogPost blogPost in ViewBag.BlogList)
+                    {
+                        <li class="list-group-item blog-post-item">
+                            <span class="blog-post-item-title">@blogPost.Title</span>
+                            <span class="close"><i class="far fa-edit"></i></span>
+                            <button type="submit" name="blogId" value="@blogPost.PostId" class="close">&times;</button>
+                        </li>
+                    }
+              }
             </ul>
         </div>
     </div>

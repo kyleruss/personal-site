@@ -23,12 +23,18 @@ namespace personal_site.Services
 
         private BlogService() { }
 
-        public async Task<string> GetBlogsPosts()
+        public async Task<string> GetBlogsPostsJson()
         {
-            using(ApplicationDbContext context = new ApplicationDbContext())
+            List<BlogPost> blogList = await GetBlogPosts();
+            return JsonConvert.SerializeObject(blogList);
+        }
+
+        public async Task<List<BlogPost>> GetBlogPosts()
+        {
+            using (ApplicationDbContext context = new ApplicationDbContext())
             {
                 List<BlogPost> blogList = await context.BlogPosts.ToListAsync();
-                return JsonConvert.SerializeObject(blogList);
+                return blogList;
             };
         }
 
