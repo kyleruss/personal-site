@@ -43,7 +43,7 @@
     </div>
 
 
-    <div class="modal fade" id="blog-edit-modal" role="dialog" data-blogId="">
+    <div class="modal fade" id="blog-edit-modal" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -74,6 +74,8 @@
                             @Html.TextAreaFor(m => m.Content,
                             new { @class = "form-control col-md-11", id = "blog-edit-area", rows = "10", placeholder = "Enter your blog post content" })
                         </div>
+
+                        @Html.HiddenFor(m => m.PostId, new { id = "blog-edit-id"})
 
                         <div class="row" id="blog-edit-form-controls">
                             <div class="btn-group" role="group">
