@@ -295,32 +295,45 @@ body
     }
 }
 
-#repo-table
-{
-    color:#bcbcbc;
+#repo-table {
+    color: #bcbcbc;
 
-    th
+    th {
+        border-top: 0;
+
+        &:first-child {
+            border-bottom: 3px solid #3988f5;
+        }
+
+        &:nth-child(2) {
+            border-bottom: 3px solid #38ff7e;
+        }
+
+        &:nth-child(3) {
+            border-bottom: 3px solid #fff838;
+        }
+
+        &:nth-child(4) {
+            border-bottom: 3px solid #ff3838;
+        }
+    }
+
+    .repo-controls-cell
     {
-        border-top:0;
+        text-align:center;
 
-        &:first-child
+        .fa-edit
         {
-            border-bottom:3px solid #3988f5;
+            padding-right:0.5em;
         }
 
-        &:nth-child(2)
+        .repo-control-btn
         {
-            border-bottom:3px solid #38ff7e;
-        }
-
-        &:nth-child(3)
-        {
-            border-bottom:3px solid #fff838;
-        }
-
-        &:nth-child(4)
-        {
-            border-bottom:3px solid #ff3838;
+            &:hover
+            {
+                cursor:pointer;
+                opacity:0.7;
+            }
         }
     }
 }
