@@ -17,5 +17,12 @@ function ManageBlog()
 
             blogModal.modal('show');
         });
+
+    });
+
+    $('#blog-new-btn').click((e) =>
+    {
+        $('#blog-edit-id').val('');
+        $('#blog-edit-modal').modal('show');
     });
 };

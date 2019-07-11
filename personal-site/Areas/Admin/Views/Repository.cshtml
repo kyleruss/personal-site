@@ -7,6 +7,11 @@
 
 @section AdminHomeComponent
 {
+
+    <script>
+        var repoFetchUrl = '@Url.Content("~/Content/resources/repository-data.json")';
+    </script>
+
     <div class="card inner-component-card col-md-5">
         <div class="card-header">
             <span class="inner-component-title"><i class="fas fa-circle"></i> Run task</span>
@@ -59,6 +64,9 @@
                         <th scope="col">Controls</th>
                     </tr>
                 </thead>
+
+                <tbody id="repo-table-body">
+                </tbody>
             </table>
         </div>
     </div>
