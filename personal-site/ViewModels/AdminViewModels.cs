@@ -88,4 +88,15 @@ namespace personal_site.ViewModels
         [Required]
         public int TaskId { get; set; }
     }
+
+    public class AdminRepoEditViewModel
+    {
+        public int RepoIndex { get; set; }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public string Languages { get; set; }
+    }
 }

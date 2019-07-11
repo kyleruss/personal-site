@@ -52,4 +52,38 @@
 
         return itemElement;
     };
+
+    function removeRepo(cell)
+    {
+        var repoIndex = getRepoRowNum(cell);
+    };
+
+    function editRepo()
+    {
+
+    };
+
+    function getRepoRowNum(cell)
+    {
+        var parentRow = cell.closest('tr');
+        var rowIndex = parentRow.index();
+
+        return rowIndex;
+    };
+
+    function getRepoRowName(cell)
+    {
+        var parentRow = cell.closest('tr');
+    }
+
+    $(document).on('click', '.repo-edit-btn', function(e)
+    {
+        editRepo();
+    });
+
+    $(document).on('click', '.repo-remove-btn', function(e)
+    {
+        var cellElement = $(this);
+        removeRepo(cellElement);
+    });
 };
