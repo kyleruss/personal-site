@@ -91,12 +91,15 @@ namespace personal_site.ViewModels
 
     public class AdminRepoEditViewModel
     {
-        public int RepoIndex { get; set; }
 
         public string Name { get; set; }
 
         public string Description { get; set; }
 
         public string Languages { get; set; }
+
+        public string Readme { get; set; }
+
+        public int CodeLines { get; set; }
     }
 }

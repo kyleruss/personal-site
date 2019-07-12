@@ -338,6 +338,32 @@ body
     }
 }
 
+#repo-edit-modal {
+    .modal-body {
+        padding: 2em;
+    }
+
+    .repo-edit-form-headers {
+        line-height: 2;
+    }
+
+    #repo-edit-area-container {
+        margin-top: 1em;
+        margin-left: 0.15em;
+
+        .repo-edit-form-headers {
+            padding-left: 0;
+        }
+    }
+
+    #repo-edit-form-controls 
+    {
+        text-align: center;
+        display: block;
+        margin-top: 2em;
+    }
+}
+
 
 //===================================
 // SOCIAL MEDIA STYLES

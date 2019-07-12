@@ -20,7 +20,7 @@ namespace personal_site.Areas.Admin.Controllers
             return ControllerHelper.JsonActionResponse(true, "Successfully saved repository");
         }
 
-        public ActionResult RemoveRepository(int index)
+        public ActionResult RemoveRepository(string repoName)
         {
             return ControllerHelper.JsonActionResponse(true, "Successfully removed repository");
         }

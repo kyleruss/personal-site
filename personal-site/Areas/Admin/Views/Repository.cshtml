@@ -1,4 +1,5 @@
-﻿
+﻿@model personal_site.ViewModels.AdminRepoEditViewModel
+
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminPanelLayout.cshtml";
 }
@@ -10,6 +11,7 @@
 
     <script>
         var repoFetchUrl = '@Url.Content("~/Content/resources/repository-data.json")';
+        var repoRemoveUrl = '@Url.Action("RemoveRepository", "Repository", new { Area = "Admin"})';
     </script>
 
     <div class="card inner-component-card col-md-5">
@@ -35,7 +37,6 @@
     </div>
 
     <div class="col-md-2">
-
     </div>
 
     <div class="card inner-component-card col-md-5">
@@ -55,20 +56,74 @@
         </div>
 
         <div class="card-body" id="repo-list-body">
-            <table class="table" id="repo-table">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Tech</th>
-                        <th scope="col">Controls</th>
-                    </tr>
-                </thead>
+                <table class="table" id="repo-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Tech</th>
+                            <th scope="col">Controls</th>
+                        </tr>
+                    </thead>
 
-                <tbody id="repo-table-body">
-                </tbody>
-            </table>
+                    <tbody id="repo-table-body"></tbody>
+                </table>
         </div>
     </div>
-}
+
+    <div class="modal fade" id="repo-edit-modal" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>
+                        Edit Repository
+                        <br />
+                        <small>Change the repository details below</small>
+                    </h2>
+                    <button data-dismiss="modal" class="close">&times;</button>
+                </div>
+
+                <div class="modal-body" id="repo-edit-modal-body">
+                    @using (Html.BeginForm("EditRepository", "Repository", new { Area = "Admin" }, FormMethod.Post, new { id = "repo-edit-form" }))
+                    {
+                        <div class="form-group row">
+                            <h5 class="repo-edit-form-headers col-md-3">Name</h5>
+                            @Html.TextBoxFor(m => m.Name,
+                            new { @class = "form-control col-md-8", id = "repo-edit-name", placeholder = "Enter repository name" })
+                        </div>
+
+                        <div class="form-group row">
+                            <h5 class="repo-edit-form-headers col-md-3">Description</h5>
+                            @Html.TextBoxFor(m => m.Description,
+                            new { @class = "form-control col-md-8", id = "repo-edit-desc", placeholder = "Enter repository description" })
+                        </div>
+
+                        <div class="form-group row">
+                            <h5 class="repo-edit-form-headers col-md-2">Languages</h5>
+                            @Html.TextBoxFor(m => m.Languages,
+                            new { @class = "form-control col-md-4", id = "repo-edit-lang", placeholder = "Enter repository languages" })
+
+                            <h5 class="repo-edit-form-headers col-md-2">Code Lines</h5>
+                            @Html.TextBoxFor(m => m.CodeLines,
+                            new { @class = "form-control col-md-3", id = "repo-edit-code", placeholder = "Enter no. code lines" })
+                        </div>
+
+                        <div class="form-group row" id="repo-edit-area-container">
+                            <h5 class="repo-edit-form-headers col-md-3">Readme</h5>
+                            @Html.TextAreaFor(m => m.Readme,
+                            new { @class = "form-control col-md-11", id = "repo-edit-readme", placeholder = "Enter repository readme", rows = "10" })
+                        </div>
+
+                        <div class="row" id="repo-edit-form-controls">
+                            <div class="btn-group" role="group">
+                                <button data-dismiss="modal" class="btn btn-lg btn-primary"><i class="far fa-arrow-alt-circle-left"></i> Back</button>
+                                <button type="submit" class="btn btn-lg btn-success"><i class="far fa-check-circle"></i> Save</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    }
 

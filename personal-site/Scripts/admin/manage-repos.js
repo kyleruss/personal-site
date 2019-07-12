@@ -55,35 +55,41 @@
 
     function removeRepo(cell)
     {
-        var repoIndex = getRepoRowNum(cell);
+        var repoId = getRepoRowName(cell);
+        var formData = { repoName: repoId };
+
+        $.post(repoRemoveUrl, formData, function(data)
+        {
+            var removeStatus = data.ActionSuccess;
+
+            if(removeStatus)
+            {
+                var parentRow = cell.closest('tr');
+                parentRow.remove();
+                delete repoData[repoId];
+            }
+        });
     };
 
-    function editRepo()
+    function editRepo(cell)
     {
-
+        var repoId = getRepoRowName(cell);
+        $('#repo-edit-modal').modal('show');
     };
-
-    function getRepoRowNum(cell)
-    {
-        var parentRow = cell.closest('tr');
-        var rowIndex = parentRow.index();
-
-        return rowIndex;
-    };
-
+    
     function getRepoRowName(cell)
     {
-        var parentRow = cell.closest('tr');
+        var parentRow = cell.closest('tr');   
+        return parentRow.find('td').first().html();
     }
 
     $(document).on('click', '.repo-edit-btn', function(e)
     {
-        editRepo();
+        editRepo($(this));
     });
 
     $(document).on('click', '.repo-remove-btn', function(e)
     {
-        var cellElement = $(this);
-        removeRepo(cellElement);
+        removeRepo($(this));
     });
 };
