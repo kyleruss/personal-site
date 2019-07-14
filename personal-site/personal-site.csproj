@@ -459,9 +459,6 @@
     <Content Include="Areas\Admin\Views\Rss.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\Views\Statistics.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Areas\Admin\Views\SocialMedia.cshtml" />
   </ItemGroup>
   <ItemGroup>
