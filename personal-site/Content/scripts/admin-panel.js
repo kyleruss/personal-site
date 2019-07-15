@@ -53,7 +53,7 @@ function ManageRepos()
     function createRepoTableCell(name, item, rowElement)
     {
         var itemElement = $('<td/>');
-        var itemValue = (name == 'languages' && item[name].length > 0) ? item[name].join(", ") : item[name];
+        var itemValue = (name == 'languages') ? getRepoLanguages(item) : item[name];
         
         itemElement.html(itemValue);
         rowElement.append(itemElement);
@@ -79,9 +79,24 @@ function ManageRepos()
         });
     };
 
+    function getRepoLanguages(repo)
+    {
+        var lang = repo['languages'];
+        return lang.length > 0 ? lang.join(", ") : lang;
+    }
+
     function editRepo(cell)
     {
         var repoId = getRepoRowName(cell);
+        var repository = repoData[repoId];
+        console.log(repository);
+        
+        $('#repo-edit-name').val(repository['name']);
+        $('#repo-edit-desc').val(repository['description']);
+        $('#repo-edit-lang').val(getRepoLanguages(repository));
+        $('#repo-edit-code').val(repository['codeLines']);
+        $('#repo-edit-readme').val(repository['readme']);
+
         $('#repo-edit-modal').modal('show');
     };
     

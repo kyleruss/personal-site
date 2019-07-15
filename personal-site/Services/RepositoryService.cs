@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
+using personal_site.ViewModels;
 
 namespace personal_site.Services
 {
@@ -25,9 +28,22 @@ namespace personal_site.Services
 
         private RepositoryService() { }
 
-        public void GetRepositories()
+        public void RemoveRepository(string name)
         {
 
+        }
+
+        public void EditRepository(AdminRepoEditViewModel model)
+        {
+
+        }
+
+        public async Task<string> LoadRepositories()
+        {
+            using(StreamReader reader = new StreamReader("~/Content/resources/repository-data.json"))
+            {
+                return await reader.ReadToEndAsync();
+            }
         }
 
         public void RunTask(int taskID)
@@ -64,11 +80,6 @@ namespace personal_site.Services
         }
 
         public void UpdateRepositories()
-        {
-
-        }
-
-        public void FetchRepositoriesList()
         {
 
         }
