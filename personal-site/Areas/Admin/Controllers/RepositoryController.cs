@@ -20,8 +20,6 @@ namespace personal_site.Areas.Admin.Controllers
 
         public async Task<ActionResult> EditRepository(AdminRepoEditViewModel model)
         {
-            string jsonStr = await RepositoryService.GetInstance().LoadRepositories();
-            Debug.WriteLine(jsonStr);
             return ControllerHelper.JsonActionResponse(true, "Successfully saved repository");
         }
 

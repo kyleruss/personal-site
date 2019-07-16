@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
+using Newtonsoft.Json;
 using personal_site.ViewModels;
 
 namespace personal_site.Services
@@ -38,11 +39,12 @@ namespace personal_site.Services
 
         }
 
-        public async Task<string> LoadRepositories()
+        public async Task<dynamic> LoadRepositories(HttpServerUtilityBase server)
         {
-            using(StreamReader reader = new StreamReader("~/Content/resources/repository-data.json"))
+            using(StreamReader reader = new StreamReader(server.MapPath("~/Content/resources/repository-data.json")))
             {
-                return await reader.ReadToEndAsync();
+                string jsonStr = await reader.ReadToEndAsync();
+                return JsonConvert.DeserializeObject(jsonStr);
             }
         }
 

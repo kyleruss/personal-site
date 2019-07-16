@@ -81,7 +81,6 @@
     {
         var repoId = getRepoRowName(cell);
         var repository = repoData[repoId];
-        console.log(repository);
         
         $('#repo-edit-name').val(repository['name']);
         $('#repo-edit-desc').val(repository['description']);

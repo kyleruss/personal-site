@@ -110,8 +110,10 @@
 
                         <div class="form-group row" id="repo-edit-area-container">
                             <h5 class="repo-edit-form-headers col-md-3">Readme</h5>
-                            @Html.TextAreaFor(m => m.Readme,
-                            new { @class = "form-control col-md-11", id = "repo-edit-readme", placeholder = "Enter repository readme", rows = "10" })
+                            @*@Html.TextAreaFor(m => m.Readme,
+                            new { @class = "form-control col-md-11", id = "repo-edit-readme", placeholder = "Enter repository readme", rows = "10" }) *@
+
+                            <textarea rows="10" class="form-control" id="repo-edit-readme" placeholder="Enter repository readme"></textarea>
                         </div>
 
                         <div class="row" id="repo-edit-form-controls">
