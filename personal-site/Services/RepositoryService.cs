@@ -29,23 +29,48 @@ namespace personal_site.Services
 
         private RepositoryService() { }
 
-        public void RemoveRepository(string name)
+        public void RemoveRepository(string name, HttpServerUtilityBase server)
         {
 
         }
 
-        public void EditRepository(AdminRepoEditViewModel model)
+        public async Task<string> EditRepository(AdminRepoEditViewModel model, HttpServerUtilityBase server)
         {
+            dynamic repositories = await LoadRepositories(server);
+            dynamic repo = repositories[model.Name];
+            string desc = repo.description;
 
+            repo.description = model.Description;
+            repo.codeLines = model.CodeLines;
+
+            await SaveRepositories(repositories, server);
+
+            return desc;
+        }
+
+        public async Task SaveRepositories(dynamic repoObj, HttpServerUtilityBase server)
+        {
+            string repoJson = JsonConvert.SerializeObject(repoObj);
+            string repoPath = GetRepoFilePath(server);
+            using (StreamWriter writer = new StreamWriter(repoPath, false))
+            {
+                await writer.WriteLineAsync(repoJson);
+            }
         }
 
         public async Task<dynamic> LoadRepositories(HttpServerUtilityBase server)
         {
-            using(StreamReader reader = new StreamReader(server.MapPath("~/Content/resources/repository-data.json")))
+            string repoPath = GetRepoFilePath(server);
+            using (StreamReader reader = new StreamReader(repoPath))
             {
                 string jsonStr = await reader.ReadToEndAsync();
                 return JsonConvert.DeserializeObject(jsonStr);
             }
+        }
+
+        private string GetRepoFilePath(HttpServerUtilityBase server)
+        {
+            return server.MapPath("~/Content/resources/repository-data.json");
         }
 
         public void RunTask(int taskID)
