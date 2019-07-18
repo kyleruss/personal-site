@@ -24,8 +24,9 @@ namespace personal_site.Areas.Admin.Controllers
             return ControllerHelper.JsonActionResponse(true, "Successfully saved repository");
         }
 
-        public ActionResult RemoveRepository(string repoName)
+        public async Task<ActionResult> RemoveRepository(string repoName)
         {
+            await RepositoryService.GetInstance().RemoveRepository(repoName, Server);
             return ControllerHelper.JsonActionResponse(true, "Successfully removed repository");
         }
     }

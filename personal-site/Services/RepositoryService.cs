@@ -29,9 +29,12 @@ namespace personal_site.Services
 
         private RepositoryService() { }
 
-        public void RemoveRepository(string name, HttpServerUtilityBase server)
+        public async Task RemoveRepository(string name, HttpServerUtilityBase server)
         {
+            dynamic repositories =  await LoadRepositories(server);
+            repositories.Property(name).Remove();
 
+            await SaveRepositories(repositories, server);
         }
 
         public async Task<string> EditRepository(AdminRepoEditViewModel model, HttpServerUtilityBase server)
