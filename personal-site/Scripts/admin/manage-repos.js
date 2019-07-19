@@ -60,6 +60,7 @@
 
         $.post(repoRemoveUrl, formData, function(data)
         {
+            console.log(data);
             var removeStatus = data.ActionSuccess;
 
             if(removeStatus)
