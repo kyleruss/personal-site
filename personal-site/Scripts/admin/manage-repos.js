@@ -71,6 +71,18 @@
         });
     };
 
+    function saveRepo(btnElement)
+    {
+        var form = $('#repo-edit-form');
+        var repoUrl = form.attr('action');
+        var repoData = form.serialize();
+
+        $.post(repoUrl, repoData, function(data)
+        {
+            console.log(data);
+        });
+    };
+
     function getRepoLanguages(repo)
     {
         var lang = repo['languages'];
@@ -96,6 +108,12 @@
         var parentRow = cell.closest('tr');   
         return parentRow.find('td').first().html();
     }
+
+    $('#repo-save-btn').click(function(e)
+    {
+        e.preventDefault();
+        saveRepo($(this));
+    });
 
     $(document).on('click', '.repo-edit-btn', function(e)
     {

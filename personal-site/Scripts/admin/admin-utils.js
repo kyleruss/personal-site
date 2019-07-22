@@ -1,6 +1,8 @@
 ﻿var spinnerName = '.prog-spinner';
 var alertName = '.prog-alert';
 
+$(spinnerName).hide();
+
 function startAjaxResponseOperation(element)
 {
     element.children().hide();
@@ -12,7 +14,10 @@ function stopAjaxResponseOperation(responseObject, element, alert = null, alertD
     element.find(spinnerName).hide();
     element.children().not(spinnerName).show();
 
-    var alertElement = alert != null? alert : $(alertName);
+    alert = alert != null? alert : $(alertName);
+    alertElement.find('.prog-alert-text').text(responseObject.ResponseMsg);
+    var statusClass = responseObject.ActionSuccess ? 'alert-success' : 'alert-danger';
+    alertElement.attr('class', 'alert ' + statusClass);
     alertElement.show();
 
     setTimeout(() => { alertElement.hide() }, alertDelay);

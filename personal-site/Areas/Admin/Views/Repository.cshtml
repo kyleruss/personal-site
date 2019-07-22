@@ -86,6 +86,13 @@
                 <div class="modal-body" id="repo-edit-modal-body">
                     @using (Html.BeginForm("EditRepository", "Repository", new { Area = "Admin" }, FormMethod.Post, new { id = "repo-edit-form" }))
                     {
+                        <div class="alert prog-alert" id="repo-save-alert" role="alert">
+                            <span class="prog-alert-text"></span>
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
                         <div class="form-group row">
                             <h5 class="repo-edit-form-headers col-md-3">Name</h5>
                             @Html.TextBoxFor(m => m.Name,
@@ -119,7 +126,10 @@
                         <div class="row" id="repo-edit-form-controls">
                             <div class="btn-group" role="group">
                                 <button data-dismiss="modal" class="btn btn-lg btn-primary"><i class="far fa-arrow-alt-circle-left"></i> Back</button>
-                                <button type="submit" class="btn btn-lg btn-success"><i class="far fa-check-circle"></i> Save</button>
+                                <button id="repo-save-btn" type="submit" class="btn btn-lg btn-success">
+                                    <span><i class="far fa-check-circle"></i> Save</span>
+                                    <div class="spinner-border prog-spinner" role="status"></div>
+                                </button>
                             </div>
                         </div>
                     }

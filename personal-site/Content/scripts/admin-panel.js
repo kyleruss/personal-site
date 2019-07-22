@@ -9,6 +9,8 @@ $(function()
 var spinnerName = '.prog-spinner';
 var alertName = '.prog-alert';
 
+$(spinnerName).hide();
+
 function startAjaxResponseOperation(element)
 {
     element.children().hide();
@@ -20,7 +22,10 @@ function stopAjaxResponseOperation(responseObject, element, alert = null, alertD
     element.find(spinnerName).hide();
     element.children().not(spinnerName).show();
 
-    var alertElement = alert != null? alert : $(alertName);
+    alert = alert != null? alert : $(alertName);
+    alertElement.find('.prog-alert-text').text(responseObject.ResponseMsg);
+    var statusClass = responseObject.ActionSuccess ? 'alert-success' : 'alert-danger';
+    alertElement.attr('class', 'alert ' + statusClass);
     alertElement.show();
 
     setTimeout(() => { alertElement.hide() }, alertDelay);
@@ -108,6 +113,18 @@ function ManageRepos()
         });
     };
 
+    function saveRepo(btnElement)
+    {
+        var form = $('#repo-edit-form');
+        var repoUrl = form.attr('action');
+        var repoData = form.serialize();
+
+        $.post(repoUrl, repoData, function(data)
+        {
+            console.log(data);
+        });
+    };
+
     function getRepoLanguages(repo)
     {
         var lang = repo['languages'];
@@ -133,6 +150,12 @@ function ManageRepos()
         var parentRow = cell.closest('tr');   
         return parentRow.find('td').first().html();
     }
+
+    $('#repo-save-btn').click(function(e)
+    {
+        e.preventDefault();
+        saveRepo($(this));
+    });
 
     $(document).on('click', '.repo-edit-btn', function(e)
     {

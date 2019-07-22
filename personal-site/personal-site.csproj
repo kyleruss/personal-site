@@ -327,6 +327,7 @@
     <Content Include="Content\css\main.css" />
     <Content Include="Scripts\about.js" />
     <Content Include="Scripts\admin\admin-core.js" />
+    <Content Include="Scripts\admin\admin-utils.js" />
     <Content Include="Scripts\admin\manage-repos.js" />
     <Content Include="Scripts\blog.js" />
     <Content Include="Scripts\conf.js" />
