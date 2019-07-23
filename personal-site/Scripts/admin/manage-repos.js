@@ -76,10 +76,13 @@
         var form = $('#repo-edit-form');
         var repoUrl = form.attr('action');
         var repoData = form.serialize();
+        var alertElement = $('#repo-save-alert');
+
+        startAjaxResponseOperation(btnElement);
 
         $.post(repoUrl, repoData, function(data)
         {
-            console.log(data);
+            stopAjaxResponseOperation(data, btnElement, alertElement);
         });
     };
 
