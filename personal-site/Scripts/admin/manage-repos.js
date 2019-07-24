@@ -82,6 +82,7 @@
 
         $.post(repoUrl, repoData, function(data)
         {
+            console.log(data);
             stopAjaxResponseOperation(data, btnElement, alertElement);
         });
     };
@@ -112,11 +113,11 @@
         return parentRow.find('td').first().html();
     }
 
-    $('#repo-save-btn').click(function(e)
+    /*$('#repo-save-btn').click(function(e)
     {
         e.preventDefault();
         saveRepo($(this));
-    });
+    }); */
 
     $(document).on('click', '.repo-edit-btn', function(e)
     {

@@ -45,6 +45,7 @@ namespace personal_site.Services
 
             repo.description = model.Description;
             repo.codeLines = model.CodeLines;
+            repo.readme = model.Readme;
 
             await SaveRepositories(repositories, server);
 

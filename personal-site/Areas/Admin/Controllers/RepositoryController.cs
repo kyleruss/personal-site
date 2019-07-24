@@ -18,6 +18,7 @@ namespace personal_site.Areas.Admin.Controllers
             return View("../Repository");
         }
 
+        [ValidateInput(false)]
         public async Task<ActionResult> EditRepository(AdminRepoEditViewModel model)
         {
             await RepositoryService.GetInstance().EditRepository(model, Server);
