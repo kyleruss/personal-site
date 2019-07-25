@@ -99,17 +99,27 @@ function ManageRepos()
     {
         var repoId = getRepoRowName(cell);
         var formData = { repoName: repoId };
+        var removeModal = $('#repo-remove-modal');
+
+        $('.repo-remove-status-icon').hide();
 
         $.post(repoRemoveUrl, formData, function(data)
         {
             var removeStatus = data.ActionSuccess;
+            $('#removal-modal-text').text(data.ResponseMsg);
 
             if(removeStatus)
             {
+                $('#repo-remove-success').show();
+
                 var parentRow = cell.closest('tr');
                 parentRow.remove();
                 delete repoData[repoId];
             }
+
+            else $('#repo-remove-fail').show();
+            
+            removeModal.modal('show');
         });
     };
 
@@ -124,7 +134,6 @@ function ManageRepos()
 
         $.post(repoUrl, repoData, function(data)
         {
-            console.log(data);
             stopAjaxResponseOperation(data, btnElement, alertElement);
         });
     };
@@ -155,11 +164,11 @@ function ManageRepos()
         return parentRow.find('td').first().html();
     }
 
-    /*$('#repo-save-btn').click(function(e)
+    $('#repo-save-btn').click(function(e)
     {
         e.preventDefault();
         saveRepo($(this));
-    }); */
+    }); 
 
     $(document).on('click', '.repo-edit-btn', function(e)
     {

@@ -221,6 +221,9 @@
   display: block;
   margin-top: 2em; }
 
+#repo-remove-modal .modal-body {
+  text-align: center; }
+
 .social-media-display {
   width: 100px;
   height: 100px;
