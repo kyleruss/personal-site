@@ -1,4 +1,4 @@
-function ManageBlog()
+$(function()
 {
     $('.blog-edit-btn').click((e) =>
     {
@@ -25,4 +25,4 @@ function ManageBlog()
         $('#blog-edit-id').val('');
         $('#blog-edit-modal').modal('show');
     });
-};
+});

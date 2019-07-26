@@ -11,6 +11,15 @@
 
 @section AdminHomeComponent
 {
+    <div class="col-md-12">
+        <div class="alert prog-alert" id="repo-save-alert" role="alert">
+            <span class="prog-alert-text"></span>
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
     <div class="col-md-6">
         <div class="card inner-component-card col-md-12" id="rss-channel-component">
             <div class="card-header">
@@ -18,7 +27,7 @@
             </div>
 
             <div class="card-body">
-                @using(Html.BeginForm("UpdateRssChannel", "Rss", new { Area = "Admin" }, FormMethod.Post, new { id = "admin-rss-chanel-form", role = "form" }))
+                @using (Html.BeginForm("UpdateRssChannel", "Rss", new { Area = "Admin" }, FormMethod.Post, new { id = "admin-rss-chanel-form", role = "form" }))
                 {
                     <div class="form-group">
                         <label class="rss-form-label">Name</label>
@@ -32,7 +41,7 @@
 
                     <div class="form-group">
                         <label class="rss-form-label">Image</label>
-                        @Html.TextBoxFor(m => m.ChannelUpdateModel.ImageUrl, new { @class= "form-control", placeholder = "Enter the image URL" })
+                        @Html.TextBoxFor(m => m.ChannelUpdateModel.ImageUrl, new { @class = "form-control", placeholder = "Enter the image URL" })
                     </div>
 
                     <div class="center-body">
@@ -52,12 +61,12 @@
             </div>
 
             <div class="card-body">
-                @using(Html.BeginForm("PushRssUpdate", "Rss", new { Area = "Admin" }, FormMethod.Post, new { id = "admin-rss-item-form", role = "form" }))
+                @using (Html.BeginForm("PushRssUpdate", "Rss", new { Area = "Admin" }, FormMethod.Post, new { id = "admin-rss-item-form", role = "form" }))
                 {
                     <div class="input-group">
-                        @Html.TextBoxFor(m => m.ItemPushModel.ItemContent, new { @class = "form-control", placeholder="Item Description" })
+                        @Html.TextBoxFor(m => m.ItemPushModel.ItemContent, new { @class = "form-control", placeholder = "Item Description" })
                         <div class="input-group-append">
-                            <button id="rss-item-add-btn" class="btn btn-primary" type="submit" name="ItemContent">Add</button>
+                            <button id="rss-item-add-btn" class="btn btn-primary" type="submit">Add</button>
                         </div>
                     </div>
                 }
@@ -68,14 +77,15 @@
                     {
                         List<AdminRssItemViewModel> itemList = RssService.GetInstance().GetRssItems();
 
-                        for(var i = 0; i < itemList.Count; i++)
+                        for (var i = 0; i < itemList.Count; i++)
                         {
                             AdminRssItemViewModel currentItem = itemList[i];
 
-                            <li class="list-group-item rss-item"><span class="badge badge-success">blog</span> 
+                            <li class="list-group-item rss-item">
+                                <span class="badge badge-success">blog</span>
                                 <span class="rss-item-text">@currentItem.ItemTitle</span>
                                 <button type="submit" name="index" value="@i" class="close">&times;</button>
-                            </li>                        
+                            </li>
                         }
                     }
                 </ul>
@@ -83,4 +93,10 @@
         </div>
     </div>
 }
+
+@section AdminComponentJavascript
+{
+    @Scripts.Render("~/Content/scripts/admin/manage-rss.js")
+}
+
 

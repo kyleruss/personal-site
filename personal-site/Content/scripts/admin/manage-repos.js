@@ -1,4 +1,4 @@
-﻿function ManageRepos()
+﻿$(function()
 {
     var repoData = {};
 
@@ -137,4 +137,4 @@
     {
         removeRepo($(this));
     });
-};
+});

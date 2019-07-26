@@ -56,18 +56,18 @@
         </div>
 
         <div class="card-body" id="repo-list-body">
-                <table class="table" id="repo-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Tech</th>
-                            <th scope="col">Controls</th>
-                        </tr>
-                    </thead>
+            <table class="table" id="repo-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Tech</th>
+                        <th scope="col">Controls</th>
+                    </tr>
+                </thead>
 
-                    <tbody id="repo-table-body"></tbody>
-                </table>
+                <tbody id="repo-table-body"></tbody>
+            </table>
         </div>
     </div>
 
@@ -86,7 +86,7 @@
                     </h3>
 
                     <br />
-                   
+
                 </div>
             </div>
         </div>
@@ -139,7 +139,7 @@
                         <div class="form-group row" id="repo-edit-area-container">
                             <h5 class="repo-edit-form-headers col-md-3">Readme</h5>
                             @Html.TextAreaFor(m => m.Readme,
-                            new { @class = "form-control col-md-11", id = "repo-edit-readme", placeholder = "Enter repository readme", rows = "10" }) 
+                            new { @class = "form-control col-md-11", id = "repo-edit-readme", placeholder = "Enter repository readme", rows = "10" })
                         </div>
 
                         <div class="row" id="repo-edit-form-controls">
@@ -156,5 +156,11 @@
             </div>
         </div>
     </div>
-    }
+}
+
+@section AdminComponentJavascript
+{
+    @Scripts.Render("~/Content/scripts/admin/manage-repos.js")
+}
+
 

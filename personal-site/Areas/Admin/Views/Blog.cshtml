@@ -75,7 +75,7 @@
                             new { @class = "form-control col-md-11", id = "blog-edit-area", rows = "10", placeholder = "Enter your blog post content" })
                         </div>
 
-                        @Html.HiddenFor(m => m.PostId, new { id = "blog-edit-id"})
+                        @Html.HiddenFor(m => m.PostId, new { id = "blog-edit-id" })
 
                         <div class="row" id="blog-edit-form-controls">
                             <div class="btn-group" role="group">
@@ -90,3 +90,7 @@
     </div>
 }
 
+@section AdminComponentJavascript
+{
+    @Scripts.Render("~/Content/scripts/admin/manage-blog.js")
+}

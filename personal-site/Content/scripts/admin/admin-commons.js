@@ -2,6 +2,7 @@
 var alertName = '.prog-alert';
 
 $(spinnerName).hide();
+$(alertName).hide();
 
 function startAjaxResponseOperation(element)
 {

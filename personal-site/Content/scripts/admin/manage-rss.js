@@ -1,5 +1,7 @@
-function ManageRss()
+$(function()
 {
+    alert('test');
+    
     function updateChannel()
     {
 
@@ -24,4 +26,4 @@ function ManageRss()
     {
         e.preventDefault();
     });
-};
+});

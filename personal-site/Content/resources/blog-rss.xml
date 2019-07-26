@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
   <channel>
+    <item>
+      <title>New update</title>
+      <link>www.kylerussell.co.nz</link>
+      <description>test item</description>
+    </item>
     <title>test name</title>
     <link>https://www.kylerussell.co.nz</link>
     <description>test desc</description>
