@@ -1,8 +1,12 @@
 ﻿var spinnerName = '.prog-spinner';
 var alertName = '.prog-alert';
 
+//Hide any progress spinners and alerts
 $(spinnerName).hide();
 $(alertName).hide();
+
+//Enable nice scrolling for the main component container
+$('#component-content-container').niceScroll(scrollConfig);
 
 function startAjaxResponseOperation(element)
 {
