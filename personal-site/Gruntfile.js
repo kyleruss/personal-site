@@ -27,43 +27,10 @@ module.exports = function (grunt)
                 tasks: ['concat'],
                 options: { atBegin: true }
             }
-        },
-
-        concatAdmin:
-        {
-            dist:
-            {
-                src:
-                    [
-                        'Scripts/admin/admin-core.js',
-                        'Scripts/admin/admin-utils.js',
-                        'Scripts/admin/manage-repos.js',
-                        'Scripts/admin/manage-blog.js',
-                        'Scripts/admin/manage-rss.js',
-                    ],
-                dest: 'Content/Scripts/admin-panel.js'
-            }
-        },
-
-        watchAdmin:
-        {
-            scripts:
-            {
-                files: 'Scripts/admin/*.js',
-                tasks: ['concatAdmin'],
-                options: { atBegin: true }
-            }
         }
-
     });
 
     grunt.loadTasks('Tasks');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-
-    grunt.renameTask('concat', 'concatAdmin');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-
-    grunt.renameTask('watch', 'watchAdmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
 };
