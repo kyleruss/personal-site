@@ -31,10 +31,20 @@ function stopAjaxResponseOperation(responseObject, element, alert = null, alertD
     setTimeout(() => { alertElement.hide() }, alertDelay);
 };
 
-function postAjaxForm(form, callback)
+function processForm(form, btn, formData = null)
+{
+    startAjaxResponseOperation(btn);
+
+    postAjaxForm(form, (data) =>
+    {
+        stopAjaxResponseOperation(data, btn);
+    }, formData);
+};
+
+function postAjaxForm(form, callback, formData = null)
 {
     var formUrl = form.attr('action');
-    var formData = form.serialize();
+    formData = formData != null? formData : form.serialize();
     
     $.post(formUrl, formData, (data) =>
     {

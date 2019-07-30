@@ -48,7 +48,8 @@
 
                     <div class="center-body">
                         <button type="submit" id="channel-update-btn" class="btn btn-success">
-                            <i class="far fa-arrow-alt-circle-up"></i> Update
+                            <span><i class="far fa-arrow-alt-circle-up"></i> Update</span>
+                            <div class="spinner-border prog-spinner" role="status"></div>
                         </button>
                     </div>
                 }
@@ -89,7 +90,10 @@
                             <li class="list-group-item rss-item">
                                 <span class="badge badge-success">blog</span>
                                 <span class="rss-item-text">@currentItem.ItemTitle</span>
-                                <button type="submit" name="index" value="@i" class="close">&times;</button>
+                                <button type="submit" name="index" value="@i" class="close rss-remove-btn">
+                                    <span>&times;</span>
+                                    <div class="spinner-border prog-spinner" role="status"></div>
+                                </button>
                             </li>
                         }
                     }
