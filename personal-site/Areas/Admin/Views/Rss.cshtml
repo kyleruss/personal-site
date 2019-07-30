@@ -66,7 +66,10 @@
                     <div class="input-group">
                         @Html.TextBoxFor(m => m.ItemPushModel.ItemContent, new { @class = "form-control", placeholder = "Item Description" })
                         <div class="input-group-append">
-                            <button id="rss-item-add-btn" class="btn btn-primary" type="submit">Add</button>
+                            <button id="rss-item-add-btn" class="btn btn-primary" type="submit">
+                                Add
+                                <div class="spinner-border prog-spinner" role="status"></div>
+                            </button>
                         </div>
                     </div>
                 }

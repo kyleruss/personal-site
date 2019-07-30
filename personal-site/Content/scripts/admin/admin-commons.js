@@ -1,12 +1,15 @@
 ﻿var spinnerName = '.prog-spinner';
 var alertName = '.prog-alert';
 
-//Hide any progress spinners and alerts
-$(spinnerName).hide();
-$(alertName).hide();
+$(function()
+{
+    //Hide any progress spinners and alerts
+    $(spinnerName).hide();
+    $(alertName).hide();
 
-//Enable nice scrolling for the main component container
-$('#component-content-container').niceScroll(scrollConfig);
+    //Enable nice scrolling for the main component container
+    $('#component-content-container').niceScroll(scrollConfig);
+});
 
 function startAjaxResponseOperation(element)
 {
@@ -26,6 +29,17 @@ function stopAjaxResponseOperation(responseObject, element, alert = null, alertD
     alertElement.show();
 
     setTimeout(() => { alertElement.hide() }, alertDelay);
+};
+
+function postAjaxForm(form, callback)
+{
+    var formUrl = form.attr('action');
+    var formData = form.serialize();
+    
+    $.post(formUrl, formData, (data) =>
+    {
+        callback(data);
+    });
 };
 
 function delayStopAjaxResponse(responseObject, element, callback = null, alert = null, delay = 2000)
