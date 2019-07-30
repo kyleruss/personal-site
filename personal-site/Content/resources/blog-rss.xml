@@ -31,9 +31,9 @@
       <link>www.kylerussell.co.nz</link>
       <description>test item</description>
     </item>
-    <title>test name</title>
+    <title>example name</title>
     <link>https://www.kylerussell.co.nz</link>
-    <description>test desc</description>
-    <image>testimage</image>
+    <description>my desc</description>
+    <image>demoimage</image>
   </channel>
 </rss>

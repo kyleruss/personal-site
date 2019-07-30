@@ -21,11 +21,11 @@ $(function()
         
     };
 
-    $('#channel-update-btn').click((e) =>
+ /*   $('#channel-update-btn').click((e) =>
     {
         e.preventDefault();
         updateChannel();
-    });
+    }); */
 
     $('#rss-item-add-btn').click((e) =>
     {

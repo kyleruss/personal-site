@@ -29,19 +29,21 @@
             <div class="card-body">
                 @using (Html.BeginForm("UpdateRssChannel", "Rss", new { Area = "Admin" }, FormMethod.Post, new { id = "admin-rss-chanel-form", role = "form" }))
                 {
+                    AdminRssChannelViewModel RssSettings = RssService.GetInstance().GetChannelSettings();
+
                     <div class="form-group">
                         <label class="rss-form-label">Name</label>
-                        @Html.TextBoxFor(m => m.ChannelUpdateModel.Name, new { @class = "form-control", placeholder = "Enter the channel name" })
+                        @Html.TextBoxFor(m => m.ChannelUpdateModel.Name, new { @class = "form-control", placeholder = "Enter the channel name", @Value = RssSettings.Name })
                     </div>
 
                     <div class="form-group">
                         <label class="rss-form-label">Description</label>
-                        @Html.TextBoxFor(m => m.ChannelUpdateModel.Description, new { @class = "form-control", placeholder = "Enter the channel description" })
+                        @Html.TextBoxFor(m => m.ChannelUpdateModel.Description, new { @class = "form-control", placeholder = "Enter the channel description", @Value = RssSettings.Description })
                     </div>
 
                     <div class="form-group">
                         <label class="rss-form-label">Image</label>
-                        @Html.TextBoxFor(m => m.ChannelUpdateModel.ImageUrl, new { @class = "form-control", placeholder = "Enter the image URL" })
+                        @Html.TextBoxFor(m => m.ChannelUpdateModel.ImageUrl, new { @class = "form-control", placeholder = "Enter the image URL", @Value = RssSettings.ImageUrl })
                     </div>
 
                     <div class="center-body">
