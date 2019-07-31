@@ -31,13 +31,15 @@ function stopAjaxResponseOperation(responseObject, element, alert = null, alertD
     setTimeout(() => { alertElement.hide() }, alertDelay);
 };
 
-function processForm(form, btn, formData = null)
+function processForm(form, btn, formData = null, callback = null)
 {
     startAjaxResponseOperation(btn);
 
     postAjaxForm(form, (data) =>
     {
         stopAjaxResponseOperation(data, btn);
+        callback(data);
+        
     }, formData);
 };
 

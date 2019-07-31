@@ -13,7 +13,14 @@ $(function()
     function removeRssItem(currentBtn)
     {
         var formData = currentBtn.attr('name') + '=' + currentBtn.attr('value');
-        processForm($('#admin-rss-item-remove-form'), currentBtn, formData);
+        processForm($('#admin-rss-item-remove-form'), currentBtn, formData, (data) =>
+        {
+            if(data.ActionSuccess)
+            {
+                var currentItemElement =  currentBtn.closest('.rss-item');
+                currentItemElement.remove();
+            }
+        });
     };
 
     $('.rss-remove-btn').click(function(e)
