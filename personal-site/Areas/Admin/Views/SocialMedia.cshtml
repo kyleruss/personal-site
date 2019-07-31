@@ -55,15 +55,28 @@
                         <i class="@iconClass"></i>
                     </div>
 
-                    
+
                     <input class="form-control social-media-input" value="@currentSocialValue" id="@socialItem-item" name="@socialItem" />
                 </div>
             }
 
-        <div id="social-btn-container">
-            <button type="submit" class="btn btn-lg btn-success" id="social-update-btn"><i class="far fa-arrow-alt-circle-up"></i> Update</button>
-        </div>
+             <div id="social-btn-container">
+                <div class="alert prog-alert" id="social-save-alert" role="alert">
+                    <span class="prog-alert-text"></span>
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <button type="submit" class="btn btn-lg btn-success" id="social-update-btn">
+                    <span><i class="far fa-arrow-alt-circle-up"></i> Update</span>
+                    <div class="spinner-border prog-spinner" role="status"></div>
+                </button>
+            </div>
         }
     </div>
 }
 
+@section AdminComponentJavascript
+{
+    @Scripts.Render("~/Content/scripts/admin/manage-social.js")
+}
