@@ -22,14 +22,25 @@ function stopAjaxResponseOperation(responseObject, element, alert = null, alertD
     element.find(spinnerName).hide();
     element.children().not(spinnerName).show();
 
-    var alertElement = (alert != null) ? alert : $(alertName);
-    var alertClassName = alertName.substr(1);
-    alertElement.find('.prog-alert-text').text(responseObject.ResponseMsg);
-    var statusClass = responseObject.ActionSuccess ? 'alert-success' : 'alert-danger';
-    alertElement.attr('class', 'alert ' +  alertClassName + ' ' + statusClass);
-    alertElement.show();
+    toggleAlertResponse(responseObject, alert);
 
-    setTimeout(() => { alertElement.hide() }, alertDelay);
+    setTimeout(() => { toggleAlertResponse(responseObject, alert, true); }, alertDelay);
+};
+
+function toggleAlertResponse(responseObject, alert = null, hide = false)
+{
+    var alertElement = (alert != null) ? alert : $(alertName);
+
+    if(!hide)
+    {
+        var alertClassName = alertName.substr(1);
+        alertElement.find('.prog-alert-text').text(responseObject.ResponseMsg);
+        var statusClass = responseObject.ActionSuccess ? 'alert-success' : 'alert-danger';
+        alertElement.attr('class', 'alert ' +  alertClassName + ' ' + statusClass);
+        alertElement.show();
+    }
+
+    else alertElement.hide();
 };
 
 function processForm(form, btn, formData = null, callback = null)

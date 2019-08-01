@@ -19,13 +19,35 @@ $(function()
         });
     };
 
-    
+    function removeBlogItem(currentBtn)
+    {
+        var formData = currentBtn.attr('name') + '=' + currentBtn.attr('value');
+        var alertElement = $('#blog-remove-alert');
+
+        processForm($('#remove-blog-form'), currentBtn, formData, (data) =>
+        {
+            toggleAlertResponse(data, alertElement);
+
+            if(data.ActionSuccess)
+            {
+                var currentItemElement =  currentBtn.closest('.blog-post-item');
+                currentItemElement.remove();
+            }
+
+            setTimeout(() => toggleAlertResponse(data, alertElement, true), 2000);
+        });
+    };
+
     function saveBlogPost()
     {
         processForm($('#blog-edit-form'), $('#blog-save-btn'));
     };
 
-   
+    $('.remove-blog-btn').click(function(e)
+    {
+        e.preventDefault();
+        removeBlogItem($(this));
+    });
 
     $('.blog-edit-btn').click((e) =>
     {
