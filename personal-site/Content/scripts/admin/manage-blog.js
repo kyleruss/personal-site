@@ -1,8 +1,8 @@
 $(function()
 {
-    $('.blog-edit-btn').click((e) =>
+    function getBlogPostInfo(target)
     {
-        var blogId = $(e.target).closest('.blog-post-item').attr('data-blogId');
+        var blogId = $(target).closest('.blog-post-item').attr('data-blogId');
         var postUrl = blogPostUrl + "/" + blogId;
         
         $.getJSON(postUrl, (data) =>
@@ -17,12 +17,30 @@ $(function()
 
             blogModal.modal('show');
         });
+    };
 
+    
+    function saveBlogPost()
+    {
+        processForm($('#blog-edit-form'), $('#blog-save-btn'));
+    };
+
+   
+
+    $('.blog-edit-btn').click((e) =>
+    {
+        getBlogPostInfo(e.target);
     });
 
     $('#blog-new-btn').click((e) =>
     {
         $('#blog-edit-id').val('');
         $('#blog-edit-modal').modal('show');
+    });
+
+    $('#blog-save-btn').click((e) =>
+    {
+        e.preventDefault();
+        saveBlogPost();
     });
 });
