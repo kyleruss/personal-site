@@ -4,12 +4,22 @@ var alertName = '.prog-alert';
 $(function()
 {
     //Hide any progress spinners and alerts
-    $(spinnerName).hide();
-    $(alertName).hide();
+    hideSpinners();
+    hideAlerts();
 
     //Enable nice scrolling for the main component container
     $('#component-content-container').niceScroll(scrollConfig);
 });
+
+function hideSpinners()
+{
+    $(spinnerName).hide();
+};
+
+function hideAlerts()
+{
+    $(alertName).hide();
+};
 
 function startAjaxResponseOperation(element)
 {

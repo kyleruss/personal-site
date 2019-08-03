@@ -40,7 +40,19 @@ $(function()
 
     function saveBlogPost()
     {
-        processForm($('#blog-edit-form'), $('#blog-save-btn'));
+        processForm($('#blog-edit-form'), $('#blog-save-btn'), null, (data) =>
+        {
+            var url = window.location.href;
+            var listId = '#blog-list';
+
+            $(listId).load(url + ' ' + listId);
+            
+            setTimeout(() =>
+            {
+                $('#blog-edit-modal').modal('hide');
+                hideSpinners();
+            }, 1000);
+        });
     };
 
     $('.remove-blog-btn').click(function(e)
