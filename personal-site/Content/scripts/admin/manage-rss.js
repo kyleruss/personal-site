@@ -7,7 +7,17 @@ $(function()
 
     function addRssItem()
     {
-        processForm($('#admin-rss-item-form'), $('#rss-item-add-btn'));
+        processForm($('#admin-rss-item-form'), $('#rss-item-add-btn'), null, (data) =>
+        {
+            var url = window.location.href;
+            var listId = '#rss-items-list';
+
+            $(listId).load(url + ' ' + listId, () =>
+            {
+                hideSpinners();
+            });
+            
+        });
     };
 
     function removeRssItem(currentBtn)
