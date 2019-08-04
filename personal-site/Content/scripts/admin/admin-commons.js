@@ -53,7 +53,7 @@ function toggleAlertResponse(responseObject, alert = null, hide = false)
     else alertElement.hide();
 };
 
-function processForm(form, btn, formData = null, callback = null)
+function processForm(form, btn, formData = null, callback = null, formUrl = null)
 {
     startAjaxResponseOperation(btn);
 
@@ -62,12 +62,12 @@ function processForm(form, btn, formData = null, callback = null)
         stopAjaxResponseOperation(data, btn);
         if(callback != null) callback(data);
 
-    }, formData);
+    }, formData, formUrl);
 };
 
-function postAjaxForm(form, callback, formData = null)
+function postAjaxForm(form, callback, formData = null, formUrl = null)
 {
-    var formUrl = form.attr('action');
+    formUrl = formUrl != null? formUrl : form.attr('action');
     formData = formData != null? formData : form.serialize();
     
     $.post(formUrl, formData, (data) =>

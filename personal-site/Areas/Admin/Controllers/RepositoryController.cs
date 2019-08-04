@@ -30,5 +30,16 @@ namespace personal_site.Areas.Admin.Controllers
             await RepositoryService.GetInstance().RemoveRepository(repoName, Server);
             return ControllerHelper.JsonActionResponse(true, "Successfully removed repository");
         }
+
+        public ActionResult ExecuteRepositoryTask(string taskName)
+        {
+            bool taskExecStatus = RepositoryService.GetInstance().RunTask(taskName);
+
+            if (taskExecStatus)
+                return ControllerHelper.JsonActionResponse(true, "Successfully executed task");
+
+            else
+                return ControllerHelper.JsonActionResponse(false, "Failed to execute task");
+        }
     }
 }

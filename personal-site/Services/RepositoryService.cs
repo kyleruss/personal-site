@@ -99,11 +99,6 @@ namespace personal_site.Services
 
         }
 
-        public void UpdateRepositories()
-        {
-
-        }
-
         public static RepositoryService GetInstance()
         {
             _instance = _instance ?? new RepositoryService();

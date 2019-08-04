@@ -26,6 +26,12 @@
         });
     };
 
+    function executeRepositoryTask()
+    {
+        var formData = 'taskName=' + $('#repo-task-dropdown-btn').text();
+        processForm(null, $('#task-run-btn'), formData, null, repoTaskUrl);
+    };
+
     function createRepoControls(rowElement)
     {
         var cellElement = $('<td/>');
@@ -127,6 +133,17 @@
         e.preventDefault();
         saveRepo($(this));
     }); 
+
+    $('#task-run-btn').click((e) =>
+    {
+        executeRepositoryTask();
+    });
+
+    $('.repo-task-dropdown-item').click((e) =>
+    {
+        var taskName = $(e.target).text();
+        $('#repo-task-dropdown-btn').text(taskName);
+    });
 
     $(document).on('click', '.repo-edit-btn', function(e)
     {

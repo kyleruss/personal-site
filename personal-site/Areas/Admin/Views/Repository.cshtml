@@ -14,7 +14,17 @@
     <script>
         var repoFetchUrl = '@Url.Content("~/Content/resources/repository-data.json")';
         var repoRemoveUrl = '@Url.Action("RemoveRepository", "Repository", new { Area = "Admin"})';
+        var repoTaskUrl = '@Url.Action("ExecuteRepositoryTask", "Repository", new { Area = "Admin"})';
     </script>
+
+    <div class="col-md-12">
+        <div class="alert prog-alert" id="repo-save-alert" role="alert">
+            <span class="prog-alert-text"></span>
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
 
     <div class="card inner-component-card col-md-5">
         <div class="card-header">
@@ -22,15 +32,15 @@
         </div>
 
         <div class="card-body center-body">
-            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button id="repo-task-dropdown-btn" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Choose Task
             </button>
 
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" id="repo-task-dropdown">
                 @foreach (string taskItem in RepositoryService.GetInstance().GetRepositoryTaskList())
                 {
-                    <a class="dropdown-item" href="#">@taskItem</a>
-                }                
+                    <a class="dropdown-item repo-task-dropdown-item" href="#">@taskItem</a>
+                }
             </div>
 
             <button class="btn btn-success" id="task-run-btn"><i class="far fa-arrow-alt-circle-up"></i></button>
@@ -108,12 +118,7 @@
                 <div class="modal-body" id="repo-edit-modal-body">
                     @using (Html.BeginForm("EditRepository", "Repository", new { Area = "Admin" }, FormMethod.Post, new { id = "repo-edit-form" }))
                     {
-                        <div class="alert prog-alert" id="repo-save-alert" role="alert">
-                            <span class="prog-alert-text"></span>
-                            <button type="button" class="close" data-dismiss="alert">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+
 
                         <div class="form-group row">
                             <h5 class="repo-edit-form-headers col-md-3">Name</h5>
