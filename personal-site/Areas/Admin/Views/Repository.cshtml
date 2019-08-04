@@ -1,4 +1,6 @@
-﻿@model personal_site.ViewModels.AdminRepoEditViewModel
+﻿@using personal_site.Services
+
+@model personal_site.ViewModels.AdminRepoEditViewModel
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminPanelLayout.cshtml";
@@ -25,11 +27,10 @@
             </button>
 
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Task A</a>
-                <a class="dropdown-item" href="#">Task B</a>
-                <a class="dropdown-item" href="#">Task C</a>
-                <a class="dropdown-item" href="#">Task D</a>
-                <a class="dropdown-item" href="#">Task E</a>
+                @foreach (string taskItem in RepositoryService.GetInstance().GetRepositoryTaskList())
+                {
+                    <a class="dropdown-item" href="#">@taskItem</a>
+                }                
             </div>
 
             <button class="btn btn-success" id="task-run-btn"><i class="far fa-arrow-alt-circle-up"></i></button>

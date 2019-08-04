@@ -72,6 +72,25 @@ namespace personal_site.Services
             }
         }
 
+
+        public List<string> GetRepositoryTaskList()
+        {
+            List<string> taskList = new List<string>
+            {
+                "repo-load",
+                "commits-load",
+                "codelines-load",
+                "languages-load",
+                "readme-load",
+                "description-load",
+                "find-abnormal-data",
+                "filter-abnormal-data",
+                "filter-content"
+            };
+
+            return taskList;
+        }
+
         private string GetRepoFilePath(HttpServerUtilityBase server)
         {
             return server.MapPath("~/Content/resources/repository-data.json");
@@ -122,3 +141,5 @@ namespace personal_site.Services
         }
     }
 }
+ 
+ 
