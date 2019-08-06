@@ -94,6 +94,22 @@ namespace personal_site.Services
                 return false;
             else
             {
+                string commandText = "/K grunt " + taskName;
+                string projectDir = AppDomain.CurrentDomain.BaseDirectory;
+                var process = new Process();
+                var startInfo = new ProcessStartInfo()
+                {
+                    FileName = "cmd.exe",
+                    Arguments = commandText,
+                    WindowStyle = ProcessWindowStyle.Normal,
+                    WorkingDirectory = projectDir
+                };
+                
+                process.StartInfo = startInfo;
+                process.Start();
+
+
+                               
                 return true;
             }
 
