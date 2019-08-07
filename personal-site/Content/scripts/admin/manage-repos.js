@@ -8,6 +8,7 @@
     function loadRepos()
     {
         var repoTableContainer = $('#repo-table-body');
+        repoTableContainer.empty();
 
         $.getJSON(repoFetchUrl, (data) =>
         {
@@ -143,6 +144,11 @@
     {
         var taskName = $(e.target).text();
         $('#repo-task-dropdown-btn').text(taskName);
+    });
+
+    $('#repo-update-btn').click((e) =>
+    {
+        loadRepos();
     });
 
     $(document).on('click', '.repo-edit-btn', function(e)
