@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using Microsoft.AspNet.Identity;
 using personal_site.Models;
+using personal_site.ViewModels;
 
 namespace personal_site.Services
 {
@@ -34,6 +36,36 @@ namespace personal_site.Services
             };
         }
 
+
+        public async Task<bool> CreateUser(UserEditViewModel model, ApplicationUserManager userManager)
+        {
+            ApplicationUser user = new ApplicationUser()
+            {
+                UserName = model.Username,
+                Email = model.Email,
+                DisplayName = model.DisplayName
+            };
+
+            IdentityResult result = await userManager.CreateAsync(user, model.Password);
+            return result.Succeeded;
+        }
+
+        public async Task<bool> EditUser(UserEditViewModel model, ApplicationUserManager userManager)
+        {
+            ApplicationUser user = await userManager.FindByIdAsync(model.UserId);
+
+            if (user != null)
+            {
+                user.Email = model.Email;
+                user.DisplayName = model.DisplayName;
+                user.UserName = model.Username;
+
+                IdentityResult result = await userManager.UpdateAsync(user);
+                return result.Succeeded;
+            }
+
+            else return false;
+        }
      
 
         public static UserService GetInstance()
