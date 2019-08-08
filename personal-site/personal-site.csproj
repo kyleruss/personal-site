@@ -229,6 +229,7 @@
     <Compile Include="Areas\Admin\Controllers\RepositoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\RssController.cs" />
     <Compile Include="Areas\Admin\Controllers\SocialController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Portfolio\PortfolioAreaRegistration.cs" />
     <Compile Include="Controllers\AbstractAuthController.cs" />
     <Compile Include="Areas\Portfolio\Controllers\AccountController.cs" />
@@ -472,6 +473,7 @@
     <Content Include="Areas\Portfolio\Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\User.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
