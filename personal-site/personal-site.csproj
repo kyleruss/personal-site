@@ -292,6 +292,7 @@
     <Compile Include="Services\RepositoryService.cs" />
     <Compile Include="Services\RssService.cs" />
     <Compile Include="Services\SocialMediaService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AdminViewModels.cs" />
     <Compile Include="ViewModels\AuthCallbackViewModel.cs" />
@@ -322,6 +323,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\css\_commons.scss" />
+    <Content Include="Content\scripts\admin\manage-users.js" />
     <Content Include="Content\scripts\auth-callback.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

@@ -20,7 +20,7 @@
                 </div>
             </div>
             <ul class="list-group" id="admin-nav-list">
-                @{ string[] navItems = { "Dashboard", "Repositories", "My Blog", "Rss Feed", "Social Media" }; }
+                @{ string[] navItems = { "Dashboard", "Repositories", "My Blog", "Rss Feed", "Users", "Social Media" }; }
                 @foreach (string navItem in navItems)
                 {
                     string iconClass = "";
@@ -47,6 +47,11 @@
                         case "Rss Feed":
                             iconClass = "fas fa-rss";
                             controllerName = "Rss";
+                            break;
+
+                        case "Users":
+                            iconClass = "fas fa-user";
+                            controllerName = "User";
                             break;
 
                         case "Social Media":
