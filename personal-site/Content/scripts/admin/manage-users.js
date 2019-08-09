@@ -17,6 +17,27 @@
         });
     };
 
+    function removeUser(btnElement)
+    {
+        var userId = getUserIdForRow(btnElement);
+        var fieldName = 'id';
+        var formData = `${fieldName}=${userId}`;
+        var alertElement = $('#user-remove-alert');
+
+        processForm(null, btnElement, formData, (data) =>
+        {
+            toggleAlertResponse(data, alertElement);
+
+            if(data.ActionSuccess)
+            {
+                var currentRowElement = btnElement.closest('tr');
+                currentRowElement.remove();
+            }
+
+            setTimeout(() => toggleAlertResponse(data, alertElement, true), 2000);
+
+        }, userRemoveUrl);
+    };
 
     function editUser(btnElement)
     {
