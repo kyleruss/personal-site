@@ -350,3 +350,8 @@
 #user-controls-container {
   float: right;
   padding-bottom: 2em; }
+
+#user-edit-form-controls {
+  text-align: center;
+  display: block;
+  margin-top: 2em; }
