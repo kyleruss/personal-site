@@ -37,6 +37,11 @@ namespace personal_site.Services
             };
         }
 
+        public async Task<ApplicationUser> GetUser(string userId, ApplicationUserManager userManager)
+        {
+            return await userManager.FindByIdAsync(userId);
+        }
+
 
         public async Task<bool> CreateUser(AdminUserEditViewModel model, ApplicationUserManager userManager)
         {

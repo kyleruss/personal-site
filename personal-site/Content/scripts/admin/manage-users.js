@@ -8,11 +8,11 @@
             var tableId = '#user-table';
 
             $(tableId).load(url + ' ' + tableId);
-            
+            hideSpinners();
+
             setTimeout(() =>
             {
                 $('#user-edit-modal').modal('hide');
-                hideSpinners();
             }, 1500);
         });
     };
@@ -25,6 +25,20 @@
     function editUser(btnElement)
     {
         var userId = getUserIdForRow(btnElement);
+        var fetchUserInfoUrl = userInfoUrl + "/" + userId;
+
+        $.getJSON(fetchUserInfoUrl, (data) =>
+        {
+            var userJson = $.parseJSON(data);
+            $('#user-edit-id').val(userJson.Id);
+            $('#user-edit-name').val(userJson.DisplayName);
+            $('#user-edit-username').val(userJson.UserName);
+            $('#user-edit-email').val(userJson.Email);
+            $('#user-edit-password').val(userJson.PasswordHash);
+            $('#user-edit-picture').val(userJson.ProfilePicture);
+
+            $('#user-edit-modal').modal('show');
+        });
     };
 
     function getUserIdForRow(btnElement)

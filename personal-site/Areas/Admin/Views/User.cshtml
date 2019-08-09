@@ -12,6 +12,10 @@
 
 @section AdminHomeComponent
 {
+    <script>
+        var userInfoUrl = '@Url.Action("GetUserInfo", "User", new { Area = "Admin" })';
+    </script>
+
     <div class="card inner-component-card col-md-12">
         <div class="card-header">
             <span class="inner-component-title"><i class="fas fa-circle"></i> User List</span>
@@ -35,7 +39,7 @@
                 </thead>
 
                 <tbody id="user-table-body">
-                    @foreach(ApplicationUser user in UserService.GetInstance().GetUserList())
+                    @foreach (ApplicationUser user in UserService.GetInstance().GetUserList())
                     {
                         string providerName = user.Provider ?? "None";
 
@@ -53,9 +57,9 @@
                             </td>
 
                             <td class="user-table-controls">
-                                <button class="user-edit-btn"><i class="far fa-edit"></i></button>
-                                <button class="user-remove-btn">
-                                    <span>&times;</span>
+                                <button class="user-edit-btn user-table-control-btns"><i class="far fa-edit"></i></button>
+                                <button class="user-remove-btn user-table-control-btns">
+                                    <i class="fas fa-times"></i>
                                     <div class="spinner-border prog-spinner" role="status"></div>
                                 </button>
                             </td>
@@ -88,6 +92,9 @@
 
                     @using (Html.BeginForm("SaveUser", "User", new { Area = "Admin" }, FormMethod.Post, new { id = "user-save-form", role = "form" }))
                     {
+                        @Html.HiddenFor(m => m.UserId,
+                        new { id = "user-edit-id" })
+
                         <div class="form-group row">
                             <h4 class="col-md-3">
                                 Name
@@ -143,9 +150,9 @@
             </div>
         </div>
     </div>
-    }
+}
 
-    @section AdminComponentJavascript
+@section AdminComponentJavascript
 {
-        @Scripts.Render("~/Content/scripts/admin/manage-users.js")
-    }
+    @Scripts.Render("~/Content/scripts/admin/manage-users.js")
+}
