@@ -16,6 +16,15 @@
         var userInfoUrl = '@Url.Action("GetUserInfo", "User", new { Area = "Admin" })';
     </script>
 
+    <div class="col-md-12">
+        <div class="alert prog-alert" id="user-remove-alert" role="alert">
+            <span class="prog-alert-text"></span>
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
     <div class="card inner-component-card col-md-12">
         <div class="card-header">
             <span class="inner-component-title"><i class="fas fa-circle"></i> User List</span>

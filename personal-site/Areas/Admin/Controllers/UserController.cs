@@ -22,10 +22,10 @@ namespace personal_site.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> RemoveUser(string userId)
+        public async Task<ActionResult> RemoveUser(string id)
         {
             UserService userService = UserService.GetInstance();
-            bool removeStatus = await userService.RemoveUser(userId);
+            bool removeStatus = await userService.RemoveUser(id);
 
             if (removeStatus)
                 return ControllerHelper.JsonActionResponse(true, "Successfully removed user");

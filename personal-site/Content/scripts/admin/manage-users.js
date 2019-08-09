@@ -17,10 +17,6 @@
         });
     };
 
-    function removeUser(btnElement)
-    {
-        var userId = getUserIdForRow(btnElement);
-    };
 
     function editUser(btnElement)
     {
