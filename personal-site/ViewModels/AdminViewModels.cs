@@ -103,7 +103,7 @@ namespace personal_site.ViewModels
         public int CodeLines { get; set; }
     }
 
-    public class UserEditViewModel
+    public class AdminUserEditViewModel
     {
         public string UserId { get; set; }
 
@@ -114,5 +114,7 @@ namespace personal_site.ViewModels
         public string Password { get; set; }
 
         public string DisplayName { get; set; }
+
+        public string ProfilePicture { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace personal_site.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> SaveUser(UserEditViewModel model)
+        public async Task<ActionResult> SaveUser(AdminUserEditViewModel model)
         {
             UserService userService = UserService.GetInstance();
             bool saveSuccess;

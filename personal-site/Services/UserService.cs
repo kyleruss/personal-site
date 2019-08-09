@@ -37,7 +37,7 @@ namespace personal_site.Services
         }
 
 
-        public async Task<bool> CreateUser(UserEditViewModel model, ApplicationUserManager userManager)
+        public async Task<bool> CreateUser(AdminUserEditViewModel model, ApplicationUserManager userManager)
         {
             ApplicationUser user = new ApplicationUser()
             {
@@ -50,7 +50,7 @@ namespace personal_site.Services
             return result.Succeeded;
         }
 
-        public async Task<bool> EditUser(UserEditViewModel model, ApplicationUserManager userManager)
+        public async Task<bool> EditUser(AdminUserEditViewModel model, ApplicationUserManager userManager)
         {
             ApplicationUser user = await userManager.FindByIdAsync(model.UserId);
 
