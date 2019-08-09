@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -43,10 +44,13 @@ namespace personal_site.Services
             {
                 UserName = model.Username,
                 Email = model.Email,
-                DisplayName = model.DisplayName
+                DisplayName = model.DisplayName,
+                ProfilePicture = model.ProfilePicture        
             };
 
             IdentityResult result = await userManager.CreateAsync(user, model.Password);
+            foreach (var err in result.Errors)
+                Debug.WriteLine("ERRORS " + err);
             return result.Succeeded;
         }
 

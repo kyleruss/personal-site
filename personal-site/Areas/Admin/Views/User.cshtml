@@ -30,13 +30,15 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Provider</th>
-                        <th scope="col">Date</th>
+                        <th scope="col">Controls</th>
                     </tr>
                 </thead>
 
                 <tbody id="user-table-body">
                     @foreach(ApplicationUser user in UserService.GetInstance().GetUserList())
                     {
+                        string providerName = user.Provider ?? "None";
+
                         <tr data-userId="@user.Id">
                             <td class="user-table-name">
                                 @user.DisplayName
@@ -47,11 +49,15 @@
                             </td>
 
                             <td class="user-table-provider">
-                                @user.Provider
+                                @providerName
                             </td>
 
-                            <td class="user-table-date">
-
+                            <td class="user-table-controls">
+                                <button class="user-edit-btn"><i class="far fa-edit"></i></button>
+                                <button class="user-remove-btn">
+                                    <span>&times;</span>
+                                    <div class="spinner-border prog-spinner" role="status"></div>
+                                </button>
                             </td>
                         </tr>
                     }
@@ -92,6 +98,15 @@
 
                         <div class="form-group row">
                             <h4 class="col-md-3">
+                                Username
+                            </h4>
+                            @Html.TextBoxFor(m => m.Username,
+                            new { @class = "form-control col-md-8", id = "user-edit-username", placeholder = "Enter the users id" })
+                        </div>
+
+
+                        <div class="form-group row">
+                            <h4 class="col-md-3">
                                 Email
                             </h4>
                             @Html.TextBoxFor(m => m.Email,
@@ -117,7 +132,7 @@
                         <div class="row" id="user-edit-form-controls">
                             <div class="btn-group" role="group">
                                 <button data-dismiss="modal" class="btn btn-lg btn-primary"><i class="far fa-arrow-alt-circle-left"></i> Go Back</button>
-                                <button type="submit" class="btn btn-lg btn-success" id="user-save-btn">
+                                <button class="btn btn-lg btn-success" id="user-save-btn">
                                     <span><i class="far fa-check-circle"></i> Save User</span>
                                     <div class="spinner-border prog-spinner" role="status"></div>
                                 </button>
