@@ -295,7 +295,7 @@ body
     }
 }
 
-#repo-table {
+#repo-table, .color-table {
     color: #bcbcbc;
 
     th {
@@ -602,4 +602,14 @@ body
         display:block;
         margin-top:2em;
     }
+}
+
+//======================================
+// USER STYLES
+//======================================
+
+#user-controls-container
+{
+    float:right;
+    padding-bottom:2em;
 }

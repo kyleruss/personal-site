@@ -1,4 +1,6 @@
-﻿
+﻿@using personal_site.Services
+@using personal_site.Models
+
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminPanelLayout.cshtml";
 }
@@ -14,12 +16,50 @@
         </div>
 
         <div class="card-body" id="user-list-body">
+            <div id="user-controls-container">
+                <button class="btn btn-success" id="create-user-btn">
+                    <i class="fas fa-user-plus"></i> Create New User
+                </button>
+            </div>
 
-        </div>
-        </div>
-    }
+            <table class="table color-table" id="user-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Provider</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
 
-    @section AdminComponentJavascript
+                <tbody id="user-table-body">
+                    @foreach(ApplicationUser user in UserService.GetInstance().GetUserList())
+                    {
+                        <tr data-userId="@user.Id">
+                            <td class="user-table-name">
+                                @user.DisplayName
+                            </td>
+
+                            <td class="user-table-email">
+                                @user.Email
+                            </td>
+
+                            <td class="user-table-provider">
+                                @user.Provider
+                            </td>
+
+                            <td class="user-table-date">
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@section AdminComponentJavascript
 {
-        @Scripts.Render("~/Content/scripts/admin/manage-users.js")
-    }
+    @Scripts.Render("~/Content/scripts/admin/manage-users.js")
+}
