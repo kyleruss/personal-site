@@ -24,7 +24,6 @@ namespace personal_site.Areas.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> RemoveUser(string id)
         {
-            Debug.WriteLine(id);
             UserService userService = UserService.GetInstance();
             bool removeStatus = await userService.RemoveUser(id);
 

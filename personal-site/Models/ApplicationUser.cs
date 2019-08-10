@@ -17,6 +17,14 @@ namespace personal_site.Models
 
         public string Provider { get; set; }
 
+        private DateTime? dateJoined = null;
+
+        public DateTime DateJoined
+        {
+            get { return this.dateJoined ?? DateTime.Now; }
+            set { this.dateJoined = value; }
+        }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);

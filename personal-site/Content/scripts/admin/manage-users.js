@@ -13,6 +13,9 @@
             setTimeout(() =>
             {
                 $('#user-edit-modal').modal('hide');
+
+                if($('#user-edit-id').val() == "")
+                    clearEditForm();
             }, 1500);
         });
     };
@@ -58,6 +61,11 @@
         });
     };
 
+    function clearEditForm()
+    {
+        $('#user-save-form input').val('');
+    }
+
     function getUserIdForRow(btnElement)
     {
         return btnElement.closest('tr').attr('data-userId');
@@ -81,6 +89,7 @@
 
     $('#create-user-btn').click((e) =>
     {
+        $('#user-edit-id').val('');
         $('#user-edit-modal').modal('show');
     });
 });
