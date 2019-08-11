@@ -7,16 +7,17 @@
             var url = window.location.href;
             var tableId = '#user-table';
 
-            $(tableId).load(url + ' ' + tableId);
-
-            setTimeout(() =>
+            $(tableId).load(url + ' ' + tableId, () =>
             {
-                hideSpinners();
-                $('#user-edit-modal').modal('hide');
-
-                if($('#user-edit-id').val() == "")
-                    clearEditForm();
-            }, 1500);
+                setTimeout(() =>
+                {
+                    hideSpinners();
+                    $('#user-edit-modal').modal('hide');
+    
+                    if($('#user-edit-id').val() == "")
+                        clearEditForm();
+                }, 1500);
+            });
         });
     };
 
