@@ -8,10 +8,10 @@
             var tableId = '#user-table';
 
             $(tableId).load(url + ' ' + tableId);
-            hideSpinners();
 
             setTimeout(() =>
             {
+                hideSpinners();
                 $('#user-edit-modal').modal('hide');
 
                 if($('#user-edit-id').val() == "")
