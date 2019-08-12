@@ -117,4 +117,25 @@ namespace personal_site.ViewModels
 
         public string ProfilePicture { get; set; }
     }
+
+    public class AdminUserStatViewModel
+    {
+        public List<AdminUserMonthlyStatsModel> MonthlyStatsModel { get; set; }
+
+        public AdminUserCountStatsModel UserCountStats { get; set; }
+    }
+
+    public class AdminUserCountStatsModel
+    {
+        int MonthlyCount { get; set; }
+
+        int TotalCount { get; set; }
+    }
+
+    public class AdminUserMonthlyStatsModel
+    {
+        public int Month { get; set; }
+
+        public int UserCount { get; set; }
+    }
 }

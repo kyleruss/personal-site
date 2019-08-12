@@ -7,6 +7,10 @@
 
 @section AdminHomeComponent
 {
+    <script>
+        var statisticsFetchUrl = '@Url.Action("GetUserStatisticData", "Dashboard", new { Area = "Admin" })';
+    </script>
+
     <div class="card col-md-4 dashboard-stat-card" id="user-card">
         <div class="card-body">
             <i class="fas fa-3x fa-user-friends dashboard-mini-stat-icon"></i>
