@@ -30,8 +30,8 @@ namespace personal_site.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult GetUserStatisticData()
         {
-            List<AdminUserMonthlyStatsModel> userMonthlyData = DashboardService.GetInstance().GetUserRegistrationData();
-            string monthlyDataJson = JsonConvert.SerializeObject(userMonthlyData);
+            AdminUserStatViewModel userRegistrationStats = DashboardService.GetInstance().GetUserRegistrationData();
+            string monthlyDataJson = JsonConvert.SerializeObject(userRegistrationStats);
             return ControllerHelper.JsonObjectResponse(monthlyDataJson);
         }
     }

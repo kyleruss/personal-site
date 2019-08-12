@@ -17,23 +17,25 @@ namespace personal_site.Services
 
         public void ToggleMaintenanceMode(bool enable) { }
 
-        public List<AdminUserMonthlyStatsModel> GetUserRegistrationData()
+        public AdminUserStatViewModel GetUserRegistrationData()
         {
             using(ApplicationDbContext context = new ApplicationDbContext())
             {
-                var result = context.Users
+                List<AdminUserMonthlyStatsModel> monthlyUserCount = context.Users
                     .GroupBy(g => g.DateJoined.Month)
-                    .Select(x => new AdminUserMonthlyStatsModel { Month = x.Key, UserCount = x.Count() });
+                    .Select(x => new AdminUserMonthlyStatsModel { Month = x.Key, UserCount = x.Count() }).ToList();
 
-                return result.ToList();
-            }
-        }
+                int currentMonth = DateTime.Now.Month;
+                int monthlyTotalCount = context.Users.Where(x => x.DateJoined.Month == currentMonth).Count();
+                int totalCount = context.Users.Count();
 
-        public int GetNumTotalusers()
-        {
-            using (ApplicationDbContext context = new ApplicationDbContext())
-            {
-                return context.Users.Count();
+                AdminUserCountStatsModel countStatsModel = new AdminUserCountStatsModel() { MonthlyCount = monthlyTotalCount, TotalCount = totalCount };
+
+                return new AdminUserStatViewModel()
+                {
+                    MonthlyStatsModel = monthlyUserCount,
+                    UserCountStats = countStatsModel
+                };
             }
         }
 

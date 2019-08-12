@@ -127,9 +127,9 @@ namespace personal_site.ViewModels
 
     public class AdminUserCountStatsModel
     {
-        int MonthlyCount { get; set; }
+        public int MonthlyCount { get; set; }
 
-        int TotalCount { get; set; }
+        public int TotalCount { get; set; }
     }
 
     public class AdminUserMonthlyStatsModel
