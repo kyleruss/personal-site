@@ -19,11 +19,15 @@ namespace personal_site.Areas.Admin.Controllers
 
         public ActionResult ShutdownMode(int mode)
         {
+            DashboardService dashboardService = DashboardService.GetInstance();
+            dashboardService.ToggleMaintenanceMode((mode > 0 ? true : false));
             return ControllerHelper.JsonActionResponse(true, "Shutdown mode has been enabled");
         }
 
         public ActionResult MaintenanceMode(int mode)
         {
+            DashboardService dashboardService = DashboardService.GetInstance();
+            dashboardService.ToggleMaintenanceMode((mode > 0 ? true : false));
             return ControllerHelper.JsonActionResponse(true, "Maintenance mode has been enabled");
         }
 

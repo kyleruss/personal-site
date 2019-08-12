@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Xml;
 using personal_site.Models;
 using personal_site.ViewModels;
 
@@ -10,12 +11,20 @@ namespace personal_site.Services
     public class DashboardService
     {
         private static DashboardService _instance;
+        private const string SHUTDOWN_MODE = "ShutdownMode";
+        private const string MAINT_MODE = "MaintenanceMode";
 
         private DashboardService() { }
 
-        public void ToggleShutdownMode(bool enable) { }
+        public void ToggleShutdownMode(bool enable)
+        {
+            SetSiteMode(SHUTDOWN_MODE, enable);
+        }
 
-        public void ToggleMaintenanceMode(bool enable) { }
+        public void ToggleMaintenanceMode(bool enable)
+        {
+            SetSiteMode(MAINT_MODE, enable);
+        }
 
         public AdminUserStatViewModel GetUserRegistrationData()
         {
@@ -37,6 +46,15 @@ namespace personal_site.Services
                     UserCountStats = countStatsModel
                 };
             }
+        }
+
+        private void SetSiteMode(string mode, bool enable)
+        {
+            var confDoc = new XmlDocument();
+            confDoc.Load(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
+
+            confDoc.SelectSingleNode("/configuration/appSettings/add[@key='" + mode + "']")
+                .Attributes["value"].Value = (enable? "true" : "false");
         }
 
         public static DashboardService GetInstance()

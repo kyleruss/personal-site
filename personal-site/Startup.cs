@@ -10,7 +10,7 @@ namespace personal_site
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            SocialMediaService.GetInstance().initSocialModel();
+            SocialMediaService.GetInstance().InitSocialModel();
         }
     }
 }

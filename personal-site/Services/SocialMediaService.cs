@@ -43,7 +43,7 @@ namespace personal_site.Services
             }
         }
 
-        public void initSocialModel()
+        public void InitSocialModel()
         {
             var socialConfig = ConfigurationManager.GetSection("socialSettings") as NameValueCollection;
 
