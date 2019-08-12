@@ -216,6 +216,12 @@ body
 // DASHBOARD STYLES
 //================================
 
+.toggle
+{
+    width:100% !important;
+    margin-top:0.5em;
+}
+
 .dashboard-mini-stat-container
 {
     display:inline-block;
@@ -627,3 +633,4 @@ body
     color:#FFF;
     border:none;
 }
+

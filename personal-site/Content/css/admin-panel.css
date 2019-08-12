@@ -138,6 +138,10 @@
       padding-right: 0.5em;
       color: #5f39de; }
 
+.toggle {
+  width: 100% !important;
+  margin-top: 0.5em; }
+
 .dashboard-mini-stat-container {
   display: inline-block;
   margin-left: 0.5em; }

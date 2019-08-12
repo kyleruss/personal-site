@@ -2,6 +2,16 @@
 {
     loadStatData();
 
+    function toggleShutdownMode()
+    {
+
+    };
+
+    function toggleMaintenanceMode()
+    {
+
+    };
+
     function loadStatData()
     {
         console.log(statisticsFetchUrl);
