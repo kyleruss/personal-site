@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,18 +18,30 @@ namespace personal_site.Areas.Admin.Controllers
             return View("../Dashboard");
         }
 
-        public ActionResult ShutdownMode(int mode)
+        [HttpPost]
+        public ActionResult ShutdownMode(bool enableMode)
         {
+
+            Debug.WriteLine("enable: " + enableMode);
             DashboardService dashboardService = DashboardService.GetInstance();
-            dashboardService.ToggleMaintenanceMode((mode > 0 ? true : false));
-            return ControllerHelper.JsonActionResponse(true, "Shutdown mode has been enabled");
+            bool toggleStatus = dashboardService.ToggleShutdownMode(enableMode);
+
+            if(toggleStatus)
+                return ControllerHelper.JsonActionResponse(true, "Shutdown mode has been successfully toggled");
+            else
+                return ControllerHelper.JsonActionResponse(false, "Failed to toggle shutdown mode");
         }
 
-        public ActionResult MaintenanceMode(int mode)
+        [HttpPost]
+        public ActionResult MaintenanceMode(bool enableMode)
         {
             DashboardService dashboardService = DashboardService.GetInstance();
-            dashboardService.ToggleMaintenanceMode((mode > 0 ? true : false));
-            return ControllerHelper.JsonActionResponse(true, "Maintenance mode has been enabled");
+            bool toggleStatus = dashboardService.ToggleMaintenanceMode(enableMode);
+
+            if (toggleStatus)
+                return ControllerHelper.JsonActionResponse(true, "Maintenance mode has been successfully toggled");
+            else
+                return ControllerHelper.JsonActionResponse(false, "Failed to toggle maintenance mode");
         }
 
         [HttpGet]

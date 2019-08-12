@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Xml;
@@ -16,14 +18,14 @@ namespace personal_site.Services
 
         private DashboardService() { }
 
-        public void ToggleShutdownMode(bool enable)
+        public bool ToggleShutdownMode(bool enable)
         {
-            SetSiteMode(SHUTDOWN_MODE, enable);
+            return SetSiteMode(SHUTDOWN_MODE, enable);
         }
 
-        public void ToggleMaintenanceMode(bool enable)
+        public bool ToggleMaintenanceMode(bool enable)
         {
-            SetSiteMode(MAINT_MODE, enable);
+            return SetSiteMode(MAINT_MODE, enable);
         }
 
         public AdminUserStatViewModel GetUserRegistrationData()
@@ -48,13 +50,28 @@ namespace personal_site.Services
             }
         }
 
-        private void SetSiteMode(string mode, bool enable)
+        private bool SetSiteMode(string mode, bool enable)
         {
-            var confDoc = new XmlDocument();
-            confDoc.Load(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
+            try
+            {
+                var confDoc = new XmlDocument();
+                string confPath = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile;
+                confDoc.Load(confPath);
 
-            confDoc.SelectSingleNode("/configuration/appSettings/add[@key='" + mode + "']")
-                .Attributes["value"].Value = (enable? "true" : "false");
+                confDoc.SelectSingleNode("/configuration/appSettings/add[@key='" + mode + "']")
+                    .Attributes["value"].Value = (enable ? "true" : "false");
+
+                confDoc.Save(confPath);
+                ConfigurationManager.RefreshSection("appSettings");
+
+                return true;
+            }
+
+            catch(Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return false;
+            }
         }
 
         public static DashboardService GetInstance()
