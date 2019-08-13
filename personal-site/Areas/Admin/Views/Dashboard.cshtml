@@ -1,4 +1,5 @@
-﻿
+﻿@using System.Configuration
+
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminPanelLayout.cshtml";
 }
@@ -68,11 +69,14 @@
                 </div>
             </div>
         </div>
-
-        <input id="maint-toggle-btn" type="checkbox" data-on="<i class='fas fa-wrench'></i> Maintenance"
+        @{ 
+            bool maintModeEnabled = ConfigurationManager.AppSettings["MaintenanceMode"] == "true";
+            bool shutdownModeEnabled = ConfigurationManager.AppSettings["ShutdownMode"] == "true";
+        }
+        <input id="maint-toggle-btn" type="checkbox" autocomplete="off" @Html.Raw(maintModeEnabled? "checked" : "") data-on="<i class='fas fa-wrench'></i> Maintenance"
                data-off="<i class='fas fa-wrench'></i> Maintenance" data-onstyle="danger" data-offstyle="success" data-toggle="toggle" data-size="large" />
 
-        <input checked id="shutdown-toggle-btn" type="checkbox" data-on="<i class='fas fa-power-off'></i> Shutdown"
+        <input id="shutdown-toggle-btn" type="checkbox" @Html.Raw(shutdownModeEnabled? "checked" : "") autocomplete="off" data-on="<i class='fas fa-power-off'></i> Shutdown"
                data-off="<i class='fas fa-power-off'></i> Shutdown" data-onstyle="danger" data-offstyle="success" data-toggle="toggle" data-size="large" />
     </div>
 }
