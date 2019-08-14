@@ -1,5 +1,7 @@
 ﻿$(function()
 {
+    var statData = {};
+
     loadStatData();
 
     function toggleSiteMode(toggleElement)
@@ -16,15 +18,24 @@
         });
     }
 
+    //DATA FORMAT: {"MonthlyStatsModel":[{"Month":8,"UserCount":4}],"UserCountStats":{"MonthlyCount":4,"TotalCount":4}}
     function loadStatData()
     {
         console.log(statisticsFetchUrl);
 
         $.getJSON(statisticsFetchUrl, (data) =>
         {
+            statData = $.parseJSON(data);
+            setUserCountStats();
             console.log('DATA: ' + data);
         });
     };
+
+    function setUserCountStats()
+    {
+        $('#user-total-stat-text').text(statData.UserCountStats.TotalCount);
+        $('#user-monthly-stat-text').text(statData.UserCountStats.MonthlyCount);
+    }
 
     $('#maint-toggle-btn').change(function(e)
     {
