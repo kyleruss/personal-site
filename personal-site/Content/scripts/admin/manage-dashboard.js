@@ -22,13 +22,14 @@
     {
         var chartContext = $('#user-stat-chart');
         var chartData = getChartMonthlyData();
+        var chartLabels = getChartMonths();
 
         var chart = new Chart(chartContext,
         {
             type: 'line',
             data: 
             {
-                labels: ['August', 'September', 'October', 'November', 'December'],
+                labels: chartLabels,
                 datasets: 
                 [{
                     label: 'User monthly registrations',
@@ -38,6 +39,11 @@
             }
         });
     };
+
+    function getChartMonths()
+    {
+        return ['August', 'September', 'October', 'November', 'December'];
+    }
 
     function getChartMonthlyData()
     {
@@ -58,14 +64,11 @@
     //DATA FORMAT: {"MonthlyStatsModel":[{"Month":8,"UserCount":4}],"UserCountStats":{"MonthlyCount":4,"TotalCount":4}}
     function loadStatData()
     {
-        console.log(statisticsFetchUrl);
-
         $.getJSON(statisticsFetchUrl, (data) =>
         {
             statData = $.parseJSON(data);
             setUserCountStats();
             displayStatChart();
-            console.log('DATA: ' + data);
         });
     };
 
