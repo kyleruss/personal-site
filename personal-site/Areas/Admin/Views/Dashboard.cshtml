@@ -1,4 +1,5 @@
 ﻿@using System.Configuration
+@using personal_site.Services
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminPanelLayout.cshtml";
@@ -47,10 +48,10 @@
 
     <div class="card col-md-4 dashboard-stat-card ml-auto" id="user-card">
         <div class="card-body">
-            <i class="far fa-eye fa-3x dashboard-mini-stat-icon"></i>
+            <i class="fab fa-github fa-3x dashboard-mini-stat-icon"></i>
             <div class="dashboard-mini-stat-container">
-                <h1 id="visitor-stat-text">120</h1>
-                <h5>Visitors</h5>
+                <h1 id="github-stat-text">120</h1>
+                <h5>Github</h5>
             </div>
         </div>
     </div>
@@ -64,10 +65,10 @@
     <div class="flex-column ml-auto" id="dashboard-controls-container">
         <div class="card dashboard-stat-card" id="server-stats-card">
             <div class="card-body">
-                <i class="fas fa-3x fa-user-friends dashboard-mini-stat-icon"></i>
+                <i class="fab fa-3x fa-twitter dashboard-mini-stat-icon"></i>
                 <div class="dashboard-mini-stat-container">
-                    <h1>120</h1>
-                    <h5>Users</h5>
+                    <h1 id="twitter-stat-text">@ViewBag.FollowerCount</h1>
+                    <h5>Twitter</h5>
                 </div>
             </div>
         </div>

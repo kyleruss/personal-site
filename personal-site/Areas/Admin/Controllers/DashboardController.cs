@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using personal_site.Helpers;
 using personal_site.Services;
+using personal_site.Services.AuthHandlers;
 using personal_site.ViewModels;
 
 namespace personal_site.Areas.Admin.Controllers
 {
     public class DashboardController : Controller
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            int followCount = await new TwitterAuthHandler().GetTwitterFollowerCount();
+            ViewBag.FollowerCount = followCount;
+
             return View("../Dashboard");
         }
 

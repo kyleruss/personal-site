@@ -9,6 +9,8 @@ using System.Collections.Specialized;
 using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -38,6 +40,8 @@ namespace personal_site.Services.AuthHandlers
                  select acc)
                     .SingleOrDefaultAsync();
 
+                
+
                 if (accResponse != null && accResponse.User != null)
                 {
                     User responseUser = accResponse.User;
@@ -59,6 +63,47 @@ namespace personal_site.Services.AuthHandlers
 
                 else return null;
             }
+        }
+
+        public async Task<int> GetTwitterFollowerCount()
+        {
+            try
+            {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                SingleUserInMemoryCredentialStore credentials = GetTwitterSingleUserCredentials();
+                var auth = new SingleUserAuthorizer() { CredentialStore = credentials };
+                var twitterContext = new TwitterContext(auth);
+
+                 var twitterUser = await (from twitUser in twitterContext.User
+                                        where twitUser.Type == UserType.Show &&
+                                        twitUser.ScreenName == ""
+                                        select twitUser).SingleOrDefaultAsync(); 
+
+                if (twitterUser != null)
+                    return twitterUser.FollowersCount;
+                else
+                    return 0;
+            }
+
+            catch(HttpRequestException e)
+            {
+                Debug.WriteLine("ERROR: " + e.Message);
+                return 0;
+            }
+        }
+
+        private SingleUserInMemoryCredentialStore GetTwitterSingleUserCredentials()
+        {
+            NameValueCollection config = ConfigurationManager.AppSettings;
+
+            return new SingleUserInMemoryCredentialStore()
+            {
+                ConsumerKey = config.Get("twitterID"),
+                ConsumerSecret = config.Get("twitterSecret"),
+                AccessToken = config.Get("twitterToken"),
+                AccessTokenSecret = config.Get("twitterTokenSecret"),
+            };
         }
 
 

@@ -1,8 +1,10 @@
 ﻿$(function()
 {
     var statData = {};
+    var apiUsername = 'kyleruss';
 
     loadStatData();
+    getGithubFollowerCount();
 
     function toggleSiteMode(toggleElement)
     {
@@ -15,6 +17,17 @@
             toggleAlertResponse(data);
 
             setTimeout(() => { toggleAlertResponse(data, null, true)}, 1500);
+        });
+    };
+
+    function getGithubFollowerCount()
+    {
+        var apiUrl = `https://api.github.com/users/${apiUsername}/followers`;
+
+        $.getJSON(apiUrl, (data) =>
+        {
+            var followerCount = data.length;
+            $('#github-stat-text').text(followerCount);
         });
     };
 
