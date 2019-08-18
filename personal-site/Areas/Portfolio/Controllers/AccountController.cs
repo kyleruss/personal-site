@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
 
 namespace personal_site.Areas.Portfolio.Controllers
 {
@@ -23,6 +24,9 @@ namespace personal_site.Areas.Portfolio.Controllers
         public ActionResult ExternalLogin(string provider)
         {
             ControllerContext.HttpContext.Session.RemoveAll();
+
+            if(provider == "Twitter")
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             // Request a redirect to the external login provider
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account"));

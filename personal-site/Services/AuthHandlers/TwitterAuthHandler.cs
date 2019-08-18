@@ -22,6 +22,8 @@ namespace personal_site.Services.AuthHandlers
         public override async Task<ApplicationUser> CreateExternalAccount(ExternalLoginInfo loginInfo, 
             ApplicationUserManager userManager, IAuthenticationManager authManager = null)
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             SessionStateCredentialStore credentials = await GetTwitterCredentialStore(authManager);
             if (credentials == null) return null;
 
