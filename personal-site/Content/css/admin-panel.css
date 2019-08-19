@@ -144,7 +144,8 @@
 
 .dashboard-mini-stat-container {
   display: inline-block;
-  margin-left: 0.5em; }
+  margin-left: 0.5em;
+  text-align: center; }
   .dashboard-mini-stat-container h1 {
     font-family: 'AllerDisplay'; }
   .dashboard-mini-stat-container h5 {
@@ -154,7 +155,20 @@
 
 .dashboard-stat-card {
   max-width: 32.5%;
-  flex: 0 0 32.5%; }
+  flex: 0 0 32.5%;
+  color: #FFF; }
+
+#user-total-card {
+  background-color: #65bc69; }
+
+#user-monthly-card {
+  background-color: #26a699; }
+
+#github-card {
+  background-color: #7c35d4; }
+
+#twitter-card {
+  background-color: #2673a6; }
 
 .dashboard-mini-stat-icon {
   vertical-align: 10px; }
@@ -165,7 +179,8 @@
 #dashboard-graph-container {
   height: 245px;
   max-width: 66%;
-  flex: 0 0 66%; }
+  flex: 0 0 66%;
+  background-color: #2b2833; }
 
 #dashboard-controls-container {
   max-width: 32.5%;
@@ -174,11 +189,11 @@
   display: flex;
   min-width: 0; }
 
-#server-stats-card {
+#github-card {
   max-width: 100%; }
 
-#server-maintenance-btn, #server-shutdown-btn {
-  margin-top: 1em; }
+#maint-btn-container, #shutdown-btn-container {
+  margin-top: 0.55em; }
 
 #repo-count-text {
   font-family: 'Futura_light';

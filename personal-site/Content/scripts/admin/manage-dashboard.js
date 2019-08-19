@@ -46,7 +46,7 @@
                 datasets: 
                 [{
                     label: 'User monthly registrations',
-                    borderColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(15, 250, 105)',
                     data: chartData
                 }]
             }

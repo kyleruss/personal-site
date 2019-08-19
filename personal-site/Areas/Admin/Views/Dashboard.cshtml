@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <div class="card col-md-4 dashboard-stat-card" id="user-card">
+    <div class="card col-md-4 dashboard-stat-card" id="user-total-card">
         <div class="card-body">
             <i class="fas fa-3x fa-user-friends dashboard-mini-stat-icon"></i>
             <div class="dashboard-mini-stat-container">
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="card col-md-4 dashboard-stat-card ml-auto" id="user-card">
+    <div class="card col-md-4 dashboard-stat-card ml-auto" id="user-monthly-card">
         <div class="card-body">
             <i class="far fa-3x fa-calendar-alt dashboard-mini-stat-icon"></i>
             <div class="dashboard-mini-stat-container">
@@ -46,13 +46,14 @@
         </div>
     </div>
 
-    <div class="card col-md-4 dashboard-stat-card ml-auto" id="user-card">
+    <div class="card col-md-4 dashboard-stat-card ml-auto" id="twitter-card">
         <div class="card-body">
-            <i class="fab fa-github fa-3x dashboard-mini-stat-icon"></i>
+            <i class="fab fa-3x fa-twitter dashboard-mini-stat-icon"></i>
             <div class="dashboard-mini-stat-container">
-                <h1 id="github-stat-text">120</h1>
-                <h5>Github</h5>
+                <h1 id="twitter-stat-text">@ViewBag.FollowerCount</h1>
+                <h5>Twitter</h5>
             </div>
+            
         </div>
     </div>
 
@@ -63,12 +64,12 @@
     </div>
 
     <div class="flex-column ml-auto" id="dashboard-controls-container">
-        <div class="card dashboard-stat-card" id="server-stats-card">
+        <div class="card dashboard-stat-card" id="github-card">
             <div class="card-body">
-                <i class="fab fa-3x fa-twitter dashboard-mini-stat-icon"></i>
+                <i class="fab fa-github fa-3x dashboard-mini-stat-icon"></i>
                 <div class="dashboard-mini-stat-container">
-                    <h1 id="twitter-stat-text">@ViewBag.FollowerCount</h1>
-                    <h5>Twitter</h5>
+                    <h1 id="github-stat-text">120</h1>
+                    <h5>Github</h5>
                 </div>
             </div>
         </div>
@@ -76,11 +77,16 @@
             bool maintModeEnabled = ConfigurationManager.AppSettings["MaintenanceMode"] == "true";
             bool shutdownModeEnabled = ConfigurationManager.AppSettings["ShutdownMode"] == "true";
         }
-        <input id="maint-toggle-btn" type="checkbox" autocomplete="off" @Html.Raw(maintModeEnabled? "checked" : "") data-on="<i class='fas fa-wrench'></i> Maintenance"
-               data-off="<i class='fas fa-wrench'></i> Maintenance" data-onstyle="danger" data-offstyle="success" data-toggle="toggle" data-size="large" />
 
-        <input id="shutdown-toggle-btn" type="checkbox" @Html.Raw(shutdownModeEnabled? "checked" : "") autocomplete="off" data-on="<i class='fas fa-power-off'></i> Shutdown"
-               data-off="<i class='fas fa-power-off'></i> Shutdown" data-onstyle="danger" data-offstyle="success" data-toggle="toggle" data-size="large" />
+        <div id="maint-btn-container">
+            <input id="maint-toggle-btn" type="checkbox" autocomplete="off" @Html.Raw(maintModeEnabled? "checked" : "") data-on="<i class='fas fa-wrench'></i> Maintenance"
+                   data-off="<i class='fas fa-wrench'></i> Maintenance" data-onstyle="danger" data-offstyle="success" data-toggle="toggle" data-size="large" />
+        </div>
+
+        <div id="shutdown-btn-container">
+            <input id="shutdown-toggle-btn" type="checkbox" @Html.Raw(shutdownModeEnabled? "checked" : "") autocomplete="off" data-on="<i class='fas fa-power-off'></i> Shutdown"
+                   data-off="<i class='fas fa-power-off'></i> Shutdown" data-onstyle="danger" data-offstyle="success" data-toggle="toggle" data-size="large" />
+        </div>
     </div>
 }
 

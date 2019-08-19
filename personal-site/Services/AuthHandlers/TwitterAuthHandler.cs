@@ -73,13 +73,14 @@ namespace personal_site.Services.AuthHandlers
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
+                string twitterUsername = ConfigurationManager.AppSettings.Get("twitterUser");
                 SingleUserInMemoryCredentialStore credentials = GetTwitterSingleUserCredentials();
                 var auth = new SingleUserAuthorizer() { CredentialStore = credentials };
                 var twitterContext = new TwitterContext(auth);
 
                  var twitterUser = await (from twitUser in twitterContext.User
                                         where twitUser.Type == UserType.Show &&
-                                        twitUser.ScreenName == ""
+                                        twitUser.ScreenName == twitterUsername
                                         select twitUser).SingleOrDefaultAsync(); 
 
                 if (twitterUser != null)
