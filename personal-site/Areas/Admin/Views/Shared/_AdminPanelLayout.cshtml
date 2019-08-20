@@ -63,10 +63,9 @@
 
                     navUrl = Url.Action("Index", controllerName, new { Area = "Admin" });
 
-
-
+                    
                     <a href="@navUrl" class="list-group-item list-group-item-action admin-nav-item
-                        @(navUrl == Request.Url.AbsoluteUri ? "component-nav-active" : "")">
+                        @(navUrl == Request.RawUrl ? "component-nav-active" : "")">
                         <div class="admin-nav-icon-container">
                             <i class="@iconClass"></i>
                         </div>
