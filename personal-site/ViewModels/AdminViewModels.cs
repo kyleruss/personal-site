@@ -116,6 +116,8 @@ namespace personal_site.ViewModels
         public string DisplayName { get; set; }
 
         public string ProfilePicture { get; set; }
+
+        public string RoleName { get; set; } 
     }
 
     public class AdminUserStatViewModel

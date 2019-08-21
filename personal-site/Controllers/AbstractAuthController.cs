@@ -13,6 +13,7 @@ namespace personal_site.Controllers
     {
         protected ApplicationSignInManager _signInManager;
         protected ApplicationUserManager _userManager;
+        protected ApplicationRoleManager _roleManager;
 
         public AbstractAuthController() { }
 
@@ -20,6 +21,7 @@ namespace personal_site.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+
         }
 
         public ApplicationSignInManager SignInManager
@@ -45,6 +47,19 @@ namespace personal_site.Controllers
             protected set
             {
                 _userManager = value;
+            }
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+
+            protected set
+            {
+                _roleManager = value;
             }
         }
 
