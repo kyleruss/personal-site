@@ -50,13 +50,17 @@
 
         $.getJSON(fetchUserInfoUrl, (data) =>
         {
-            var userJson = $.parseJSON(data);
+            var jsonData = $.parseJSON(data);
+            var userJson = jsonData.User;
             $('#user-edit-id').val(userJson.Id);
             $('#user-edit-name').val(userJson.DisplayName);
             $('#user-edit-username').val(userJson.UserName);
             $('#user-edit-email').val(userJson.Email);
             $('#user-edit-password').val(userJson.PasswordHash);
             $('#user-edit-picture').val(userJson.ProfilePicture);
+
+            var roleName = jsonData.RoleName == null? 'Member' : jsonData.RoleName;
+            $('#user-edit-role').val(roleName);
 
             $('#user-edit-modal').modal('show');
         });

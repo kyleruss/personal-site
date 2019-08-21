@@ -42,8 +42,12 @@ namespace personal_site.Areas.Admin.Controllers
 
         public async Task<ActionResult> GetUserInfo(string id)
         {
-            ApplicationUser user = await UserService.GetInstance().GetUser(id, UserManager);
-            string userJson = JsonConvert.SerializeObject(user);
+            UserService userService = UserService.GetInstance();
+            ApplicationUser user = await userService.GetUser(id, UserManager);
+            string userRole = await userService.GetUserRole(id, UserManager);
+            AdminUserInfoModel infoModel = new AdminUserInfoModel() { User = user, RoleName = userRole };
+
+            string userJson = JsonConvert.SerializeObject(infoModel);
             return ControllerHelper.JsonObjectResponse(userJson);
         }
 

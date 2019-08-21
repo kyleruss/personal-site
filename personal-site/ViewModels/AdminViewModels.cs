@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using personal_site.Models;
 
 namespace personal_site.ViewModels
 {
@@ -139,5 +140,12 @@ namespace personal_site.ViewModels
         public int Month { get; set; }
 
         public int UserCount { get; set; }
+    }
+
+    public class AdminUserInfoModel
+    {
+        public ApplicationUser User { get; set; }
+
+        public string RoleName { get; set; }
     }
 }

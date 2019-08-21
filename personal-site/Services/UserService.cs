@@ -64,6 +64,12 @@ namespace personal_site.Services
             else return false;
         }
 
+        public async Task<string> GetUserRole(string userId, ApplicationUserManager userManager)
+        {
+            IList<string> userRoles = await userManager.GetRolesAsync(userId);
+            return userRoles.FirstOrDefault();
+        }
+
         public async Task<bool> EditUser(AdminUserEditViewModel model, ApplicationUserManager userManager)
         {
             ApplicationUser user = await userManager.FindByIdAsync(model.UserId);
