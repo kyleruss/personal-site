@@ -17,11 +17,11 @@ namespace personal_site.Controllers
 
         public AbstractAuthController() { }
 
-        public AbstractAuthController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AbstractAuthController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
-
+            RoleManager = roleManager;
         }
 
         public ApplicationSignInManager SignInManager

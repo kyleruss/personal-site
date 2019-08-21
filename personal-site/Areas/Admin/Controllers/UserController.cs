@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Newtonsoft.Json;
 using personal_site.Controllers;
 using personal_site.Helpers;
@@ -18,6 +19,12 @@ namespace personal_site.Areas.Admin.Controllers
     {
         public ActionResult Index()
         {
+            List<SelectListItem> roleList = new List<SelectListItem>();
+            foreach (var role in RoleManager.Roles)
+                roleList.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+
+            ViewBag.RoleList = roleList;
+            
             return View("../User");
         }
 

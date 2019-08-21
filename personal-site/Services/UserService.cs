@@ -54,9 +54,14 @@ namespace personal_site.Services
             };
 
             IdentityResult result = await userManager.CreateAsync(user, model.Password);
-            foreach (var err in result.Errors)
-                Debug.WriteLine("ERRORS " + err);
-            return result.Succeeded;
+
+            if (result.Succeeded)
+            {
+                IdentityResult roleResult = await userManager.AddToRoleAsync(user.Id, model.RoleName);
+                return roleResult.Succeeded;
+            }
+
+            else return false;
         }
 
         public async Task<bool> EditUser(AdminUserEditViewModel model, ApplicationUserManager userManager)
@@ -70,7 +75,15 @@ namespace personal_site.Services
                 user.UserName = model.Username;
 
                 IdentityResult result = await userManager.UpdateAsync(user);
-                return result.Succeeded;
+                IList<string> userRoles = await userManager.GetRolesAsync(user.Id);
+
+
+                if (userRoles.Count > 0)
+                    await userManager.RemoveFromRolesAsync(user.Id, userRoles.ToArray());
+          
+
+                IdentityResult roleCreateStatus = await userManager.AddToRoleAsync(user.Id, model.RoleName);
+                return roleCreateStatus.Succeeded;
             }
 
             else return false;

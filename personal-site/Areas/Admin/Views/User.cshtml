@@ -121,6 +121,15 @@
                             new { @class = "form-control col-md-8", id = "user-edit-username", placeholder = "Enter the users id" })
                         </div>
 
+                        <div class="form-group row">
+                            <h4 class="col-md-3">
+                                Role
+                            </h4>
+
+                            @Html.DropDownListFor(m => m.RoleName,
+                            new SelectList(ViewBag.RoleList, "Value", "Text"),
+                            new { @class = "form-control col-md-8", id = "user-edit-role"})
+                        </div>
 
                         <div class="form-group row">
                             <h4 class="col-md-3">
