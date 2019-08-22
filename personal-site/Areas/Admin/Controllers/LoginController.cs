@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.Owin;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using personal_site.Controllers;
 using personal_site.ViewModels;
 using System;
@@ -38,6 +39,14 @@ namespace personal_site.Areas.Admin.Controllers
                 ModelState.AddModelError("", "Failed to login");
                 return View("../Login", viewModel);
             }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Logout()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Login", new { area = "Admin" });
         }
     }
 }
