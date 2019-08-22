@@ -11,6 +11,7 @@ using personal_site.ViewModels;
 
 namespace personal_site.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RepositoryController : Controller
     {
         public ActionResult Index()

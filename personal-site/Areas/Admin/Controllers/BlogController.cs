@@ -12,6 +12,7 @@ using personal_site.ViewModels;
 
 namespace personal_site.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BlogController : Controller
     {
         public async Task<ActionResult> Index()

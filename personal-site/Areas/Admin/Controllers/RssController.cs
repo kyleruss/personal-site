@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 namespace personal_site.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RssController : Controller
     {
         public ActionResult Index()
