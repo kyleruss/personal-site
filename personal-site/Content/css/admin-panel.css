@@ -157,6 +157,8 @@
   max-width: 32.5%;
   flex: 0 0 32.5%;
   color: #FFF; }
+  .dashboard-stat-card .card-body {
+    padding: 1rem; }
 
 #user-total-card {
   background-color: #65bc69; }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -25,8 +26,9 @@ namespace personal_site.Areas.Portfolio.Controllers
                 return ControllerHelper.JsonActionResponse(false, "Invalid input", errorList);
             }
 
-            ContactService contactService = ContactService.GetInstance();
-            bool msgSent        =   await contactService.SendMessage(contactViewModel);
+            MailService mailService = MailService.GetInstance();
+            MailMessage message = mailService.PrepareContactMessage(contactViewModel);
+            bool msgSent        =   await mailService.SendMessage(message);
             string responseMsg  =   msgSent? "Message sent!" : "Failed to send message";
 
             return ControllerHelper.JsonActionResponse(msgSent, responseMsg);

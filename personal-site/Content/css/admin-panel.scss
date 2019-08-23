@@ -246,6 +246,11 @@ body
     max-width:32.5%;
     flex:0 0 32.5%;
     color:#FFF;
+
+    .card-body
+    {
+        padding:1rem;
+    }
 }
 
 #user-total-card
