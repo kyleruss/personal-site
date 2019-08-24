@@ -292,7 +292,7 @@
     <Compile Include="Services\AuthHandlers\MicrosoftAuthHandler.cs" />
     <Compile Include="Services\AuthHandlers\TwitterAuthHandler.cs" />
     <Compile Include="Services\BlogService.cs" />
-    <Compile Include="Services\ContactService.cs" />
+    <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\DashboardService.cs" />
     <Compile Include="Services\RepositoryService.cs" />
     <Compile Include="Services\RssService.cs" />
