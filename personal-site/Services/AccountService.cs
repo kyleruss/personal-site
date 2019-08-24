@@ -37,17 +37,27 @@ namespace personal_site.Services
             return await mailService.SendMessage(message);
         }
 
-        public bool VerifyAuthCode(string userAuthCode)
+        public async Task<bool> VerifyAuthCode(string userAuthCode, ApplicationSignInManager signInManager)
         {
-            var systemAuthCode = HttpContext.Current.Session[SESSION_CODE_NAME];
+            var session = HttpContext.Current.Session;
+            var systemAuthCode = session[SESSION_CODE_NAME];
+            var systemUser = session[SESSION_USER_NAME];
 
-            if (systemAuthCode == null || userAuthCode == null)
+            if (systemAuthCode == null || systemUser == null || userAuthCode == null)
                 return false;
             else
             {
                 bool authStatus = userAuthCode.Equals(systemAuthCode);
 
-                if(authStatus) HttpContext.Current.Session.Remove(SESSION_CODE_NAME);
+                if (authStatus)
+                {
+                    ApplicationUser user = (ApplicationUser) systemUser;
+                    await signInManager.SignInAsync(user, false, false);
+
+                    session.Remove(SESSION_CODE_NAME);
+                    session.Remove(SESSION_USER_NAME);
+                }
+
                 return authStatus;
             }
         }
@@ -61,7 +71,19 @@ namespace personal_site.Services
             bool validStatus = await userManager.CheckPasswordAsync(user, password);
             bool roleStatus = await userManager.IsInRoleAsync(user.Id, "Admin");
 
-            return validStatus && roleStatus;
+            if (validStatus && roleStatus)
+            {
+                HttpContext.Current.Session[SESSION_USER_NAME] = user;
+                return true;
+            }
+
+            else return false;
+        }
+
+        public bool AuthCodePending()
+        {
+            var session = HttpContext.Current.Session;
+            return session[SESSION_CODE_NAME] != null && session[SESSION_USER_NAME] != null;
         }
 
         public ExternalAuthHandler GetExternalAuthHandler(ExternalLoginInfo loginInfo)

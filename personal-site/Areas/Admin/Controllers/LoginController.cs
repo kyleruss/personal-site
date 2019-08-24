@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using personal_site.Controllers;
+using personal_site.Helpers;
+using personal_site.Services;
 using personal_site.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -30,14 +32,16 @@ namespace personal_site.Areas.Admin.Controllers
             if (!ModelState.IsValid)
                 return View("../Login", viewModel);
 
-            var loginResult = await SignInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
+            AccountService accService = AccountService.GetInstance();
+            bool verifyUserResult = await accService.VerifySystemUser(viewModel.Username, viewModel.Password, UserManager);
 
-            if (loginResult == SignInStatus.Success)
-                return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+            if (!verifyUserResult)
+                return ControllerHelper.JsonActionResponse(false, "Invalid login");
             else
             {
-                ModelState.AddModelError("", "Failed to login");
-                return View("../Login", viewModel);
+                bool authCodeSent = await accService.SendAuthCode();
+                if (!authCodeSent) return ControllerHelper.JsonActionResponse(false, "Failed to send authentication code");
+                else return ControllerHelper.JsonActionResponse(true, "An authentication code has been sent");
             }
         }
 
