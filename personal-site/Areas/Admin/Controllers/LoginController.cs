@@ -46,6 +46,24 @@ namespace personal_site.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> VerifyAuthCode(string authCode)
+        {
+            AccountService accService = AccountService.GetInstance();
+            bool verifyStatus = await accService.VerifyAuthCode(authCode, SignInManager);
+
+            if (verifyStatus)
+            {
+                string redirectUrl = Url.Action("Index", "Dashboard", new { Area = "Admin" });
+                return ControllerHelper.JsonActionResponse(true, "Successfully verified", null, new { RedirectUrl =  redirectUrl });
+            }
+
+            else
+                return ControllerHelper.JsonActionResponse(false, "Failed to verify");
+        }
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Logout()
         {
