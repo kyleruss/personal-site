@@ -328,6 +328,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\css\_commons.scss" />
+    <Content Include="Content\scripts\admin\admin-login.js" />
     <Content Include="Content\scripts\admin\manage-dashboard.js" />
     <Content Include="Content\scripts\admin\manage-users.js" />
     <Content Include="Content\scripts\auth-callback.js" />
