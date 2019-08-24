@@ -16,6 +16,7 @@
     $('#admin-login-btn').click(function(e)
     {
         e.preventDefault();
-        verifyCredentials();
+        $('#admin-login-modal').modal('show');
+        //verifyCredentials();
     });
 });
