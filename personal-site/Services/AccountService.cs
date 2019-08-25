@@ -46,7 +46,7 @@ namespace personal_site.Services
             if (systemAuthCode == null || systemUser == null || userAuthCode == null)
                 return false;
             else
-            {
+            { 
                 bool authStatus = userAuthCode.Equals(systemAuthCode);
 
                 if (authStatus)

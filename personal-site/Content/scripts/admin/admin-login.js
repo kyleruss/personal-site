@@ -2,42 +2,24 @@
 {
     function verifyCredentials()
     {
-        postAjaxForm($('#admin-login-form'), (data) =>
-        {
-            console.log(data);
-            
+        processForm($('#admin-login-form'), $('#admin-login-btn'), null, (data) =>
+        {          
             if(data.ActionSuccess)
                 $('#admin-login-modal').modal('show');
-
-            else
-            { 
-                var alert = $('#login-alert');
-                toggleAlertResponse(data, alert);
-                setTimeout(() => { toggleAlertResponse(data, alert, true)}, 2000);
-            }
         });
     };
 
     function verifyAuthCode()
     {
-        postAjaxForm($('#admin-auth-code-form'), (data) =>
+        processForm($('#admin-auth-code-form'), $('#admin-auth-code-btn'), null, (data) =>
         {
-            console.log(data);
-
             if(data.ActionSuccess)
             {
                 var redirectUrl = data.Data.RedirectUrl;
-                console.log(redirectUrl);
                 window.location.href = redirectUrl;
             }
 
-            else
-            {
-                var alert = $('#auth-code-alert');
-                toggleAlertResponse(data, alert);
-                setTimeout(() => { toggleAlertResponse(data, alert, true)}, 2000);
-            }
-        });
+        }, null, $('#auth-code-alert'));
     };
 
     $('#admin-auth-code-btn').click((e) =>

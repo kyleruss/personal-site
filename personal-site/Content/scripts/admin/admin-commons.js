@@ -53,13 +53,13 @@ function toggleAlertResponse(responseObject, alert = null, hide = false)
     else alertElement.hide();
 };
 
-function processForm(form, btn, formData = null, callback = null, formUrl = null)
+function processForm(form, btn, formData = null, callback = null, formUrl = null, alert = null)
 {
     startAjaxResponseOperation(btn);
 
     postAjaxForm(form, (data) =>
     {
-        stopAjaxResponseOperation(data, btn);
+        stopAjaxResponseOperation(data, btn, alert);
         if(callback != null) callback(data);
 
     }, formData, formUrl);
