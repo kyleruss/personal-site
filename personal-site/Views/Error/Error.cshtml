@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     string ErrorMsg;
-    
+
     switch(Response.StatusCode)
     {
         case 404:
@@ -12,11 +12,15 @@
         case 403:
             ErrorMsg = "You are not authoirzed";
             break;
-            
+
         case 400:
             ErrorMsg = "Bad Request";
             break;
-            
+
+        case 503:
+            ErrorMsg = "I'm unavailable currently, check back later!";
+            break;
+
         default:
             ErrorMsg = "Internal Server Error";
             break;

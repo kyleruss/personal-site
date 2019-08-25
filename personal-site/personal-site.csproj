@@ -238,6 +238,7 @@
     <Compile Include="Areas\Portfolio\Controllers\ContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Areas\Portfolio\Controllers\HomeController.cs" />
+    <Compile Include="Filters\SiteModeFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

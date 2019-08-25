@@ -1,4 +1,5 @@
-﻿using personal_site.Helpers;
+﻿using personal_site.Filters;
+using personal_site.Helpers;
 using personal_site.Services;
 using personal_site.ViewModels;
 using System;
@@ -13,6 +14,7 @@ using System.Web.Script.Serialization;
 
 namespace personal_site.Areas.Portfolio.Controllers
 {
+    [SiteModeFilter]
     public class ContactController : Controller
     {
 

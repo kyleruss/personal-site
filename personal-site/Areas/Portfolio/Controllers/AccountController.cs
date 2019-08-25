@@ -11,10 +11,12 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Net;
+using personal_site.Filters;
 
 namespace personal_site.Areas.Portfolio.Controllers
 {
     [Authorize]
+    [SiteModeFilter]
     public class AccountController : AbstractAuthController
     {
         // POST: /Account/ExternalLogin

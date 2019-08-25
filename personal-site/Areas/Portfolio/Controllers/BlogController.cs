@@ -13,9 +13,11 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System.Text;
+using personal_site.Filters;
 
 namespace personal_site.Areas.Portfolio.Controllers
 {
+    [SiteModeFilter]
     public class BlogController : Controller
     {
         public async Task<JsonResult> GetBlogPosts()

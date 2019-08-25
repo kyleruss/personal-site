@@ -32,5 +32,11 @@ namespace personal_site.Controllers
             Response.StatusCode = 403;
             return View("Error");
         }
+
+        public ActionResult MaintenanceMode()
+        {
+            Response.StatusCode = 503;
+            return View("Error");
+        }
     }
 }
