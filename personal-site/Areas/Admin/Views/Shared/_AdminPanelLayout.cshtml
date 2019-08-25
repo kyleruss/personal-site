@@ -80,10 +80,14 @@
 
 
             <div id="admin-nav-logout-container">
-                <button id="admin-logout-btn" class="btn btn-success">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Logout
-                </button>
+                @using (Html.BeginForm("Logout", "Login", new { Area = "Admin" }, FormMethod.Post, new { id = "logout-form" }))
+                {
+                    @Html.AntiForgeryToken();
+                    <button id="admin-logout-btn" type="submit" class="btn btn-success">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                }
             </div>
         </div>
 
