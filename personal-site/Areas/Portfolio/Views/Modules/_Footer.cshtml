@@ -4,6 +4,11 @@
     ==================================
 -->
 
+@using System.Configuration
+@using System.Collections.Specialized;
+
+@{ NameValueCollection SocialConfig = ConfigurationManager.GetSection("socialSettings") as NameValueCollection; }
+
 <div id="footer-container">
     <div id="inner-footer" class="row h-100 flex-row  align-items-center">
         <div id="left-info" class="footer-info-container">
@@ -15,23 +20,35 @@
             <button id="resume-btn" class="btn btn-primary footer-btn">RESUME</button>
         </div>
         <div id="footer-social-icons">
-            <div class="social-footer-icon-container social-display">
-                <i class="fab fa-twitter inner-social-icon"></i>
-            </div>
-            <div class="social-footer-icon-container social-display">
-                <i class="fab fa-github-alt inner-social-icon"></i>
-            </div>
-            <div class="social-footer-icon-container social-display">
-                <i class="fas fa-rss inner-social-icon"></i>
-            </div>
+            <a href="@SocialConfig.Get("Twitter")">
+                <div id="twitter-social-container" class="social-footer-icon-container social-display">
+                    <i class="fab fa-twitter inner-social-icon"></i>
+                </div>
+            </a>
 
-            <div class="social-footer-icon-container social-display">
-                <i class="fab fa-twitch inner-social-icon"></i>
-            </div>
+            <a href="@SocialConfig.Get("Github")">
+                <div id="github-social-container" class="social-footer-icon-container social-display">
+                    <i class="fab fa-github-alt inner-social-icon"></i>
+                </div>
+            </a>
 
-            <div class="social-footer-icon-container social-display">
-                <i class="fab fa-stack-overflow inner-social-icon"></i>
-            </div>
+            <a href="@SocialConfig.Get("Rss")">
+                <div id="rss-social-container" class="social-footer-icon-container social-display">
+                    <i class="fas fa-rss inner-social-icon"></i>
+                </div>
+            </a>
+
+            <a href="@SocialConfig.Get("Github")">
+                <div id="dribbble-social-container" class="social-footer-icon-container social-display">
+                    <i class="fab fa-twitch inner-social-icon"></i>
+                </div>
+            </a>
+
+            <a href="@SocialConfig.Get("StackOverflow")">
+                <div id="stackoverflow-social-container" class="social-footer-icon-container social-display">
+                    <i class="fab fa-stack-overflow inner-social-icon"></i>
+                </div>
+            </a>
         </div>
         <div id="right-info" class="footer-info-container">
             <h1 class="footer-info-title">VIEW PORTFOLIO</h1>

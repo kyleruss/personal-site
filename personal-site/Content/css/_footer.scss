@@ -99,22 +99,36 @@
   margin: 28.87px 0;
   transition:ease-in-out 0.5s;
 
-  &:nth-child(1) { @include social-container-color(#5d68ff); }
-  &:nth-child(2) { @include social-container-color(#11ca60); }
-  &:nth-child(3) { @include social-container-color(#ff9c00); }
-  &:nth-child(4) { @include social-container-color(#a263f9); margin-left:3.5em; }
-  &:nth-child(5) { @include social-container-color(#f94747); }
-
-  &:nth-child(2), &:nth-child(3), &:nth-child(5)
-  {
-      margin-left:1em;
-  }
-
   &:hover
   {
       cursor:pointer;
       opacity:0.6;
   }
+}
+
+#twitter-social-container {
+    @include social-container-color(#5d68ff);
+}
+
+#github-social-container {
+    @include social-container-color(#11ca60);
+}
+
+#rss-social-container {
+    @include social-container-color(#ff9c00);
+}
+
+#dribbble-social-container {
+    @include social-container-color(#a263f9);
+    margin-left: 3.5em;
+}
+
+#stackoverflow-social-container {
+    @include social-container-color(#f94747);
+}
+
+#github-social-container, #rss-social-container, #stackoverflow-social-container {
+    margin-left: 1em;
 }
 
 .social-display:before,

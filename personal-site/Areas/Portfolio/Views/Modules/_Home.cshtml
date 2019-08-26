@@ -4,6 +4,11 @@
     ==================================
 -->
 
+@using System.Configuration
+@using System.Collections.Specialized;
+
+@{  NameValueCollection SocialConfig = ConfigurationManager.GetSection("socialSettings") as NameValueCollection; }
+
 <div id="home-container" class="fixed-top h-100">
     <div class="row h-100 flex-column justify-content-center align-items-center">
 
@@ -14,23 +19,33 @@
         <!-- SOCIAL MEDIA -->
         <div id="social-media-container">
             <div class="social-icon-container">
-                <i class="fab fa-2x fa-github-alt"></i>
+                <a href="@SocialConfig.Get("Github")">
+                    <i class="fab fa-2x fa-github-alt"></i>
+                </a>
             </div>
 
             <div class="social-icon-container">
-                <i class="fab fa-2x fa-twitter"></i>
+                <a href="@SocialConfig.Get("Twitter")">
+                    <i class="fab fa-2x fa-twitter"></i>
+                </a>
             </div>
 
             <div class="social-icon-container">
-                <i class="fab fa-2x fa-stack-overflow"></i>
+                <a href="@SocialConfig.Get("StackOverflow")">
+                    <i class="fab fa-2x fa-stack-overflow"></i>
+                </a>
             </div>
 
             <div class="social-icon-container">
-                <i class="fab fa-2x fa-twitch"></i>
+                <a href="@SocialConfig.Get("Github")">
+                    <i class="fab fa-2x fa-twitch"></i>
+                </a>
             </div>
 
             <div class="social-icon-container">
-                <i class="fas fa-2x fa-rss"></i>
+                <a href="@SocialConfig.Get("Rss")">
+                    <i class="fas fa-2x fa-rss"></i>
+                </a>
             </div>
         </div>
     </div>

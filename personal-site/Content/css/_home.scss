@@ -55,6 +55,11 @@
     background-color:rgba(124,124,124, 0.3);
     transition:ease-in-out 0.5s;
 
+    a
+    {
+        display:inline-grid;
+    }
+
     &:hover
     {
         cursor:pointer;
