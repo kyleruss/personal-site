@@ -1,14 +1,12 @@
-﻿[
+[
   {
     "outputFile": "Content/css/admin-panel.css",
-    "inputFile": "Content/css/admin-panel.scss"
-  },
-  {
-    "outputFile": "Content/css/_home.css",
-    "inputFile": "Content/css/_home.scss"
+    "inputFile": "Content/css/admin-panel.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Content/css/main.css",
-    "inputFile": "Content/css/main.scss"
+    "inputFile": "Content/css/main.scss",
+    "sourceMap": false
   }
 ]

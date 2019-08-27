@@ -4,33 +4,52 @@
    ================================
 */
 
-#home-container
-{
-    margin:0;
-    padding:0;
-    width:auto;
-    position:relative;
-    overflow:hidden;
-    height:1000px !important;
-    z-index:2;
-    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('../images/home_bg.png');
+#home-container {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    position: relative;
+    overflow: hidden;
+    height: 1000px !important;
 
-    #home-title 
-    {
-        color:#FFF;
-        font-family:Dienstag;
-        font-size:72px;
-        margin-top:0;
-        margin-bottom:0;
+    #home-title {
+        color: #FFF;
+        font-family: Dienstag;
+        font-size: 72px;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
-    #home-description
-    {
-        color:#FFF;
-        font-family:Dienstag;
-        font-size:30px;
+    #home-description {
+        color: #FFF;
+        font-family: Dienstag;
+        font-size: 30px;
     }
 }
+
+#home-content-wrapper 
+{
+    position:relative;
+}
+
+#bg-wrapper {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('../images/home_bg.png');
+    animation: animatedHomeBackground 3s linear infinite alternate;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 1080px;
+    width: 100%;
+    z-index: 0;
+}                                                                                
+
+@keyframes animatedHomeBackground
+{
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50px); }
+}
+
 
 /* 
    ================================
