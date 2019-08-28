@@ -17,6 +17,25 @@
         color:#ffffff;
         padding-left:0;
         padding-right:0;
+
+    }
+
+    .nav-link-item
+    {
+        &:hover::after
+        {
+            transform:scaleX(1); 
+        }
+
+        &::after
+        {
+            display:block;
+            content: '';
+            border-bottom:solid 2px #FFF;
+            transform: scaleX(0);
+            transition:transform 0.25s ease-in-out;
+            transform-origin: 0% 50%;
+        }
     }
 
     .nav-selector
@@ -30,6 +49,7 @@
         &:hover 
         {
             cursor:default;
+            border-bottom:none;
         }
     }
 

@@ -4,6 +4,7 @@ var scrollConfig =
 };
 $(function()
 {
+    Home();
     About();
     Blog();
     Portfolio();
@@ -11,6 +12,10 @@ $(function()
 
     $('body').niceScroll(scrollConfig);
 });
+function Home()
+{
+    $('.rect-shape').toggleClass('rect-hover');
+};
 function About()
 {
     var skills =

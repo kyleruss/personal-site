@@ -344,6 +344,7 @@
     <Content Include="Scripts\conf.js" />
     <Content Include="Scripts\contact.js" />
     <Content Include="Scripts\core.js" />
+    <Content Include="Scripts\home.js" />
     <Content Include="Scripts\portfolio.js" />
     <Content Include="Tasks\repository-task.js" />
     <Content Include="Web.config">

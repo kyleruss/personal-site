@@ -9,49 +9,53 @@
 
 @{  NameValueCollection SocialConfig = ConfigurationManager.GetSection("socialSettings") as NameValueCollection; }
 
-<div id="home-container" class="fixed-top h-100">
-    <div id="bg-wrapper">
-    </div>
-
-    <div id="home-content-wrapper" class="row h-100 flex-column justify-content-center align-items-center">
-
-        <!-- HEADERS -->
-        <h1 id="home-title">KYLE J. RUSSELL</h1>
-        <h1 id="home-description">FULL-STACK SOFTWARE DEVELOPER</h1>
-
-        <!-- SOCIAL MEDIA -->
-        <div id="social-media-container">
-            <div class="social-icon-container">
-                <a href="@SocialConfig.Get("Github")">
-                    <i class="fab fa-2x fa-github-alt"></i>
-                </a>
-            </div>
-
-            <div class="social-icon-container">
-                <a href="@SocialConfig.Get("Twitter")">
-                    <i class="fab fa-2x fa-twitter"></i>
-                </a>
-            </div>
-
-            <div class="social-icon-container">
-                <a href="@SocialConfig.Get("StackOverflow")">
-                    <i class="fab fa-2x fa-stack-overflow"></i>
-                </a>
-            </div>
-
-            <div class="social-icon-container">
-                <a href="@SocialConfig.Get("Github")">
-                    <i class="fab fa-2x fa-twitch"></i>
-                </a>
-            </div>
-
-            <div class="social-icon-container">
-                <a href="@SocialConfig.Get("Rss")">
-                    <i class="fas fa-2x fa-rss"></i>
-                </a>
-            </div>
+    <div id="home-container" class="fixed-top h-100">
+        <div id="bg-wrapper">
         </div>
-    </div>
+
+
+        <div id="home-content-wrapper" class="row h-100 flex-column justify-content-center align-items-center">
+            <svg height="250" width="800" class="svg-wrapper" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <rect class="rect-shape" height="250" width="800"></rect>
+                <div id="home-text-container">
+                    <h1 id="home-title">KYLE J. RUSSELL</h1>
+                    <h1 id="home-description">FULL-STACK SOFTWARE DEVELOPER</h1>
+
+                    <!-- SOCIAL MEDIA -->
+                    <div id="social-media-container">
+                        <div class="social-icon-container">
+                            <a href="@SocialConfig.Get("Github")">
+                                <i class="fab fa-2x fa-github-alt"></i>
+                            </a>
+                        </div>
+
+                        <div class="social-icon-container">
+                            <a href="@SocialConfig.Get("Twitter")">
+                                <i class="fab fa-2x fa-twitter"></i>
+                            </a>
+                        </div>
+
+                        <div class="social-icon-container">
+                            <a href="@SocialConfig.Get("StackOverflow")">
+                                <i class="fab fa-2x fa-stack-overflow"></i>
+                            </a>
+                        </div>
+
+                        <div class="social-icon-container">
+                            <a href="@SocialConfig.Get("Github")">
+                                <i class="fab fa-2x fa-twitch"></i>
+                            </a>
+                        </div>
+
+                        <div class="social-icon-container">
+                            <a href="@SocialConfig.Get("Rss")">
+                                <i class="fas fa-2x fa-rss"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </svg>
+        </div>
 
     <!-- CONTINUE BUTTON -->
     <div id="bottom-continue-container">

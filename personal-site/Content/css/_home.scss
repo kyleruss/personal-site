@@ -32,6 +32,15 @@
     position:relative;
 }
 
+#home-text-container
+{
+    width:800px;
+    height:300px;
+    text-align:center;
+    position:absolute;
+    margin-top:7em;
+}
+
 #bg-wrapper {
     background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('../images/home_bg.png');
     animation: animatedHomeBackground 3s linear infinite alternate;
@@ -42,12 +51,61 @@
     height: 1080px;
     width: 100%;
     z-index: 0;
-}                                                                                
+}
+
+/*
+    straight overline and underline
+    rect shape: 
+    {
+      stroke-dashoffset:600;
+      stroke-dasharray: 0 600;
+    }
+
+    rect hover:
+    {
+        stroke-dashoffset: 10;
+        stroke-dasharray: 780 300;
+    }
+
+
+    box 
+    rect hover:
+    {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 600 0;
+    }
+
+*/
+
+.rect-shape
+{
+    stroke-width:2px;
+    fill:transparent;
+    stroke:white;
+    transition:stroke-width 2s, stroke-dashoffset 2.7s, stroke-dasharray 4s;
+    transition-delay:0s;
+    stroke-dashoffset:600;
+    stroke-dasharray: 0 600;
+
+}
+
+.rect-hover 
+{
+    stroke-dashoffset: 10;
+    stroke-dasharray: 780 300;
+    stroke-width: 2px;
+}
 
 @keyframes animatedHomeBackground
 {
     0% { transform: translateY(0); }
     100% { transform: translateY(-50px); }
+}
+
+@keyframes animatedBorder
+{
+    0% { border-bottom:1px solid #808080; border-top: 1px solid #808080;  }
+    100% { border-bottom:1px solid #000; border-top:1px solid #000; }
 }
 
 
@@ -57,41 +115,78 @@
    ================================
 */
 
-.social-icon-container
-{
+.social-icon-container {
     $cSize: 50px;
     $cAlign: center;
 
-    width:$cSize;
-    height:$cSize;
-    border-radius:50%;
-    text-align:$cAlign;
-    line-height:$cSize;
-    display:inline-flex;
-    justify-content:$cAlign;
-    align-items:$cAlign;
-    margin-left:0.3em;
-    background-color:rgba(124,124,124, 0.3);
-    transition:ease-in-out 0.5s;
+    width: $cSize;
+    height: $cSize;
+    border-radius: 100%;
+    text-align: $cAlign;
+    line-height: $cSize;
+    display: inline-flex;
+    justify-content: $cAlign;
+    align-items: $cAlign;
+    margin-left: 0.3em;
+    box-sizing:border-box;
+    position:relative;
+    background-color: rgba(124,124,124, 0.3);
+    transition: ease-in-out 0.5s;
 
-    a
+    a 
     {
-        display:inline-grid;
+        display: inline-grid;
     }
 
-    &:hover
+     &:hover
     {
         cursor:pointer;
         background-color:rgba(124,124,124, 0.5);
+    } 
+
+    &::before, &::after 
+    {
+        top: 0;
+        left: 0;
+        border-radius:100%;
+        box-sizing:inherit;
+        content:'';
+        position:absolute;
+        width:100%;
+        height:100%;
     }
 
-    .fab,.fas
-    {
-        font-size:1.8em;    
-        color:#FFF;
+
+    &::before {
+        border: 2px solid transparent;
     }
-    
+
+    &:hover::before {
+        border-top-color: lightgreen;
+        border-right-color: lightgreen;
+        border-bottom-color: lightgreen;
+        transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.10s, border-bottom-color 0.15s linear 0.20s;
+    }
+
+    &::after {
+        border: 0 solid transparent;
+    }
+
+    &:hover::after {
+        border-top: 2px solid lightgreen;
+        border-left-width: 2px;
+        border-right-width: 2px;
+        transform: rotate(270deg);
+        transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s;
+    }
+
+    .fab, .fas {
+        font-size: 1.8em;
+        color: #FFF;
+    }
 }
+
+
 
 /* 
    ================================
@@ -99,33 +194,29 @@
    ================================
 */
 
-#bottom-continue-container
-{
-    position:absolute;
-    bottom:0;
-    margin-bottom:7em;
-    left:50%;
-    transform:translate(-50%);
+#bottom-continue-container {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 7em;
+    left: 50%;
+    transform: translate(-50%);
 
-    #continue-btn
-    {
-        font-family:Dienstag;
-        font-size:24px;
-        background-color:rgba(0,0,0,0);
-        border:1px solid #FFF;
-        border-radius:0;
-        padding:1em;
-        transition:ease-in-out 0.5s;
+    #continue-btn {
+        font-family: Dienstag;
+        font-size: 24px;
+        background-color: rgba(0,0,0,0);
+        border: 1px solid #FFF;
+        border-radius: 0;
+        padding: 1em;
+        transition: ease-in-out 0.5s;
 
-        &:hover
-        {
+        &:hover {
             background-color:rgba(255,255,255,0.1);
-            color:#FFF;
+            color: #FFF;
         }
 
-        .fas
-        {
-            margin-left:1em;
+        .fas {
+            margin-left: 1em;
         }
     }
 }

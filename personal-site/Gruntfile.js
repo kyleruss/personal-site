@@ -10,6 +10,7 @@ module.exports = function (grunt)
                     [
                         'Scripts/conf.js',
                         'Scripts/core.js',
+                        'Scripts/home.js',
                         'Scripts/about.js',
                         'Scripts/blog.js',
                         'Scripts/portfolio.js',
