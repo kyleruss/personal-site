@@ -23,7 +23,7 @@
   #main-navbar .nav-link-item::after {
     display: block;
     content: '';
-    border-bottom: solid 2px #FFF;
+    border-bottom: solid 2px #5c47fa;
     transform: scaleX(0);
     transition: transform 0.25s ease-in-out;
     transform-origin: 0% 50%; }
@@ -38,7 +38,7 @@
   #main-navbar #navbar-right {
     margin-right: 2.5em; }
   #main-navbar .nav-active {
-    border-bottom: 2px solid #FFF; }
+    border-bottom: 2px solid #5c47fa; }
 
 /* 
    ================================
@@ -171,14 +171,14 @@
   .social-icon-container::before {
     border: 2px solid transparent; }
   .social-icon-container:hover::before {
-    border-top-color: lightgreen;
-    border-right-color: lightgreen;
-    border-bottom-color: lightgreen;
+    border-top-color: #8946fa;
+    border-right-color: #8946fa;
+    border-bottom-color: #8946fa;
     transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.10s, border-bottom-color 0.15s linear 0.20s; }
   .social-icon-container::after {
     border: 0 solid transparent; }
   .social-icon-container:hover::after {
-    border-top: 2px solid lightgreen;
+    border-top: 2px solid #8946fa;
     border-left-width: 2px;
     border-right-width: 2px;
     transform: rotate(270deg);

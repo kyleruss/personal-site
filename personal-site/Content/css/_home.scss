@@ -118,6 +118,7 @@
 .social-icon-container {
     $cSize: 50px;
     $cAlign: center;
+    $hoverColor: #8946fa;
 
     width: $cSize;
     height: $cSize;
@@ -128,32 +129,29 @@
     justify-content: $cAlign;
     align-items: $cAlign;
     margin-left: 0.3em;
-    box-sizing:border-box;
-    position:relative;
+    box-sizing: border-box;
+    position: relative;
     background-color: rgba(124,124,124, 0.3);
     transition: ease-in-out 0.5s;
 
-    a 
-    {
+    a {
         display: inline-grid;
     }
 
-     &:hover
-    {
-        cursor:pointer;
-        background-color:rgba(124,124,124, 0.5);
-    } 
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(124,124,124, 0.5);
+    }
 
-    &::before, &::after 
-    {
+    &::before, &::after {
         top: 0;
         left: 0;
-        border-radius:100%;
-        box-sizing:inherit;
-        content:'';
-        position:absolute;
-        width:100%;
-        height:100%;
+        border-radius: 100%;
+        box-sizing: inherit;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
     }
 
 
@@ -162,9 +160,9 @@
     }
 
     &:hover::before {
-        border-top-color: lightgreen;
-        border-right-color: lightgreen;
-        border-bottom-color: lightgreen;
+        border-top-color: $hoverColor;
+        border-right-color: $hoverColor;
+        border-bottom-color: $hoverColor;
         transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.10s, border-bottom-color 0.15s linear 0.20s;
     }
 
@@ -173,7 +171,7 @@
     }
 
     &:hover::after {
-        border-top: 2px solid lightgreen;
+        border-top: 2px solid $hoverColor;
         border-left-width: 2px;
         border-right-width: 2px;
         transform: rotate(270deg);
