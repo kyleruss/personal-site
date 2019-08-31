@@ -23,7 +23,7 @@
   #main-navbar .nav-link-item::after {
     display: block;
     content: '';
-    border-bottom: solid 2px #5c47fa;
+    border-bottom: solid 2px #7261ee;
     transform: scaleX(0);
     transition: transform 0.25s ease-in-out;
     transform-origin: 0% 50%; }
@@ -38,7 +38,7 @@
   #main-navbar #navbar-right {
     margin-right: 2.5em; }
   #main-navbar .nav-active {
-    border-bottom: 2px solid #5c47fa; }
+    border-bottom: 2px solid #7261ee; }
 
 /* 
    ================================
@@ -148,14 +148,14 @@
   .social-icon-container::before {
     border: 2px solid transparent; }
   .social-icon-container:hover::before {
-    border-top-color: #5c47fa;
-    border-right-color: #5c47fa;
-    border-bottom-color: #5c47fa;
+    border-top-color: #7261ee;
+    border-right-color: #7261ee;
+    border-bottom-color: #7261ee;
     transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.10s, border-bottom-color 0.15s linear 0.20s; }
   .social-icon-container::after {
     border: 0 solid transparent; }
   .social-icon-container:hover::after {
-    border-top: 2px solid #5c47fa;
+    border-top: 2px solid #7261ee;
     border-left-width: 2px;
     border-right-width: 2px;
     transform: rotate(270deg);
@@ -233,71 +233,31 @@
 #about-container {
   position: relative;
   height: 1000px;
-  background-color: #43a6f6;
+  background-color: #f2f2f2;
   overflow: hidden; }
 
+#about-content-container {
+  margin-left: 10em; }
+
+#about-image {
+  margin-left: -7em; }
+
 #about-title {
-  color: #FFF;
+  color: #7261ee;
   font-size: 100px;
-  font-family: 'Futura_bold';
-  margin-top: 2em; }
+  font-family: 'Futura_bold'; }
 
-#about-description {
-  color: #FFF;
-  font-size: 36px;
-  font-family: 'Futura_light'; }
-
-#skills-title {
-  color: #FFF;
+#about-text {
   font-size: 72px;
-  font-family: 'Futura_book';
-  border-bottom: 1px solid #FFF;
-  margin-top: 1.5em; }
+  font-family: 'Antipastopro'; }
 
-#about-rocket {
-  position: absolute;
-  bottom: 0;
-  left: 0; }
-
-.skill-display {
-  position: relative;
-  width: 283px;
-  height: 163.39px;
-  background-color: #4d9bfa;
-  margin: 120px 20px;
-  border-left: solid 21px #ffffff;
-  border-right: solid 21px #ffffff;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center; }
-  .skill-display h1 {
-    z-index: 10;
-    color: #FFF;
-    font-size: 48px;
-    font-family: 'Futura_bold'; }
-
-.skill-display:before,
-.skill-display:after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  width: 200.11px;
-  height: 200.11px;
-  -webkit-transform: scaleY(0.5774) rotate(-45deg);
-  -ms-transform: scaleY(0.5774) rotate(-45deg);
-  transform: scaleY(0.5774) rotate(-45deg);
-  background-color: inherit;
-  left: 20.4444px; }
-
-.skill-display:before {
-  top: -100.0556px;
-  border-top: solid 29.6985px #ffffff;
-  border-right: solid 29.6985px #ffffff; }
-
-.skill-display:after {
-  bottom: -100.0556px;
-  border-bottom: solid 29.6985px #ffffff;
-  border-left: solid 29.6985px #ffffff; }
+#resume-btn {
+  padding: 1em;
+  font-size: 24px;
+  font-family: 'Futura_bold';
+  background-color: #7261ee;
+  border-color: #7261ee;
+  margin-top: 2em; }
 
 #portfolio-container {
   position: relative;
