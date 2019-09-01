@@ -252,8 +252,8 @@
   font-family: 'Antipastopro'; }
 
 #resume-btn {
-  padding: 1em;
-  font-size: 24px;
+  padding: 1.1em;
+  font-size: 20px;
   font-family: 'Futura_bold';
   background-color: #7261ee;
   border-color: #7261ee;
@@ -263,7 +263,7 @@
   position: relative;
   height: 1000px;
   overflow: hidden;
-  background: linear-gradient(rgba(117, 76, 220, 0.8), rgba(117, 76, 220, 0.8)), url("../images/code_bg.png"); }
+  background: linear-gradient(rgba(114, 97, 238, 0.8), rgba(114, 97, 238, 0.8)), url("../images/code_bg.png"); }
 
 #project-container {
   display: inline-flex;
@@ -645,7 +645,7 @@
 #contact-container {
   height: 1000px;
   position: relative;
-  background-color: #2eb7c7; }
+  background-color: #f2f2f2; }
 
 #contact-inner-container {
   margin-top: 10em; }
@@ -654,9 +654,17 @@
   margin-right: 10em; }
 
 #contact-form-title {
-  color: #FFF;
-  font-family: 'Futura_bold';
-  font-size: 90px; }
+  font-family: 'Antipastopro';
+  font-size: 90px;
+  position: relative; }
+  #contact-form-title::after {
+    position: absolute;
+    content: '';
+    border-bottom: 10px solid #7261ee;
+    width: 50%;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 100%; }
 
 #contact-form-desc {
   color: #FFF;
@@ -668,7 +676,7 @@
   margin-top: 5em;
   width: 400px; }
   #contact-form .field-icons {
-    color: #FFF;
+    color: #343434;
     font-size: 40px;
     padding-left: 0; }
 
@@ -679,21 +687,21 @@
 .contact-textfield {
   background-color: transparent;
   border: 0;
-  border-bottom: 2px solid #FFF;
+  border-bottom: 2px solid #6a6a6a;
   border-radius: 0;
   padding: 0;
   font-family: 'Futura_light';
   font-size: 30px;
   height: 40px;
-  color: #FFF; }
+  color: #6a6a6a; }
   .contact-textfield::-moz-placeholder, .contact-textfield::-webkit-input-placeholder {
-    color: #FFF; }
+    color: #6a6a6a; }
   .contact-textfield:focus {
     background-color: transparent;
-    border-bottom: 2px solid #FFF;
+    border-bottom: 2px solid #7261ee;
     outline: 0px !important;
     box-shadow: none;
-    color: #FFF; }
+    color: #6a6a6a; }
 
 .contact-form-field-container:nth-child(2) {
   margin-top: 3em; }
@@ -701,9 +709,9 @@
 #contact-message-field {
   background-color: transparent;
   border-radius: 0;
-  border: 2px solid #FFF;
+  border: 2px solid #6a6a6a;
   resize: none;
-  color: #FFF;
+  color: #6a6a6a;
   margin-top: 2em;
   font-family: 'Futura_light';
   font-size: 20px; }
@@ -713,15 +721,15 @@
     box-shadow: none; }
 
 #contact-submit {
-  border: 5px solid;
+  border: 5px solid #7261ee;
   font-family: 'Futura_heavy';
   font-size: 30px;
   width: 450px;
   transition: ease-in-out 0.5s;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  background-color: #7261ee; }
   #contact-submit:hover {
-    cursor: hover;
-    background-color: rgba(0, 0, 0, 0.5); }
+    cursor: pointer; }
 
 .contact-btn-error {
   background-color: #ff4d4d !important;
@@ -735,8 +743,8 @@
   outline: 1px; }
 
 .contact-btn-normal {
-  background-color: transparent !important;
-  border-color: #FFF !important; }
+  background-color: #7261ee !important;
+  border-color: #7261ee !important; }
 
 #footer-container {
   height: 480px;

@@ -10,7 +10,6 @@
         <div id="contact-form-container" class="row flex-column align-items-center">
             <div id="contact-form-headers">
                 <h1 id="contact-form-title">GET IN TOUCH</h1>
-                <h1 id="contact-form-desc">Looking to work together or ask a question?</h1>
             </div>
 
             @using (Html.BeginForm("SendMessage", "Contact", FormMethod.Post, new { id = "contact-form", role = "form" }))
@@ -47,10 +46,6 @@
                     </button>
                 </div>
             }
-        </div>
-
-        <div id="contact-img">
-            <img src="Content/images/contact.png" />
         </div>
     </div>
 </div>

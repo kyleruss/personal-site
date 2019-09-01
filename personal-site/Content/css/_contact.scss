@@ -1,8 +1,9 @@
-﻿#contact-container
-{
-    height:1000px;
-    position:relative;
-    background-color:#2eb7c7;
+﻿$fieldColor: #6a6a6a;
+
+#contact-container {
+    height: 1000px;
+    position: relative;
+    background-color: $mainBgColor;
 }
 
 #contact-inner-container
@@ -17,10 +18,22 @@
 
 #contact-form-title
 {
-    color:#FFF;
-    font-family:'Futura_bold';
+    font-family:'Antipastopro';
     font-size:90px;
+    position:relative;
+
+    &::after
+    {
+        position:absolute;
+        content:'';
+        border-bottom: 10px solid $mainColor;
+        width:50%;
+        transform:translateX(-50%);
+        left:50%;
+        top:100%;
+    }
 }
+
 
 #contact-form-desc
 {
@@ -38,7 +51,7 @@
 
     .field-icons
     {
-        color:#FFF;
+        color:#343434;
         font-size:40px;
         padding-left:0;
     }
@@ -54,26 +67,26 @@
 {
     background-color:rgba(0,0,0,0);
     border:0;
-    border-bottom:2px solid #FFF;
+    border-bottom:2px solid $fieldColor;
     border-radius:0;
     padding:0;
     font-family:'Futura_light';
     font-size:30px;
     height:40px;
-    color:#FFF;
+    color:$fieldColor;
 
     &::-moz-placeholder, &::-webkit-input-placeholder
     {
-        color:#FFF;
+        color:$fieldColor;
     }
 
     &:focus
     {
         background-color:rgba(0,0,0,0);
-        border-bottom:2px solid #FFF;
+        border-bottom:2px solid $mainColor;
         outline:0px !important;
         box-shadow:none;
-        color:#FFF;
+        color:$fieldColor;
     }
 
 }
@@ -83,38 +96,36 @@
     margin-top:3em;
 }
 
-#contact-message-field
-{
-    background-color:rgba(0,0,0,0);
-    border-radius:0;
-    border:2px solid #FFF;
-    resize:none;
-    color:#FFF;
-    margin-top:2em;
-    font-family:'Futura_light';
-    font-size:20px;
-   
-    &:focus
-    {
-        border:2px solid #FFF !important;
-        outline:0px !important;
-        box-shadow:none;
+#contact-message-field {
+    background-color: rgba(0,0,0,0);
+    border-radius: 0;
+    border: 2px solid $fieldColor;
+    resize: none;
+    color: $fieldColor;
+    margin-top: 2em;
+    font-family: 'Futura_light';
+    font-size: 20px;
+
+    &:focus {
+        border: 2px solid #FFF !important;
+        outline: 0px !important;
+        box-shadow: none;
     }
 }
 
 #contact-submit
 {
-    border:5px solid;
+    border:5px solid $mainColor;
     font-family:'Futura_heavy';
     font-size:30px;
     width:450px;
     transition:ease-in-out 0.5s;
     text-transform:uppercase;
+    background-color:$mainColor;
 
     &:hover
     {
-        cursor:hover;
-        background-color:rgba(0,0,0, 0.5);
+        cursor:pointer;
     }
 }
 
@@ -138,7 +149,6 @@
 
 .contact-btn-normal
 {
-    $normalColor: rgba(0,0,0,0) !important;
-    background-color:$normalColor;
-    border-color:#FFF !important;
+    background-color:$mainColor !important;
+    border-color:$mainColor !important;
 }
