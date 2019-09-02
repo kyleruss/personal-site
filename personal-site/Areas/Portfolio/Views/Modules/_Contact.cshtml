@@ -7,7 +7,37 @@
 
 <div id="contact-container">
     <div id="contact-inner-container" class="row h-100 justify-content-center">
-        <div id="contact-form-container" class="row flex-column align-items-center">
+        <div id="services-container" class="col-md-5">
+            <h1 id="services-title">SERVICES</h1>
+            <h3 id="services-subtitle">See how I can help your business</h3>
+
+            <div id="service-list-container" class="row">
+
+                @for (var i = 0; i < 3; i++)
+                {
+                <div class="service-container col-md-4">
+                    <div class="service-inner-icon-container">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4 class="service-inner-title">Websites</h4>
+                    <p class="service-inner-text">
+                        Bring your ideas to life with Innovative designs and cutting
+                        edge full-stack development
+                    </p>
+                </div>
+                }
+            </div>
+
+            <div id="service-list-page-container">
+                <i class="fas fa-circle service-page service-page-active"></i>
+                <i class="fas fa-circle service-page"></i>
+                <i class="fas fa-circle service-page"></i>
+            </div>
+        </div>
+
+        <div class="col-md-2"></div>
+
+        <div id="contact-form-container" class="col-md-4 row flex-column align-items-center">
             <div id="contact-form-headers">
                 <h1 id="contact-form-title">GET IN TOUCH</h1>
             </div>

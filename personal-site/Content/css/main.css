@@ -645,7 +645,8 @@
 #contact-container {
   height: 1000px;
   position: relative;
-  background-color: #f2f2f2; }
+  background-color: #f2f2f2;
+  margin-left: 5em; }
 
 #contact-inner-container {
   margin-top: 10em; }
@@ -676,7 +677,7 @@
   margin-top: 5em;
   width: 400px; }
   #contact-form .field-icons {
-    color: #343434;
+    color: #6a6a6a;
     font-size: 40px;
     padding-left: 0; }
 
@@ -708,7 +709,7 @@
 
 #contact-message-field {
   background-color: transparent;
-  border-radius: 0;
+  border-radius: 10px;
   border: 2px solid #6a6a6a;
   resize: none;
   color: #6a6a6a;
@@ -727,7 +728,8 @@
   width: 450px;
   transition: ease-in-out 0.5s;
   text-transform: uppercase;
-  background-color: #7261ee; }
+  background-color: #7261ee;
+  box-shadow: 0px 0px 21px 0px #6551f9; }
   #contact-submit:hover {
     cursor: pointer; }
 
@@ -745,6 +747,41 @@
 .contact-btn-normal {
   background-color: #7261ee !important;
   border-color: #7261ee !important; }
+
+#services-container {
+  text-align: center; }
+
+#services-title {
+  font-family: 'Futura_bold';
+  font-size: 90px;
+  background-color: #7261ee;
+  width: 800px;
+  padding: 0.2em;
+  color: #FFF; }
+
+#services-subtitle {
+  font-size: 48px;
+  color: #3e3e3e;
+  margin-top: 0.5em; }
+
+#service-list-page-container {
+  text-align: center;
+  margin-top: 5em; }
+
+.service-page {
+  color: #828282; }
+  .service-page:hover {
+    cursor: pointer; }
+
+.service-page-active {
+  color: #7261ee; }
+
+#service-list-container {
+  margin-top: 6em; }
+
+.service-inner-icon-container {
+  font-size: 60px;
+  color: #7261ee; }
 
 #footer-container {
   height: 480px;
@@ -935,4 +972,5 @@
 body {
   padding: 0;
   margin: 0;
-  overflow: hidden; }
+  overflow: hidden;
+  background-color: #f2f2f2; }

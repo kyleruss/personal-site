@@ -4,6 +4,7 @@
     height: 1000px;
     position: relative;
     background-color: $mainBgColor;
+    margin-left:5em;
 }
 
 #contact-inner-container
@@ -51,7 +52,7 @@
 
     .field-icons
     {
-        color:#343434;
+        color:$fieldColor;
         font-size:40px;
         padding-left:0;
     }
@@ -98,7 +99,7 @@
 
 #contact-message-field {
     background-color: rgba(0,0,0,0);
-    border-radius: 0;
+    border-radius: 10px;
     border: 2px solid $fieldColor;
     resize: none;
     color: $fieldColor;
@@ -122,6 +123,7 @@
     transition:ease-in-out 0.5s;
     text-transform:uppercase;
     background-color:$mainColor;
+    box-shadow: 0px 0px 21px 0px rgba(101,81,249,1);
 
     &:hover
     {
@@ -151,4 +153,60 @@
 {
     background-color:$mainColor !important;
     border-color:$mainColor !important;
+}
+
+
+//=====================================
+//              SERVICES
+//=====================================
+
+#services-container
+{
+    text-align:center;
+}
+
+#services-title {
+    font-family: 'Futura_bold';
+    font-size: 90px;
+    background-color: $mainColor;
+    width: 800px;
+    padding: 0.2em;
+    color: #FFF;
+}
+
+#services-subtitle
+{
+    font-size:48px;
+    color:#3e3e3e;
+    margin-top:0.5em;
+}
+
+#service-list-page-container
+{
+    text-align:center;
+    margin-top:5em;
+}
+
+.service-page {
+    color: #828282;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.service-page-active
+{
+    color:$mainColor;
+}
+
+#service-list-container
+{
+    margin-top:6em;
+}
+
+.service-inner-icon-container
+{
+    font-size:60px;
+    color:$mainColor;
 }
