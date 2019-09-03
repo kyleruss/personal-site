@@ -7,7 +7,7 @@
 
 <div id="contact-container">
     <div id="contact-inner-container" class="row h-100 justify-content-center">
-        <div id="services-container" class="col-md-5">
+        <div id="services-container" class="col-md-6">
             <h1 id="services-title">SERVICES</h1>
             <h3 id="services-subtitle">See how I can help your business</h3>
 
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
 
         <div id="contact-form-container" class="col-md-4 row flex-column align-items-center">
             <div id="contact-form-headers">
@@ -51,15 +51,17 @@
                 <div class="form-group contact-form-field-container row">
                     <i class="fas field-icons fa-user col-sm-2"></i>
                     @Html.TextBoxFor(m => m.ContactName,
-                    new { @class = "form-control col-sm-10 contact-textfield", id = "contact-name-field", placeholder = "WHAT'S YOUR NAME?"})
+                    new { @class = "form-control col-sm-10 contact-textfield", id = "contact-name-field", placeholder = "What's your name?"})
 
                 </div>
+
+                <br />
 
                 <!-- Contact Email -->
                 <div class="form-group contact-form-field-container row">
                     <i class="fas field-icons fa-envelope col-sm-2"></i>
                     @Html.TextBoxFor(m => m.ContactEmail,
-                     new { @class = "form-control col-sm-10 contact-textfield", id = "contact-email-field", placeholder = "ENTER YOUR EMAIL" })
+                     new { @class = "form-control col-sm-10 contact-textfield", id = "contact-email-field", placeholder = "Enter your email" })
                 </div>
 
                 <!-- CONTACT MESSAGE -->

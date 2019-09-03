@@ -230,6 +230,22 @@
   font-family: 'Antipastopro';
   src: url("../../fonts/Antipastopro.otf") format("opentype"); }
 
+@font-face {
+  font-family: 'Calibre_bold';
+  src: url("../../fonts/CalibreBold.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Calibre_light';
+  src: url("../../fonts/CalibreLight.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Calibre_medium';
+  src: url("../../fonts/CalibreMedium.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Calibre_semibold';
+  src: url("../../fonts/CalibreSemibold.otf") format("opentype"); }
+
 #about-container {
   position: relative;
   height: 1000px;
@@ -667,12 +683,6 @@
     left: 50%;
     top: 100%; }
 
-#contact-form-desc {
-  color: #FFF;
-  font-family: 'Futura_light';
-  font-size: 30px;
-  text-align: center; }
-
 #contact-form {
   margin-top: 5em;
   width: 400px; }
@@ -691,7 +701,7 @@
   border-bottom: 2px solid #6a6a6a;
   border-radius: 0;
   padding: 0;
-  font-family: 'Futura_light';
+  font-family: "Calibre_light";
   font-size: 30px;
   height: 40px;
   color: #6a6a6a; }
@@ -714,10 +724,10 @@
   resize: none;
   color: #6a6a6a;
   margin-top: 2em;
-  font-family: 'Futura_light';
+  font-family: "Calibre_light";
   font-size: 20px; }
   #contact-message-field:focus {
-    border: 2px solid #FFF !important;
+    border: 2px solid #7261ee !important;
     outline: 0px !important;
     box-shadow: none; }
 
@@ -729,7 +739,8 @@
   transition: ease-in-out 0.5s;
   text-transform: uppercase;
   background-color: #7261ee;
-  box-shadow: 0px 0px 21px 0px #6551f9; }
+  box-shadow: 0px 0px 21px 0px #6551f9;
+  margin-top: 0.5em; }
   #contact-submit:hover {
     cursor: pointer; }
 
@@ -755,14 +766,14 @@
   font-family: 'Futura_bold';
   font-size: 90px;
   background-color: #7261ee;
-  width: 800px;
   padding: 0.2em;
   color: #FFF; }
 
 #services-subtitle {
   font-size: 48px;
   color: #3e3e3e;
-  margin-top: 0.5em; }
+  margin-top: 0.5em;
+  font-family: 'Calibre_light'; }
 
 #service-list-page-container {
   text-align: center;
@@ -777,11 +788,21 @@
   color: #7261ee; }
 
 #service-list-container {
-  margin-top: 6em; }
+  margin-top: 5em; }
 
 .service-inner-icon-container {
-  font-size: 60px;
+  font-size: 72px;
   color: #7261ee; }
+
+.service-inner-title {
+  font-family: 'Calibre_semibold';
+  font-size: 30px;
+  color: #373737; }
+
+.service-inner-text {
+  font-family: 'Calibre_medium';
+  font-size: 20px;
+  color: #2d2d2d; }
 
 #footer-container {
   height: 480px;

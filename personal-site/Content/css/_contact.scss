@@ -1,4 +1,5 @@
 ﻿$fieldColor: #6a6a6a;
+$fieldFont: 'Calibre_light';
 
 #contact-container {
     height: 1000px;
@@ -35,16 +36,6 @@
     }
 }
 
-
-#contact-form-desc
-{
-    color:#FFF;
-    font-family:'Futura_light';
-    font-size:30px;
-    text-align:center;
-
-}
-
 #contact-form
 {
     margin-top:5em;
@@ -71,7 +62,7 @@
     border-bottom:2px solid $fieldColor;
     border-radius:0;
     padding:0;
-    font-family:'Futura_light';
+    font-family: $fieldFont;
     font-size:30px;
     height:40px;
     color:$fieldColor;
@@ -104,11 +95,11 @@
     resize: none;
     color: $fieldColor;
     margin-top: 2em;
-    font-family: 'Futura_light';
+    font-family: $fieldFont;
     font-size: 20px;
 
     &:focus {
-        border: 2px solid #FFF !important;
+        border: 2px solid $mainColor !important;
         outline: 0px !important;
         box-shadow: none;
     }
@@ -124,6 +115,7 @@
     text-transform:uppercase;
     background-color:$mainColor;
     box-shadow: 0px 0px 21px 0px rgba(101,81,249,1);
+    margin-top:0.5em;
 
     &:hover
     {
@@ -169,7 +161,6 @@
     font-family: 'Futura_bold';
     font-size: 90px;
     background-color: $mainColor;
-    width: 800px;
     padding: 0.2em;
     color: #FFF;
 }
@@ -179,6 +170,7 @@
     font-size:48px;
     color:#3e3e3e;
     margin-top:0.5em;
+    font-family: 'Calibre_light';
 }
 
 #service-list-page-container
@@ -202,11 +194,25 @@
 
 #service-list-container
 {
-    margin-top:6em;
+    margin-top:5em;
 }
 
 .service-inner-icon-container
 {
-    font-size:60px;
+    font-size:72px;
     color:$mainColor;
+}
+
+.service-inner-title
+{
+    font-family: 'Calibre_semibold';
+    font-size:30px;
+    color:#373737;
+}
+
+.service-inner-text
+{
+    font-family: 'Calibre_medium';
+    font-size:20px;
+    color:#2d2d2d;
 }
