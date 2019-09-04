@@ -805,9 +805,10 @@
   color: #2d2d2d; }
 
 #footer-container {
-  height: 480px;
+  height: 380px;
   background-color: #0f0f0f;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
 
 #inner-footer {
   justify-content: space-around; }
@@ -818,12 +819,12 @@
   color: #5f97fd; }
 
 .footer-info-description {
-  font-family: 'Futura_bold';
-  font-size: 18px;
+  font-family: 'Calibre_medium';
+  font-size: 24px;
   color: #FFF; }
 
 .footer-info-container {
-  width: 280px;
+  text-align: center;
   word-wrap: break-word; }
 
 #footer-social-icons {
@@ -843,16 +844,18 @@
   align-items: center; }
 
 .footer-btn {
-  background-color: #06aa40;
+  background-color: #7261ee;
   border: 0;
   font-family: 'Futura_bold';
   font-size: 18px;
   padding: 1em;
   width: 275px;
-  transition: ease-in-out 0.5s; }
+  margin-top: 1em;
+  transition: ease-in-out 0.5s;
+  box-shadow: 0px 0px 21px 0px #6551f9; }
   .footer-btn:hover {
-    background-color: #06aa40;
-    opacity: 0.8; }
+    opacity: 0.8;
+    background-color: #7261ee; }
 
 .social-display {
   position: relative;
@@ -957,20 +960,9 @@
 .social-display:after {
   bottom: -35.3553px; }
 
-#copyright-header {
-  color: #FFF;
-  font-family: Dienstag;
-  font-size: 24px;
-  opacity: 0.8; }
-
-#footer-copyright-container {
-  background-color: #0f0f0f;
-  height: 150px;
-  position: relative;
-  overflow: hidden;
-  border-top: 3px solid transparent;
-  border-image: linear-gradient(to right, yellow, red, purple, blue, aqua);
-  border-image-slice: 1; }
+#footer-image {
+  margin-left: -80px;
+  margin-bottom: -120px; }
 
 .btn:focus, .btn:active {
   outline: none !important;
