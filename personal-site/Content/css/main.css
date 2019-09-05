@@ -275,6 +275,31 @@
   border-color: #7261ee;
   margin-top: 2em; }
 
+#skills-container {
+  position: relative;
+  height: 1000px;
+  background-color: #f2f2f2;
+  overflow: hidden;
+  text-align: center; }
+
+#skill-title {
+  color: #2c2c2c;
+  font-family: 'Antipastopro';
+  font-size: 100px;
+  position: relative;
+  margin-top: 1em; }
+  #skill-title::after {
+    position: absolute;
+    content: '';
+    border-bottom: 10px solid #7261ee;
+    width: 20%;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 100%; }
+
+.skill-inner-container {
+  background-color: #d7d7d7; }
+
 #portfolio-container {
   position: relative;
   height: 1000px;
