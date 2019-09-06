@@ -3,7 +3,6 @@
     position: relative;
     height: 1000px;
     background-color: $mainBgColor;
-    overflow: hidden;
     text-align:center;
 }
 
@@ -27,7 +26,67 @@
     }
 }
 
+#skills-container
+{
+    margin-top:8em;
+    justify-content:center;
+    position:relative;
+}
+
 .skill-inner-container
 {
-    background-color:#d7d7d7;
+    border:2px solid #d7d7d7;
+    border-radius:10px;
+    height:450px;
+}
+
+.skill-icon-container 
+{
+    $skillContainerSize: 140px;
+
+    width: $skillContainerSize;
+    height: $skillContainerSize;
+    background-color: $mainColor;
+    border-radius: $skillContainerSize;
+    display:flex;
+    justify-content:center;
+    text-align:center;
+    align-items:center;
+    position:absolute;
+    left:50%;
+    top:-70px;
+    transform:translateX(-50%);
+}
+
+.skill-icon
+{
+    color:#FFF;
+    font-size:48px;
+}
+
+.skill-type-title 
+{
+    font-family: 'Calibre_bold';
+    font-size: 36px;
+    color: #2c2c2c;
+    margin-top:3em;
+}
+
+.skill-list-container
+{
+}
+
+.skill-badge
+{
+    background-color:$mainColor;
+    color:#FFF;
+    font-family:'Calibre_regular';
+    font-size:28px;
+    margin-top:0.2em;
+    padding:10px;
+
+    .fa-circle
+    {
+        font-size:10px;
+    }
 }

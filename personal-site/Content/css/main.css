@@ -246,6 +246,10 @@
   font-family: 'Calibre_semibold';
   src: url("../../fonts/CalibreSemibold.otf") format("opentype"); }
 
+@font-face {
+  font-family: 'Calibre_regular';
+  src: url("../../fonts/CalibreRegular.otf") format("opentype"); }
+
 #about-container {
   position: relative;
   height: 1000px;
@@ -279,7 +283,6 @@
   position: relative;
   height: 1000px;
   background-color: #f2f2f2;
-  overflow: hidden;
   text-align: center; }
 
 #skill-title {
@@ -297,8 +300,49 @@
     left: 50%;
     top: 100%; }
 
+#skills-container {
+  margin-top: 8em;
+  justify-content: center;
+  position: relative; }
+
 .skill-inner-container {
-  background-color: #d7d7d7; }
+  border: 2px solid #d7d7d7;
+  border-radius: 10px;
+  height: 450px; }
+
+.skill-icon-container {
+  width: 140px;
+  height: 140px;
+  background-color: #7261ee;
+  border-radius: 140px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: -70px;
+  transform: translateX(-50%); }
+
+.skill-icon {
+  color: #FFF;
+  font-size: 48px; }
+
+.skill-type-title {
+  font-family: 'Calibre_bold';
+  font-size: 36px;
+  color: #2c2c2c;
+  margin-top: 3em; }
+
+.skill-badge {
+  background-color: #7261ee;
+  color: #FFF;
+  font-family: 'Calibre_regular';
+  font-size: 28px;
+  margin-top: 0.2em;
+  padding: 10px; }
+  .skill-badge .fa-circle {
+    font-size: 10px; }
 
 #portfolio-container {
   position: relative;
