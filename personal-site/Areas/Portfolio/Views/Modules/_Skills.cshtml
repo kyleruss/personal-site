@@ -8,24 +8,37 @@
     <h1 id="skill-title">What I do best</h1>
 
     <div id="skills-container" class="row">
-        @for (var i = 0; i < 3; i++)
-        {
-            <div class="col-md-2">
-                <div class="skill-inner-container col-md-12">
-                    <div class="skill-icon-container">
-                        <i class="fas fa-code skill-icon"></i>
-                    </div>
+        @{ 
+            var skillList = new Dictionary<string, List<string>>
+            {
+                { "Frontend",  new List<string>() { "Angular", "HTML", "CSS", "Sass", "Bulma", "Bootstrap", "JS/TS", "jQuery" } },
+                { "Backend", new List<string>() { "C#/.NET", "Java", "Spring", "PHP", "Laravel", "Node.JS", "Socket.IO", "SQL" } },
+                { "Other", new List<string>() { "Android", "Kotlin", "Ionic", "Cordova", "Git", "Maven", "Grunt", "Azure" } }
+            };
+        }
 
-                    <h2 class="skill-type-title">Frontend</h2>
-                    @{  List<string> skillList = new List<string>() { "Angular", "Html", "CSS", "Sass", "Bulma", "Bootstrap", "jQuery" }; }
-                    <div class="skill-list-container">
-                        @foreach(string skill in skillList)
-                        {
-                            <span class="badge badge-primary skill-badge"><i class="fas fa-circle"></i> @skill</span>
-                        }
-                    </div>
+        @foreach(var skillItem in skillList)
+        {
+        <div class="col-md-2">
+            <div class="skill-inner-container col-md-12">
+                <div class="skill-icon-container">
+                    
+                    <i class="fas fa-code skill-icon"></i>
+                </div>
+
+                <h2 class="skill-type-title">@skillItem.Key</h2>
+
+                <div class="skill-list-container">
+                    @foreach (string skill in skillItem.Value)
+                    {
+                        <span class="badge badge-primary skill-badge">
+                            <i class="fas fa-circle"></i>
+                            <span class="skill-name">@skill</span>
+                        </span>
+                    }
                 </div>
             </div>
+        </div>
         }
     </div>
 </div>

@@ -488,11 +488,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\User.cshtml" />
-    <Content Include="Areas\Portfolio\Views\Modules\Skills.cshtml" />
+    <Content Include="Areas\Portfolio\Views\Modules\_Skills.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\css\_skills.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

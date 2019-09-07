@@ -340,9 +340,11 @@
   font-family: 'Calibre_regular';
   font-size: 28px;
   margin-top: 0.2em;
-  padding: 10px; }
+  vertical-align: super; }
   .skill-badge .fa-circle {
     font-size: 10px; }
+  .skill-badge .skill-name {
+    vertical-align: sub; }
 
 #portfolio-container {
   position: relative;
