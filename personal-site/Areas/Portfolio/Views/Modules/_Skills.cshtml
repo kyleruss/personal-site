@@ -22,8 +22,14 @@
         <div class="col-md-2">
             <div class="skill-inner-container col-md-12">
                 <div class="skill-icon-container">
-                    
-                    <i class="fas fa-code skill-icon"></i>
+                    @if (skillItem.Key == "Frontend")
+                    { <i class="fas fa-code skill-icon"></i> }
+
+                    else if(skillItem.Key == "Backend")
+                    { <i class="fas fa-server skill-icon"></i> }
+
+                    else
+                    { <i class="fas fa-mobile-alt skill-icon"></i> }
                 </div>
 
                 <h2 class="skill-type-title">@skillItem.Key</h2>
