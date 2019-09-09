@@ -7,6 +7,7 @@
 
     $('#contact-btn-progress').hide();
     $('#contact-btn-status').hide();
+    $('.service-container').slice(-2).hide();
 
     $('#contact-form').submit(function(e)
     {

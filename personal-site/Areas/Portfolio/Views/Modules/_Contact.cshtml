@@ -12,19 +12,55 @@
             <h3 id="services-subtitle">See how I can help your business</h3>
 
             <div id="service-list-container" class="row">
+                @{
+                    var serviceList = new Dictionary<string, string>
+                    {
+                        { "Websites", "Bring your ideas to life with innovative designs and cutting edge web technology" },
+                        { "Apps", "Make your software more accessible to the world by being available on all mobile platforms" },
+                        { "Databases", "Providing database modelling, development, optimization, storage migration and security" },
+                        { "Cloud", "Scale your software with Azure, AWS, Docker and Kubernetes cloud based solutions" },
+                        { "SEO", "Optimize your websites to ensure it's at the top of results and reachable by everyone" }
+                    };
+                }
 
-                @for (var i = 0; i < 3; i++)
+                @foreach (var serviceItem in serviceList)
                 {
-                <div class="service-container col-md-4">
-                    <div class="service-inner-icon-container">
-                        <i class="fas fa-code"></i>
+                    string serviceIconClass = "";
+
+                    switch (serviceItem.Key)
+                    {
+                        case "Websites":
+                            serviceIconClass = "fas fa-code";
+                            break;
+
+                        case "Apps":
+                            serviceIconClass = "fas fa-mobile-alt";
+                            break;
+
+                        case "Databases":
+                            serviceIconClass = "fas fa-database";
+                            break;
+
+                        case "Cloud":
+                            serviceIconClass = "fas fa-cloud-upload-alt";
+                            break;
+
+                        case "SEO":
+                            serviceIconClass = "fas fa-chart-line";
+                            break;
+                    }
+
+
+
+                    <div class="service-container col-md-4">
+                        <div class="service-inner-icon-container">
+                            <i class="@serviceIconClass"></i>
+                        </div>
+                        <h4 class="service-inner-title">@serviceItem.Key</h4>
+                        <p class="service-inner-text">
+                            @serviceItem.Value
+                        </p>
                     </div>
-                    <h4 class="service-inner-title">Websites</h4>
-                    <p class="service-inner-text">
-                        Bring your ideas to life with Innovative designs and cutting
-                        edge full-stack development
-                    </p>
-                </div>
                 }
             </div>
 
