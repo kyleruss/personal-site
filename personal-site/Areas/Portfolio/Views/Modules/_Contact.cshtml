@@ -65,9 +65,11 @@
             </div>
 
             <div id="service-list-page-container">
-                <i class="fas fa-circle service-page service-page-active"></i>
-                <i class="fas fa-circle service-page"></i>
-                <i class="fas fa-circle service-page"></i>
+                @for (var i = 0; i < 3; i++)
+                {
+                    var activeClass = i == 0? "service-page-active" : "";
+                    <i class="fas fa-circle service-page @activeClass"></i>
+                }
             </div>
         </div>
 

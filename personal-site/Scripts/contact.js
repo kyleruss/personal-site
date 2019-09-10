@@ -5,9 +5,12 @@
         CONTACT_STATUS_ERROR = 2,
         CONTACT_STATUS_RESET = 3;
 
+    var serviceRotateIndex = 0;
+
     $('#contact-btn-progress').hide();
     $('#contact-btn-status').hide();
     $('.service-container').slice(-2).hide();
+    //rotateServices();
 
     $('#contact-form').submit(function(e)
     {
@@ -20,7 +23,7 @@
         var contactBtnText = $('#contact-btn-text');
 
         updateContactButton(CONTACT_STATUS_PROGRESS);
-        
+
         setTimeout(function ()
         {
             $.ajax
@@ -90,7 +93,7 @@
         }
 
         contactBtnText.text(btnMsg);
-    }
+    };
 
     function resetContactButton()
     {
@@ -101,12 +104,55 @@
             $('#contact-btn-text').text('send message');
             $('#contact-submit').attr('class', 'btn btn-primary contact-btn-normal');
         }, 2000);
-    }
+    };
 
     function clearForm()
     {
         $('#contact-name-field').val('');
         $('#contact-email-field').val('');
         $('#contact-message-field').val('');
-    }
+    };
+
+
+
+    function setServicePage(page)
+    {
+        var serviceContainer = $('.service-container');
+        
+        while(page != serviceRotateIndex)
+        {
+            var nextIndex = (serviceRotateIndex + 3) % 5;
+            if (page < serviceRotateIndex)
+            {
+                serviceContainer.eq(nextIndex - 1).hide();
+                serviceContainer.eq(serviceRotateIndex - 1).show();
+                serviceRotateIndex--;
+            }
+
+            else
+            {
+                serviceContainer.eq(serviceRotateIndex).hide();
+                serviceContainer.eq(nextIndex).show();
+                serviceRotateIndex++;
+            }
+        }
+    };
+
+    function rotateServices()
+    {
+        setInterval(() =>
+        {
+            $('.service-container').eq(serviceRotateIndex).hide();
+            $('.service-container').eq(serviceRotateIndex + 3).show();
+            serviceRotateIndex++;
+        }, 2000);
+    };
+
+    $('.service-page').click(function()
+    {
+        $('.service-page').removeClass('service-page-active');
+        $(this).addClass('service-page-active');
+        var pageIndex = $('.service-page').index($(this));
+        setServicePage(pageIndex);
+    });
 };
