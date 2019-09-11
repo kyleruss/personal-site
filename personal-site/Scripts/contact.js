@@ -10,7 +10,7 @@
     $('#contact-btn-progress').hide();
     $('#contact-btn-status').hide();
     $('.service-container').slice(-2).hide();
-    //rotateServices();
+    rotateServices();
 
     $('#contact-form').submit(function(e)
     {
@@ -118,6 +118,9 @@
     function setServicePage(page)
     {
         var serviceContainer = $('.service-container');
+
+        $('.service-page').removeClass('service-page-active');
+        $('.service-page').eq(page).addClass('service-page-active');
         
         while(page != serviceRotateIndex)
         {
@@ -142,16 +145,14 @@
     {
         setInterval(() =>
         {
-            $('.service-container').eq(serviceRotateIndex).hide();
-            $('.service-container').eq(serviceRotateIndex + 3).show();
-            serviceRotateIndex++;
+            var pageIndex = (serviceRotateIndex + 1) % 3;
+            setServicePage(pageIndex);
         }, 2000);
     };
 
     $('.service-page').click(function()
     {
         $('.service-page').removeClass('service-page-active');
-        $(this).addClass('service-page-active');
         var pageIndex = $('.service-page').index($(this));
         setServicePage(pageIndex);
     });
