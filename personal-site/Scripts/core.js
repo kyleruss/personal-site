@@ -2,7 +2,6 @@
 {
     Home();
     About();
-    Blog();
     Portfolio();
     Contact();
 

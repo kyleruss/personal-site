@@ -6,7 +6,6 @@ $(function()
 {
     Home();
     About();
-    Blog();
     Portfolio();
     Contact();
 
