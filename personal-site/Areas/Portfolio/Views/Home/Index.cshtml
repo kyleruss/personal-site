@@ -3,6 +3,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section Css
+{
+    @Styles.Render("//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css")
+}
+
 @Html.Partial("_Navbar")
 
 <div id="module-container" class="d-flex flex-column">
@@ -28,3 +33,8 @@
     @Html.Partial("../Modules/_Footer")
 
 </div>
+
+@section JavascriptInnerDependencies
+{
+    @Scripts.Render("//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js")
+}

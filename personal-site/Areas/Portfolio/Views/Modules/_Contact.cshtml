@@ -14,62 +14,58 @@
             <div id="service-list-container" class="row">
                 @{
                     var serviceList = new Dictionary<string, string>
-                    {
+                            {
                         { "Websites", "Bring your ideas to life with innovative designs and cutting edge web technology" },
                         { "Apps", "Make your software more accessible to the world by being available on all mobile platforms" },
                         { "Databases", "Providing database modelling, development, optimization, storage migration and security" },
                         { "Cloud", "Scale your software with Azure, AWS, Docker and Kubernetes cloud based solutions" },
+                        { "Design", "Specializing in modern, interactive and user-friendly web, mobile and UI design" },
                         { "SEO", "Optimize your websites to ensure it's at the top of results and reachable by everyone" }
                     };
                 }
 
-                @foreach (var serviceItem in serviceList)
-                {
-                    string serviceIconClass = "";
-
-                    switch (serviceItem.Key)
+                    @foreach (var serviceItem in serviceList)
                     {
-                        case "Websites":
-                            serviceIconClass = "fas fa-code";
-                            break;
+                        string serviceIconClass = "";
 
-                        case "Apps":
-                            serviceIconClass = "fas fa-mobile-alt";
-                            break;
+                        switch (serviceItem.Key)
+                        {
+                            case "Websites":
+                                serviceIconClass = "fas fa-code";
+                                break;
 
-                        case "Databases":
-                            serviceIconClass = "fas fa-database";
-                            break;
+                            case "Apps":
+                                serviceIconClass = "fas fa-mobile-alt";
+                                break;
 
-                        case "Cloud":
-                            serviceIconClass = "fas fa-cloud-upload-alt";
-                            break;
+                            case "Databases":
+                                serviceIconClass = "fas fa-database";
+                                break;
 
-                        case "SEO":
-                            serviceIconClass = "fas fa-chart-line";
-                            break;
-                    }
+                            case "Cloud":
+                                serviceIconClass = "fas fa-cloud-upload-alt";
+                                break;
+
+                            case "Design":
+                                serviceIconClass = "fas fa-palette";
+                                break;
+
+                            case "SEO":
+                                serviceIconClass = "fas fa-chart-line";
+                                break;
+                        }
 
 
-
-                    <div class="service-container col-md-4">
-                        <div class="service-inner-icon-container">
-                            <i class="@serviceIconClass"></i>
+                        <div class="service-container col-md-4">
+                            <div class="service-inner-icon-container">
+                                <i class="@serviceIconClass"></i>
+                            </div>
+                            <h4 class="service-inner-title">@serviceItem.Key</h4>
+                            <p class="service-inner-text">
+                                @serviceItem.Value
+                            </p>
                         </div>
-                        <h4 class="service-inner-title">@serviceItem.Key</h4>
-                        <p class="service-inner-text">
-                            @serviceItem.Value
-                        </p>
-                    </div>
-                }
-            </div>
-
-            <div id="service-list-page-container">
-                @for (var i = 0; i < 3; i++)
-                {
-                    var activeClass = i == 0? "service-page-active" : "";
-                    <i class="fas fa-circle service-page @activeClass"></i>
-                }
+                    }
             </div>
         </div>
 
@@ -83,13 +79,13 @@
             @using (Html.BeginForm("SendMessage", "Contact", FormMethod.Post, new { id = "contact-form", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                
+
                 @Html.ValidationSummary();
                 <!-- Contact name -->
                 <div class="form-group contact-form-field-container row">
                     <i class="fas field-icons fa-user col-sm-2"></i>
                     @Html.TextBoxFor(m => m.ContactName,
-                    new { @class = "form-control col-sm-10 contact-textfield", id = "contact-name-field", placeholder = "What's your name?"})
+                    new { @class = "form-control col-sm-10 contact-textfield", id = "contact-name-field", placeholder = "What's your name?" })
 
                 </div>
 

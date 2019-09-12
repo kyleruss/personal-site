@@ -173,20 +173,6 @@ $fieldFont: 'Calibre_light';
     font-family: 'Calibre_light';
 }
 
-#service-list-page-container
-{
-    text-align:center;
-    margin-top:5em;
-}
-
-.service-page {
-    color: #828282;
-
-    &:hover {
-        cursor: pointer;
-    }
-}
-
 .service-page-active
 {
     color:$mainColor;
@@ -215,4 +201,42 @@ $fieldFont: 'Calibre_light';
     font-family: 'Calibre_medium';
     font-size:20px;
     color:#2d2d2d;
+}
+
+.service-container
+{
+    transition:1s ease-in-out;
+}
+
+.slick-dots {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    margin-top:5em;
+    padding: 1rem 0;
+    list-style-type: none;
+
+    li {
+        margin: 0 0.25rem;
+    }
+
+    button {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        padding: 0;
+        border: none;
+        border-radius: 100%;
+        background-color: #828282;
+        text-indent: -9999px;
+
+        &:focus
+        {
+            outline:none;
+        }
+    }
+
+    li.slick-active button {
+        background-color: $mainColor;
+    }
 }

@@ -582,15 +582,6 @@
   margin-top: 0.5em;
   font-family: 'Calibre_light'; }
 
-#service-list-page-container {
-  text-align: center;
-  margin-top: 5em; }
-
-.service-page {
-  color: #828282; }
-  .service-page:hover {
-    cursor: pointer; }
-
 .service-page-active {
   color: #7261ee; }
 
@@ -610,6 +601,32 @@
   font-family: 'Calibre_medium';
   font-size: 20px;
   color: #2d2d2d; }
+
+.service-container {
+  transition: 1s ease-in-out; }
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  margin-top: 5em;
+  padding: 1rem 0;
+  list-style-type: none; }
+  .slick-dots li {
+    margin: 0 0.25rem; }
+  .slick-dots button {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    border: none;
+    border-radius: 100%;
+    background-color: #828282;
+    text-indent: -9999px; }
+    .slick-dots button:focus {
+      outline: none; }
+  .slick-dots li.slick-active button {
+    background-color: #7261ee; }
 
 #footer-container {
   height: 380px;

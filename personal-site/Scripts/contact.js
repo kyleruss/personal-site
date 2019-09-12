@@ -9,8 +9,8 @@
 
     $('#contact-btn-progress').hide();
     $('#contact-btn-status').hide();
-    $('.service-container').slice(-2).hide();
-    rotateServices();
+    $('.slick-dots > li').slice(-2).hide();
+    initCarousel();
 
     $('#contact-form').submit(function(e)
     {
@@ -113,47 +113,18 @@
         $('#contact-message-field').val('');
     };
 
-
-
-    function setServicePage(page)
+    function initCarousel()
     {
-        var serviceContainer = $('.service-container');
-
-        $('.service-page').removeClass('service-page-active');
-        $('.service-page').eq(page).addClass('service-page-active');
-        
-        while(page != serviceRotateIndex)
-        {
-            var nextIndex = (serviceRotateIndex + 3) % 5;
-            if (page < serviceRotateIndex)
-            {
-                serviceContainer.eq(nextIndex - 1).hide();
-                serviceContainer.eq(serviceRotateIndex - 1).show();
-                serviceRotateIndex--;
-            }
-
-            else
-            {
-                serviceContainer.eq(serviceRotateIndex).hide();
-                serviceContainer.eq(nextIndex).show();
-                serviceRotateIndex++;
-            }
-        }
+        $('#service-list-container').slick
+        ({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 2,
+            dots: true,
+            arrows:false,
+            autoplay:true,
+            autoplaySpeed: 3000,
+            accessibility: false
+        });
     };
-
-    function rotateServices()
-    {
-        setInterval(() =>
-        {
-            var pageIndex = (serviceRotateIndex + 1) % 3;
-            setServicePage(pageIndex);
-        }, 2000);
-    };
-
-    $('.service-page').click(function()
-    {
-        $('.service-page').removeClass('service-page-active');
-        var pageIndex = $('.service-page').index($(this));
-        setServicePage(pageIndex);
-    });
 };
