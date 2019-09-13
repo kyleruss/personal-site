@@ -12,7 +12,6 @@
   font-family: Dienstag;
   font-size: 30px;
   padding: 1em;
-  background-color: transparent !important;
   z-index: 2000; }
   #main-navbar .nav-link {
     color: #ffffff;
@@ -23,7 +22,7 @@
   #main-navbar .nav-link-item::after {
     display: block;
     content: '';
-    border-bottom: solid 2px #7261ee;
+    border-bottom: solid 4px #7261ee;
     transform: scaleX(0);
     transition: transform 0.25s ease-in-out;
     transform-origin: 0% 50%; }
@@ -37,8 +36,19 @@
     margin-left: 2.5em; }
   #main-navbar #navbar-right {
     margin-right: 2.5em; }
-  #main-navbar .nav-active {
-    border-bottom: 2px solid #7261ee; }
+  #main-navbar .active {
+    border-bottom: 4px solid #7261ee; }
+
+.navbar-top {
+  background-color: transparent !important;
+  color: #FFF !important; }
+
+.navbar-toggled {
+  background-color: #FFF !important;
+  color: #000 !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.75); }
+  .navbar-toggled .nav-link {
+    color: #000 !important; }
 
 /* 
    ================================
@@ -277,7 +287,10 @@
   font-family: 'Futura_bold';
   background-color: #7261ee;
   border-color: #7261ee;
-  margin-top: 2em; }
+  margin-top: 2em;
+  transition: 0.5s ease-in-out; }
+  #resume-btn:hover {
+    box-shadow: 0px 0px 21px 0px #6551f9; }
 
 #skills-container {
   position: relative;
@@ -350,7 +363,7 @@
   position: relative;
   height: 1000px;
   overflow: hidden;
-  background: linear-gradient(rgba(114, 97, 238, 0.8), rgba(114, 97, 238, 0.8)), url("../images/code_bg.png"); }
+  background-color: #7261ee; }
 
 #project-container {
   display: inline-flex;
@@ -546,10 +559,10 @@
   transition: ease-in-out 0.5s;
   text-transform: uppercase;
   background-color: #7261ee;
-  box-shadow: 0px 0px 21px 0px #6551f9;
   margin-top: 0.5em; }
   #contact-submit:hover {
-    cursor: pointer; }
+    cursor: pointer;
+    box-shadow: 0px 0px 21px 0px #6551f9; }
 
 .contact-btn-error {
   background-color: #ff4d4d !important;

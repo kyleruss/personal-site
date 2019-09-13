@@ -1,15 +1,40 @@
 var scrollConfig =
 {
-    horizrailenabled: false
+    horizrailenabled: false,
+    cursorcolor: "rgba(114, 97, 238)",
+    zindex: 999999,
+    cursorborder: "1px solid #000",
+    cursorwidth: 12
 };
 $(function()
 {
+    var userScrollValue = 0;
+
     Home();
     About();
     Portfolio();
     Contact();
 
     $('body').niceScroll(scrollConfig);
+
+    $(window).scroll(function(e)
+    {
+        var scrollVal = $(this).scrollTop();
+
+        if(scrollVal > userScrollValue)
+            toggleNavbar(false);
+        else
+            toggleNavbar(true);
+
+            userScrollValue = scrollVal;
+    });
+
+    function toggleNavbar(show)
+    {
+        var navbar = $('#main-navbar');
+        if(show) navbar.slideDown();
+        else navbar.slideUp();
+    };
 });
 function Home()
 {
@@ -17,50 +42,7 @@ function Home()
 };
 function About()
 {
-    var skills =
-    [
-        "C++",
-        "ANGULAR",
-        "PHP",
-        "CORDOVA",
-        "IONIC",
-        "ANDROID",
-        "JQUERY",
-        "SOCKET.IO",
-        "SQL",
-        "SASS/CSS",
-        "HTML",
-        "BULMA",
-        "BOOTSTRAP",
-        "C#/.NET",
-        "JAVA",
-        "NODE.JS"
-    ];
 
-    function rotateSkills()
-    {
-        var n = skills.length;
-        var i = 0;
-        var enable = false;
-
-        if (enable) {
-            setInterval(function () {
-                var skillText = skills[i];
-                var firstSkill = $('.skill-display').first()
-                firstSkill.first().remove();
-
-                var skillContainer = $('<div>', { 'class': 'skill-display' })
-                .append($('<h1>').text(skillText));
-
-                $('#skills-container').append(skillContainer);
-
-                i = (i + 1) % n;
-
-            }, 2000);
-        }
-    };
-
-    rotateSkills();
 };
 function Blog()
 {

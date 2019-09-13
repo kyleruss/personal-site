@@ -9,7 +9,6 @@
     font-family:Dienstag;
     font-size:30px;
     padding: 1em;
-    background-color:transparent !important;
     z-index:2000;
     
     .nav-link 
@@ -31,7 +30,7 @@
         {
             display:block;
             content: '';
-            border-bottom:solid 2px $mainColor;
+            border-bottom:solid 4px $mainColor;
             transform: scaleX(0);
             transition:transform 0.25s ease-in-out;
             transform-origin: 0% 50%;
@@ -63,8 +62,26 @@
         margin-right:2.5em;
     }
 
-    .nav-active
+    .active
     {
-        border-bottom:2px solid $mainColor;
+        border-bottom:4px solid $mainColor;
+    }
+}
+
+.navbar-top
+{
+    background-color:transparent !important;
+    color: #FFF !important;
+}
+
+.navbar-toggled 
+{
+    background-color: #FFF !important;
+    color: #000 !important;
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.75);
+
+    .nav-link
+    {
+        color:#000 !important;
     }
 }

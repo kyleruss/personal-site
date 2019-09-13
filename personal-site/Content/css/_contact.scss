@@ -105,21 +105,19 @@ $fieldFont: 'Calibre_light';
     }
 }
 
-#contact-submit
-{
-    border:5px solid $mainColor;
-    font-family:'Futura_heavy';
-    font-size:30px;
-    width:450px;
-    transition:ease-in-out 0.5s;
-    text-transform:uppercase;
-    background-color:$mainColor;
-    box-shadow: 0px 0px 21px 0px rgba(101,81,249,1);
-    margin-top:0.5em;
+#contact-submit {
+    border: 5px solid $mainColor;
+    font-family: 'Futura_heavy';
+    font-size: 30px;
+    width: 450px;
+    transition: ease-in-out 0.5s;
+    text-transform: uppercase;
+    background-color: $mainColor;
+    margin-top: 0.5em;
 
-    &:hover
-    {
-        cursor:pointer;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 21px 0px rgba(101,81,249,1);
     }
 }
 
