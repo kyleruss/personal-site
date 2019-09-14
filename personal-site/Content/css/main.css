@@ -273,9 +273,13 @@
   margin-left: -7em; }
 
 #about-title {
-  color: #7261ee;
+  color: grey;
   font-size: 100px;
   font-family: 'Futura_bold'; }
+
+.about-title-activated {
+  color: #7261ee !important;
+  transition: color 1s ease-in-out; }
 
 #about-text {
   font-size: 72px;

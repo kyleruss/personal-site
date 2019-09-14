@@ -11,7 +11,7 @@ $(function()
     var userScrollValue = 0;
 
     Home();
-    About();
+    var aboutComponent = new About();
     Portfolio();
     Contact();
 
@@ -20,14 +20,19 @@ $(function()
     $(window).scroll(function(e)
     {
         var scrollVal = $(this).scrollTop();
+        checkPageNav(scrollVal);
+    });
 
+
+    function checkPageNav(scrollVal)
+    {
         if(scrollVal > userScrollValue)
             toggleNavbar(false);
         else
             toggleNavbar(true);
 
             userScrollValue = scrollVal;
-    });
+    };
 
     function toggleNavbar(show)
     {
@@ -35,20 +40,62 @@ $(function()
         if(show) navbar.slideDown();
         else navbar.slideUp();
     };
+
+    $(window).on('activate.bs.scrollspy', function()
+    {
+        var section = $('#main-navbar').find('a.active').attr('href');
+        var sectionObj = null;
+
+        switch(section)
+        {
+            case '#about-container':
+                sectionObj = aboutComponent;
+                break;
+        }
+
+        if(sectionObj != null)
+            sectionObj.initDisplay();
+    });
 });
 function Home()
 {
     $('.rect-shape').toggleClass('rect-hover');
 };
-function About()
+class About
 {
-    var aboutText = "Hello, I'm Kyle. I enjoy creating solutions for interesting problems";
-    displayAboutText();
-
-    function displayAboutText()
+    constructor()
     {
+        this.initHandlers();
+        this.displayToggled = false;
+        $('#resume-btn').css('opacity', 0);
+    }
+
+    initDisplay()
+    {
+        if(!this.displayToggled)
+        {
+            this.displayToggled = true;
+            this.displayTitle();
+            this.displayAboutText();
+        }
+    };
+
+    initHandlers()
+    {
+    
+    };
+
+
+    displayTitle()
+    {
+        $('#about-title').addClass('about-title-activated');
+    }
+    
+    displayAboutText()
+    {
+        var aboutText = "Hello, I'm Kyle. I enjoy creating solutions for interesting problems";
         var i = 1;
-        setInterval(() =>
+        var textInterval = setInterval(() =>
         {
             if(i <= aboutText.length)
             {
@@ -57,8 +104,17 @@ function About()
                 i++;
             }
 
-            else return;
-        }, 100);
+            else 
+            {
+                clearInterval(textInterval);
+                $('#resume-btn').animate({ opacity: 1}, 2000);
+            }
+        }, 100); 
+
+        setTimeout(() =>
+        {
+            $('#resume-btn').fadeIn('slow');
+        }, 2000);
     };
 };
 function Blog()

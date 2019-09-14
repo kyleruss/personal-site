@@ -17,9 +17,15 @@
 
 #about-title
 {
-    color:$mainColor;
+    color:grey;
     font-size:100px;
     font-family: 'Futura_bold';
+}
+
+.about-title-activated
+{
+    color:$mainColor !important;
+    transition: color 1s ease-in-out;
 }
 
 #about-text 
