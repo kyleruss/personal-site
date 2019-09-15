@@ -3,7 +3,8 @@
     var userScrollValue = 0;
 
     Home();
-    var aboutComponent = new About();
+    var aboutComponent = new AboutComponent();
+    var skillsComponent = new SkillsComponent();
     Portfolio();
     Contact();
 
@@ -42,6 +43,10 @@
         {
             case '#about-container':
                 sectionObj = aboutComponent;
+                break;
+
+            case '#skills-container':
+                sectionObj = skillsComponent;
                 break;
         }
 

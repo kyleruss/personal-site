@@ -13,20 +13,30 @@
     font-size:100px;
     position:relative;
     margin-top:1em;
+}
 
+.skill-title-toggled 
+{
     &::after
     {
         position: absolute;
         content: '';
         border-bottom: 10px solid $mainColor;
-        width:20%;
+        width: 20%;
         transform: translateX(-50%);
+        animation:titleAnimation 0.5s linear;
         left: 50%;
         top: 100%;
     }
 }
 
-#skills-container
+@keyframes titleAnimation
+{
+    0% { width: 0% }
+    100% { width: 20% }
+}
+
+#skills-wrapper
 {
     margin-top:8em;
     justify-content:center;

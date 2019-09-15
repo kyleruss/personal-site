@@ -11,7 +11,8 @@ $(function()
     var userScrollValue = 0;
 
     Home();
-    var aboutComponent = new About();
+    var aboutComponent = new AboutComponent();
+    var skillsComponent = new SkillsComponent();
     Portfolio();
     Contact();
 
@@ -51,6 +52,10 @@ $(function()
             case '#about-container':
                 sectionObj = aboutComponent;
                 break;
+
+            case '#skills-container':
+                sectionObj = skillsComponent;
+                break;
         }
 
         if(sectionObj != null)
@@ -61,13 +66,13 @@ function Home()
 {
     $('.rect-shape').toggleClass('rect-hover');
 };
-class About
+class AboutComponent
 {
     constructor()
     {
         this.initHandlers();
         this.displayToggled = false;
-        $('#resume-btn').css('opacity', 0);
+        $('#resume-btn').addClass('resume-btn-hidden');
     }
 
     initDisplay()
@@ -107,9 +112,9 @@ class About
             else 
             {
                 clearInterval(textInterval);
-                $('#resume-btn').animate({ opacity: 1}, 2000);
+                $('#resume-btn').animate({opacity: 1}, 500);
             }
-        }, 100); 
+        }, 50); 
 
         setTimeout(() =>
         {
@@ -117,6 +122,18 @@ class About
         }, 2000);
     };
 };
+class SkillsComponent
+{
+    constructor()
+    {
+        
+    };
+
+    initDisplay()
+    {
+        $('#skill-title').addClass('skill-title-toggled');
+    };
+}
 function Blog()
 {
     var currentBlog;

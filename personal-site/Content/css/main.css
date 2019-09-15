@@ -296,6 +296,9 @@
   #resume-btn:hover {
     box-shadow: 0px 0px 21px 0px #6551f9; }
 
+.resume-btn-hidden {
+  opacity: 0; }
+
 #skills-container {
   position: relative;
   height: 1000px;
@@ -308,16 +311,24 @@
   font-size: 100px;
   position: relative;
   margin-top: 1em; }
-  #skill-title::after {
-    position: absolute;
-    content: '';
-    border-bottom: 10px solid #7261ee;
-    width: 20%;
-    transform: translateX(-50%);
-    left: 50%;
-    top: 100%; }
 
-#skills-container {
+.skill-title-toggled::after {
+  position: absolute;
+  content: '';
+  border-bottom: 10px solid #7261ee;
+  width: 20%;
+  transform: translateX(-50%);
+  animation: titleAnimation 0.5s linear;
+  left: 50%;
+  top: 100%; }
+
+@keyframes titleAnimation {
+  0% {
+    width: 0%; }
+  100% {
+    width: 20%; } }
+
+#skills-wrapper {
   margin-top: 8em;
   justify-content: center;
   position: relative; }

@@ -1,10 +1,10 @@
-﻿class About
+﻿class AboutComponent
 {
     constructor()
     {
         this.initHandlers();
         this.displayToggled = false;
-        $('#resume-btn').css('opacity', 0);
+        $('#resume-btn').addClass('resume-btn-hidden');
     }
 
     initDisplay()
@@ -44,9 +44,9 @@
             else 
             {
                 clearInterval(textInterval);
-                $('#resume-btn').animate({ opacity: 1}, 2000);
+                $('#resume-btn').animate({opacity: 1}, 500);
             }
-        }, 100); 
+        }, 50); 
 
         setTimeout(() =>
         {
