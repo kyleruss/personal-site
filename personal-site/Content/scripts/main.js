@@ -112,7 +112,7 @@ class AboutComponent
             else 
             {
                 clearInterval(textInterval);
-                $('#resume-btn').animate({opacity: 1}, 500);
+                $('#resume-btn').animate({opacity: 1}, 200);
             }
         }, 50); 
 
@@ -523,6 +523,7 @@ function Portfolio()
         {
             repoData = data;
             repos = Object.keys(repoData);
+            initCarousel();
             setCurrentRepository(0);
         });
     };
@@ -545,6 +546,7 @@ function Portfolio()
             nextIndex = nextIndex % n;
         
         setCurrentRepository(nextIndex);
+        $('#project-preview').slick('slickNext');
     };
 
     function prevRepository()
@@ -556,18 +558,36 @@ function Portfolio()
             prevIndex = ((prevIndex % n) + n) % n;
 
         setCurrentRepository(prevIndex);
+        $('#project-preview').slick('slickPrev');
+    };
+
+    function initCarousel()
+    {
+        $('#project-preview').slick
+        ({
+            slidesToShow:1,
+            slidesToScroll:1,
+            arrows:false
+        });
+    };
+
+    function pushCarouselItem()
+    {
+        var readmeHtml = currentRepo["readme"];
+        var carouselContainer = $('#project-preview');
+
+        carouselContainer.slick('slickAdd', readmeHtml);
     };
 
     function updatePortfolioView()
     {
-        var projectContainer = $('#project-preview');
         var commitStats = $('#commits-stats');
         var codeStats = $('#codeline-stats');
         var githubLinkBtn = $('#view-github-btn');
         var repoTitle = $('#project-title');
         var repoDesc = $('#project-description');
 
-        projectContainer.html(currentRepo["readme"]);
+        pushCarouselItem();
         commitStats.text(currentRepo["commits"]);
         codeStats.text(currentRepo["codeLines"]);
         githubLinkBtn.attr('href', currentRepo["link"]);

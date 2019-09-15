@@ -44,7 +44,7 @@
             else 
             {
                 clearInterval(textInterval);
-                $('#resume-btn').animate({opacity: 1}, 500);
+                $('#resume-btn').animate({opacity: 1}, 200);
             }
         }, 50); 
 
