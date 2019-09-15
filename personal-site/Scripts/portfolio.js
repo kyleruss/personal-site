@@ -1,6 +1,7 @@
 ﻿function Portfolio()
 {
     var repoData = {};
+    var existingRepos = [];
     var currentRepo;
     var repos;
     var repoIndex;
@@ -65,10 +66,15 @@
 
     function pushCarouselItem()
     {
-        var readmeHtml = currentRepo["readme"];
-        var carouselContainer = $('#project-preview');
+        if($.inArray(repoIndex, existingRepos) == -1)
+        {
+            var readmeHtml = currentRepo["readme"];
+            var carouselContainer = $('#project-preview');
 
-        carouselContainer.slick('slickAdd', readmeHtml);
+            carouselContainer.slick('slickAdd', readmeHtml);
+
+            existingRepos.push(repoIndex);
+        }
     };
 
     function updatePortfolioView()
