@@ -14,7 +14,7 @@ $(function()
     var aboutComponent = new AboutComponent();
     var skillsComponent = new SkillsComponent();
     Portfolio();
-    Contact();
+    var contactComponent = new ContactComponent();
 
     $('body').niceScroll(scrollConfig);
 
@@ -55,6 +55,10 @@ $(function()
 
             case '#skills-container':
                 sectionObj = skillsComponent;
+                break;
+
+            case '#contact-container':
+                sectionObj = contactComponent;
                 break;
         }
 
@@ -546,6 +550,8 @@ function Portfolio()
         if(nextIndex >= repos.length)
             nextIndex = nextIndex % n;
         
+        console.log(nextIndex);
+        
         setCurrentRepository(nextIndex);
         $('#project-preview').slick('slickNext');
     };
@@ -645,71 +651,84 @@ function Portfolio()
         horizrailenabled: false
     });
 };
-function Contact()
+class ContactComponent
 {
-    var CONTACT_STATUS_PROGRESS = 0,
-        CONTACT_STATUS_SUCCESS = 1,
-        CONTACT_STATUS_ERROR = 2,
-        CONTACT_STATUS_RESET = 3;
-
-    var serviceRotateIndex = 0;
-
-    $('#contact-btn-progress').hide();
-    $('#contact-btn-status').hide();
-    $('.slick-dots > li').slice(-2).hide();
-    initCarousel();
-
-    $('#contact-form').submit(function(e)
+    constructor()
     {
-        e.preventDefault();
+        this.CONTACT_STATUS_PROGRESS = 0,
+        this.CONTACT_STATUS_SUCCESS = 1,
+        this.CONTACT_STATUS_ERROR = 2,
+        this.CONTACT_STATUS_RESET = 3;
 
-        var form = $(this);
-        var contactUrl = form.attr('action');
-        var contactData = form.serialize();
-        var contactBtnSpinner = $('#contact-btn-progress');
-        var contactBtnText = $('#contact-btn-text');
+        this.serviceRotateIndex = 0;
 
-        updateContactButton(CONTACT_STATUS_PROGRESS);
+        $('#contact-btn-progress').hide();
+        $('#contact-btn-status').hide();
+        $('.slick-dots > li').slice(-2).hide();
 
-        setTimeout(function ()
+        this.initCarousel();
+        this.initHandlers();
+    };
+
+    initDisplay()
+    {
+        $('#contact-form-title').addClass('contact-form-title-toggled');
+    };
+
+    initHandlers()
+    {
+        $('#contact-form').submit(function(e)
         {
-            $.ajax
-            ({
-                url: contactUrl,
-                method: 'POST',
-                data: contactData,
-                dataType: 'json',
-                success: function(response)
-                {
-                    var respStatus = response.ActionSuccess;
-                    
-                    if (respStatus)
+            e.preventDefault();
+
+            var form = $(this);
+            var contactUrl = form.attr('action');
+            var contactData = form.serialize();
+            var contactBtnSpinner = $('#contact-btn-progress');
+            var contactBtnText = $('#contact-btn-text');
+
+            this.updateContactButton(CONTACT_STATUS_PROGRESS);
+
+            setTimeout(function ()
+            {
+                $.ajax
+                ({
+                    url: contactUrl,
+                    method: 'POST',
+                    data: contactData,
+                    dataType: 'json',
+                    success: function(response)
                     {
-                        updateContactButton(CONTACT_STATUS_SUCCESS);
-                        clearForm();
+                        var respStatus = response.ActionSuccess;
+                        
+                        if (respStatus)
+                        {
+                            this.updateContactButton(this.CONTACT_STATUS_SUCCESS);
+                            this.clearForm();
+                        }
+
+                        else
+                        {
+                            var errMsg  =   response.ResponseMsg;
+                            this.updateContactButton(this.CONTACT_STATUS_ERROR, errMsg);
+                        }
+
+                        resetContactButton();
+                    },
+
+                    error: function(xhr, statusText, err)
+                    {
+                        this.updateContactButton(this.CONTACT_STATUS_ERROR);
+                        this.resetContactButton();
                     }
 
-                    else
-                    {
-                        var errMsg  =   response.ResponseMsg;
-                        updateContactButton(CONTACT_STATUS_ERROR, errMsg);
-                    }
+                });
 
-                    resetContactButton();
-                },
+            }, 1500);
+        });
+    };
 
-                error: function(xhr, statusText, err)
-                {
-                    updateContactButton(CONTACT_STATUS_ERROR);
-                    resetContactButton();
-                }
-
-            });
-
-        }, 1500);
-    });
-
-    function updateContactButton(statusCode, errMsg)
+    updateContactButton(statusCode, errMsg)
     {
         var contactBtn = $('#contact-submit');
         var contactBtnSpinner = $('#contact-btn-progress');
@@ -742,7 +761,7 @@ function Contact()
         contactBtnText.text(btnMsg);
     };
 
-    function resetContactButton()
+    resetContactButton()
     {
         setTimeout(function()
         {
@@ -753,14 +772,14 @@ function Contact()
         }, 2000);
     };
 
-    function clearForm()
+    clearForm()
     {
         $('#contact-name-field').val('');
         $('#contact-email-field').val('');
         $('#contact-message-field').val('');
     };
 
-    function initCarousel()
+    initCarousel()
     {
         $('#service-list-container').slick
         ({

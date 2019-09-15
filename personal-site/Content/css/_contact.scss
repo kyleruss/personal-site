@@ -23,16 +23,31 @@ $fieldFont: 'Calibre_light';
     font-family:'Antipastopro';
     font-size:90px;
     position:relative;
+}
 
-    &::after
+.contact-form-title-toggled 
+{
+    &::after 
     {
-        position:absolute;
-        content:'';
+        position: absolute;
+        content: '';
         border-bottom: 10px solid $mainColor;
-        width:50%;
-        transform:translateX(-50%);
-        left:50%;
-        top:100%;
+        width: 50%;
+        transform: translateX(-50%);
+        animation: contactTitleAnimation 0.5s linear;
+        left: 50%;
+        top: 100%;
+    }
+}
+
+@keyframes contactTitleAnimation 
+{
+    0% {
+        width: 0%
+    }
+
+    100% {
+        width: 50%
     }
 }
 

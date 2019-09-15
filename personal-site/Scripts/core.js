@@ -6,7 +6,7 @@
     var aboutComponent = new AboutComponent();
     var skillsComponent = new SkillsComponent();
     Portfolio();
-    Contact();
+    var contactComponent = new ContactComponent();
 
     $('body').niceScroll(scrollConfig);
 
@@ -47,6 +47,10 @@
 
             case '#skills-container':
                 sectionObj = skillsComponent;
+                break;
+
+            case '#contact-container':
+                sectionObj = contactComponent;
                 break;
         }
 
