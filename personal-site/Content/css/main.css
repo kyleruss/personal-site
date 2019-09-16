@@ -374,6 +374,25 @@
   .skill-badge .skill-name {
     vertical-align: sub; }
 
+.skill-shape {
+  position: absolute; }
+
+#diamond-shape {
+  bottom: 150px;
+  left: 100px; }
+
+#circle-shape {
+  bottom: 150px;
+  right: 100px; }
+
+#square-shape {
+  top: 150px;
+  left: 100px; }
+
+#triangle-shape {
+  top: 150px;
+  right: 100px; }
+
 #portfolio-container {
   position: relative;
   height: 1000px;
