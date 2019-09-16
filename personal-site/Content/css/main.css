@@ -448,6 +448,14 @@
   font-family: 'Futura_bold';
   padding-bottom: 0.5em; }
 
+.odometer {
+  font-family: 'Futura_bold' !important;
+  font-size: 30px;
+  vertical-align: middle !important; }
+
+.portfolio-stat-icon, .portfolio-stat-title {
+  vertical-align: middle; }
+
 .language-stat-text {
   text-transform: uppercase; }
 

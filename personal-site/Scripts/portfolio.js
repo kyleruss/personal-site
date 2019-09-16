@@ -88,8 +88,12 @@
         var repoDesc = $('#project-description');
 
         pushCarouselItem();
+
+
         commitStats.text(currentRepo["commits"]);
         codeStats.text(currentRepo["codeLines"]);
+
+        
         githubLinkBtn.attr('href', currentRepo["link"]);
         repoTitle.text(getTransformedTitle());
         repoDesc.text(currentRepo["description"]);
