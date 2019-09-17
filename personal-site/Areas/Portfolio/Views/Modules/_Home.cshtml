@@ -9,15 +9,20 @@
 
 @{  NameValueCollection SocialConfig = ConfigurationManager.GetSection("socialSettings") as NameValueCollection; }
 
-    <div id="home-container" class="fixed-top h-100">
+    <div id="home-container" class="section">
         <div id="bg-wrapper">
         </div>
 
 
-        <div id="home-content-wrapper" class="row h-100 flex-column justify-content-center align-items-center">
+        <!--<div id="home-content-wrapper" class=""> -->
+
+        <div id="home-wrapper">
+            <div id="home-inner-wrapper">
             <svg height="250" width="800" class="svg-wrapper" xmlns="http://www.w3.org/2000/svg" version="1.1">
                 <rect class="rect-shape" height="250" width="800"></rect>
+            </svg>
                 <div id="home-text-container">
+
                     <h1 id="home-title">KYLE J. RUSSELL</h1>
                     <h1 id="home-description">FULL-STACK SOFTWARE DEVELOPER</h1>
 
@@ -54,6 +59,8 @@
                         </div>
                     </div>
                 </div>
-            </svg>
+            </div>
         </div>
+        
+        <!--</div> -->
 </div> 

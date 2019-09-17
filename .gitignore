@@ -80,3 +80,4 @@ api-config.json
 *.otf
 *.ttf
 .vs/*
+personal-site/Content/dependencies/

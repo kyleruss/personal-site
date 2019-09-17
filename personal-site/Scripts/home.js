@@ -1,4 +1,7 @@
 ﻿function Home()
 {
-    $('.rect-shape').toggleClass('rect-hover');
+    setTimeout(() =>
+    {
+        $('.rect-shape').addClass('rect-hover');
+    }, 100);
 };

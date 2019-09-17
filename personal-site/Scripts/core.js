@@ -1,38 +1,15 @@
 ﻿$(function()
 {
-    var userScrollValue = 0;
-
     Home();
     var aboutComponent = new AboutComponent();
     var skillsComponent = new SkillsComponent();
     Portfolio();
     var contactComponent = new ContactComponent();
 
-    $('body').niceScroll(scrollConfig);
-
-    $(window).scroll(function(e)
-    {
-        var scrollVal = $(this).scrollTop();
-        checkPageNav(scrollVal);
+    //$('body').niceScroll(scrollConfig);
+    $('#module-container').fullpage({
+        fitToScreen: false
     });
-
-
-    function checkPageNav(scrollVal)
-    {
-        if(scrollVal > userScrollValue)
-            toggleNavbar(false);
-        else
-            toggleNavbar(true);
-
-            userScrollValue = scrollVal;
-    };
-
-    function toggleNavbar(show)
-    {
-        var navbar = $('#main-navbar');
-        if(show) navbar.slideDown();
-        else navbar.slideUp();
-    };
 
     $(window).on('activate.bs.scrollspy', function()
     {

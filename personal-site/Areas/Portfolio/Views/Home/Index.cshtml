@@ -7,9 +7,11 @@
 {
     @Styles.Render("//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css")
     @Styles.Render("~/Content/dependencies/odometer/odometer-theme-default.css")
+    @Styles.Render("~/Content/dependencies/fullpage-scroll/fullpage.min.css")
 }
 
 @Html.Partial("_Navbar")
+@Html.Partial("_SideNavbar")
 
 <div id="module-container" class="d-flex flex-column">
     <!-- HOME MODULE -->
@@ -24,7 +26,6 @@
     <!-- PORTFOLIO MODULE -->
     @Html.Partial("../Modules/_Portfolio")
 
-    <!-- BLOG MODULE -->
     @*@Html.Partial("../Modules/_Blog")*@
 
     <!-- CONTACT MODULE -->
@@ -39,4 +40,5 @@
 {
     @Scripts.Render("//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js")
     @Scripts.Render("~/Content/dependencies/odometer/odometer.min.js")
+    @Scripts.Render("~/Content/dependencies/fullpage-scroll/fullpage.min.js")
 }

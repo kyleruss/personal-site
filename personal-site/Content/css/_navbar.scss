@@ -64,7 +64,10 @@
 
     .active
     {
-        border-bottom:4px solid $mainColor;
+        &::after
+        {
+            transform:scaleX(1);
+        }
     }
 }
 
@@ -83,5 +86,25 @@
     .nav-link
     {
         color:#000 !important;
+    }
+}
+
+#side-navbar
+{
+    z-index:2000; 
+    display:block;
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateX(-50%);
+    position:fixed;
+
+    .navbar-item
+    {
+        display:block;
+        width:30px;
+        height:30px;
+        background-color:#FFF;
+        border-radius:30px;
     }
 }
