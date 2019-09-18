@@ -6,8 +6,8 @@
     Portfolio();
     var contactComponent = new ContactComponent();
 
-    //$('body').niceScroll(scrollConfig);
-    $('#module-container').fullpage({
+    $('#module-container').fullpage
+    ({
         fitToScreen: true,
         onLeave: function(origin, destination, direction)
         {
@@ -34,5 +34,12 @@
                 }, 500);
             }
         }
+    });
+
+    $('#main-navbar a').click(function(e)
+    {
+        e.preventDefault();
+        var linkIndex = $('#main-navbar a').index($(this)) + 1;
+        fullpage_api.moveTo(linkIndex);
     });
 });

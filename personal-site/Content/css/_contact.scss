@@ -1,16 +1,12 @@
 ﻿$fieldColor: #6a6a6a;
 $fieldFont: 'Calibre_light';
 
-#contact-container {
+#contact-container 
+{
     height: 1000px;
     position: relative;
     background-color: $mainBgColor;
-    margin-left:5em;
-}
-
-#contact-inner-container
-{
-    margin-top:10em;
+    margin-left: 5em;
 }
 
 #contact-form-container
