@@ -3,7 +3,7 @@
     Home();
     var aboutComponent = new AboutComponent();
     var skillsComponent = new SkillsComponent();
-    Portfolio();
+    var portfolioComponent = new PortfolioComponent();
     var contactComponent = new ContactComponent();
 
     $('#module-container').fullpage
@@ -28,6 +28,10 @@
                     sectionObj = skillsComponent;
                     break;
 
+                case 3:
+                    sectionObj = portfolioComponent;
+                    break;
+
                 case 4:
                     sectionObj = contactComponent;
                     break;
@@ -49,6 +53,9 @@
     {
         e.preventDefault();
         var linkIndex = $('#main-navbar a').index($(this)) + 1;
+
+        if(linkIndex == 3) linkIndex++;
+
         fullpage_api.moveTo(linkIndex);
     });
 
