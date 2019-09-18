@@ -19,7 +19,13 @@ $(function()
         fitToScreen: true,
         onLeave: function(origin, destination, direction)
         {
-            switch(destination.index)
+            var navbarItem = $('.side-navbar-item');
+            var destIndex = destination.index;
+            var sectionObj;
+
+            if(destIndex < 5) navbarItem.removeClass('active');
+            
+            switch(destIndex)
             {
                 case 1:
                     sectionObj = aboutComponent;
@@ -34,13 +40,13 @@ $(function()
                     break;
             }
 
-            if(sectionObj != null)
+            
+            setTimeout(() =>
             {
-                setTimeout(() =>
-                {
-                    sectionObj.initDisplay();
-                }, 500);
-            }
+                if(destIndex < 5) navbarItem.eq(destIndex).addClass('active');
+
+                if(sectionObj != null) sectionObj.initDisplay();
+            }, 300);
         }
     });
 
@@ -50,6 +56,12 @@ $(function()
         var linkIndex = $('#main-navbar a').index($(this)) + 1;
         fullpage_api.moveTo(linkIndex);
     });
+
+    $('.side-navbar-item').click(function(e)
+    {
+        var navIndex = $('.side-navbar-item').index($this);
+        fullpage_api.moveTo(navIndex);
+    })
 });
 function Home()
 {

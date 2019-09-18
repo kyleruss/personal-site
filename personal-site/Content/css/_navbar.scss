@@ -17,6 +17,10 @@
         padding-left:0;
         padding-right:0;
 
+        &:focus
+        {
+            outline:none !important;
+        }
     }
 
     .nav-link-item
@@ -93,9 +97,9 @@
     z-index: 2000;
     display: block;
     position: absolute;
-    right: 0;
+    right: 30px;
     top: 50%;
-    transform: translateX(-50%);
+    transform: translateY(-50%);
     position: fixed;
 
     #side-navbar-list
@@ -131,5 +135,11 @@
     {
         opacity:1;
         box-shadow: 0 0 0 2px $mainColor;
+        transition:all 0.5s ease-in-out;
+
+        &:hover
+        {
+            transform: scale(1);
+        }
     }
 }
