@@ -77,6 +77,10 @@
       opacity: 1;
       cursor: pointer;
       transform: scale(1.5); }
+  #side-navbar .side-navbar-item-untoggled {
+    opacity: 0.5 !important;
+    box-shadow: none !important;
+    transition: all 1s ease-in-out; }
   #side-navbar .side-navbar-item.active {
     opacity: 1;
     box-shadow: 0 0 0 2px #7261ee;
@@ -318,7 +322,7 @@
   overflow: hidden; }
 
 #about-content-container {
-  margin-left: 10em; }
+  margin-left: 7em; }
 
 #about-image {
   margin-left: -7em; }
@@ -333,8 +337,10 @@
   transition: color 1s ease-in-out; }
 
 #about-text {
-  font-size: 72px;
-  font-family: 'Antipastopro'; }
+  font-size: 60px;
+  color: #3b424a;
+  font-family: 'Antipastopro';
+  height: 300px; }
 
 #resume-btn {
   padding: 1.1em;

@@ -131,6 +131,13 @@
         }
     }
 
+    .side-navbar-item-untoggled
+    {
+        opacity:0.5 !important;
+        box-shadow:none !important;
+        transition:all 1s ease-in-out;
+    }
+
     .side-navbar-item.active
     {
         opacity:1;

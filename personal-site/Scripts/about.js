@@ -19,7 +19,12 @@
 
     initHandlers()
     {
-    
+        $('#about-title').click(function(e)
+        {
+            var textElement = $("#about-text:contains('Adelaide')");
+            textElement.css('color', 'green');
+            console.log(textElement);
+        });
     };
 
 
@@ -30,7 +35,7 @@
     
     displayAboutText()
     {
-        var aboutText = "Hello, I'm Kyle. I enjoy creating solutions for interesting problems";
+        var aboutText = "Hello, I'm Kyle. Full-stack web and mobile developer based in Adelaide who enjoys creating solutions for difficult problems";
         var i = 1;
         var textInterval = setInterval(() =>
         {
@@ -50,6 +55,7 @@
 
         setTimeout(() =>
         {
+            
             $('#resume-btn').fadeIn('slow');
         }, 2000);
     };

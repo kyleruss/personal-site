@@ -7,7 +7,7 @@
 
 #about-content-container
 {
-    margin-left:10em;
+    margin-left:7em;
 }
 
 #about-image
@@ -28,10 +28,11 @@
     transition: color 1s ease-in-out;
 }
 
-#about-text 
-{
-    font-size: 72px;
+#about-text {
+    font-size: 60px;
+    color: #3b424a;
     font-family: 'Antipastopro';
+    height:300px;
 }
 
 #resume-btn {

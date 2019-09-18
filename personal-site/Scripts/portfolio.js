@@ -38,8 +38,6 @@
         if(nextIndex >= repos.length)
             nextIndex = nextIndex % n;
         
-        console.log(nextIndex);
-        
         setCurrentRepository(nextIndex);
         $('#project-preview').slick('slickNext');
     };

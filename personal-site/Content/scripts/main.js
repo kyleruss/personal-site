@@ -23,7 +23,8 @@ $(function()
             var destIndex = destination.index;
             var sectionObj;
 
-            if(destIndex < 5) navbarItem.removeClass('active');
+            if(destIndex < 5) 
+                $('.side-navbar-item.active').addClass('side-navbar-item-untoggled');
             
             switch(destIndex)
             {
@@ -43,6 +44,8 @@ $(function()
             
             setTimeout(() =>
             {
+                navbarItem.removeClass('active');
+                navbarItem.removeClass('side-navbar-item-untoggled');
                 if(destIndex < 5) navbarItem.eq(destIndex).addClass('active');
 
                 if(sectionObj != null) sectionObj.initDisplay();
@@ -59,7 +62,8 @@ $(function()
 
     $('.side-navbar-item').click(function(e)
     {
-        var navIndex = $('.side-navbar-item').index($this);
+        var navIndex = $('.side-navbar-item').index($(this)) + 1;
+        console.log(navIndex);
         fullpage_api.moveTo(navIndex);
     })
 });
@@ -91,7 +95,12 @@ class AboutComponent
 
     initHandlers()
     {
-    
+        $('#about-title').click(function(e)
+        {
+            var textElement = $("#about-text:contains('Adelaide')");
+            textElement.css('color', 'green');
+            console.log(textElement);
+        });
     };
 
 
@@ -102,7 +111,7 @@ class AboutComponent
     
     displayAboutText()
     {
-        var aboutText = "Hello, I'm Kyle. I enjoy creating solutions for interesting problems";
+        var aboutText = "Hello, I'm Kyle. Full-stack web and mobile developer based in Adelaide who enjoys creating solutions for difficult problems";
         var i = 1;
         var textInterval = setInterval(() =>
         {
@@ -122,6 +131,7 @@ class AboutComponent
 
         setTimeout(() =>
         {
+            
             $('#resume-btn').fadeIn('slow');
         }, 2000);
     };
@@ -549,8 +559,6 @@ function Portfolio()
 
         if(nextIndex >= repos.length)
             nextIndex = nextIndex % n;
-        
-        console.log(nextIndex);
         
         setCurrentRepository(nextIndex);
         $('#project-preview').slick('slickNext');

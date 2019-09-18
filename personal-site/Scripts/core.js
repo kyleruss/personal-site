@@ -15,7 +15,8 @@
             var destIndex = destination.index;
             var sectionObj;
 
-            if(destIndex < 5) navbarItem.removeClass('active');
+            if(destIndex < 5) 
+                $('.side-navbar-item.active').addClass('side-navbar-item-untoggled');
             
             switch(destIndex)
             {
@@ -35,6 +36,8 @@
             
             setTimeout(() =>
             {
+                navbarItem.removeClass('active');
+                navbarItem.removeClass('side-navbar-item-untoggled');
                 if(destIndex < 5) navbarItem.eq(destIndex).addClass('active');
 
                 if(sectionObj != null) sectionObj.initDisplay();
@@ -51,7 +54,8 @@
 
     $('.side-navbar-item').click(function(e)
     {
-        var navIndex = $('.side-navbar-item').index($this);
+        var navIndex = $('.side-navbar-item').index($(this)) + 1;
+        console.log(navIndex);
         fullpage_api.moveTo(navIndex);
     })
 });
