@@ -16,31 +16,32 @@ $(function()
 
     //$('body').niceScroll(scrollConfig);
     $('#module-container').fullpage({
-        fitToScreen: false
-    });
-
-    $(window).on('activate.bs.scrollspy', function()
-    {
-        var section = $('#main-navbar').find('a.active').attr('href');
-        var sectionObj = null;
-
-        switch(section)
+        fitToScreen: true,
+        onLeave: function(origin, destination, direction)
         {
-            case '#about-container':
-                sectionObj = aboutComponent;
-                break;
+            switch(destination.index)
+            {
+                case 1:
+                    sectionObj = aboutComponent;
+                    break;
 
-            case '#skills-container':
-                sectionObj = skillsComponent;
-                break;
+                case 2:
+                    sectionObj = skillsComponent;
+                    break;
 
-            case '#contact-container':
-                sectionObj = contactComponent;
-                break;
+                case 4:
+                    sectionObj = contactComponent;
+                    break;
+            }
+
+            if(sectionObj != null)
+            {
+                setTimeout(() =>
+                {
+                    sectionObj.initDisplay();
+                }, 500);
+            }
         }
-
-        if(sectionObj != null)
-            sectionObj.initDisplay();
     });
 });
 function Home()
