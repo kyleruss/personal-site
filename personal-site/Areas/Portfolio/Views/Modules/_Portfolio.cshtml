@@ -8,7 +8,16 @@
     <div class="row h-100 flex-column justify-content-center align-items-center">
         <div id="project-container">
             <repo-data url="@Url.Content("~/Content/resources/repository-data.json")"></repo-data>
-            <div id="project-preview">
+
+            <div id="preview-container">
+                <div id="project-preview">
+                </div>
+
+                <div id="project-footer-controls">
+                    <span id="prev-project-btn" class="project-nav-buttons"><i class="fas fa-chevron-left"></i> <span class="project-nav-text">Previous</span></span>
+                    <button id="project-star-btn"><i class="fas fa-heart"></i></button>
+                    <span id="next-project-btn" class="project-nav-buttons"><span class="project-nav-text">Next</span><i class="fas fa-chevron-right"></i></span>
+                </div>
             </div>
 
             <div id="project-description-container" class="flex-column">
@@ -43,12 +52,4 @@
             </div>
         </div>
     </div>
-
-    <h1 id="portf-left-arrow" class="portf-arrow">
-        <
-    </h1>
-
-    <h1 id="portf-right-arrow" class="portf-arrow">
-        >
-    </h1>
 </div>

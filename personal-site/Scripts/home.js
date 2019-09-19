@@ -1,7 +1,10 @@
-﻿function Home()
+﻿class HomeComponent
 {
-    setTimeout(() =>
+    constructor()
     {
-        $('.rect-shape').addClass('rect-hover');
-    }, 100);
+        setTimeout(() =>
+        {
+            $('.rect-shape').addClass('rect-hover');
+        }, 100);
+    };
 };

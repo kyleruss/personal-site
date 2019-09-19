@@ -8,7 +8,7 @@ var scrollConfig =
 };
 $(function()
 {
-    Home();
+    var homeComponent = new HomeComponent();
     var aboutComponent = new AboutComponent();
     var skillsComponent = new SkillsComponent();
     var portfolioComponent = new PortfolioComponent();
@@ -17,6 +17,7 @@ $(function()
     $('#module-container').fullpage
     ({
         fitToScreen: true,
+        normalScrollElements: '#project-preview',
         onLeave: function(origin, destination, direction)
         {
             var navbarItem = $('.side-navbar-item');
@@ -48,9 +49,12 @@ $(function()
             
             setTimeout(() =>
             {
-                navbarItem.removeClass('active');
-                navbarItem.removeClass('side-navbar-item-untoggled');
-                if(destIndex < 5) navbarItem.eq(destIndex).addClass('active');
+                if(destIndex < 5) 
+                {
+                    navbarItem.removeClass('active');
+                    navbarItem.removeClass('side-navbar-item-untoggled');
+                    navbarItem.eq(destIndex).addClass('active');
+                }
 
                 if(sectionObj != null) sectionObj.initDisplay();
             }, 300);
@@ -74,12 +78,15 @@ $(function()
         fullpage_api.moveTo(navIndex);
     })
 });
-function Home()
+class HomeComponent
 {
-    setTimeout(() =>
+    constructor()
     {
-        $('.rect-shape').addClass('rect-hover');
-    }, 100);
+        setTimeout(() =>
+        {
+            $('.rect-shape').addClass('rect-hover');
+        }, 100);
+    };
 };
 class AboutComponent
 {

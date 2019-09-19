@@ -1,6 +1,6 @@
 ﻿$(function()
 {
-    Home();
+    var homeComponent = new HomeComponent();
     var aboutComponent = new AboutComponent();
     var skillsComponent = new SkillsComponent();
     var portfolioComponent = new PortfolioComponent();
@@ -9,6 +9,7 @@
     $('#module-container').fullpage
     ({
         fitToScreen: true,
+        normalScrollElements: '#project-preview',
         onLeave: function(origin, destination, direction)
         {
             var navbarItem = $('.side-navbar-item');
@@ -40,9 +41,12 @@
             
             setTimeout(() =>
             {
-                navbarItem.removeClass('active');
-                navbarItem.removeClass('side-navbar-item-untoggled');
-                if(destIndex < 5) navbarItem.eq(destIndex).addClass('active');
+                if(destIndex < 5) 
+                {
+                    navbarItem.removeClass('active');
+                    navbarItem.removeClass('side-navbar-item-untoggled');
+                    navbarItem.eq(destIndex).addClass('active');
+                }
 
                 if(sectionObj != null) sectionObj.initDisplay();
             }, 300);

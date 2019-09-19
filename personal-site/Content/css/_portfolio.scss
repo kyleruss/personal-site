@@ -9,93 +9,147 @@
 #project-container
 {
 	display:inline-flex;
-	margin-top:10em;
+	margin-top:6em;
 }
 
-#project-preview
+#preview-container 
 {
-	background-color:#FFF;
-	width:910px;
-	height:660px;
-	border:1px solid #000;
-	box-shadow: 0 0 20px rgba(0,0,0,0.6);
-	overflow-x:hidden;
-	overflow-y:scroll;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    background-color: #FFF;
+    width: 910px;
+    height: 660px;
+    position:relative;
+}
 
-	.anchor
-	{
-		display:none !important;
-	}
+#project-footer-controls {
+    width: 910px;
+    height: 60px;
+    background-color: #FFF;
+    position: relative;
+    border-top: 2px solid $mainColor;
 
-	h1, h2
-	{
-		padding-bottom:0.3em;
-		border-bottom: 1px solid #eaecef;
-	}
+    .project-nav-buttons 
+    {
+        color: $mainColor;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size:26px;
 
-	h1
-	{
-		margin-top:1em;
-	}
+        &:hover {
+            cursor: pointer;
+        }
+    }
 
-	h2, h3, h4, h5
-	{
-		margin-top:1.5em;
-	}
-	
-	a[href="preview/Logo.png"], a[href="preview/AppIcon.png"]
-	{
-		img
-		{
-			margin-top:1em;
-			padding-right:20px;
-		}
-	}
+    .project-nav-text
+    {
+        font-family:'Calibre_regular';
+        position:absolute;
+        top:50%;
+        transform:translateY(-40%);
 
-	a[name^="user-content"]
-	{
-		color:inherit;	
+        &:nth-child(2)
+        {
+            margin-left:1.5em;
+        }
 
-		&:hover
-		{
-			text-decoration:none;
-		}
-	}
+        &:nth-child(1)
+        {
+            margin-left:-3em;
+        }
+    }
 
-	a[name="user-content-tableofcontents"] + h3
-	{
-		display:none;
+    #prev-project-btn {
+        position: absolute;
+        left: 3em;
+    }
 
-		& + ul
-		{
-			display:none;
-		}
-	}
+    #next-project-btn {
+        position: absolute;
+        right: 3em;
+    }
 
-	a[name="user-content-Projects"] + h3, a[name="user-content-Tasks"] + h3, a[name="user-content-io"] + h3, a[name="user-content-Datalogs"] + h3 
-	{
-		margin-top:4em;
-	}
+    #project-star-btn {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: $mainColor;
+        color: #FFF;
+        border: none;
+        outline: none;
+        box-shadow: 0px 0px 16px 0px rgba(114,97,238,1);
+    }
+}
 
-	ul + pre
-	{
-		margin-left:40px;
-	}
+#project-preview {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 910px;
+    height: 600px;
+    position:relative;
 
-	code 
-	{
-		color:inherit;
-	}
+    .anchor {
+        display: none !important;
+    }
 
-	p code
-	{
-		background-color:rgba(27, 31, 35, 0.05);
-	}
+    h1, h2 {
+        padding-bottom: 0.3em;
+        border-bottom: 1px solid #eaecef;
+    }
 
-	pre code
-	{
-		background-color:transparent;
-	}
+    h1 {
+        margin-top: 1em;
+    }
+
+    h2, h3, h4, h5 {
+        margin-top: 1.5em;
+    }
+
+    a[href="preview/Logo.png"], a[href="preview/AppIcon.png"] {
+        img {
+            margin-top: 1em;
+            padding-right: 20px;
+        }
+    }
+
+    a[name^="user-content"] {
+        color: inherit;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    a[name="user-content-tableofcontents"] + h3 {
+        display: none;
+
+        & + ul {
+            display: none;
+        }
+    }
+
+    a[name="user-content-Projects"] + h3, a[name="user-content-Tasks"] + h3, a[name="user-content-io"] + h3, a[name="user-content-Datalogs"] + h3 {
+        margin-top: 4em;
+    }
+
+    ul + pre {
+        margin-left: 40px;
+    }
+
+    code {
+        color: inherit;
+    }
+
+    p code {
+        background-color: rgba(27, 31, 35, 0.05);
+    }
+
+    pre code {
+        background-color: transparent;
+    }
 }
 
 .project-stat-text

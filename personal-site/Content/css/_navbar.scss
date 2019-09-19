@@ -41,6 +41,11 @@
         }
     }
 
+    .nav-item:not(:last-child)
+    {
+        margin-right:1.5em;
+    }
+
     .nav-selector
     {
         padding-left:16px;
