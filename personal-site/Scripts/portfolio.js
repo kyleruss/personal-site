@@ -141,5 +141,21 @@
         {
             this.nextRepository();
         });
+
+       /* $('#prev-project-btn .project-nav-text').hover(() =>
+        {
+            $('#prev-project-icon').animate({'transform': 'translateX(-10px)'}, 400);
+        }, () =>
+        {
+            $('#prev-project-icon').animate({'transform': 'translateX(0)'}, 400);
+        });
+
+        $('#next-project-btn .project-nav-text').hover(() =>
+        {
+            $('#next-project-icon').animate({'transform': 'translateX(40px)'}, 400);
+        }, () =>
+        {
+            $('#next-project-icon').animate({'transform': 'translateX(0)'}, 400);
+        }); */
     };
 };
