@@ -73,6 +73,14 @@
 
             }, 1500);
         });
+
+        $('.footer-info-description').hover(function()
+        {
+            $('#credits-heart').css('font-weight', 900);
+        }, function()
+        {
+            $('#credits-heart').css('font-weight', 400);
+        });
     };
 
     updateContactButton(statusCode, errMsg)

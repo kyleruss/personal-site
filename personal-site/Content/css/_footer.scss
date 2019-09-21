@@ -11,17 +11,36 @@
     justify-content:space-around;
 }
 
-.footer-info-title
-{
-    font-family:'Futura_bold';
-    font-size:30px;
+.footer-info-title {
+    font-family: 'Museo_bold';
+    font-size: 30px;
+    font-weight:bold;
     color:#5f97fd;
 }
 
 .footer-info-description {
-    font-family: 'Calibre_medium';
-    font-size: 24px;
-    color: #FFF;
+    font-family: 'Museo_light';
+    display: block;
+    font-size: 30px;
+    color: #d0d0d0;
+    position: relative;
+    margin-bottom:15px;
+
+    .fa-heart {
+        font-size: 22px;
+        color: $mainColor;
+    }
+
+    &:hover 
+    {
+        color: #d0d0d0;
+        text-decoration:none;
+    }
+
+    &:focus
+    {
+        outline:none;
+    }
 }
 
 .footer-info-container

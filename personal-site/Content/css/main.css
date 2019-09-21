@@ -321,6 +321,14 @@
   font-family: 'Calibre_regular';
   src: url("../../fonts/CalibreRegular.otf") format("opentype"); }
 
+@font-face {
+  font-family: 'Museo_light';
+  src: url("../../fonts/MuseoSans-100.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Museo_bold';
+  src: url("../../fonts/MuseoSans_700.otf") format("opentype"); }
+
 #about-container {
   position: relative;
   height: 1000px;
@@ -833,14 +841,26 @@
   justify-content: space-around; }
 
 .footer-info-title {
-  font-family: 'Futura_bold';
+  font-family: 'Museo_bold';
   font-size: 30px;
+  font-weight: bold;
   color: #5f97fd; }
 
 .footer-info-description {
-  font-family: 'Calibre_medium';
-  font-size: 24px;
-  color: #FFF; }
+  font-family: 'Museo_light';
+  display: block;
+  font-size: 30px;
+  color: #d0d0d0;
+  position: relative;
+  margin-bottom: 15px; }
+  .footer-info-description .fa-heart {
+    font-size: 22px;
+    color: #7261ee; }
+  .footer-info-description:hover {
+    color: #d0d0d0;
+    text-decoration: none; }
+  .footer-info-description:focus {
+    outline: none; }
 
 .footer-info-container {
   text-align: center;
