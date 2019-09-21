@@ -466,7 +466,7 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   background-color: #FFF;
   width: 910px;
-  height: 660px;
+  max-height: 660px;
   position: relative; }
 
 #project-footer-controls {
@@ -516,7 +516,7 @@
   #project-footer-controls #next-project-btn {
     float: right;
     margin-right: 2em; }
-  #project-footer-controls #project-star-btn {
+  #project-footer-controls #project-view-btn {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -532,15 +532,17 @@
     outline: none;
     box-shadow: 0px 0px 16px 0px #7261ee;
     transition: 0.5s ease-in-out; }
-    #project-footer-controls #project-star-btn:hover {
+    #project-footer-controls #project-view-btn:hover {
       background-color: #6252d9; }
 
 #project-preview {
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: hidden;
   width: 910px;
-  height: 600px;
+  max-height: 600px;
   position: relative; }
+  #project-preview .slick-slide {
+    max-height: 600px;
+    overflow-y: scroll; }
   #project-preview .anchor {
     display: none !important; }
   #project-preview h1, #project-preview h2 {

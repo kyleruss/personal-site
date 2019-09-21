@@ -11,7 +11,7 @@
 
     initDisplay()
     {
-        this.setCurrentRepository(0);
+        this.setCurrentRepository(1);
     };
 
     loadRepoData()
@@ -86,7 +86,7 @@
     {
         var commitStats = $('#commits-stats');
         var codeStats = $('#codeline-stats');
-        var githubLinkBtn = $('#view-github-btn');
+        var githubLinkBtn = $('#project-view-link');
         var repoTitle = $('#project-title');
         var repoDesc = $('#project-description');
 
@@ -132,30 +132,14 @@
 
     initHandlers()
     {
-        $('#portf-left-arrow').click(() =>
+        $('#prev-project-btn').click(() =>
         {
             this.prevRepository();
         });
     
-        $('#portf-right-arrow').click(() =>
+        $('#next-project-btn').click(() =>
         {
             this.nextRepository();
         });
-
-       /* $('#prev-project-btn .project-nav-text').hover(() =>
-        {
-            $('#prev-project-icon').animate({'transform': 'translateX(-10px)'}, 400);
-        }, () =>
-        {
-            $('#prev-project-icon').animate({'transform': 'translateX(0)'}, 400);
-        });
-
-        $('#next-project-btn .project-nav-text').hover(() =>
-        {
-            $('#next-project-icon').animate({'transform': 'translateX(40px)'}, 400);
-        }, () =>
-        {
-            $('#next-project-icon').animate({'transform': 'translateX(0)'}, 400);
-        }); */
     };
 };
