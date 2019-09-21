@@ -89,6 +89,10 @@
     transition: all 0.5s ease-in-out; }
     #side-navbar .side-navbar-item.active:hover {
       transform: scale(1); }
+  #side-navbar .side-navbar-offcolor {
+    background: #FFF content-box !important; }
+  #side-navbar .side-navbar-offcolor.active {
+    box-shadow: 0 0 0 2px #FFF; }
 
 /* 
    ================================

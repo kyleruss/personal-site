@@ -49,12 +49,19 @@ $(function()
             
             setTimeout(() =>
             {
+
+                if(destIndex == 3)
+                    portfolioComponent.toggleOffColorNavbar(true);
+                else
+                    portfolioComponent.toggleOffColorNavbar(false);
+                
                 if(destIndex < 5) 
                 {
                     navbarItem.removeClass('active');
                     navbarItem.removeClass('side-navbar-item-untoggled');
                     navbarItem.eq(destIndex).addClass('active');
                 }
+
 
                 if(sectionObj != null) sectionObj.initDisplay();
             }, 300);
@@ -549,6 +556,14 @@ class PortfolioComponent
     {
         this.setCurrentRepository(1);
     };
+
+    toggleOffColorNavbar(show)
+    {
+        if(show)
+            $('.side-navbar-item').addClass('side-navbar-offcolor');
+        else
+            $('.side-navbar-item').removeClass('side-navbar-offcolor');
+    }
 
     loadRepoData()
     {

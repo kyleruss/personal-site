@@ -41,12 +41,19 @@
             
             setTimeout(() =>
             {
+
+                if(destIndex == 3)
+                    portfolioComponent.toggleOffColorNavbar(true);
+                else
+                    portfolioComponent.toggleOffColorNavbar(false);
+                
                 if(destIndex < 5) 
                 {
                     navbarItem.removeClass('active');
                     navbarItem.removeClass('side-navbar-item-untoggled');
                     navbarItem.eq(destIndex).addClass('active');
                 }
+
 
                 if(sectionObj != null) sectionObj.initDisplay();
             }, 300);

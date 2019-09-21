@@ -14,6 +14,14 @@
         this.setCurrentRepository(1);
     };
 
+    toggleOffColorNavbar(show)
+    {
+        if(show)
+            $('.side-navbar-item').addClass('side-navbar-offcolor');
+        else
+            $('.side-navbar-item').removeClass('side-navbar-offcolor');
+    }
+
     loadRepoData()
     {
         var dataUrl = $('repo-data').attr('url');
