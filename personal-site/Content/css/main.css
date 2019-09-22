@@ -336,6 +336,11 @@
 #about-image {
   margin-left: -7em; }
 
+#about-image-addons {
+  position: absolute;
+  left: -7.39em;
+  top: 20px; }
+
 #about-title {
   color: grey;
   font-size: 100px;
@@ -346,7 +351,7 @@
   transition: color 1s ease-in-out; }
 
 #about-text {
-  font-size: 60px;
+  font-size: 56px;
   color: #3b424a;
   font-family: 'Antipastopro';
   height: 300px; }
@@ -357,10 +362,33 @@
   font-family: 'Futura_bold';
   background-color: #7261ee;
   border-color: #7261ee;
-  margin-top: 2em;
+  margin-top: -2.5em;
   transition: 0.5s ease-in-out; }
   #resume-btn:hover {
     box-shadow: 0px 0px 21px 0px #6551f9; }
+
+.location-highlight {
+  position: relative; }
+  .location-highlight::before {
+    content: '\f3c5';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 10px; }
+  .location-highlight::after {
+    position: absolute;
+    content: '';
+    border-bottom: 6px solid #7261ee;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    animation: borderAnimation 0.5s linear; }
+
+@keyframes borderAnimation {
+  0% {
+    width: 0%; }
+  100% {
+    width: 100%; } }
 
 .resume-btn-hidden {
   opacity: 0; }
