@@ -4,6 +4,7 @@
     {
         this.repoData = {};
         this.existingRepos = [];
+        this.processingAnimation = false;
 
         this.loadRepoData();
         this.initHandlers();
@@ -11,7 +12,9 @@
 
     initDisplay()
     {
-        this.setCurrentRepository(1);
+        this.setCurrentRepository(0);
+        this.pushCarouselItem();
+        this.updatePortfolioView();
     };
 
     toggleOffColorNavbar(show)
@@ -30,6 +33,7 @@
         {
             this.repoData = data;
             this.repos = Object.keys(this.repoData);
+
             this.initCarousel();
         });
     };
@@ -39,32 +43,35 @@
         this.repoIndex = index;
         this.repoName = this.repos[this.repoIndex];
         this.currentRepo = this.repoData[this.repoName];
-
-        this.updatePortfolioView();
     };
 
     nextRepository()
     {
-        var nextIndex = this.repoIndex + 1;
-        var n = this.repos.length;
+        if(!this.processingAnimation)
+        {
+            this.processingAnimation = true;
+            var nextIndex = this.repoIndex + 1;
+            var n = this.repos.length;
 
-        if(nextIndex >= this.repos.length)
-            nextIndex = nextIndex % n;
-        
-        this.setCurrentRepository(nextIndex);
-        $('#project-preview').slick('slickNext');
+            if(nextIndex >= this.repos.length)
+                nextIndex = nextIndex % n;
+            
+            this.setCurrentRepository(nextIndex);
+            this.pushCarouselItem();
+            $('#project-preview').slick('slickNext');
+        }
     };
 
     prevRepository()
     {
-        var prevIndex = this.repoIndex - 1;
-        var n = this.repos.length;
-        
-        if(prevIndex < 0)
-            prevIndex = ((prevIndex % n) + n) % n;
+        if(!this.processingAnimation && this.repoIndex > 0)
+        {
+            this.processingAnimation = true;
+            var prevIndex = this.repoIndex - 1;
 
-        this.setCurrentRepository(prevIndex);
-        $('#project-preview').slick('slickPrev');
+            this.setCurrentRepository(prevIndex);
+            $('#project-preview').slick('slickPrev');
+        }
     };
 
     initCarousel()
@@ -73,7 +80,8 @@
         ({
             slidesToShow:1,
             slidesToScroll:1,
-            arrows:false
+            arrows:false,
+            swipe:false
         });
     };
 
@@ -83,7 +91,7 @@
         {
             var readmeHtml = this.currentRepo["readme"];
             var carouselContainer = $('#project-preview');
-
+            
             carouselContainer.slick('slickAdd', readmeHtml);
 
             this.existingRepos.push(this.repoIndex);
@@ -98,12 +106,9 @@
         var repoTitle = $('#project-title');
         var repoDesc = $('#project-description');
 
-        this.pushCarouselItem();
-
         commitStats.text(this.currentRepo["commits"]);
         codeStats.text(this.currentRepo["codeLines"]);
 
-        
         githubLinkBtn.attr('href', this.currentRepo["link"]);
         repoTitle.text(this.getTransformedTitle());
         repoDesc.text(this.currentRepo["description"]);
@@ -148,6 +153,20 @@
         $('#next-project-btn').click(() =>
         {
             this.nextRepository();
+        });
+
+        $('#prev-project-btn').hover(() =>
+        {
+            if(this.repoIndex <= 0)
+                $('#prev-project-btn').css('cursor', 'not-allowed');
+            else
+                $('#prev-project-btn').css('cursor', 'pointer');
+        });
+
+        $('#project-preview').on('afterChange', (event, slick, currentSlide) =>
+        {
+            this.updatePortfolioView();
+            this.processingAnimation = false;
         });
     };
 };

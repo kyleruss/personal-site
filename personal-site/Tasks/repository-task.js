@@ -212,8 +212,8 @@
     {
         return callApi(getApiUrl(index, LANGUAGES_TASK), (data, status) =>
         {
-            var languageData = Object.keys(data);
-            setRepoProperty(index, "languages", languageData);
+                var languageData = Object.keys(data);
+                setRepoProperty(index, "languages", languageData);
         });
     };
 

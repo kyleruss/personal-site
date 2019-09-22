@@ -9,7 +9,7 @@
     $('#module-container').fullpage
     ({
         fitToScreen: true,
-        normalScrollElements: '#project-preview',
+        normalScrollElements: '#project-preview, #preview-container',
         onLeave: function(origin, destination, direction)
         {
             var navbarItem = $('.side-navbar-item');

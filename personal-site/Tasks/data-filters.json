@@ -5,7 +5,10 @@
         "mu-s8ep2-repack": { "languages": [ "C++", "C", "Lua" ]},
         "personal-site": { "languages": [ "C#", "JS", "Node.JS" ]},
         "top-games": { "languages": [ "PHP", "JS", "SQL" ]},
-        "vim-config": { "languages": [ "Vi Script" ], "codeLines": 58}
+        "vim-config": { "languages": [ "Vi Script" ], "codeLines": 58},
+        "cablecity-db": { "name": "Cablecity Database"},
+        "cablecity-db-optimization": { "name": "Cablecity Database Optimizations"}, 
+        "graphi-suic-plugin": { "name": "Graphi Relation Plugin"}
     },
 
     "language-filters":
