@@ -138,8 +138,8 @@
     @include social-container-color(#11ca60);
 }
 
-#rss-social-container {
-    @include social-container-color(#ff9c00);
+#email-social-container {
+    @include social-container-color(#f94747); //#f94747
 }
 
 #dribbble-social-container {
@@ -148,10 +148,10 @@
 }
 
 #stackoverflow-social-container {
-    @include social-container-color(#f94747);
+    @include social-container-color(#ff9c00);
 }
 
-#github-social-container, #rss-social-container, #stackoverflow-social-container {
+#github-social-container, #email-social-container, #stackoverflow-social-container {
     margin-left: 1em;
 }
 

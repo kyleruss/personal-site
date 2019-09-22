@@ -74,7 +74,7 @@ $(function()
         e.preventDefault();
         var linkIndex = $('#main-navbar a').index($(this)) + 1;
 
-        if(linkIndex == 3) linkIndex++;
+        if(linkIndex == 3 || linkIndex == 4) linkIndex++;
 
         fullpage_api.moveTo(linkIndex);
     });

@@ -175,20 +175,27 @@
         transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s;
     }
 
-    .fab, .fas {
+    .fab, .fas, .far {
         font-size: 1.8em;
         color: #FFF;
     }
 }
 
-
-
+#social-media-container
+{
+    a
+    {
+        &:hover
+        {
+            text-decoration:none;
+        }
+    }
+}
 /* 
    ================================
            CONTINUE BUTTON
    ================================
 */
-
 #bottom-continue-container {
     position: absolute;
     bottom: 0;
@@ -196,16 +203,14 @@
     left: 50%;
     transform: translate(-50%);
 
-    #scroll-bottom-btn
-    {
-        color:#FFF;
-        font-size:48px;
-        transition:0.5s ease;
+    #scroll-bottom-btn {
+        color: #FFF;
+        font-size: 48px;
+        transition: 0.5s ease;
 
-        &:hover
-        {
-            cursor:pointer;
-            color:$mainColor;
+        &:hover {
+            cursor: pointer;
+            color: $mainColor;
         }
     }
 }

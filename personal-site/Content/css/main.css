@@ -232,9 +232,12 @@
     border-right-width: 2px;
     transform: rotate(270deg);
     transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s; }
-  .social-icon-container .fab, .social-icon-container .fas {
+  .social-icon-container .fab, .social-icon-container .fas, .social-icon-container .far {
     font-size: 1.8em;
     color: #FFF; }
+
+#social-media-container a:hover {
+  text-decoration: none; }
 
 /* 
    ================================
@@ -957,19 +960,19 @@
     border-bottom: solid 1.4142px #11ca60;
     border-left: solid 1.4142px #11ca60; }
 
-#rss-social-container {
-  background-color: #ff9c00;
-  border-left: solid 1px #ff9c00;
-  border-right: solid 1px #ff9c00; }
-  #rss-social-container:before, #rss-social-container:after {
-    border-top: solid 1.4142px #ff9c00;
-    border-right: solid 1.4142px #ff9c00; }
-  #rss-social-container:before {
-    border-top: solid 1.4142px #ff9c00;
-    border-right: solid 1.4142px #ff9c00; }
-  #rss-social-container:after {
-    border-bottom: solid 1.4142px #ff9c00;
-    border-left: solid 1.4142px #ff9c00; }
+#email-social-container {
+  background-color: #f94747;
+  border-left: solid 1px #f94747;
+  border-right: solid 1px #f94747; }
+  #email-social-container:before, #email-social-container:after {
+    border-top: solid 1.4142px #f94747;
+    border-right: solid 1.4142px #f94747; }
+  #email-social-container:before {
+    border-top: solid 1.4142px #f94747;
+    border-right: solid 1.4142px #f94747; }
+  #email-social-container:after {
+    border-bottom: solid 1.4142px #f94747;
+    border-left: solid 1.4142px #f94747; }
 
 #dribbble-social-container {
   background-color: #a263f9;
@@ -987,20 +990,20 @@
     border-left: solid 1.4142px #a263f9; }
 
 #stackoverflow-social-container {
-  background-color: #f94747;
-  border-left: solid 1px #f94747;
-  border-right: solid 1px #f94747; }
+  background-color: #ff9c00;
+  border-left: solid 1px #ff9c00;
+  border-right: solid 1px #ff9c00; }
   #stackoverflow-social-container:before, #stackoverflow-social-container:after {
-    border-top: solid 1.4142px #f94747;
-    border-right: solid 1.4142px #f94747; }
+    border-top: solid 1.4142px #ff9c00;
+    border-right: solid 1.4142px #ff9c00; }
   #stackoverflow-social-container:before {
-    border-top: solid 1.4142px #f94747;
-    border-right: solid 1.4142px #f94747; }
+    border-top: solid 1.4142px #ff9c00;
+    border-right: solid 1.4142px #ff9c00; }
   #stackoverflow-social-container:after {
-    border-bottom: solid 1.4142px #f94747;
-    border-left: solid 1.4142px #f94747; }
+    border-bottom: solid 1.4142px #ff9c00;
+    border-left: solid 1.4142px #ff9c00; }
 
-#github-social-container, #rss-social-container, #stackoverflow-social-container {
+#github-social-container, #email-social-container, #stackoverflow-social-container {
   margin-left: 1em; }
 
 .social-display:before,
