@@ -19,27 +19,25 @@
 }
 
 .footer-info-description {
-    font-family: 'Museo_light';
+    font-family: 'Antipastopro';
     display: block;
     font-size: 30px;
-    color: #d0d0d0;
+    color: #FFF;
     position: relative;
-    margin-bottom:15px;
+    margin-bottom: 15px;
 
     .fa-heart {
         font-size: 22px;
         color: $mainColor;
     }
 
-    &:hover 
-    {
+    &:hover {
         color: #d0d0d0;
-        text-decoration:none;
+        text-decoration: none;
     }
 
-    &:focus
-    {
-        outline:none;
+    &:focus {
+        outline: none;
     }
 }
 

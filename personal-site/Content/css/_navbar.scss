@@ -4,78 +4,65 @@
    ================================
 */
 
-#main-navbar
-{
-    font-family:Dienstag;
-    font-size:30px;
+#main-navbar {
+    font-family: 'Futura_bold';
+    font-size: 30px;
     padding: 1em;
-    z-index:2000;
-    
-    .nav-link 
-    {
-        color:#ffffff;
-        padding-left:0;
-        padding-right:0;
+    z-index: 2000;
 
-        &:focus
-        {
-            outline:none !important;
+    .nav-link {
+        color: #ffffff;
+        padding-left: 0;
+        padding-right: 0;
+
+        &:focus {
+            outline: none !important;
         }
     }
 
-    .nav-link-item
-    {
-        &:hover::after
-        {
-            transform:scaleX(1); 
+    .nav-link-item {
+        &:hover::after {
+            transform: scaleX(1);
         }
 
-        &::after
-        {
-            display:block;
+        &::after {
+            display: block;
             content: '';
-            border-bottom:solid 4px $mainColor;
+            border-bottom: solid 6px $mainColor;
             transform: scaleX(0);
-            transition:transform 0.25s ease-in-out;
+            transition: transform 0.25s ease-in-out;
             transform-origin: 0% 50%;
+            margin-top:5px;
         }
     }
 
-    .nav-item:not(:last-child)
-    {
-        margin-right:1.5em;
+    .nav-item:not(:last-child) {
+        margin-right: 1.5em;
     }
 
-    .nav-selector
-    {
-        padding-left:16px;
-        padding-right:16px;
+    .nav-selector {
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
-    span.nav-link
-    {
-        &:hover 
-        {
-            cursor:default;
-            border-bottom:none;
+    span.nav-link {
+        &:hover {
+            cursor: default;
+            border-bottom: none;
         }
     }
 
-    #navbar-left
-    {
-        margin-left:2.5em;
+    #navbar-left {
+        margin-left: 2.5em;
     }
 
-    #navbar-right
-    {
-        margin-right:2.5em;
+    #navbar-right {
+        margin-right: 2.5em;
     }
 
-    .active
-    {
-        &::after
-        {
-            transform:scaleX(1);
+    .active {
+        &::after {
+            transform: scaleX(1);
         }
     }
 }

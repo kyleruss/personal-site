@@ -489,6 +489,7 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Views\User.cshtml" />
     <Content Include="Areas\Portfolio\Views\Modules\_Skills.cshtml" />
+    <Content Include="Areas\Portfolio\Views\Modules\_Resume.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

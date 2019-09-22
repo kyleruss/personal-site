@@ -22,9 +22,10 @@ $(function()
         {
             var navbarItem = $('.side-navbar-item');
             var destIndex = destination.index;
+            var originIndex = origin.index;
             var sectionObj;
 
-            if(destIndex < 5) 
+            if(destIndex < 5 && originIndex != 5) 
                 $('.side-navbar-item.active').addClass('side-navbar-item-untoggled');
             
             switch(destIndex)
@@ -50,12 +51,12 @@ $(function()
             setTimeout(() =>
             {
 
-                if(destIndex == 3)
+                if(destIndex == 3 || destIndex == 0)
                     portfolioComponent.toggleOffColorNavbar(true);
                 else
                     portfolioComponent.toggleOffColorNavbar(false);
-                
-                if(destIndex < 5) 
+
+                if((destIndex != 5) || (originIndex == 5 && destIndex == 0))
                 {
                     navbarItem.removeClass('active');
                     navbarItem.removeClass('side-navbar-item-untoggled');
@@ -81,7 +82,6 @@ $(function()
     $('.side-navbar-item').click(function(e)
     {
         var navIndex = $('.side-navbar-item').index($(this)) + 1;
-        console.log(navIndex);
         fullpage_api.moveTo(navIndex);
     })
 });
@@ -89,10 +89,20 @@ class HomeComponent
 {
     constructor()
     {
+        this.initHandlers();
+
         setTimeout(() =>
         {
             $('.rect-shape').addClass('rect-hover');
         }, 100);
+    };
+
+    initHandlers()
+    {
+        $('#scroll-bottom-btn').click(function(e)
+        {   
+            fullpage_api.moveTo(2);
+        });
     };
 };
 class AboutComponent
@@ -116,11 +126,15 @@ class AboutComponent
 
     initHandlers()
     {
-        $('#about-title').click(function(e)
+        $('#resume-btn').click(function(e)
         {
-            var textElement = $("#about-text:contains('Adelaide')");
-            textElement.css('color', 'green');
-            console.log(textElement);
+            fullpage_api.setAllowScrolling(false);
+            $('#resume-modal').modal('show');
+        });
+
+        $('#resume-modal').on('hidden.bs.modal', function()
+        {
+            fullpage_api.setAllowScrolling(true);
         });
     };
 
@@ -776,6 +790,11 @@ class ContactComponent
         }, function()
         {
             $('#credits-heart').css('font-weight', 400);
+        });
+
+        $('#go-top-btn').click(function(e)
+        {
+            fullpage_api.moveTo(1);
         });
     };
 

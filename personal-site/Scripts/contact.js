@@ -81,6 +81,11 @@
         {
             $('#credits-heart').css('font-weight', 400);
         });
+
+        $('#go-top-btn').click(function(e)
+        {
+            fullpage_api.moveTo(1);
+        });
     };
 
     updateContactButton(statusCode, errMsg)

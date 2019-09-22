@@ -14,9 +14,10 @@
         {
             var navbarItem = $('.side-navbar-item');
             var destIndex = destination.index;
+            var originIndex = origin.index;
             var sectionObj;
 
-            if(destIndex < 5) 
+            if(destIndex < 5 && originIndex != 5) 
                 $('.side-navbar-item.active').addClass('side-navbar-item-untoggled');
             
             switch(destIndex)
@@ -42,12 +43,12 @@
             setTimeout(() =>
             {
 
-                if(destIndex == 3)
+                if(destIndex == 3 || destIndex == 0)
                     portfolioComponent.toggleOffColorNavbar(true);
                 else
                     portfolioComponent.toggleOffColorNavbar(false);
-                
-                if(destIndex < 5) 
+
+                if((destIndex != 5) || (originIndex == 5 && destIndex == 0))
                 {
                     navbarItem.removeClass('active');
                     navbarItem.removeClass('side-navbar-item-untoggled');
@@ -73,7 +74,6 @@
     $('.side-navbar-item').click(function(e)
     {
         var navIndex = $('.side-navbar-item').index($(this)) + 1;
-        console.log(navIndex);
         fullpage_api.moveTo(navIndex);
     })
 });

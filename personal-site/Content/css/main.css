@@ -9,7 +9,7 @@
    ================================
 */
 #main-navbar {
-  font-family: Dienstag;
+  font-family: 'Futura_bold';
   font-size: 30px;
   padding: 1em;
   z-index: 2000; }
@@ -24,10 +24,11 @@
   #main-navbar .nav-link-item::after {
     display: block;
     content: '';
-    border-bottom: solid 4px #7261ee;
+    border-bottom: solid 6px #7261ee;
     transform: scaleX(0);
     transition: transform 0.25s ease-in-out;
-    transform-origin: 0% 50%; }
+    transform-origin: 0% 50%;
+    margin-top: 5px; }
   #main-navbar .nav-item:not(:last-child) {
     margin-right: 1.5em; }
   #main-navbar .nav-selector {
@@ -109,13 +110,13 @@
   height: 100vh !important; }
   #home-container #home-title {
     color: #FFF;
-    font-family: Dienstag;
+    font-family: 'Futura_bold';
     font-size: 72px;
     margin-top: 0;
     margin-bottom: 0; }
   #home-container #home-description {
     color: #FFF;
-    font-family: Dienstag;
+    font-family: 'Proxima_regular';
     font-size: 30px; }
 
 #home-content-wrapper {
@@ -243,22 +244,16 @@
 #bottom-continue-container {
   position: absolute;
   bottom: 0;
-  margin-bottom: 7em;
+  margin-bottom: 4em;
   left: 50%;
   transform: translate(-50%); }
-  #bottom-continue-container #continue-btn {
-    font-family: Dienstag;
-    font-size: 24px;
-    background-color: transparent;
-    border: 1px solid #FFF;
-    border-radius: 0;
-    padding: 1em;
-    transition: ease-in-out 0.5s; }
-    #bottom-continue-container #continue-btn:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: #FFF; }
-    #bottom-continue-container #continue-btn .fas {
-      margin-left: 1em; }
+  #bottom-continue-container #scroll-bottom-btn {
+    color: #FFF;
+    font-size: 48px;
+    transition: 0.5s ease; }
+    #bottom-continue-container #scroll-bottom-btn:hover {
+      cursor: pointer;
+      color: #7261ee; }
 
 /* 
    ================================
@@ -847,10 +842,10 @@
   color: #5f97fd; }
 
 .footer-info-description {
-  font-family: 'Museo_light';
+  font-family: 'Antipastopro';
   display: block;
   font-size: 30px;
-  color: #d0d0d0;
+  color: #FFF;
   position: relative;
   margin-bottom: 15px; }
   .footer-info-description .fa-heart {

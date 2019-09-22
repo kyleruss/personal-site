@@ -8,14 +8,14 @@
     margin: 0;
     padding: 0;
     width: auto;
-    text-align:center;
+    text-align: center;
     position: relative;
     overflow: hidden;
     height: 100vh !important;
 
     #home-title {
         color: #FFF;
-        font-family: Dienstag;
+        font-family: 'Futura_bold';
         font-size: 72px;
         margin-top: 0;
         margin-bottom: 0;
@@ -23,7 +23,7 @@
 
     #home-description {
         color: #FFF;
-        font-family: Dienstag;
+        font-family: 'Proxima_regular';
         font-size: 30px;
     }
 }
@@ -192,26 +192,20 @@
 #bottom-continue-container {
     position: absolute;
     bottom: 0;
-    margin-bottom: 7em;
+    margin-bottom: 4em;
     left: 50%;
     transform: translate(-50%);
 
-    #continue-btn {
-        font-family: Dienstag;
-        font-size: 24px;
-        background-color: rgba(0,0,0,0);
-        border: 1px solid #FFF;
-        border-radius: 0;
-        padding: 1em;
-        transition: ease-in-out 0.5s;
+    #scroll-bottom-btn
+    {
+        color:#FFF;
+        font-size:48px;
+        transition:0.5s ease;
 
-        &:hover {
-            background-color:rgba(255,255,255,0.1);
-            color: #FFF;
-        }
-
-        .fas {
-            margin-left: 1em;
+        &:hover
+        {
+            cursor:pointer;
+            color:$mainColor;
         }
     }
 }

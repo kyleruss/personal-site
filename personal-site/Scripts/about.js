@@ -19,11 +19,15 @@
 
     initHandlers()
     {
-        $('#about-title').click(function(e)
+        $('#resume-btn').click(function(e)
         {
-            var textElement = $("#about-text:contains('Adelaide')");
-            textElement.css('color', 'green');
-            console.log(textElement);
+            fullpage_api.setAllowScrolling(false);
+            $('#resume-modal').modal('show');
+        });
+
+        $('#resume-modal').on('hidden.bs.modal', function()
+        {
+            fullpage_api.setAllowScrolling(true);
         });
     };
 
