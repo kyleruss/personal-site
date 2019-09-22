@@ -18,6 +18,7 @@ using personal_site.Filters;
 namespace personal_site.Areas.Portfolio.Controllers
 {
     [SiteModeFilter]
+    [Authorize]
     public class BlogController : Controller
     {
         public async Task<JsonResult> GetBlogPosts()

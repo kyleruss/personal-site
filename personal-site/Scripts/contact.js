@@ -24,6 +24,7 @@
 
     initHandlers()
     {
+        var context = this;
         $('#contact-form').submit(function(e)
         {
             e.preventDefault();
@@ -31,10 +32,8 @@
             var form = $(this);
             var contactUrl = form.attr('action');
             var contactData = form.serialize();
-            var contactBtnSpinner = $('#contact-btn-progress');
-            var contactBtnText = $('#contact-btn-text');
 
-            this.updateContactButton(CONTACT_STATUS_PROGRESS);
+            context.updateContactButton(context.CONTACT_STATUS_PROGRESS);
 
             setTimeout(function ()
             {
@@ -50,23 +49,23 @@
                         
                         if (respStatus)
                         {
-                            this.updateContactButton(this.CONTACT_STATUS_SUCCESS);
-                            this.clearForm();
+                            context.updateContactButton(context.CONTACT_STATUS_SUCCESS);
+                            context.clearForm();
                         }
 
                         else
                         {
                             var errMsg  =   response.ResponseMsg;
-                            this.updateContactButton(this.CONTACT_STATUS_ERROR, errMsg);
+                            context.updateContactButton(context.CONTACT_STATUS_ERROR, errMsg);
                         }
 
-                        resetContactButton();
+                        context.resetContactButton();
                     },
 
                     error: function(xhr, statusText, err)
                     {
-                        this.updateContactButton(this.CONTACT_STATUS_ERROR);
-                        this.resetContactButton();
+                        context.updateContactButton(context.CONTACT_STATUS_ERROR);
+                        context.resetContactButton();
                     }
 
                 });
@@ -98,19 +97,19 @@
 
         switch(statusCode)
         {
-            case CONTACT_STATUS_PROGRESS:
+            case this.CONTACT_STATUS_PROGRESS:
                 contactBtnSpinner.show();
                 btnMsg = "SENDING MESSAGE";
                 break;
 
-            case CONTACT_STATUS_SUCCESS:
+            case this.CONTACT_STATUS_SUCCESS:
                 contactBtnSpinner.hide();
-                btnMsg = "MESSAGE HAS BEEN SENT";
+                btnMsg = "MESSAGE SENT";
                 contactBtnStatusIcon.attr('class', 'fas fa-check-circle fa-lg').show();
                 contactBtn.attr('class', 'btn btn-primary contact-btn-success');
                 break;
 
-            case CONTACT_STATUS_ERROR:
+            case this.CONTACT_STATUS_ERROR:
                 contactBtnSpinner.hide();
                 btnMsg = errMsg;
                 contactBtnStatusIcon.attr('class', 'fas fa-times-circle fa-lg').show();
