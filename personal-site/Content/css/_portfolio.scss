@@ -21,6 +21,7 @@
     width: 910px;
     max-height: 660px;
     position:relative;
+
 }
 
 @mixin nav-control-pseudo-icon 
@@ -238,13 +239,24 @@
 	}
 }
 
-#project-title
+#project-title-link 
 {
-	color:#FFF;
-	font-size:80px;
-	margin-top:-10px;
-	font-family:'Futura_bold';
-    text-transform:capitalize;
+    color: #FFF;
+    font-size: 80px;
+    margin-top: -10px;
+    font-family: 'Futura_bold';
+    text-transform: capitalize;
+    
+    &:hover
+    {
+        color:#FFF;
+        text-decoration:none;
+    }
+
+    &:focus
+    {
+        outline:none;
+    }
 }
 
 #project-description

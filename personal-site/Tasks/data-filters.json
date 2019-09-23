@@ -8,11 +8,39 @@
         "vim-config": { "languages": [ "Vi Script" ], "codeLines": 58},
         "cablecity-db": { "name": "Cablecity Database"},
         "cablecity-db-optimization": { "name": "Cablecity Database Optimizations"}, 
-        "graphi-suic-plugin": { "name": "Graphi Relation Plugin"}
+        "graphi-suic-plugin": { "name": "Graphi Relation Plugin"},
+        "safesms-client": { "name": "SafeSMS" },
+        "aes-lib-js": { "name": "AES JS Library" },
+        "aes-lib-cpp": { "name": "AES C++ Library" }
     },
 
     "language-filters":
     {
         "JavaScript": "JS"
-    }
+    },
+
+    "repo-priority-order":
+    [
+        "byte-chat",
+        "graphi",
+        "img-snippet",
+        "auto-updater",
+        "jsock-chat",
+        "jforum",
+        "jsock-core",
+        "safesms-client",
+        "aes-lib-js",
+        "safe-exchange",
+        "student-core",
+        "jdamvc-framework",
+        "ng-search-engine",
+        "mu-db-helper",
+        "mu-s8ep2-repack",
+        "safe-library",
+        "crypto-commons",
+        "collector-app",
+        "hcipher-chat",
+        "safesms-server"
+
+    ]
 }

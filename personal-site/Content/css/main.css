@@ -638,12 +638,17 @@
   #project-stats .stat-separator {
     font-size: 40px; }
 
-#project-title {
+#project-title-link {
   color: #FFF;
   font-size: 80px;
   margin-top: -10px;
   font-family: 'Futura_bold';
   text-transform: capitalize; }
+  #project-title-link:hover {
+    color: #FFF;
+    text-decoration: none; }
+  #project-title-link:focus {
+    outline: none; }
 
 #project-description {
   color: #FFF;

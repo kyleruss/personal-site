@@ -208,12 +208,40 @@
         });
     };
 
+    function changeRepositoryOrder()
+    {
+        var orderFilters = filters["repo-priority-order"];
+        var originalRepoNames = Object.keys(repoData);
+        var orderedRepoData = {};
+
+        //Add filtered ordered repos first
+        for(var index in orderFilters)
+        {
+            var repoName = orderFilters[index];
+            var repo = repoData[repoName];
+
+            orderedRepoData[repoName] = repo;
+        };
+
+        //Push remaning unordered data
+        for(var nameIndex in originalRepoNames)
+        {
+            var repoName = originalRepoNames[nameIndex];
+
+            if(orderFilters[repoName] == null)
+                orderedRepoData[repoName] = repoData[repoName];
+        }
+
+        //Replace existing repo data with ordered data
+        repoData = orderedRepoData;
+    };
+
     function getRepositoryLanguages(index)
     {
         return callApi(getApiUrl(index, LANGUAGES_TASK), (data, status) =>
         {
-                var languageData = Object.keys(data);
-                setRepoProperty(index, "languages", languageData);
+            var languageData = Object.keys(data);
+            setRepoProperty(index, "languages", languageData);
         });
     };
 
@@ -334,5 +362,10 @@
     grunt.registerTask('filter-content', function()
     {
         runTask(filterContent, false, this); 
+    });
+
+    grunt.registerTask('order-repos', function()
+    {
+        runTask(changeRepositoryOrder, true, this);
     });
 };

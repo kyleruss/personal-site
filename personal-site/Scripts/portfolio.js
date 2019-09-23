@@ -12,8 +12,7 @@
 
     initDisplay()
     {
-        this.setCurrentRepository(0);
-        this.pushCarouselItem();
+
         this.updatePortfolioView();
     };
 
@@ -83,6 +82,9 @@
             arrows:false,
             swipe:false
         });
+
+        this.setCurrentRepository(0);
+        this.pushCarouselItem();
     };
 
     pushCarouselItem()
@@ -103,13 +105,14 @@
         var commitStats = $('#commits-stats');
         var codeStats = $('#codeline-stats');
         var githubLinkBtn = $('#project-view-link');
-        var repoTitle = $('#project-title');
+        var repoTitle = $('#project-title-link');
         var repoDesc = $('#project-description');
 
         commitStats.text(this.currentRepo["commits"]);
         codeStats.text(this.currentRepo["codeLines"]);
 
         githubLinkBtn.attr('href', this.currentRepo["link"]);
+        repoTitle.attr('href', this.currentRepo["link"]);
         repoTitle.text(this.getTransformedTitle());
         repoDesc.text(this.currentRepo["description"]);
         this.updateLanguages();
