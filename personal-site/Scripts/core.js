@@ -60,7 +60,7 @@
             }, 300);
         }
     });
-
+    
     $('#main-navbar a').click(function(e)
     {
         e.preventDefault();

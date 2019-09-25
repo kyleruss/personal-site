@@ -68,7 +68,7 @@ $(function()
             }, 300);
         }
     });
-
+    
     $('#main-navbar a').click(function(e)
     {
         e.preventDefault();
@@ -643,7 +643,7 @@ class PortfolioComponent
             slidesToShow:1,
             slidesToScroll:1,
             arrows:false,
-            swipe:false
+            swipe:true
         });
 
         this.setCurrentRepository(0);
@@ -711,17 +711,17 @@ class PortfolioComponent
 
     initHandlers()
     {
-        $('#prev-project-btn').click(() =>
+        $('.prev-project-btn').click(() =>
         {
             this.prevRepository();
         });
     
-        $('#next-project-btn').click(() =>
+        $('.next-project-btn').click(() =>
         {
             this.nextRepository();
         });
 
-        $('#prev-project-btn').hover(() =>
+        $('.prev-project-btn').hover(() =>
         {
             if(this.repoIndex <= 0)
                 $('#prev-project-btn').css('cursor', 'not-allowed');

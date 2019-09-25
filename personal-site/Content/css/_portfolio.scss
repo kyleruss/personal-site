@@ -14,14 +14,17 @@
 	margin-top:6em;
 }
 
-#preview-container 
+.mobile-nav-buttons
 {
+    display:none;
+}
+
+#preview-container {
     box-shadow: 0 0 20px rgba(0,0,0,0.6);
     background-color: #FFF;
     width: 910px;
     max-height: 660px;
-    position:relative;
-
+    position: relative;
 }
 
 @mixin nav-control-pseudo-icon 
@@ -90,12 +93,12 @@
         font-family: 'Calibre_regular';
     }
 
-    #prev-project-btn {
+    .prev-project-btn {
         float: left;
         margin-left: 2em;
     }
 
-    #next-project-btn {
+    .next-project-btn {
         float: right;
         margin-right: 2em;
     }
@@ -134,6 +137,7 @@
     .slick-slide
     {
         max-height:600px;
+        width:350px;
         overflow-y:scroll;
     }
 
@@ -317,4 +321,52 @@
 {
 	right:0;
 	margin-right:0.2em;
+}
+
+@media only screen and (max-device-width:768px)
+{
+    #project-container
+    {
+        margin-top:0;
+    }
+
+    #project-preview {
+        width: 360px;
+        overflow: visible;
+    }
+
+    #project-description-container
+    {
+        display:none;
+    }
+
+    #project-container-wrapper
+    {
+        display:block;
+        height:auto !important;
+        justify-content:normal !important;
+    }
+
+
+    #project-footer-controls 
+    {
+        width: 400px;
+    }
+
+    .mobile-nav-buttons {
+        display:block;
+    }
+
+    .web-nav-buttons
+    {
+        display:none;
+    }
+
+    #project-view-btn
+    {
+        width:150px !important;
+        font-size:14px !important;
+        top:50% !important;
+        transform:translate(-50%, -50%) !important;
+    }
 }

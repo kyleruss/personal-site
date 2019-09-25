@@ -556,6 +556,9 @@
   display: inline-flex;
   margin-top: 6em; }
 
+.mobile-nav-buttons {
+  display: none; }
+
 #preview-container {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   background-color: #FFF;
@@ -604,10 +607,10 @@
       transform: translateX(20px); }
   #project-footer-controls .project-nav-text {
     font-family: 'Calibre_regular'; }
-  #project-footer-controls #prev-project-btn {
+  #project-footer-controls .prev-project-btn {
     float: left;
     margin-left: 2em; }
-  #project-footer-controls #next-project-btn {
+  #project-footer-controls .next-project-btn {
     float: right;
     margin-right: 2em; }
   #project-footer-controls #project-view-btn {
@@ -636,6 +639,7 @@
   position: relative; }
   #project-preview .slick-slide {
     max-height: 600px;
+    width: 350px;
     overflow-y: scroll; }
   #project-preview .anchor {
     display: none !important; }
@@ -749,6 +753,30 @@
 #portf-right-arrow {
   right: 0;
   margin-right: 0.2em; }
+
+@media only screen and (max-device-width: 768px) {
+  #project-container {
+    margin-top: 0; }
+  #project-preview {
+    width: 360px;
+    overflow: visible; }
+  #project-description-container {
+    display: none; }
+  #project-container-wrapper {
+    display: block;
+    height: auto !important;
+    justify-content: normal !important; }
+  #project-footer-controls {
+    width: 400px; }
+  .mobile-nav-buttons {
+    display: block; }
+  .web-nav-buttons {
+    display: none; }
+  #project-view-btn {
+    width: 150px !important;
+    font-size: 14px !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important; } }
 
 #contact-container {
   height: 1000px;
@@ -917,6 +945,26 @@
       outline: none; }
   .slick-dots li.slick-active button {
     background-color: #7261ee; }
+
+@media only screen and (max-device-width: 768px) {
+  #contact-container {
+    margin-left: 0;
+    height: 800px; }
+  #services-subtitle {
+    font-size: 30px; }
+  #services-title {
+    font-size: 40px;
+    display: inline-block !important;
+    width: 300px !important; }
+  .service-inner-icon-container {
+    font-size: 48px; }
+  .service-inner-title {
+    font-size: 20px; }
+  .service-inner-text {
+    font-size: 10px; }
+  #service-list-container {
+    margin-left: 0.5em;
+    margin-right: 0.5em; } }
 
 #footer-container {
   height: 380px;

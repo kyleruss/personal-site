@@ -5,7 +5,7 @@
 -->
 
 <div id="portfolio-container" class="section">
-    <div class="row h-100 flex-column justify-content-center align-items-center">
+    <div id="project-container-wrapper" class="row h-100 flex-column justify-content-center align-items-center">
         <div id="project-container">
             <repo-data url="@Url.Content("~/Content/resources/repository-data.json")"></repo-data>
 
@@ -14,12 +14,20 @@
                 </div>
 
                 <div id="project-footer-controls">
-                    <button id="prev-project-btn" class="btn project-nav-buttons">
+                    <button class="btn project-nav-buttons prev-project-btn web-nav-buttons">
                         <span id="prev-project-text" class="project-nav-text">Previous</span>
                     </button>
                     <a target="_blank" href="https://github.com/kyleruss" id="project-view-link"><button id="project-view-btn">VIEW CODE</button></a>
-                    <button id="next-project-btn" class="btn project-nav-buttons">
+                    <button class="btn project-nav-buttons next-project-btn web-nav-buttons">
                         <span id="next-project-text" class="project-nav-text">Next</span>
+                    </button>
+
+                    <button class="btn project-nav-buttons prev-project-btn mobile-nav-buttons">
+                        <i class="fas fa-angle-left"></i>
+                    </button>
+
+                    <button class="btn project-nav-buttons next-project-btn mobile-nav-buttons">
+                        <i class="fas fa-angle-right"></i>
                     </button>
                 </div>
             </div>
