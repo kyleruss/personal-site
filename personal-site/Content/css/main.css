@@ -1138,6 +1138,23 @@
   margin-left: -80px;
   margin-bottom: -120px; }
 
+@media only screen and (max-device-width: 768px) {
+  #footer-image {
+    display: none; }
+  #dribbble-social-container {
+    margin-left: 0; }
+  #footer-social-icons {
+    margin-top: 12em; }
+  #inner-footer {
+    text-align: center;
+    height: 550px !important;
+    position: relative; }
+  #right-info {
+    position: absolute;
+    top: 50px; }
+  .footer-info-description {
+    font-size: 24px !important; } }
+
 .btn:focus, .btn:active {
   outline: none !important;
   box-shadow: none !important; }
