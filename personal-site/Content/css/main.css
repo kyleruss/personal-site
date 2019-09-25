@@ -95,6 +95,10 @@
   #side-navbar .side-navbar-offcolor.active {
     box-shadow: 0 0 0 2px #FFF; }
 
+@media only screen and (max-device-width: 768px) {
+  #main-navbar, #side-navbar {
+    display: none; } }
+
 /* 
    ================================
            HOME CONTAINER
@@ -258,6 +262,22 @@
       cursor: pointer;
       color: #7261ee; }
 
+@media only screen and (max-device-width: 768px) {
+  #home-title {
+    font-size: 40px !important; }
+  #home-description {
+    font-size: 18px !important; }
+  .social-icon-container {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 10px; }
+  .svg-wrapper {
+    display: none; }
+  #home-wrapper {
+    top: 50%;
+    transform: translate(-50%, -50%); } }
+
 /* 
    ================================
                 FONTS
@@ -396,6 +416,21 @@
 .resume-btn-hidden {
   opacity: 0; }
 
+@media only screen and (max-device-width: 768px) {
+  #about-title {
+    font-size: 48px;
+    text-align: center; }
+  #about-image-container {
+    display: none; }
+  #about-content-container {
+    margin-left: 2em;
+    margin-right: 2em;
+    width: auto;
+    text-align: center; }
+  #about-text {
+    font-size: 36px;
+    text-align: center; } }
+
 #skills-container {
   position: relative;
   height: 1000px;
@@ -424,6 +459,12 @@
     width: 0%; }
   100% {
     width: 20%; } }
+
+@keyframes mobileTitleAnimation {
+  0% {
+    width: 0%; }
+  100% {
+    width: 50%; } }
 
 #skills-wrapper {
   margin-top: 8em;
@@ -489,6 +530,21 @@
 #triangle-shape {
   top: 150px;
   right: 100px; }
+
+@media only screen and (max-device-width: 768px) {
+  .skill-shape {
+    display: none;
+    opacity: 0; }
+  #skill-title {
+    font-size: 54px; }
+  .skill-title-toggled::after {
+    width: 50%;
+    animation: mobileTitleAnimation 0.5s linear; }
+  .skill-inner-container {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none; } }
 
 #portfolio-container {
   position: relative;

@@ -7,7 +7,6 @@ using personal_site.Filters;
 
 namespace personal_site.Areas.Portfolio.Controllers
 {
-    [RequireHttps]
     [RouteArea("Portfolio")]
     [SiteModeFilter]
     public class HomeController : Controller

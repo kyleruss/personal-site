@@ -36,6 +36,12 @@
     100% { width: 20% }
 }
 
+@keyframes mobileTitleAnimation
+{
+    0% { width: 0%; }
+    100% { width:50%; }
+}
+
 #skills-wrapper
 {
     margin-top:8em;
@@ -80,10 +86,6 @@
     font-size: 36px;
     color: #2c2c2c;
     margin-top:3em;
-}
-
-.skill-list-container
-{
 }
 
 .skill-badge
@@ -133,4 +135,35 @@
 {
     top: 150px;
     right: 100px;
+}
+
+@media only screen and (max-device-width:768px)
+{
+    .skill-shape
+    {
+        display:none;
+        opacity:0;
+    }
+
+    #skill-title 
+    {
+        font-size:54px;
+    }
+
+    .skill-title-toggled 
+    {
+        &::after
+        {
+            width:50%;
+            animation:mobileTitleAnimation 0.5s linear;
+        }
+    }
+
+    .skill-inner-container
+    {
+        border-radius:0;
+        border-left:none;
+        border-right:none;
+        border-bottom:none;
+    }
 }

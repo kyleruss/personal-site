@@ -16,7 +16,8 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -329,24 +330,31 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\css\_commons.scss" />
+    <Content Include="Content\dependencies\fullpage-scroll\fullpage.js" />
+    <Content Include="Content\dependencies\fullpage-scroll\fullpage.min.css" />
+    <Content Include="Content\dependencies\fullpage-scroll\fullpage.min.js" />
+    <Content Include="Content\dependencies\odometer\odometer-theme-default.css" />
+    <Content Include="Content\dependencies\odometer\odometer.min.js" />
+    <Content Include="Content\images\about-img.png" />
+    <Content Include="Content\images\admin_login_panel.png" />
+    <Content Include="Content\images\error_background.png" />
+    <Content Include="Content\images\footer-image.png" />
+    <Content Include="Content\images\home_bg.png" />
+    <Content Include="Content\images\login-callback-image.png" />
+    <Content Include="Content\images\programming-image-extensions.png" />
+    <Content Include="Content\images\shapes\circle-shape.png" />
+    <Content Include="Content\images\shapes\diamond-shape.png" />
+    <Content Include="Content\images\shapes\square-shape.png" />
+    <Content Include="Content\images\shapes\triangle-shape.png" />
+    <Content Include="Content\resources\blog-rss.xml" />
     <Content Include="Content\scripts\admin\admin-login.js" />
     <Content Include="Content\scripts\admin\manage-dashboard.js" />
     <Content Include="Content\scripts\admin\manage-users.js" />
     <Content Include="Content\scripts\auth-callback.js" />
+    <Content Include="Content\scripts\main.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\css\main.css" />
-    <Content Include="Scripts\about.js" />
-    <Content Include="Scripts\admin\admin-core.js" />
-    <Content Include="Scripts\admin\admin-utils.js" />
-    <Content Include="Scripts\admin\manage-repos.js" />
-    <Content Include="Scripts\blog.js" />
-    <Content Include="Scripts\conf.js" />
-    <Content Include="Scripts\contact.js" />
-    <Content Include="Scripts\core.js" />
-    <Content Include="Scripts\home.js" />
-    <Content Include="Scripts\portfolio.js" />
-    <Content Include="Tasks\repository-task.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -368,8 +376,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Portfolio\Models\" />
-    <Folder Include="Content\images\" />
-    <Folder Include="fonts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -405,11 +411,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Portfolio\Views\Home\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\css\main.css.map">
-      <DependentUpon>main.css</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\main.scss" />
@@ -496,6 +497,27 @@
     </None>
     <Content Include="Content\css\_skills.scss" />
     <Content Include="Views\Shared\_SideNavbar.cshtml" />
+    <Content Include="Content\resources\KyleRussellResume.pdf" />
+    <Content Include="Content\resources\repository-data.json" />
+    <Content Include="fonts\AllerDisplay.ttf" />
+    <Content Include="fonts\Antipastopro.otf" />
+    <Content Include="fonts\CalibreBold.otf" />
+    <Content Include="fonts\CalibreLight.otf" />
+    <Content Include="fonts\CalibreMedium.otf" />
+    <Content Include="fonts\CalibreRegular.otf" />
+    <Content Include="fonts\CalibreSemibold.otf" />
+    <Content Include="fonts\Dienstag.ttf" />
+    <Content Include="fonts\Futura_Bold.otf" />
+    <Content Include="fonts\Futura_book.ttf" />
+    <Content Include="fonts\Futura_heavy.ttf" />
+    <Content Include="fonts\Futura_light.ttf" />
+    <Content Include="fonts\MuseoSans-100.otf" />
+    <Content Include="fonts\MuseoSans_700.otf" />
+    <Content Include="fonts\ProximaNova-Bold.otf" />
+    <Content Include="fonts\ProximaNova-Regular.otf" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -515,7 +537,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>45934</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44300/</IISUrl>
+          <IISUrl>http://localhost:80/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
