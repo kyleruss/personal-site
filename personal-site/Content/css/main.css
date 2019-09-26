@@ -620,8 +620,8 @@
   #project-footer-controls #project-view-btn {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-    top: -20px;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
     width: 200px;
     height: 40px;
     font-size: 16px;
@@ -778,9 +778,7 @@
     display: none; }
   #project-view-btn {
     width: 150px !important;
-    font-size: 14px !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important; } }
+    font-size: 14px !important; } }
 
 #contact-container {
   height: 1000px;
