@@ -3,7 +3,7 @@
 #portfolio-container
 {
 	position:relative;
-	height:1000px;
+	height:100vh;
 	overflow:hidden;
 	background-color:$mainColor;
 }
@@ -327,7 +327,7 @@
 {
     #project-container
     {
-        margin-top:0;
+        margin-top:2.5em;
     }
 
     #project-preview {

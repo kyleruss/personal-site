@@ -83,7 +83,10 @@
 
         $('#go-top-btn').click(function(e)
         {
-            fullpage_api.moveTo(1);
+            if(!mobileMode)
+                fullpage_api.moveTo(1);
+            else
+                $('html, body').animate({ scrollTop: 0}, 'slow');
         });
     };
 

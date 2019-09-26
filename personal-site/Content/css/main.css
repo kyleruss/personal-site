@@ -349,7 +349,7 @@
 
 #about-container {
   position: relative;
-  height: 1000px;
+  height: 100vh;
   background-color: #f2f2f2;
   overflow: hidden; }
 
@@ -433,7 +433,7 @@
 
 #skills-container {
   position: relative;
-  height: 1000px;
+  height: 100vh;
   background-color: #f2f2f2;
   text-align: center; }
 
@@ -544,11 +544,15 @@
     border-radius: 0;
     border-left: none;
     border-right: none;
-    border-bottom: none; } }
+    border-bottom: none; }
+  #skills-container {
+    height: 1800px; }
+    #skills-container .col-md-2 {
+      padding-bottom: 5em; } }
 
 #portfolio-container {
   position: relative;
-  height: 1000px;
+  height: 100vh;
   overflow: hidden;
   background-color: #7261ee; }
 
@@ -756,7 +760,7 @@
 
 @media only screen and (max-device-width: 768px) {
   #project-container {
-    margin-top: 0; }
+    margin-top: 2.5em; }
   #project-preview {
     width: 360px;
     overflow: visible; }
@@ -947,9 +951,26 @@
     background-color: #7261ee; }
 
 @media only screen and (max-device-width: 768px) {
+  #contact-inner-container {
+    align-items: start !important;
+    margin-top: 2em;
+    padding-bottom: 8em; }
   #contact-container {
     margin-left: 0;
-    height: 800px; }
+    height: 100%; }
+  #contact-form-title {
+    font-size: 48px;
+    margin-top: 3em; }
+  #contact-form {
+    padding-left: 5em;
+    padding-right: 5em;
+    margin-top: 3em; }
+  #contact-submit {
+    font-size: 24px; }
+  #contact-message-field {
+    height: 150px; }
+  .field-icons {
+    display: none; }
   #services-subtitle {
     font-size: 30px; }
   #services-title {
@@ -1153,7 +1174,9 @@
     position: absolute;
     top: 50px; }
   .footer-info-description {
-    font-size: 24px !important; } }
+    font-size: 24px !important; }
+  #footer-container {
+    height: 550px; } }
 
 .btn:focus, .btn:active {
   outline: none !important;
@@ -1178,3 +1201,8 @@ body {
   margin: 0;
   overflow: hidden;
   background-color: #f2f2f2; }
+
+@media only screen and (max-device-width: 768px) {
+  body {
+    overflow-y: visible;
+    overflow-x: hidden; } }

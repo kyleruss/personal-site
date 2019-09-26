@@ -12,7 +12,6 @@
 
     initDisplay()
     {
-
         this.updatePortfolioView();
     };
 

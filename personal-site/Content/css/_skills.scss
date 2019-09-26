@@ -1,7 +1,7 @@
 ﻿#skills-container 
 {
     position: relative;
-    height: 1000px;
+    height: 100vh;
     background-color: $mainBgColor;
     text-align:center;
 }
@@ -165,5 +165,15 @@
         border-left:none;
         border-right:none;
         border-bottom:none;
+    }
+
+    #skills-container
+    {
+        height:1800px;
+
+        .col-md-2
+        {
+            padding-bottom:5em;
+        }
     }
 }

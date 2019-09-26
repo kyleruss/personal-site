@@ -44,3 +44,12 @@ body {
     overflow: hidden;
     background-color:$mainBgColor;
 }
+
+@media only screen and (max-device-width:768px)
+{
+    body
+    {
+        overflow-y:visible;
+        overflow-x:hidden;
+    }
+}

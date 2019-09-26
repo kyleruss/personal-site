@@ -1,4 +1,6 @@
-﻿$(function()
+﻿var mobileMode = $(window).width() < 1000;
+
+$(function()
 {
     var homeComponent = new HomeComponent();
     var aboutComponent = new AboutComponent();
@@ -6,60 +8,72 @@
     var portfolioComponent = new PortfolioComponent();
     var contactComponent = new ContactComponent();
 
-    $('#module-container').fullpage
-    ({
-        fitToScreen: true,
-        normalScrollElements: '#project-preview, #preview-container',
-        onLeave: function(origin, destination, direction)
-        {
-            var navbarItem = $('.side-navbar-item');
-            var destIndex = destination.index;
-            var originIndex = origin.index;
-            var sectionObj;
-
-            if(destIndex < 5 && originIndex != 5) 
-                $('.side-navbar-item.active').addClass('side-navbar-item-untoggled');
-            
-            switch(destIndex)
+    if(!mobileMode)
+    {
+        $('#module-container').fullpage
+        ({
+            fitToScreen: true,
+            normalScrollElements: '#project-preview, #preview-container',
+            onLeave: function(origin, destination, direction)
             {
-                case 1:
-                    sectionObj = aboutComponent;
-                    break;
+                var navbarItem = $('.side-navbar-item');
+                var destIndex = destination.index;
+                var originIndex = origin.index;
+                var sectionObj;
 
-                case 2:
-                    sectionObj = skillsComponent;
-                    break;
-
-                case 3:
-                    sectionObj = portfolioComponent;
-                    break;
-
-                case 4:
-                    sectionObj = contactComponent;
-                    break;
-            }
-
-            
-            setTimeout(() =>
-            {
-
-                if(destIndex == 3 || destIndex == 0)
-                    portfolioComponent.toggleOffColorNavbar(true);
-                else
-                    portfolioComponent.toggleOffColorNavbar(false);
-
-                if((destIndex != 5) || (originIndex == 5 && destIndex == 0))
+                if(destIndex < 5 && originIndex != 5) 
+                    $('.side-navbar-item.active').addClass('side-navbar-item-untoggled');
+                
+                switch(destIndex)
                 {
-                    navbarItem.removeClass('active');
-                    navbarItem.removeClass('side-navbar-item-untoggled');
-                    navbarItem.eq(destIndex).addClass('active');
+                    case 1:
+                        sectionObj = aboutComponent;
+                        break;
+
+                    case 2:
+                        sectionObj = skillsComponent;
+                        break;
+
+                    case 3:
+                        sectionObj = portfolioComponent;
+                        break;
+
+                    case 4:
+                        sectionObj = contactComponent;
+                        break;
                 }
 
+                
+                setTimeout(() =>
+                {
 
-                if(sectionObj != null) sectionObj.initDisplay();
-            }, 300);
-        }
-    });
+                    if(destIndex == 3 || destIndex == 0)
+                        portfolioComponent.toggleOffColorNavbar(true);
+                    else
+                        portfolioComponent.toggleOffColorNavbar(false);
+
+                    if((destIndex != 5) || (originIndex == 5 && destIndex == 0))
+                    {
+                        navbarItem.removeClass('active');
+                        navbarItem.removeClass('side-navbar-item-untoggled');
+                        navbarItem.eq(destIndex).addClass('active');
+                    }
+
+
+                    if(sectionObj != null) sectionObj.initDisplay();
+                }, 300);
+            }
+        });
+    }
+
+    //init component displays for mobile mode
+    else
+    {
+        aboutComponent.initDisplay();
+        skillsComponent.initDisplay();
+        //portfolioComponent.initDisplay();
+        contactComponent.initDisplay();
+    }
     
     $('#main-navbar a').click(function(e)
     {

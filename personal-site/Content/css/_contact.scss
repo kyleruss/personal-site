@@ -254,14 +254,45 @@ $fieldFont: 'Calibre_light';
 {
     #contact-inner-container
     {
+        align-items:start !important;
+        margin-top:2em;
+        padding-bottom:8em;
     }
 
     #contact-container
     {
         margin-left:0;
-        height:800px;
+        height:100%;
     }
 
+    #contact-form-title
+    {
+        font-size:48px;
+         margin-top:3em;
+    }
+
+    #contact-form
+    {
+        padding-left:5em;
+        padding-right:5em;
+        margin-top:3em;
+    }
+
+    #contact-submit
+    {
+        font-size:24px;
+    }
+
+    #contact-message-field
+    {
+        height:150px;
+    }
+
+    .field-icons
+    {
+        display:none;
+    }
+   
     #services-subtitle
     {
         font-size:30px;

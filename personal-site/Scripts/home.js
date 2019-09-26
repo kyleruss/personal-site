@@ -14,7 +14,8 @@
     {
         $('#scroll-bottom-btn').click(function(e)
         {   
-            fullpage_api.moveTo(2);
+            if(typeof fullpage_api !== 'undefined')
+                fullpage_api.moveTo(2);
         });
     };
 };
