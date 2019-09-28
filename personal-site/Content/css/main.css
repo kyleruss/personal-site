@@ -209,6 +209,8 @@
   transition: ease-in-out 0.5s; }
   .social-icon-container a {
     display: inline-grid; }
+  .social-icon-container .fa-behance {
+    font-size: 1.5em !important; }
   .social-icon-container:hover {
     cursor: pointer;
     background-color: rgba(124, 124, 124, 0.5); }
