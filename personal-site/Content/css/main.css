@@ -278,7 +278,9 @@
     display: none; }
   #home-wrapper {
     top: 50%;
-    transform: translate(-50%, -50%); } }
+    transform: translate(-50%, -50%); }
+  #scroll-bottom-btn {
+    display: none; } }
 
 /* 
    ================================
@@ -431,7 +433,10 @@
     text-align: center; }
   #about-text {
     font-size: 36px;
-    text-align: center; } }
+    text-align: center; }
+  #resume-embed {
+    height: 650px;
+    width: 100%; } }
 
 #skills-container {
   position: relative;

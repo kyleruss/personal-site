@@ -23,13 +23,16 @@
     {
         $('#resume-btn').click(function(e)
         {
-            fullpage_api.setAllowScrolling(false);
+            if(typeof fullpage_api !== 'undefined')
+                fullpage_api.setAllowScrolling(false);
+                
             $('#resume-modal').modal('show');
         });
 
         $('#resume-modal').on('hidden.bs.modal', function()
         {
-            fullpage_api.setAllowScrolling(true);
+            if(typeof fullpage_api !== 'undefined')
+                fullpage_api.setAllowScrolling(true);
         });
     };
 

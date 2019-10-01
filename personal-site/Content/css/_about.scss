@@ -93,9 +93,8 @@
     }
 }
 
-.resume-btn-hidden
-{
-    opacity:0;
+.resume-btn-hidden {
+    opacity: 0;
 }
 
 @media only screen and (max-width:768px)
@@ -123,5 +122,11 @@
     {
         font-size:36px;
         text-align:center;
+    }
+
+    #resume-embed
+    {
+        height:650px;
+        width:100%;
     }
 }
