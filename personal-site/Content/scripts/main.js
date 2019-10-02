@@ -145,10 +145,19 @@ class AboutComponent
     {
         $('#resume-btn').click(function(e)
         {
-            if(typeof fullpage_api !== 'undefined')
-                fullpage_api.setAllowScrolling(false);
-                
-            $('#resume-modal').modal('show');
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+            {
+                var resumeUrl = 'https://kylejoerussell.com/Content/resources/KyleRussellResume.pdf';
+                window.location.href = `http://docs.google.com/gview?embedded=true&url=${resumeUrl}`;
+            }
+
+            else
+            {
+                if(typeof fullpage_api !== 'undefined')
+                    fullpage_api.setAllowScrolling(false);
+                    
+                $('#resume-modal').modal('show');
+            }
         });
 
         $('#resume-modal').on('hidden.bs.modal', function()
@@ -158,6 +167,10 @@ class AboutComponent
         });
     };
 
+    initMobileResumeDisplay()
+    {
+
+    };
 
     displayTitle()
     {
