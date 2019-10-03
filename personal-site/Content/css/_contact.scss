@@ -64,34 +64,89 @@ $fieldFont: 'Calibre_light';
 {
     border:0.15em solid currentColor;
     border-right-color:transparent;
-} 
+}
 
-.contact-textfield
+
+.contact-field-group
 {
-    background-color:rgba(0,0,0,0);
-    border:0;
-    border-bottom:2px solid $fieldColor;
-    border-radius:0;
-    padding:0;
-    font-family: $fieldFont;
-    font-size:30px;
-    height:40px;
-    color:$fieldColor;
+    position:relative;
+    padding-left:0;
+    padding-right:0;
 
-    &::-moz-placeholder, &::-webkit-input-placeholder
+    .input-border 
     {
-        color:$fieldColor;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        transform: scaleX(0);
+        transform-origin: 0 0;
+        background: $mainColor;
+        transition: all 0.15s ease;
     }
 
-    &:focus
+    .contact-textfield
     {
-        background-color:rgba(0,0,0,0);
-        border-bottom:2px solid $mainColor;
-        outline:0px !important;
-        box-shadow:none;
-        color:$fieldColor;
+        border: none;
+        border-bottom: 1px solid #ced4da;
+        border-radius: 0;
+        font-family: $fieldFont;
+        font-size:30px;
+        height:40px;
+        padding-left: 0;
+        padding-right: 0;
+        z-index: 100;
+        background-color: rgba(0, 0, 0, 0);
+        transition: 0.15s ease;
+
+
+        &:not(:placeholder-shown)
+        {
+            + .input-label 
+            {
+                transform: translateY(-25px);
+                font-size:20px;
+                color: #9098A9;
+            }
+        }
+
+
+        &:focus 
+        {
+            outline: none;
+            box-shadow: none;
+
+            + .input-label
+            {
+                transition: 0.15s ease;
+                transform: translateY(-25px);
+                font-size:20px;
+                color: #9098A9;
+                backface-visibility:hidden;
+
+                + .input-border
+                {
+                    transform: scaleX(1);
+                }
+            }
+        }
     }
 
+    .input-label 
+    {
+        position: absolute;
+        top: 0px;
+        left: 0;
+        z-index: 50;
+        transform-origin: 0 0;
+        transition: all 0.15s ease;
+        color: #9098A9;
+        font-family: $fieldFont;
+        font-size:30px;
+        font-weight:500;
+        pointer-events:none;
+    }
 }
 
 .contact-form-field-container:nth-child(2)
@@ -325,4 +380,5 @@ $fieldFont: 'Calibre_light';
         margin-left:0.5em;
         margin-right:0.5em;
     }
+
 }

@@ -829,24 +829,59 @@
   border: 0.15em solid currentColor;
   border-right-color: transparent; }
 
-.contact-textfield {
-  background-color: transparent;
-  border: 0;
-  border-bottom: 2px solid #6a6a6a;
-  border-radius: 0;
-  padding: 0;
-  font-family: "Calibre_light";
-  font-size: 30px;
-  height: 40px;
-  color: #6a6a6a; }
-  .contact-textfield::-moz-placeholder, .contact-textfield::-webkit-input-placeholder {
-    color: #6a6a6a; }
-  .contact-textfield:focus {
+.contact-field-group {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0; }
+  .contact-field-group .input-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    background: #7261ee;
+    transition: all 0.15s ease; }
+  .contact-field-group .contact-textfield {
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+    font-family: "Calibre_light";
+    font-size: 30px;
+    height: 40px;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 100;
     background-color: transparent;
-    border-bottom: 2px solid #7261ee;
-    outline: 0px !important;
-    box-shadow: none;
-    color: #6a6a6a; }
+    transition: 0.15s ease; }
+    .contact-field-group .contact-textfield:not(:placeholder-shown) + .input-label {
+      transform: translateY(-25px);
+      font-size: 20px;
+      color: #9098A9; }
+    .contact-field-group .contact-textfield:focus {
+      outline: none;
+      box-shadow: none; }
+      .contact-field-group .contact-textfield:focus + .input-label {
+        transition: 0.15s ease;
+        transform: translateY(-25px);
+        font-size: 20px;
+        color: #9098A9;
+        backface-visibility: hidden; }
+        .contact-field-group .contact-textfield:focus + .input-label + .input-border {
+          transform: scaleX(1); }
+  .contact-field-group .input-label {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    z-index: 50;
+    transform-origin: 0 0;
+    transition: all 0.15s ease;
+    color: #9098A9;
+    font-family: "Calibre_light";
+    font-size: 30px;
+    font-weight: 500;
+    pointer-events: none; }
 
 .contact-form-field-container:nth-child(2) {
   margin-top: 3em; }

@@ -84,9 +84,14 @@
                 <!-- Contact name -->
                 <div class="form-group contact-form-field-container row">
                     <i class="fas field-icons fa-user col-sm-2"></i>
-                    @Html.TextBoxFor(m => m.ContactName,
-                    new { @class = "form-control col-sm-10 contact-textfield", id = "contact-name-field", placeholder = "What's your name?" })
 
+                    <div class="col-sm-10 contact-field-group">
+                        @Html.TextBoxFor(m => m.ContactName,
+                        new { @class = "form-control contact-textfield", id = "contact-name-field", placeholder = " " })
+
+                        <span class="input-label">What's your name?</span>
+                        <span class="input-border"></span>
+                    </div>
                 </div>
 
                 <br />
@@ -94,8 +99,14 @@
                 <!-- Contact Email -->
                 <div class="form-group contact-form-field-container row">
                     <i class="fas field-icons fa-envelope col-sm-2"></i>
-                    @Html.TextBoxFor(m => m.ContactEmail,
-                     new { @class = "form-control col-sm-10 contact-textfield", id = "contact-email-field", placeholder = "Enter your email" })
+
+                    <div class="col-sm-10 contact-field-group">
+                        @Html.TextBoxFor(m => m.ContactEmail,
+                         new { @class = "form-control contact-textfield", id = "contact-email-field", placeholder = " " })
+
+                        <span class="input-label">Enter your email</span>
+                        <span class="input-border"></span>
+                    </div>
                 </div>
 
                 <!-- CONTACT MESSAGE -->
