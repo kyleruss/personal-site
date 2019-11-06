@@ -67,14 +67,12 @@ $fieldFont: 'Calibre_light';
 }
 
 
-.contact-field-group
-{
-    position:relative;
-    padding-left:0;
-    padding-right:0;
+.contact-field-group {
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
 
-    .input-border 
-    {
+    .input-border {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -86,14 +84,13 @@ $fieldFont: 'Calibre_light';
         transition: all 0.15s ease;
     }
 
-    .contact-textfield
-    {
+    .contact-textfield {
         border: none;
-        border-bottom: 1px solid #ced4da;
+        border-bottom: 2px solid #b6bcc2;
         border-radius: 0;
         font-family: $fieldFont;
-        font-size:30px;
-        height:40px;
+        font-size: 30px;
+        height: 40px;
         padding-left: 0;
         padding-right: 0;
         z-index: 100;
@@ -101,40 +98,34 @@ $fieldFont: 'Calibre_light';
         transition: 0.15s ease;
 
 
-        &:not(:placeholder-shown)
-        {
-            + .input-label 
-            {
+        &:not(:placeholder-shown) {
+            + .input-label {
                 transform: translateY(-25px);
-                font-size:20px;
+                font-size: 20px;
                 color: #9098A9;
             }
         }
 
 
-        &:focus 
-        {
+        &:focus {
             outline: none;
             box-shadow: none;
 
-            + .input-label
-            {
+            + .input-label {
                 transition: 0.15s ease;
                 transform: translateY(-25px);
-                font-size:20px;
+                font-size: 20px;
                 color: #9098A9;
-                backface-visibility:hidden;
+                backface-visibility: hidden;
 
-                + .input-border
-                {
+                + .input-border {
                     transform: scaleX(1);
                 }
             }
         }
     }
 
-    .input-label 
-    {
+    .input-label {
         position: absolute;
         top: 0px;
         left: 0;
@@ -143,9 +134,9 @@ $fieldFont: 'Calibre_light';
         transition: all 0.15s ease;
         color: #9098A9;
         font-family: $fieldFont;
-        font-size:30px;
-        font-weight:500;
-        pointer-events:none;
+        font-size: 30px;
+        font-weight: 500;
+        pointer-events: none;
     }
 }
 
@@ -157,7 +148,7 @@ $fieldFont: 'Calibre_light';
 #contact-message-field {
     background-color: rgba(0,0,0,0);
     border-radius: 10px;
-    border: 2px solid $fieldColor;
+    border: 2px solid #b6bcc2;
     resize: none;
     color: $fieldColor;
     margin-top: 2em;
@@ -200,7 +191,6 @@ $fieldFont: 'Calibre_light';
     $successColor: rgb(0, 204, 102) !important;
     background-color:$successColor;
     border-color:$successColor;
-   // box-shadow: 0px 0px 38px -10px rgba(0,0,0,0.75);
    box-shadow: 10px 10px 5px -3px rgba(0,0,0,0.39);
    outline:1px;
 }

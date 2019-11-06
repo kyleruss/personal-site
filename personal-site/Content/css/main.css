@@ -845,7 +845,7 @@
     transition: all 0.15s ease; }
   .contact-field-group .contact-textfield {
     border: none;
-    border-bottom: 1px solid #ced4da;
+    border-bottom: 2px solid #b6bcc2;
     border-radius: 0;
     font-family: "Calibre_light";
     font-size: 30px;
@@ -889,7 +889,7 @@
 #contact-message-field {
   background-color: transparent;
   border-radius: 10px;
-  border: 2px solid #6a6a6a;
+  border: 2px solid #b6bcc2;
   resize: none;
   color: #6a6a6a;
   margin-top: 2em;
