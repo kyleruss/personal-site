@@ -629,19 +629,18 @@
     left: 50%;
     top: 50% !important;
     transform: translate(-50%, -50%) !important;
-    width: 200px;
+    width: 150px;
     height: 40px;
-    font-size: 16px;
-    border-radius: 50px;
+    font-size: 14px;
+    border-radius: 5px;
     font-family: 'Futura_bold';
     background-color: #7261ee;
     color: #FFF;
     border: none;
     outline: none;
-    box-shadow: 0px 0px 16px 0px #7261ee;
     transition: 0.5s ease-in-out; }
     #project-footer-controls #project-view-btn:hover {
-      background-color: #6252d9; }
+      box-shadow: 0px 0px 16px 0px #7261ee; }
 
 #project-preview {
   overflow: hidden;
