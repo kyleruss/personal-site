@@ -179,7 +179,7 @@ class AboutComponent
     
     displayAboutText()
     {
-        var aboutText = "Hello, I'm Kyle. Full-stack web & mobile developer based in Adelaide, AU";
+        var aboutText = "Hello, I'm Kyle. Passionate full-stack web developer based in Adelaide, AU";
         var i = 1;
         var textInterval = setInterval(() =>
         {
@@ -195,7 +195,7 @@ class AboutComponent
                 clearInterval(textInterval);
                 $('#resume-btn').animate({opacity: 1}, 200);
                 var textNode = $('#about-text').contents().last().get(0);
-                var lastNode = textNode.splitText(60);
+                var lastNode = textNode.splitText(62);
                 $(lastNode).wrap("<span class='location-highlight'/>");
             }
         }, 50); 
